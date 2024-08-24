@@ -66,8 +66,14 @@ class WebVid10M(Dataset):
     
     def get_batch(self, idx):
         def sort_frames(frame_name):
-            return int(frame_name.split('_')[1].split('.')[0])
-    
+            # return int(frame_name.split('_')[1].split('.')[0])
+    # 00001-tl-image_compo
+            parts = frame_name.split('-')
+            if len(parts) > 1:
+                return int(parts[0])
+            else:
+                parts = frame_name.split('_')
+                return int(parts[1].split('.')[0])
 
     
         while True:
@@ -76,8 +82,9 @@ class WebVid10M(Dataset):
     
             preprocessed_dir = os.path.join(self.video_folder, videoid)
             depth_folder = os.path.join(self.depth_folder, videoid)
+            print(self.motion_values_folder, videoid)
             motion_values_file = os.path.join(self.motion_values_folder, videoid, videoid + "_average_motion.txt")
-    
+
             if not os.path.exists(depth_folder) or not os.path.exists(motion_values_file):
                 idx = random.randint(0, len(self.dataset) - 1)
                 continue
@@ -134,6 +141,9 @@ if __name__ == "__main__":
     dataset = WebVid10M(
         csv_path="/data/webvid/results_2M_train.csv",
         video_folder="/data/webvid/data/videos",
+        # csv_path="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns.csv",
+        # video_folder="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns/img_relit",
+
         sample_size=256,
         sample_stride=4, sample_n_frames=16,
         is_image=True,
@@ -144,5 +154,6 @@ if __name__ == "__main__":
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=4, num_workers=16,)
     for idx, batch in enumerate(dataloader):
         print(batch["pixel_values"].shape, len(batch["text"]))
+        print(batch["depth_pixel_values"].shape, len(batch["text"]))
         # for i in range(batch["pixel_values"].shape[0]):
         #     save_videos_grid(batch["pixel_values"][i:i+1].permute(0,2,1,3,4), os.path.join(".", f"{idx}-{i}.mp4"), rescale=True)

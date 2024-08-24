@@ -59,6 +59,7 @@ from pipeline.pipeline_stable_video_diffusion_controlnet import StableVideoDiffu
 from models.controlnet_sdv import ControlNetSDVModel
 
 from torch.utils.data import Dataset
+from accelerate.utils import DistributedDataParallelKwargs
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.24.0.dev0")
@@ -218,7 +219,7 @@ def make_train_dataset(args):
 
     # In distributed training, the load_dataset function guarantees that only one local process can concurrently
     # download the dataset.
-    dataset = WebVid10M(args.csv_path,args.video_folder,args.condition_folder,args.motion_folder)
+    dataset = WebVid10M(args.csv_path,args.video_folder,args.condition_folder,args.motion_folder,sample_size=512, sample_n_frames=15)
     return dataset
 
 
@@ -748,6 +749,7 @@ def main():
     logging_dir = os.path.join(args.output_dir, args.logging_dir)
     accelerator_project_config = ProjectConfiguration(
         project_dir=args.output_dir, logging_dir=logging_dir)
+
     # ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
     accelerator = Accelerator(
         gradient_accumulation_steps=args.gradient_accumulation_steps,
@@ -1213,6 +1215,8 @@ def main():
                 inp_noisy_latents = torch.cat(
                     [inp_noisy_latents, conditional_latents], dim=2)
                 controlnet_image = batch["depth_pixel_values"]
+                # print(pixel_values.shape, controlnet_image.shape)
+                
                 # Get the target for loss depending on the prediction type
                 # if noise_scheduler.config.prediction_type == "epsilon":
                 #     target = latents  # we are computing loss against denoise latents
@@ -1342,6 +1346,7 @@ def main():
                         
                         validation_images = load_images_from_folder(args.validation_image_folder)
                         validation_control_images = load_images_from_folder(args.validation_control_folder)
+                        # print("vali size:", validation_images.shape, validation_control_images.shape)
                         
                         # run inference
                         val_save_dir = os.path.join(
