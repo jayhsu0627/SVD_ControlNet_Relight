@@ -5,8 +5,8 @@ Introducing the Stable Video Diffusion Temporal Controlnet! This tool uses a con
 
 ## Setup
 - **Controlnet Model:** you can get the depth model by running the inference script, it will automatically download the depth model to the cache, the model files can be found here: [temporal-controlnet-depth-svd-v1](https://huggingface.co/CiaraRowles/temporal-controlnet-depth-svd-v1)
-- **Installation:** run `pip install -r requirements.txt`
-- **Execution:** Run "run_inference.py".
+- **Installation:** run `conda env create -f environment.yml`
+- **Execution:** Run "run_inference_mod.py".
 
 ## Demo
 
