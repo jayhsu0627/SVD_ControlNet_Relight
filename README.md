@@ -22,17 +22,17 @@ My example training config is configured like this:
 CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch train_svd.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
  --output_dir="model_out" \
- --csv_path="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns.csv" \
- --video_folder="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns/img_relit" \
- --condition_folder="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns/shd_relit" \
- --motion_folder="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns/motion" \
- --validation_image_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_relit" \
- --validation_control_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_relit" \
+ --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
+ --video_folder="/fs/nexus-scratch/sjxu/WebVid/blender/img" \
+ --condition_folder="/fs/nexus-scratch/sjxu/WebVid/blender/shd" \
+ --motion_folder="/fs/nexus-scratch/sjxu/WebVid/blender/motion" \
+ --validation_image_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_blender" \
+ --validation_control_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_blender" \
  --width=512 \
  --height=512 \
  --learning_rate=2e-5 \
  --per_gpu_batch_size=1 \
- --num_train_epochs=10 \
+ --num_train_epochs=5 \
  --mixed_precision="fp16" \
  --gradient_accumulation_steps=16 \
  --checkpointing_steps=2000 \
@@ -40,7 +40,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch train_svd.py \
  --gradient_checkpointing \
  --num_train_epochs 1000 \
  --checkpoints_total_limit=1 \
-```
+ --report_to="wandb"
+ ```
 
 ## Acknowledgements
 - **lllyasviel:** for the original controlnet implementation
