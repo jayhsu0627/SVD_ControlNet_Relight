@@ -219,7 +219,7 @@ def make_train_dataset(args):
 
     # In distributed training, the load_dataset function guarantees that only one local process can concurrently
     # download the dataset.
-    dataset = WebVid10M(args.csv_path,args.video_folder,args.condition_folder,args.motion_folder,sample_size=512, sample_n_frames=15)
+    dataset = WebVid10M(args.csv_path,args.video_folder,args.condition_folder,args.motion_folder,sample_size=512, sample_n_frames=args.sample_n_frames)
     return dataset
 
 
@@ -712,7 +712,14 @@ def parse_args():
             "the validation control image"
         ),
     )
-
+    parser.add_argument(
+        "--sample_n_frames",
+        type=int,
+        default=15,
+        help=(
+            "frames per video"
+        ),
+    )
     args = parser.parse_args()
     env_local_rank = int(os.environ.get("LOCAL_RANK", -1))
     if env_local_rank != -1 and env_local_rank != args.local_rank:
@@ -1317,10 +1324,15 @@ def main():
                         accelerator.save_state(save_path)
                         logger.info(f"Saved state to {save_path}")
                     # sample images!
+                    # if (
+                    #     (global_step % args.validation_steps == 0)
+                    #     or (global_step == 1)
+                    # ):
+                    # turn this off due to low memory
                     if (
-                        (global_step % args.validation_steps == 0)
-                        or (global_step == 1)
+                        False
                     ):
+
                         logger.info(
                             f"Running validation... \n Generating {args.num_validation_images} videos."
                         )
@@ -1362,7 +1374,7 @@ def main():
                                 num_frames = args.num_frames
                                 video_frames = pipeline(
                                     validation_images[0], 
-                                    validation_control_images[:14],
+                                    validation_control_images[:args.num_frames],
                                     height=args.height,
                                     width=args.width,
                                     num_frames=num_frames,

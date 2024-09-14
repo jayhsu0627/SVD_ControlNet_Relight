@@ -1,8 +1,0 @@
-08/31/2024 02:20:48 - INFO - __main__ - ***** Running training *****
-08/31/2024 02:20:48 - INFO - __main__ -   Num examples = 22
-08/31/2024 02:20:48 - INFO - __main__ -   Num Epochs = 1000
-08/31/2024 02:20:48 - INFO - __main__ -   Instantaneous batch size per device = 1
-08/31/2024 02:20:48 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
-08/31/2024 02:20:48 - INFO - __main__ -   Gradient Accumulation steps = 16
-08/31/2024 02:20:48 - INFO - __main__ -   Total optimization steps = 1000
-Steps:   0%|                                                                                                                                          | 0/1000 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.

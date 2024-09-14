@@ -604,6 +604,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalControlnetMixin):
             cross_attention_dim=unet.config.cross_attention_dim,
             num_attention_heads=unet.config.num_attention_heads,
             num_frames=unet.config.num_frames,
+            # num_frames=12,
             sample_size=unet.config.sample_size,  # Added based on the dict
             layers_per_block=unet.config.layers_per_block,
             projection_class_embeddings_input_dim=unet.config.projection_class_embeddings_input_dim,

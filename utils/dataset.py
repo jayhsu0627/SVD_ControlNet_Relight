@@ -53,9 +53,6 @@ class WebVid10M(Dataset):
         ])
     
 
-
-
-
     def center_crop(self,img):
         h, w = img.shape[-2:]  # Assuming img shape is [C, H, W] or [B, C, H, W]
         min_dim = min(h, w)
@@ -63,18 +60,41 @@ class WebVid10M(Dataset):
         left = (w - min_dim) // 2
         return img[..., top:top+min_dim, left:left+min_dim]
         
-    
+   
     def get_batch(self, idx):
+        
+        # # for blender
+        # def sort_frames(frame_name):
+        #     # return int(frame_name.split('_')[1].split('.')[0])
+        #     # clip_01_left_0001
+        #     parts = frame_name.split('_')
+        #     if len(parts) > 1:
+        #         return int(parts[1][:2])
+        #     else:
+        #         parts = frame_name.split('_')
+        #         return int(parts[1].split('.')[0])
+        
+        # for blender random
         def sort_frames(frame_name):
-            # return int(frame_name.split('_')[1].split('.')[0])
-    # 00001-tl-image_compo
-            parts = frame_name.split('-')
-            if len(parts) > 1:
-                return int(parts[0])
+            # Extract the numeric part from the filename
+            # full_shd_l_frame0000.png
+            frame_name = frame_name.split('.')[0]
+            parts = frame_name.split('_')
+            if len(parts) > 2:
+                return int(parts[3][5:])
             else:
-                parts = frame_name.split('_')
-                return int(parts[1].split('.')[0])
+                return int(parts[1][5:])
 
+        # # for 3d-ken-burns
+        # def sort_frames(frame_name):
+        #     # return int(frame_name.split('_')[1].split('.')[0])
+        #     # 00001-tl-image_compo
+        #     parts = frame_name.split('-')
+        #     if len(parts) > 1:
+        #         return int(parts[1])
+        #     else:
+        #         parts = frame_name.split('_')
+        #         return int(parts[1].split('.')[0])
     
         while True:
             video_dict = self.dataset[idx]
@@ -90,11 +110,12 @@ class WebVid10M(Dataset):
                 continue
     
             # Sort and limit the number of image and depth files to 14
-            image_files = sorted(os.listdir(preprocessed_dir), key=sort_frames)[:14]
-            depth_files = sorted(os.listdir(depth_folder), key=sort_frames)[:14]
-    
+            image_files = sorted(os.listdir(preprocessed_dir), key=sort_frames)[:self.sample_n_frames]
+            depth_files = sorted(os.listdir(depth_folder), key=sort_frames)[:self.sample_n_frames]
+            # print(image_files, depth_files, len(image_files))
+
             # Check if there are enough frames for both image and depth
-            if len(image_files) < 14 or len(depth_files) < 14:
+            if len(image_files) < self.sample_n_frames or len(depth_files) < self.sample_n_frames:
                 idx = random.randint(0, len(self.dataset) - 1)
                 continue
     
@@ -139,12 +160,15 @@ if __name__ == "__main__":
     from utils.util import save_videos_grid
 
     dataset = WebVid10M(
-        csv_path="/data/webvid/results_2M_train.csv",
-        video_folder="/data/webvid/data/videos",
+        # csv_path="/data/webvid/results_2M_train.csv",
+        # video_folder="/data/webvid/data/videos",
         # csv_path="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns.csv",
         # video_folder="/fs/nexus-scratch/sjxu/WebVid/3d-ken-burns/img_relit",
 
-        sample_size=256,
+        csv_path="/fs/nexus-scratch/sjxu/WebVid/blender_random.csv",
+        video_folder="/fs/nexus-scratch/sjxu/WebVid/blender_random/img",
+        condition_folder = "/fs/nexus-scratch/sjxu/WebVid/blender_random/shd",
+        sample_size=512,
         sample_stride=4, sample_n_frames=16,
         is_image=True,
     )
