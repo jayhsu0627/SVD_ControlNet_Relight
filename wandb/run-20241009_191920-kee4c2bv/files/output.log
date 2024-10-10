@@ -1,0 +1,139 @@
+10/09/2024 19:19:24 - INFO - __main__ - ***** Running training *****
+10/09/2024 19:19:24 - INFO - __main__ -   Num examples = 320
+10/09/2024 19:19:24 - INFO - __main__ -   Num Epochs = 1000
+10/09/2024 19:19:24 - INFO - __main__ -   Instantaneous batch size per device = 2
+10/09/2024 19:19:24 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+10/09/2024 19:19:24 - INFO - __main__ -   Gradient Accumulation steps = 16
+10/09/2024 19:19:24 - INFO - __main__ -   Total optimization steps = 5000
+Steps:   0%|                                                                                                                                                                                                       | 0/5000 [00:00<?, ?it/s]/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|▎                                                                                                                                                                | 8/5000 [01:32<14:44:19, 10.63s/it, lr=2e-5, step_loss=0.0738]Traceback (most recent call last):
+  File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1442, in <module>
+    main()
+  File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1248, in main
+    model_pred = unet(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/sdb2/SVD_ControlNet_Relight/models/unet_spatio_temporal_condition_controlnet.py", line 436, in forward
+    sample, res_samples = downsample_block(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/unet_3d_blocks.py", line 2173, in forward
+    hidden_states = attn(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/transformer_temporal.py", line 359, in forward
+    hidden_states_mix = temporal_block(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention.py", line 515, in forward
+    attn_output = self.attn2(norm_hidden_states, encoder_hidden_states=encoder_hidden_states)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention_processor.py", line 527, in forward
+    return self.processor(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention_processor.py", line 1247, in __call__
+    value = attn.to_v(encoder_hidden_states, *args)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1442, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1248, in main
+[rank0]:     model_pred = unet(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank0]:     return model_forward(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank0]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/models/unet_spatio_temporal_condition_controlnet.py", line 436, in forward
+[rank0]:     sample, res_samples = downsample_block(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/unet_3d_blocks.py", line 2173, in forward
+[rank0]:     hidden_states = attn(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/transformer_temporal.py", line 359, in forward
+[rank0]:     hidden_states_mix = temporal_block(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention.py", line 515, in forward
+[rank0]:     attn_output = self.attn2(norm_hidden_states, encoder_hidden_states=encoder_hidden_states)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention_processor.py", line 527, in forward
+[rank0]:     return self.processor(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention_processor.py", line 1247, in __call__
+[rank0]:     value = attn.to_v(encoder_hidden_states, *args)
+[rank0]: KeyboardInterrupt

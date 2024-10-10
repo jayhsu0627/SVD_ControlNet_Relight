@@ -1,0 +1,60 @@
+10/09/2024 19:09:07 - INFO - __main__ - ***** Running training *****
+10/09/2024 19:09:07 - INFO - __main__ -   Num examples = 320
+10/09/2024 19:09:07 - INFO - __main__ -   Num Epochs = 1000
+10/09/2024 19:09:07 - INFO - __main__ -   Instantaneous batch size per device = 1
+10/09/2024 19:09:07 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+10/09/2024 19:09:07 - INFO - __main__ -   Gradient Accumulation steps = 32
+10/09/2024 19:09:07 - INFO - __main__ -   Total optimization steps = 5000
+Steps:   0%|                                                                                                                                                                                                       | 0/5000 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1442, in <module>
+    main()
+  File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1238, in main
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/sdb2/SVD_ControlNet_Relight/models/controlnet_sdv.py", line 516, in forward
+    sample = sample + controlnet_cond
+RuntimeError: The size of tensor a (32) must match the size of tensor b (64) at non-singleton dimension 3
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1442, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1238, in main
+[rank0]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank0]:     return model_forward(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank0]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/models/controlnet_sdv.py", line 516, in forward
+[rank0]:     sample = sample + controlnet_cond
+[rank0]: RuntimeError: The size of tensor a (32) must match the size of tensor b (64) at non-singleton dimension 3
+torch.Size([1, 15, 3, 256, 256]) torch.Size([1, 15, 3, 512, 512])

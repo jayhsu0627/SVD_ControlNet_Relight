@@ -1,0 +1,76 @@
+Steps:  17%|██████████████████▊                                                                                           | 1711/10000 [2:32:48<13:14:07,  5.75s/it, lr=2e-5, step_loss=0.0286]/sdb2/datasets/WebVid/random_split/motion full_0160
+/sdb2/datasets/WebVid/random_split/motion full_0282
+/sdb2/datasets/WebVid/random_split/motion full_0173
+/sdb2/datasets/WebVid/random_split/motion full_0171
+Steps:  17%|██████████████████▊                                                                                           | 1712/10000 [2:32:49<12:46:14,  5.55s/it, lr=2e-5, step_loss=0.02Steps:  17%|██████████████████▊                                                                                           | 1712/10000 [2:32:49<12:46:14,  5.55s/it, lr=2e-5, step_loss=0.0483]/sdb2/datasets/WebVid/random_split/motion full_0351
+/sdb2/datasets/WebVid/random_split/motion full_0372
+/sdb2/datasets/WebVid/random_split/motion full_0109
+/sdb2/datasets/WebVid/random_split/motion full_0208
+Steps:  17%|██████████████████▊                                                                                           | 1712/10000 [2:32:49<12:46:14,  5.55s/it, lr=2e-5, step_loss=0.0358]/sdb2/datasets/WebVid/random_split/motion full_0320
+/sdb2/datasets/WebVid/random_split/motion full_0124
+/sdb2/datasets/WebVid/random_split/motion /sdb2/datasets/WebVid/random_split/motionfull_0006
+Steps:  17%|██████████████████▊                                                                                           | 1712/10000 [2:32:50<12:46:14,  5.55s/it, lr=2e-5, step_loss=0.0965] full_0117/sdb2/datasets/WebVid/random_split/motion
+[rank1]:[E1009 22:50:58.292141307 ProcessGroupNCCL.cpp:607] [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=133656, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=4, Timeout(ms)=600000) ran for 600096 milliseconds before timing out.
+ full_0079
+[rank1]:[E1009 22:54:11.798802766 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 1] Exception (either an error or timeout) detected by watchdog at work: 133656, last enqueued NCCL work: 133656, last completed NCCL work: 133655.
+/sdb2/datasets/WebVid/random_split/motion full_0090
+/sdb2/datasets/WebVid/random_split/motion full_0186
+/sdb2/datasets/WebVid/random_split/motion full_0023
+/sdb2/datasets/WebVid/random_split/motion full_0369
+[rank1]:[E1009 22:54:12.465891098 ProcessGroupNCCL.cpp:1709] [PG 0 (default_pg) Rank 1] Timeout at NCCL work: 133656, last enqueued NCCL work: 133656, last completed NCCL work: 133655.
+[rank1]:[E1009 22:54:12.465920181 ProcessGroupNCCL.cpp:621] [Rank 1] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
+[rank1]:[E1009 22:54:12.465926617 ProcessGroupNCCL.cpp:627] [Rank 1] To avoid data inconsistency, we are taking the entire process down.
+[rank1]:[E1009 22:54:12.467410171 ProcessGroupNCCL.cpp:1515] [PG 0 (default_pg) Rank 1] Process group watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=133656, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=4, Timeout(ms)=600000) ran for 600096 milliseconds before timing out.
+Exception raised from checkTimeout at ../torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:609 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x96 (0x7f5040de8f86 in /opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/lib/libc10.so)
+frame #1: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1d2 (0x7f50420e58d2 in /opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::watchdogHandler() + 0x233 (0x7f50420ec313 in /opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x10c (0x7f50420ee6fc in /opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xdbbf4 (0x7f5091bfbbf4 in /opt/conda/envs/svd_control/bin/../lib/libstdc++.so.6)
+frame #5: <unknown function> + 0x7ea7 (0x7f509efc0ea7 in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #6: clone + 0x3f (0x7f509eee0acf in /lib/x86_64-linux-gnu/libc.so.6)
+
+Steps:  17%|███████████████████                                                                                            | 1712/10000 [2:46:05<12:46:14,  5.55s/it, lr=2e-5, step_loss=0.287]/sdb2/datasets/WebVid/random_split/motion full_0363
+/sdb2/datasets/WebVid/random_split/motion full_0349
+W1009 22:54:12.582323 139978645091520 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 159078 closing signal SIGTERM
+E1009 22:54:12.584174 139978645091520 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: -6) local_rank: 1 (pid: 159079) of binary: /opt/conda/envs/svd_control/bin/python
+Traceback (most recent call last):
+  File "/opt/conda/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_svd.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-10-09_22:54:12
+  host      : instance-20240922-005009.us-central1-c.c.dondon-compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : -6 (pid: 159079)
+  error_file: <N/A>
+  traceback : Signal 6 (SIGABRT) received by PID 159079
+============================================================
+
+os.environ['NCCL_BLOCKING_WAIT'] = '0'  # not to enforce timeout
+dist.init_process_group('nccl' if dist.is_nccl_available() else 'gloo',
+                                timeout=timedelta(seconds=7200000), # was 1800000
+                                rank=RANK,
+                                world_size=world_size)
+
+
+https://github.com/ultralytics/ultralytics/issues/1439

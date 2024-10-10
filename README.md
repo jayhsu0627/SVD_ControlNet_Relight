@@ -19,22 +19,22 @@ Introducing the Stable Video Diffusion Temporal Controlnet! This tool uses a con
 ## Training
 My example training config is configured like this:
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch train_svd.py \
+CUDA_VISIBLE_DEVICES=0,1 accelerate launch train_svd.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
  --output_dir="model_out" \
- --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
- --video_folder="/fs/nexus-scratch/sjxu/WebVid/blender/img" \
- --condition_folder="/fs/nexus-scratch/sjxu/WebVid/blender/shd" \
- --motion_folder="/fs/nexus-scratch/sjxu/WebVid/blender/motion" \
- --validation_image_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_blender" \
- --validation_control_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_blender" \
- --width=512 \
- --height=512 \
+ --csv_path="/sdb2/datasets/WebVid/random_split/random_split.csv" \
+ --video_folder="/sdb2/datasets/WebVid/random_split/img" \
+ --condition_folder="/sdb2/datasets/WebVid/random_split/shd" \
+ --motion_folder="/sdb2/datasets/WebVid/random_split/motion" \
+ --validation_image_folder="/sdb2/SVD_ControlNet_Relight/validation_demo/img_blender_ran" \
+ --validation_control_folder="/sdb2/SVD_ControlNet_Relight/validation_demo/shd_blender_ran" \
+ --width=256 \
+ --height=256 \
  --learning_rate=2e-5 \
- --per_gpu_batch_size=1 \
+ --per_gpu_batch_size=2 \
  --num_train_epochs=5 \
  --mixed_precision="fp16" \
- --gradient_accumulation_steps=16 \
+ --gradient_accumulation_steps=8 \
  --checkpointing_steps=2000 \
  --validation_steps=200 \
  --gradient_checkpointing \

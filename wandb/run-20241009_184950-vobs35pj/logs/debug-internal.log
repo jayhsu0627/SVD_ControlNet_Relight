@@ -1,0 +1,188 @@
+2024-10-09 18:49:50,909 INFO    StreamThr :42312 [internal.py:wandb_internal():85] W&B internal server running at pid: 42312, started at: 2024-10-09 18:49:50.908706
+2024-10-09 18:49:50,911 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: status
+2024-10-09 18:49:50,912 INFO    WriterThread:42312 [datastore.py:open_for_write():87] open: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/run-vobs35pj.wandb
+2024-10-09 18:49:50,913 DEBUG   SenderThread:42312 [sender.py:send():391] send: header
+2024-10-09 18:49:50,964 DEBUG   SenderThread:42312 [sender.py:send():391] send: run
+2024-10-09 18:49:51,057 INFO    SenderThread:42312 [dir_watcher.py:__init__():211] watching files in: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files
+2024-10-09 18:49:51,058 INFO    SenderThread:42312 [sender.py:_start_run_threads():1200] run started: vobs35pj with start time 1728499790.90826
+2024-10-09 18:49:51,070 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: run_start
+2024-10-09 18:49:51,084 DEBUG   HandlerThread:42312 [system_info.py:__init__():26] System info init
+2024-10-09 18:49:51,084 DEBUG   HandlerThread:42312 [system_info.py:__init__():41] System info init done
+2024-10-09 18:49:51,084 INFO    HandlerThread:42312 [system_monitor.py:start():194] Starting system monitor
+2024-10-09 18:49:51,085 INFO    SystemMonitor:42312 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-10-09 18:49:51,085 INFO    HandlerThread:42312 [system_monitor.py:probe():214] Collecting system info
+2024-10-09 18:49:51,086 INFO    SystemMonitor:42312 [interfaces.py:start():188] Started cpu monitoring
+2024-10-09 18:49:51,087 INFO    SystemMonitor:42312 [interfaces.py:start():188] Started disk monitoring
+2024-10-09 18:49:51,088 INFO    SystemMonitor:42312 [interfaces.py:start():188] Started gpu monitoring
+2024-10-09 18:49:51,088 INFO    SystemMonitor:42312 [interfaces.py:start():188] Started memory monitoring
+2024-10-09 18:49:51,089 INFO    SystemMonitor:42312 [interfaces.py:start():188] Started network monitoring
+2024-10-09 18:49:51,105 DEBUG   HandlerThread:42312 [system_info.py:probe():152] Probing system
+2024-10-09 18:49:51,110 DEBUG   HandlerThread:42312 [system_info.py:_probe_git():137] Probing git
+2024-10-09 18:49:51,121 DEBUG   HandlerThread:42312 [system_info.py:_probe_git():145] Probing git done
+2024-10-09 18:49:51,121 DEBUG   HandlerThread:42312 [system_info.py:probe():200] Probing system done
+2024-10-09 18:49:51,121 DEBUG   HandlerThread:42312 [system_monitor.py:probe():223] {'os': 'Linux-5.10.0-33-cloud-amd64-x86_64-with-glibc2.31', 'python': '3.9.12', 'heartbeatAt': '2024-10-09T18:49:51.105885', 'startedAt': '2024-10-09T18:49:50.903647', 'docker': None, 'cuda': None, 'args': ('--pretrained_model_name_or_path=stabilityai/stable-video-diffusion-img2vid', '--output_dir=model_out', '--csv_path=/sdb2/datasets/WebVid/random_split/random_split.csv', '--video_folder=/sdb2/datasets/WebVid/random_split/img', '--condition_folder=/sdb2/datasets/WebVid/random_split/shd', '--motion_folder=/sdb2/datasets/WebVid/random_split/motion', '--validation_image_folder=/sdb2/SVD_ControlNet_Relight/validation_demo/img_blender_ran', '--validation_control_folder=/sdb2/SVD_ControlNet_Relight/validation_demo/shd_blender_ran', '--width=512', '--height=512', '--learning_rate=2e-5', '--per_gpu_batch_size=1', '--num_train_epochs=5', '--mixed_precision=fp16', '--gradient_accumulation_steps=16', '--checkpointing_steps=2000', '--validation_steps=200', '--gradient_checkpointing', '--num_train_epochs', '1000', '--checkpoints_total_limit=1', '--report_to=wandb'), 'state': 'running', 'program': '/sdb2/SVD_ControlNet_Relight/train_svd.py', 'codePathLocal': 'train_svd.py', 'codePath': 'train_svd.py', 'git': {'remote': 'git@github.com:jayhsu0627/SVD_ControlNet_Relight.git', 'commit': '6bbece83ef1882eb046ff61b47b64fc341994781'}, 'email': 'jayhsu0627@gmail.com', 'root': '/sdb2/SVD_ControlNet_Relight', 'host': 'instance-20240922-005009', 'username': 'sjxu', 'executable': '/opt/conda/envs/svd_control/bin/python', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2200.2180000000003, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}, {'current': 2200.218, 'min': 0.0, 'max': 0.0}], 'disk': {'/': {'total': 1007.6765480041504, 'used': 50.41307067871094}}, 'gpu': 'NVIDIA A100-SXM4-40GB', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42949672960}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42949672960}], 'memory': {'total': 167.05669784545898}}
+2024-10-09 18:49:51,121 INFO    HandlerThread:42312 [system_monitor.py:probe():224] Finished collecting system info
+2024-10-09 18:49:51,121 INFO    HandlerThread:42312 [system_monitor.py:probe():227] Publishing system info
+2024-10-09 18:49:51,121 DEBUG   HandlerThread:42312 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-10-09 18:49:52,060 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/conda-environment.yaml
+2024-10-09 18:49:55,059 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_modified():288] file/dir modified: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/conda-environment.yaml
+2024-10-09 18:49:55,094 DEBUG   HandlerThread:42312 [system_info.py:_save_conda():224] Saving conda packages done
+2024-10-09 18:49:55,095 INFO    HandlerThread:42312 [system_monitor.py:probe():229] Finished publishing system info
+2024-10-09 18:49:55,099 DEBUG   SenderThread:42312 [sender.py:send():391] send: files
+2024-10-09 18:49:55,099 INFO    SenderThread:42312 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-10-09 18:49:55,204 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: python_packages
+2024-10-09 18:49:55,204 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: python_packages
+2024-10-09 18:49:55,205 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: stop_status
+2024-10-09 18:49:55,206 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: stop_status
+2024-10-09 18:49:55,208 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-09 18:49:55,230 DEBUG   SenderThread:42312 [sender.py:send():391] send: telemetry
+2024-10-09 18:49:55,231 DEBUG   SenderThread:42312 [sender.py:send():391] send: config
+2024-10-09 18:49:55,295 INFO    wandb-upload_0:42312 [upload_job.py:push():130] Uploaded file /var/tmp/tmp7v5v08crwandb/4w4pblbt-wandb-metadata.json
+2024-10-09 18:49:56,059 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/output.log
+2024-10-09 18:49:56,060 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/requirements.txt
+2024-10-09 18:49:56,060 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/wandb-metadata.json
+2024-10-09 18:49:56,233 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: status_report
+2024-10-09 18:49:58,060 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_modified():288] file/dir modified: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/output.log
+2024-10-09 18:49:58,931 DEBUG   SenderThread:42312 [sender.py:send():391] send: exit
+2024-10-09 18:49:58,931 INFO    SenderThread:42312 [sender.py:send_exit():598] handling exit code: 1
+2024-10-09 18:49:58,931 INFO    SenderThread:42312 [sender.py:send_exit():600] handling runtime: 7
+2024-10-09 18:49:58,931 INFO    SenderThread:42312 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-09 18:49:58,931 INFO    SenderThread:42312 [sender.py:send_exit():606] send defer
+2024-10-09 18:49:58,932 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:58,932 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 0
+2024-10-09 18:49:58,932 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:58,932 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 0
+2024-10-09 18:49:58,932 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 1
+2024-10-09 18:49:58,932 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:58,932 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 1
+2024-10-09 18:49:58,932 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:58,932 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 1
+2024-10-09 18:49:58,932 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 2
+2024-10-09 18:49:58,932 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:58,933 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 2
+2024-10-09 18:49:58,933 INFO    HandlerThread:42312 [system_monitor.py:finish():203] Stopping system monitor
+2024-10-09 18:49:58,933 DEBUG   SystemMonitor:42312 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-10-09 18:49:58,933 INFO    HandlerThread:42312 [interfaces.py:finish():200] Joined cpu monitor
+2024-10-09 18:49:58,933 DEBUG   SystemMonitor:42312 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-10-09 18:49:58,934 INFO    HandlerThread:42312 [interfaces.py:finish():200] Joined disk monitor
+2024-10-09 18:49:58,934 DEBUG   SystemMonitor:42312 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-10-09 18:49:59,009 INFO    HandlerThread:42312 [interfaces.py:finish():200] Joined gpu monitor
+2024-10-09 18:49:59,010 INFO    HandlerThread:42312 [interfaces.py:finish():200] Joined memory monitor
+2024-10-09 18:49:59,010 INFO    HandlerThread:42312 [interfaces.py:finish():200] Joined network monitor
+2024-10-09 18:49:59,010 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:59,010 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 2
+2024-10-09 18:49:59,010 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 3
+2024-10-09 18:49:59,010 DEBUG   SenderThread:42312 [sender.py:send():391] send: stats
+2024-10-09 18:49:59,011 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:59,011 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 3
+2024-10-09 18:49:59,011 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:59,011 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 3
+2024-10-09 18:49:59,011 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 4
+2024-10-09 18:49:59,011 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:59,011 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 4
+2024-10-09 18:49:59,012 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:59,012 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 4
+2024-10-09 18:49:59,012 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 5
+2024-10-09 18:49:59,012 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:59,012 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 5
+2024-10-09 18:49:59,012 DEBUG   SenderThread:42312 [sender.py:send():391] send: summary
+2024-10-09 18:49:59,012 INFO    SenderThread:42312 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-10-09 18:49:59,012 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:59,013 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 5
+2024-10-09 18:49:59,013 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 6
+2024-10-09 18:49:59,013 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:59,013 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 6
+2024-10-09 18:49:59,013 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:59,013 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 6
+2024-10-09 18:49:59,018 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: status_report
+2024-10-09 18:49:59,060 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/wandb-summary.json
+2024-10-09 18:49:59,083 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 7
+2024-10-09 18:49:59,083 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:49:59,083 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 7
+2024-10-09 18:49:59,083 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:49:59,083 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 7
+2024-10-09 18:49:59,929 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-09 18:50:00,061 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_modified():288] file/dir modified: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/config.yaml
+2024-10-09 18:50:01,258 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 8
+2024-10-09 18:50:01,258 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: poll_exit
+2024-10-09 18:50:01,258 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:01,259 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 8
+2024-10-09 18:50:01,259 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:01,259 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 8
+2024-10-09 18:50:01,259 INFO    SenderThread:42312 [job_builder.py:build():443] Attempting to build job artifact
+2024-10-09 18:50:01,259 INFO    SenderThread:42312 [job_builder.py:_get_source_type():572] is repo sourced job
+2024-10-09 18:50:01,280 INFO    SenderThread:42312 [job_builder.py:build():548] adding wandb-job metadata file
+2024-10-09 18:50:01,284 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 9
+2024-10-09 18:50:01,284 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:01,284 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 9
+2024-10-09 18:50:01,285 DEBUG   SenderThread:42312 [sender.py:send():391] send: artifact
+2024-10-09 18:50:01,851 INFO    wandb-upload_0:42312 [upload_job.py:push():88] Uploaded file /var/tmp/tmp0ftvftp3/wandb-job.json
+2024-10-09 18:50:01,855 INFO    wandb-upload_1:42312 [upload_job.py:push():88] Uploaded file /home/sjxu/.local/share/wandb/artifacts/staging/tmpmy46cup0
+2024-10-09 18:50:01,930 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-09 18:50:02,061 INFO    Thread-12 :42312 [dir_watcher.py:_on_file_modified():288] file/dir modified: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/output.log
+2024-10-09 18:50:02,271 INFO    SenderThread:42312 [sender.py:send_artifact():1549] sent artifact job-git_github.com_jayhsu0627_SVD_ControlNet_Relight.git_train_svd.py - {'id': 'QXJ0aWZhY3Q6MTI2NjY1MDQ2OA==', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjQxODk3MDM2Nw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTIxNTk1MDc3Mg==', 'versionIndex': 4}}}
+2024-10-09 18:50:02,271 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:02,271 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 9
+2024-10-09 18:50:02,271 INFO    SenderThread:42312 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-10-09 18:50:03,062 INFO    SenderThread:42312 [dir_watcher.py:finish():388] scan: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files
+2024-10-09 18:50:03,062 INFO    SenderThread:42312 [dir_watcher.py:finish():402] scan save: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/conda-environment.yaml conda-environment.yaml
+2024-10-09 18:50:03,063 INFO    SenderThread:42312 [dir_watcher.py:finish():402] scan save: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/requirements.txt requirements.txt
+2024-10-09 18:50:03,063 INFO    SenderThread:42312 [dir_watcher.py:finish():402] scan save: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/wandb-metadata.json wandb-metadata.json
+2024-10-09 18:50:03,063 INFO    SenderThread:42312 [dir_watcher.py:finish():402] scan save: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/output.log output.log
+2024-10-09 18:50:03,063 INFO    SenderThread:42312 [dir_watcher.py:finish():402] scan save: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/wandb-summary.json wandb-summary.json
+2024-10-09 18:50:03,066 INFO    SenderThread:42312 [dir_watcher.py:finish():402] scan save: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/config.yaml config.yaml
+2024-10-09 18:50:03,066 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 10
+2024-10-09 18:50:03,066 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: poll_exit
+2024-10-09 18:50:03,069 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:03,073 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 10
+2024-10-09 18:50:03,076 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:03,076 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 10
+2024-10-09 18:50:03,076 INFO    SenderThread:42312 [file_pusher.py:finish():169] shutting down file pusher
+2024-10-09 18:50:03,191 INFO    wandb-upload_0:42312 [upload_job.py:push():130] Uploaded file /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/conda-environment.yaml
+2024-10-09 18:50:03,217 INFO    wandb-upload_4:42312 [upload_job.py:push():130] Uploaded file /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/config.yaml
+2024-10-09 18:50:03,227 INFO    wandb-upload_2:42312 [upload_job.py:push():130] Uploaded file /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/requirements.txt
+2024-10-09 18:50:03,229 INFO    wandb-upload_3:42312 [upload_job.py:push():130] Uploaded file /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/wandb-summary.json
+2024-10-09 18:50:03,233 INFO    wandb-upload_1:42312 [upload_job.py:push():130] Uploaded file /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/files/output.log
+2024-10-09 18:50:03,434 INFO    Thread-11 :42312 [sender.py:transition_state():626] send defer: 11
+2024-10-09 18:50:03,434 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:03,434 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 11
+2024-10-09 18:50:03,434 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:03,434 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 11
+2024-10-09 18:50:03,435 INFO    SenderThread:42312 [file_pusher.py:join():175] waiting for file pusher
+2024-10-09 18:50:03,435 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 12
+2024-10-09 18:50:03,435 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:03,435 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 12
+2024-10-09 18:50:03,435 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:03,435 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 12
+2024-10-09 18:50:03,435 INFO    SenderThread:42312 [file_stream.py:finish():601] file stream finish called
+2024-10-09 18:50:03,456 INFO    SenderThread:42312 [file_stream.py:finish():605] file stream finish is done
+2024-10-09 18:50:03,456 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 13
+2024-10-09 18:50:03,456 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:03,456 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 13
+2024-10-09 18:50:03,456 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:03,456 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 13
+2024-10-09 18:50:03,456 INFO    SenderThread:42312 [sender.py:transition_state():626] send defer: 14
+2024-10-09 18:50:03,457 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: defer
+2024-10-09 18:50:03,457 INFO    HandlerThread:42312 [handler.py:handle_request_defer():184] handle defer: 14
+2024-10-09 18:50:03,457 DEBUG   SenderThread:42312 [sender.py:send():391] send: final
+2024-10-09 18:50:03,457 DEBUG   SenderThread:42312 [sender.py:send():391] send: footer
+2024-10-09 18:50:03,457 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: defer
+2024-10-09 18:50:03,457 INFO    SenderThread:42312 [sender.py:send_request_defer():622] handle sender defer: 14
+2024-10-09 18:50:03,458 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-09 18:50:03,458 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: poll_exit
+2024-10-09 18:50:03,459 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: server_info
+2024-10-09 18:50:03,459 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: poll_exit
+2024-10-09 18:50:03,459 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: server_info
+2024-10-09 18:50:03,461 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: get_summary
+2024-10-09 18:50:03,462 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: sampled_history
+2024-10-09 18:50:03,462 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: internal_messages
+2024-10-09 18:50:03,478 DEBUG   SenderThread:42312 [sender.py:send_request():418] send_request: poll_exit
+2024-10-09 18:50:03,478 INFO    MainThread:42312 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-10-09 18:50:03,478 INFO    MainThread:42312 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-10-09 18:50:03,478 INFO    MainThread:42312 [wandb_run.py:_footer_sync_info():4037] logging synced files
+2024-10-09 18:50:03,479 DEBUG   HandlerThread:42312 [handler.py:handle_request():158] handle_request: shutdown
+2024-10-09 18:50:03,479 INFO    HandlerThread:42312 [handler.py:finish():884] shutting down handler
+2024-10-09 18:50:04,459 INFO    WriterThread:42312 [datastore.py:close():296] close: /sdb2/SVD_ControlNet_Relight/wandb/run-20241009_184950-vobs35pj/run-vobs35pj.wandb
+2024-10-09 18:50:04,478 INFO    SenderThread:42312 [sender.py:finish():1631] shutting down sender
+2024-10-09 18:50:04,478 INFO    SenderThread:42312 [file_pusher.py:finish():169] shutting down file pusher
+2024-10-09 18:50:04,478 INFO    SenderThread:42312 [file_pusher.py:join():175] waiting for file pusher

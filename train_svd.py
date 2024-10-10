@@ -219,7 +219,7 @@ def make_train_dataset(args):
 
     # In distributed training, the load_dataset function guarantees that only one local process can concurrently
     # download the dataset.
-    dataset = WebVid10M(args.csv_path,args.video_folder,args.condition_folder,args.motion_folder,sample_size=512, sample_n_frames=args.sample_n_frames)
+    dataset = WebVid10M(args.csv_path,args.video_folder,args.condition_folder,args.motion_folder,sample_size=args.width, sample_n_frames=args.sample_n_frames)
     return dataset
 
 
@@ -1324,14 +1324,14 @@ def main():
                         accelerator.save_state(save_path)
                         logger.info(f"Saved state to {save_path}")
                     # sample images!
-                    # if (
-                    #     (global_step % args.validation_steps == 0)
-                    #     or (global_step == 1)
-                    # ):
-                    # turn this off due to low memory
                     if (
-                        False
+                        (global_step % args.validation_steps == 0)
+                        or (global_step == 1)
                     ):
+                    # # turn this off due to low memory
+                    # if (
+                    #     False
+                    # ):
 
                         logger.info(
                             f"Running validation... \n Generating {args.num_validation_images} videos."

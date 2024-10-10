@@ -150,6 +150,9 @@ class WebVid10M(Dataset):
           #      idx = random.randint(0, self.length - 1)
 
         pixel_values = self.pixel_transforms(pixel_values)
+        # Add this line for scale down conditional image, such that we can use smaller gpu
+        depth_pixel_values = self.pixel_transforms(depth_pixel_values)
+
         sample = dict(pixel_values=pixel_values, depth_pixel_values=depth_pixel_values,motion_values=motion_values)
         return sample
 

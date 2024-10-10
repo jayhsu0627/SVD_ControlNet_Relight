@@ -1,0 +1,195 @@
+{
+    "os": "Linux-5.10.0-33-cloud-amd64-x86_64-with-glibc2.31",
+    "python": "3.9.12",
+    "heartbeatAt": "2024-10-09T19:23:31.022449",
+    "startedAt": "2024-10-09T19:23:30.662424",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--pretrained_model_name_or_path=stabilityai/stable-video-diffusion-img2vid",
+        "--output_dir=model_out",
+        "--csv_path=/sdb2/datasets/WebVid/random_split/random_split.csv",
+        "--video_folder=/sdb2/datasets/WebVid/random_split/img",
+        "--condition_folder=/sdb2/datasets/WebVid/random_split/shd",
+        "--motion_folder=/sdb2/datasets/WebVid/random_split/motion",
+        "--validation_image_folder=/sdb2/SVD_ControlNet_Relight/validation_demo/img_blender_ran",
+        "--validation_control_folder=/sdb2/SVD_ControlNet_Relight/validation_demo/shd_blender_ran",
+        "--width=256",
+        "--height=256",
+        "--learning_rate=2e-5",
+        "--per_gpu_batch_size=3",
+        "--num_train_epochs=5",
+        "--mixed_precision=fp16",
+        "--gradient_accumulation_steps=8",
+        "--checkpointing_steps=2000",
+        "--validation_steps=200",
+        "--gradient_checkpointing",
+        "--num_train_epochs",
+        "1000",
+        "--checkpoints_total_limit=1",
+        "--report_to=wandb"
+    ],
+    "state": "running",
+    "program": "/sdb2/SVD_ControlNet_Relight/train_svd.py",
+    "codePathLocal": "train_svd.py",
+    "codePath": "train_svd.py",
+    "git": {
+        "remote": "git@github.com:jayhsu0627/SVD_ControlNet_Relight.git",
+        "commit": "6bbece83ef1882eb046ff61b47b64fc341994781"
+    },
+    "email": "jayhsu0627@gmail.com",
+    "root": "/sdb2/SVD_ControlNet_Relight",
+    "host": "instance-20240922-005009",
+    "username": "sjxu",
+    "executable": "/opt/conda/envs/svd_control/bin/python",
+    "cpu_count": 12,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 2200.2180000000003,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.218,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1007.6765480041504,
+            "used": 50.413822174072266
+        }
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 167.05669784545898
+    }
+}

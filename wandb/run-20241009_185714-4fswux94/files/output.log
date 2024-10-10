@@ -1,0 +1,119 @@
+10/09/2024 18:57:19 - INFO - __main__ - ***** Running training *****
+10/09/2024 18:57:19 - INFO - __main__ -   Num examples = 320
+10/09/2024 18:57:19 - INFO - __main__ -   Num Epochs = 1000
+10/09/2024 18:57:19 - INFO - __main__ -   Instantaneous batch size per device = 1
+10/09/2024 18:57:19 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+10/09/2024 18:57:19 - INFO - __main__ -   Gradient Accumulation steps = 32
+10/09/2024 18:57:19 - INFO - __main__ -   Total optimization steps = 5000
+Steps:   0%|                                                                                                                                                                                                       | 0/5000 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1442, in <module>
+    main()
+  File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1248, in main
+    model_pred = unet(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/sdb2/SVD_ControlNet_Relight/models/unet_spatio_temporal_condition_controlnet.py", line 478, in forward
+    sample = upsample_block(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/unet_3d_blocks.py", line 2384, in forward
+    hidden_states = attn(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/transformer_temporal.py", line 359, in forward
+    hidden_states_mix = temporal_block(
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention.py", line 524, in forward
+    ff_output = self.ff(norm_hidden_states)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention.py", line 665, in forward
+    hidden_states = module(hidden_states, scale)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/activations.py", line 102, in forward
+    hidden_states, gate = self.proj(hidden_states, *args).chunk(2, dim=-1)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/lora.py", line 430, in forward
+    out = super().forward(hidden_states)
+  File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 117, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 300.00 MiB. GPU 0 has a total capacity of 39.38 GiB of which 159.38 MiB is free. Including non-PyTorch memory, this process has 39.22 GiB memory in use. Of the allocated memory 37.66 GiB is allocated by PyTorch, and 213.57 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1442, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/train_svd.py", line 1248, in main
+[rank0]:     model_pred = unet(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank0]:     return model_forward(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank0]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/sdb2/SVD_ControlNet_Relight/models/unet_spatio_temporal_condition_controlnet.py", line 478, in forward
+[rank0]:     sample = upsample_block(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/unet_3d_blocks.py", line 2384, in forward
+[rank0]:     hidden_states = attn(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/transformer_temporal.py", line 359, in forward
+[rank0]:     hidden_states_mix = temporal_block(
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention.py", line 524, in forward
+[rank0]:     ff_output = self.ff(norm_hidden_states)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/attention.py", line 665, in forward
+[rank0]:     hidden_states = module(hidden_states, scale)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/activations.py", line 102, in forward
+[rank0]:     hidden_states, gate = self.proj(hidden_states, *args).chunk(2, dim=-1)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/diffusers/models/lora.py", line 430, in forward
+[rank0]:     out = super().forward(hidden_states)
+[rank0]:   File "/opt/conda/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 117, in forward
+[rank0]:     return F.linear(input, self.weight, self.bias)
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 300.00 MiB. GPU 0 has a total capacity of 39.38 GiB of which 159.38 MiB is free. Including non-PyTorch memory, this process has 39.22 GiB memory in use. Of the allocated memory 37.66 GiB is allocated by PyTorch, and 213.57 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
