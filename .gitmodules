@@ -1,3 +1,6 @@
 [submodule "Intrinsic"]
 	path = Intrinsic
 	url = https://github.com/compphoto/Intrinsic
+[submodule "IntrinsicCompositing"]
+	path = IntrinsicCompositing
+	url = https://github.com/compphoto/IntrinsicCompositing

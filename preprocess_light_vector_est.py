@@ -24,9 +24,12 @@ import re
 from pathlib import Path
 
 from transformers import pipeline
+from transformers import DepthAnythingConfig, DepthAnythingForDepthEstimation
 from PIL import Image
 import requests
 from skimage.transform import resize
+
+from boosted_depth.depth_util import create_depth_models, get_depth
 
 
 def save_to_rgb(img, directory, file_name, format: str):
@@ -204,7 +207,10 @@ scenes = [f for f in os.listdir(base_path)]
 models = load_models('v2')
 
 # load pipe
-pipe = pipeline(task="depth-estimation", model="depth-anything/Depth-Anything-V2-Large-hf")
+configuration = DepthAnythingConfig()
+pipe = pipeline(task="depth-estimation",
+                model="depth-anything/Depth-Anything-V2-Large-hf",
+                )
 
 for scene in scenes:
     # scene = '0015'
@@ -263,18 +269,25 @@ for scene in scenes:
         # Step 2: Compute normals from point cloud
         normals = compute_normals_from_point_cloud(point_cloud)
         small_bg_nrm = rescale(normals, scale)
-        # # Output normals for visualization or further processing
-        # normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
-        
+        small_bg_nrm = (small_bg_nrm + 1) / 2
+
+
         #     # Step 2: Visualize the point cloud
         # plot_point_cloud(point_cloud)
 
         # we need shd, normal, img, all in resized size
         mask = rescale(mask, scale)
-        coeffs, _ = get_light_coeffs(small_bg_shd, small_bg_nrm, small_bg_img, mask=mask)
         
+        # make it invert, I don't know why but get_light_coeffs take this as mask
+        mask = -mask+1 
+        coeffs, _ = get_light_coeffs(small_bg_shd, small_bg_nrm, small_bg_img, mask=mask)
+        output_img_path = base_path+ scene +'/data/'
+
         save_to_rgb(depth, output_img_path, file_pref, 'depth')
-        save_to_rgb(normals, output_img_path, file_pref, 'normal')
+        # # Output normals for visualization or further processing
+        normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
+        save_to_rgb(normals_image, output_img_path, file_pref, 'normal')
+
         print(coeffs[:3])
         file_num+=1
         print("processed ", file_pref)
@@ -299,38 +312,38 @@ for scene in scenes:
 
 
 
-import numpy as np
-import cv2
-import plotly.graph_objects as go
+# import numpy as np
+# import cv2
+# import plotly.graph_objects as go
 
 
 
-# Example usage
-# def main():
-# Load a sample depth map (replace with your own depth map)
-# depth_map = cv2.imread('/Users/shengjiexu/Downloads/depth/video_1/output_0001.png', cv2.IMREAD_UNCHANGED).astype(np.float32)
-depth_map = cv2.imread('/Users/shengjiexu/Downloads/depth/video_1/output_0012.png',cv2.IMREAD_GRAYSCALE)
+# # Example usage
+# # def main():
+# # Load a sample depth map (replace with your own depth map)
+# # depth_map = cv2.imread('/Users/shengjiexu/Downloads/depth/video_1/output_0001.png', cv2.IMREAD_UNCHANGED).astype(np.float32)
+# depth_map = cv2.imread('/Users/shengjiexu/Downloads/depth/video_1/output_0012.png',cv2.IMREAD_GRAYSCALE)
 
-# Set camera parameters
-focal_length = 500.0  # Focal length in pixels
+# # Set camera parameters
+# focal_length = 500.0  # Focal length in pixels
 
-# Step 1: Convert depth map to point cloud
-point_cloud = depth_to_point_cloud(depth_map, focal_length)
-# print(point_cloud)
+# # Step 1: Convert depth map to point cloud
+# point_cloud = depth_to_point_cloud(depth_map, focal_length)
+# # print(point_cloud)
 
-# Step 2: Compute normals from point cloud
-normals = compute_normals_from_point_cloud(point_cloud)
+# # Step 2: Compute normals from point cloud
+# normals = compute_normals_from_point_cloud(point_cloud)
 
-# Output normals for visualization or further processing
-normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
-    # Step 2: Visualize the point cloud
-plot_point_cloud(point_cloud)
+# # Output normals for visualization or further processing
+# normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
+#     # Step 2: Visualize the point cloud
+# plot_point_cloud(point_cloud)
 
-# # cv2.imwrite('normals.png', normals_image)
-# # Display the occlusion mask
-# plt.imshow(normals_image)
-# plt.axis('off')
-# plt.show()
+# # # cv2.imwrite('normals.png', normals_image)
+# # # Display the occlusion mask
+# # plt.imshow(normals_image)
+# # plt.axis('off')
+# # plt.show()
 
-# if __name__ == '__main__':
-#     main()
+# # if __name__ == '__main__':
+# #     main()
