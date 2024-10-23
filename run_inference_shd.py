@@ -12,6 +12,7 @@ import GPUtil
 from threading import Thread
 import time
 import os
+import argparse
 
 class Monitor(Thread):
     def __init__(self, delay):
@@ -286,14 +287,31 @@ if __name__ == "__main__":
         "width": 512,
         # cant be bothered to add the args in myself, just use notepad
     }
+
+    # Initialize the parser
+    parser = argparse.ArgumentParser(description="Process some images.")
+
+    parser.add_argument("--pretrained_model_name_or_path", type=str, default="stabilityai/stable-video-diffusion-img2vid", help="Path to the pretrained model")
+    parser.add_argument("--validation_image_folder", type=str, default="./validation_demo/img_blender_ran", help="Path to the validation image folder")
+    parser.add_argument("--validation_control_folder", type=str, default="./validation_demo/shd_blender_ran", help="Path to the validation control folder")
+    parser.add_argument("--validation_image", type=str, default="./validation_demo/img_blender_ran/full_rgb_l_frame0300.png", help="Path to the specific validation image")
+    parser.add_argument("--folder", type=str, default="clip", help="Name of the folder for output or processing")
+    parser.add_argument("--output_dir", type=str, default="./output", help="Directory to save output files")
+    parser.add_argument("--height", type=int, default=512, help="Height of the output image")
+    parser.add_argument("--width", type=int, default=512, help="Width of the output image")
+    
+    # Parse the arguments
+    args_parser = parser.parse_args()
+
+
     # Instantiate monitor with a 10-second delay between updates
     monitor = Monitor(10)
 
     # Load validation images and control images
-    validation_images = load_images_from_folder_to_pil(args["validation_image_folder"])
+    validation_images = load_images_from_folder_to_pil(args_parser.validation_image_folder)
     #validation_images = convert_list_bgra_to_rgba(validation_images)
-    validation_control_images = load_images_from_folder_to_pil(args["validation_control_folder"])
-    validation_image = Image.open(args["validation_image"]).convert('RGB')
+    validation_control_images = load_images_from_folder_to_pil(args_parser.validation_control_folder)
+    validation_image = Image.open(args_parser.validation_image).convert('RGB')
 
 
     # Load and set up the pipeline
@@ -305,8 +323,11 @@ if __name__ == "__main__":
     pipeline.enable_model_cpu_offload()
     # Additional pipeline configurations can be added here
     #pipeline.enable_xformers_memory_efficient_attention()
+
     # Create output directory if it doesn't exist
-    val_save_dir = os.path.join(args["output_dir"], args["folder"])
+    val_save_dir = os.path.join(args_parser.output_dir, args_parser.folder)
+    print(args_parser.validation_image_folder)
+    print("Saving to ", val_save_dir)
     os.makedirs(val_save_dir, exist_ok=True)
 
     # Inference and saving loop

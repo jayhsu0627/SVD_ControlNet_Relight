@@ -1,0 +1,3 @@
+[submodule "Intrinsic"]
+	path = Intrinsic
+	url = https://github.com/compphoto/Intrinsic
