@@ -4,3 +4,6 @@
 [submodule "IntrinsicCompositing"]
 	path = IntrinsicCompositing
 	url = https://github.com/compphoto/IntrinsicCompositing
+[submodule "ml-depth-pro"]
+	path = ml-depth-pro
+	url = https://github.com/apple/ml-depth-pro

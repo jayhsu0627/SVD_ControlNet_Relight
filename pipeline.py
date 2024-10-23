@@ -83,9 +83,9 @@ def get_light_coeffs(shd, nrm, img, mask=None, bias=True):
     reg_shd = shd
     valid = (img.mean(-1) > 0.05) * (img.mean(-1) < 0.95)
     # print(valid)
-
+    # print(mask)
     if mask is not None:
-        valid *= (mask == 0)
+        valid *= (mask == 0.0)
     # print(valid)
 
     nrm = (nrm * 2.0) - 1.0
@@ -102,9 +102,10 @@ def get_light_coeffs(shd, nrm, img, mask=None, bias=True):
     A = torch.from_numpy(A)
     b = torch.from_numpy(b)
     # print(A, b)
-    min_init = 100000
+    min_init = 5000
+    # for t in np.arange(0, np.pi/2, 0.1):
     for t in np.arange(0, np.pi/2, 0.1):
-        for p in np.arange(0, 2*np.pi, 0.25):
+        for p in np.arange(0, np.pi, 0.25):
             params = torch.nn.Parameter(torch.tensor([t, p, 1, 0.5]))
             init_loss = test_init(params, A, b)
             # print(init_loss, min_init, init_loss < min_init)
@@ -112,7 +113,8 @@ def get_light_coeffs(shd, nrm, img, mask=None, bias=True):
                 best_init = params
                 min_init = init_loss
                 # print('new min:', min_init)
-    print(best_init)
+    
+    # print(best_init)
     loss, params = run_optimization(best_init, A, b)
     
     nrm_vis = nrm.copy()
