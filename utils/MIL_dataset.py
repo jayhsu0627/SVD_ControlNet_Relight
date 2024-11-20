@@ -46,6 +46,7 @@ def numpy_to_pt(images: np.ndarray) -> torch.FloatTensor:
     """Convert a NumPy image to a PyTorch tensor."""
     if images.ndim == 3:
         images = images[..., None]
+    # print("numpy_to_pt", images.shape)
     images = torch.from_numpy(images.transpose(0, 3, 1, 2))
     return images.float() / 255
 
@@ -64,19 +65,16 @@ INPUT_IDS = torch.tensor([
 class MIL(Dataset):
     def __init__(
             self, csv_path, video_folder,condition_folder,motion_folder,
-            sample_size=256, sample_stride=4, sample_n_frames=14,
+            sample_size=256, sample_n_frames=14,
         ):
 
         self.json = [
             json.loads(line) for line in open(f"relighting/training.json", "r").read().splitlines()
         ]
-        print(self.json[0])
 
         zero_rank_print(f"loading annotations from {csv_path} ...")
         with open(csv_path, 'r') as csvfile:
             self.dataset = list(csv.DictReader(csvfile))
-        # print(self.dataset)
-        # print(self.json)
         self.dataset = self.json
         # self.length = len(self.dataset)
         self.length = len(self.json)
@@ -174,7 +172,7 @@ class MIL(Dataset):
         while True:
             video_dict = self.dataset[idx]
             videoid = video_dict['video_id']
-            print(videoid)
+            # print(videoid)
 
             video_id = self.json[idx]["video_id"].replace(".jpg", ".png")
             target_set = self.json[idx]["target_image"].replace(".jpg", ".png")
@@ -182,27 +180,47 @@ class MIL(Dataset):
             depth_set = 'all_depth.png'
             normal_set = 'all_normal.png'
 
-            print(video_id, target_set, cond_set)
+            # print(video_id, target_set, cond_set)
             self.video_folder = '/fs/gamma-projects/svd_relight/MIT/train'
             image_path = self.video_folder + "/" + video_id
 
-            print(image_path)
-            filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)[:self.sample_n_frames]
+            if not os.path.exists(image_path):
+                print('continue path valid')
+                idx = random.randint(0, len(self.dataset) - 1)
+                continue    
+
+            # print(image_path)
+            # filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)[:self.sample_n_frames]
+            filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)
+
             # video_id = "14n_office8"
-            print(filenames)
+            # print(filenames)
 
             grouped_files = self.group_filenames_by_set(filenames, video_id)
-            print(grouped_files)
+            image_files = []
+            cond_files = []
+            # print("grouped_files",grouped_files)
             # Display the grouped files
             for group_name, files in grouped_files.items():
+                # print(group_name, target_set)                
                 if group_name == target_set:
                     print(f"target_set {group_name}: {files}")
                     image_files = files
                 if group_name == cond_set:
                     print(f"cond_set {group_name}: {files}")
                     cond_files = files
+            # if image_files == []: continue
+            # if cond_files == []: continue
 
             target_dir = [get_light_dir_encoding(int(img_dir.split("_")[1])) for img_dir in image_files]
+            target_dir = torch.from_numpy(np.array(target_dir))
+
+            # Check if there are enough frames for both image and depth
+            if len(image_files) < self.sample_n_frames or len(cond_files) < self.sample_n_frames:
+                print(len(image_files),len(image_files) < self.sample_n_frames, len(cond_files) )
+                print('continue length')
+                idx = random.randint(0, len(self.dataset) - 1)
+                continue
 
             # Load image frames
             numpy_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, img)).convert("RGB")) for img in image_files])
@@ -222,20 +240,21 @@ class MIL(Dataset):
             numpy_normal_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, normal_set)).convert("RGB")) for cond in cond_files])
             normal_pixel_values = numpy_to_pt(numpy_normal_images)
 
-            motion_values = [5]*len(cond_files)
+            motion_values = [5]
+            motion_values = torch.from_numpy(np.array(motion_values))
+
             batch_size = pixel_values.shape[0]
 
             combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values], dim=0))
             combined = self.transforms_1(combined)
 
             pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values = combined[:batch_size], combined[batch_size: batch_size*2], combined[batch_size*2: batch_size*3], combined[batch_size*3:]
-
             return pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir
 
     def __getitem__(self, idx):
         
         pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
-        pixel_values = self.pixel_transforms(pixel_values)
+        # pixel_values = self.pixel_transforms(pixel_values)
 
         sample = dict(  text="",
                         target_dir= target_dir,
@@ -258,7 +277,7 @@ if __name__ == "__main__":
         condition_folder = "/fs/nexus-scratch/sjxu/WebVid/blender_random/shd",
         motion_folder = "/fs/nexus-scratch/sjxu/WebVid/blender_random/motion",
         sample_size=512,
-        sample_stride=4, sample_n_frames=25
+        sample_n_frames=5
         )
 
     idx = np.random.randint(len(dataset))

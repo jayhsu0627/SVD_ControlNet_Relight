@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# https://github.com/huggingface/diffusers/blob/main/examples/instruct_pix2pix/train_instruct_pix2pix_sdxl.py
+# Train svd_xtend, tempoeral
+# https://github.com/graphdeco-inria/controlnet-diffusers-relighting/blob/main/train_controlnet.py
+
 """Script to fine-tune Stable Video Diffusion."""
 import argparse
 import random
@@ -42,20 +47,23 @@ from accelerate.utils import ProjectConfiguration, set_seed
 from huggingface_hub import create_repo, upload_folder
 from packaging import version
 from tqdm.auto import tqdm
-from transformers import CLIPImageProcessor, CLIPVisionModelWithProjection
+from transformers import CLIPImageProcessor, CLIPVisionModelWithProjection, CLIPTextModel
 from einops import rearrange
-
+from lpips import LPIPS
 import datetime
 import diffusers
-from diffusers import StableVideoDiffusionPipeline
 from diffusers.models.lora import LoRALinearLayer
-from diffusers import AutoencoderKLTemporalDecoder, EulerDiscreteScheduler, UNetSpatioTemporalConditionModel
+from diffusers import (
+    AutoencoderKLTemporalDecoder,
+    EulerDiscreteScheduler,
+    UNetSpatioTemporalConditionModel,
+    StableVideoDiffusionPipeline)
 from diffusers.image_processor import VaeImageProcessor
 from diffusers.optimization import get_scheduler
 from diffusers.training_utils import EMAModel
 from diffusers.utils import check_min_version, deprecate, is_wandb_available, load_image
 from diffusers.utils.import_utils import is_xformers_available
-from utils.dataset import MIL
+from utils.MIL_dataset import MIL
 from models.unet_spatio_temporal_condition_controlnet import UNetSpatioTemporalConditionControlNetModel
 from pipeline.pipeline_stable_video_diffusion_controlnet import StableVideoDiffusionPipelineControlNet
 from models.controlnet_sdv import ControlNetSDVModel
@@ -435,15 +443,19 @@ def tensor_to_vae_latent(t, vae):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        description="Script to train Stable Diffusion XL for InstructPix2Pix."
-    )
+    parser = argparse.ArgumentParser(description="Simple example of a ControlNet training script.")
     parser.add_argument(
         "--pretrained_model_name_or_path",
         type=str,
-        default=None,
-        required=True,
+        default="stabilityai/stable-video-diffusion-img2vid",
         help="Path to pretrained model or model identifier from huggingface.co/models.",
+    )
+    parser.add_argument(
+        "--controlnet_model_name_or_path",
+        type=str,
+        default=None,
+        help="Path to pretrained controlnet model or model identifier from huggingface.co/models."
+        " If not specified controlnet weights are initialized from unet.",
     )
     parser.add_argument(
         "--revision",
@@ -668,13 +680,6 @@ def parse_args():
         help="For distributed training: local_rank",
     )
     parser.add_argument(
-        "--controlnet_model_name_or_path",
-        type=str,
-        default=None,
-        help="Path to pretrained controlnet model or model identifier from huggingface.co/models."
-        " If not specified controlnet weights are initialized from unet.",
-    )
-    parser.add_argument(
         "--checkpointing_steps",
         type=int,
         default=500,
@@ -793,6 +798,25 @@ def parse_args():
             "frames per video"
         ),
     )
+    parser.add_argument(
+        "--inject_lighting_direction",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--concat_depth_maps",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--dir_sh",
+        type=int, 
+        default=-1
+    )
+    parser.add_argument(
+        "--dropout_rgb",
+        type=float,
+        default=0.0
+    )
+
     args = parser.parse_args()
     env_local_rank = int(os.environ.get("LOCAL_RANK", -1))
     if env_local_rank != -1 and env_local_rank != args.local_rank:
@@ -813,6 +837,41 @@ def download_image(url):
     )(url)
     return original_image
 
+def collate_fn(examples, args):
+    pixel_values = torch.stack([example["pixel_values"] for example in examples])
+    pixel_values = pixel_values.to(memory_format=torch.contiguous_format).float()
+
+    # if args.use_probes:
+    #     probes = torch.stack([example["probe_image"] for example in examples])
+    #     probes = probes.to(memory_format=torch.contiguous_format).float()
+
+    conditioning_pixel_values = torch.stack([example["condition_pixel_values"] for example in examples])
+    conditioning_pixel_values = conditioning_pixel_values.to(memory_format=torch.contiguous_format).float()
+
+
+    input_ids = torch.stack([example["input_ids"] for example in examples])
+    target_dir = torch.stack([example["target_dir"] for example in examples])
+    motion_values = torch.stack([example["motion_values"] for example in examples])
+
+    result = {
+        "pixel_values": pixel_values,
+        "condition_pixel_values": conditioning_pixel_values,
+        "target_dir": target_dir,
+    }
+
+    if args.concat_depth_maps:
+        depth_pixel_values = torch.stack([example["depth_pixel_values"] for example in examples])
+        depth_pixel_values = depth_pixel_values.to(memory_format=torch.contiguous_format).float()
+        result["depth_pixel_values"] = depth_pixel_values
+
+    result["input_ids"] = input_ids
+    result["motion_values"] = motion_values
+
+    # if args.use_probes:
+    #     result["probes"] = probes
+        
+
+    return result
 
 def main():
     args = parse_args()
@@ -826,17 +885,15 @@ def main():
                 " use `--variant=non_ema` instead."
             ),
         )
-    logging_dir = os.path.join(args.output_dir, args.logging_dir)
-    accelerator_project_config = ProjectConfiguration(
-        project_dir=args.output_dir, logging_dir=logging_dir)
+    logging_dir = Path(args.output_dir, args.logging_dir)
+    accelerator_project_config = ProjectConfiguration(project_dir=args.output_dir, logging_dir=logging_dir)
 
     # ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
     accelerator = Accelerator(
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         mixed_precision=args.mixed_precision,
-       log_with=args.report_to,
+        log_with=args.report_to,
         project_config=accelerator_project_config,
-        # kwargs_handlers=[ddp_kwargs]
     )
 
     generator = torch.Generator(
@@ -877,29 +934,43 @@ def main():
             ).repo_id
 
     # Load scheduler, tokenizer and models.
-    noise_scheduler = EulerDiscreteScheduler.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="scheduler")
-    feature_extractor = CLIPImageProcessor.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="feature_extractor", revision=args.revision
-    )
-    image_encoder = CLIPVisionModelWithProjection.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="image_encoder", revision=args.revision, variant="fp16"
-    )
+    noise_scheduler = EulerDiscreteScheduler.from_pretrained(args.pretrained_model_name_or_path, subfolder="scheduler")
+    text_encoder = CLIPTextModel.from_pretrained("stabilityai/stable-diffusion-2-1", subfolder="text_encoder")
     vae = AutoencoderKLTemporalDecoder.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="vae", revision=args.revision, variant="fp16")
+        args.pretrained_model_name_or_path,
+        subfolder="vae",
+        revision=args.revision,
+        variant="fp16")
     unet = UNetSpatioTemporalConditionControlNetModel.from_pretrained(
         args.pretrained_model_name_or_path if args.pretrain_unet is None else args.pretrain_unet,
         subfolder="unet",
         low_cpu_mem_usage=True,
         variant="fp16",
     )
+    lpips = LPIPS(net="alex")
+
+    feature_extractor = CLIPImageProcessor.from_pretrained(
+        args.pretrained_model_name_or_path, subfolder="feature_extractor", revision=args.revision
+    )
+    image_encoder = CLIPVisionModelWithProjection.from_pretrained(
+        args.pretrained_model_name_or_path, subfolder="image_encoder", revision=args.revision, variant="fp16"
+    )
+
     if args.controlnet_model_name_or_path:
         logger.info("Loading existing controlnet weights")
         controlnet = ControlNetSDVModel.from_pretrained(args.controlnet_model_name_or_path)
     else:
         logger.info("Initializing controlnet weights from unet")
         controlnet = ControlNetSDVModel.from_unet(unet)
-        
+
+    @torch.no_grad()
+    def modify_layers(controlnet):
+        if args.inject_lighting_direction:
+            print(len(get_light_dir_encoding(0)))
+            controlnet.time_embedding.cond_proj = torch.nn.Linear(len(get_light_dir_encoding(0)), controlnet.time_embedding.in_channels, bias=False)
+    
+    modify_layers(controlnet)
+
     # Freeze vae and image_encoder
     vae.requires_grad_(False)
     image_encoder.requires_grad_(False)
@@ -915,6 +986,7 @@ def main():
 
     # Move image_encoder and vae to gpu and cast to weight_dtype
     image_encoder.to(accelerator.device, dtype=weight_dtype)
+    text_encoder.to(accelerator.device, dtype=weight_dtype)
     vae.to(accelerator.device, dtype=weight_dtype)
     unet.to(accelerator.device, dtype=weight_dtype)
     #controlnet.to(accelerator.device, dtype=weight_dtype)
@@ -963,8 +1035,7 @@ def main():
                 model = models.pop()
 
                 # load diffusers style into model
-                load_model = ControlNetSDVModel.from_pretrained(
-                    input_dir, subfolder="controlnet")
+                load_model = ControlNetSDVModel.from_pretrained(input_dir, subfolder="controlnet")
                 model.register_to_config(**load_model.config)
 
                 model.load_state_dict(load_model.state_dict())
@@ -975,7 +1046,7 @@ def main():
 
     if args.gradient_checkpointing:
         controlnet.enable_gradient_checkpointing()
-        
+        unet.enable_gradient_checkpointing()
 
     # Enable TF32 for faster training on Ampere GPUs,
     # cf https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices
@@ -984,8 +1055,7 @@ def main():
 
     if args.scale_lr:
         args.learning_rate = (
-            args.learning_rate * args.gradient_accumulation_steps *
-            args.per_gpu_batch_size * accelerator.num_processes
+            args.learning_rate * args.gradient_accumulation_steps * args.per_gpu_batch_size * accelerator.num_processes
         )
 
     # Initialize the optimizer
@@ -1002,24 +1072,10 @@ def main():
         optimizer_cls = torch.optim.AdamW
 
     controlnet.requires_grad_(True)
-    parameters_list = []
-
-    # for name, para in unet.named_parameters():
-    #     if 'temporal_transformer_block' in name and 'down_blocks' in name:
-    #         parameters_list.append(para)
-    #         para.requires_grad = True
-    #     else:
-    #         para.requires_grad = False
-    # optimizer = optimizer_cls(
-    #     parameters_list,
-    #     lr=args.learning_rate,
-    #     betas=(args.adam_beta1, args.adam_beta2),
-    #     weight_decay=args.adam_weight_decay,
-    #     eps=args.adam_epsilon,
-    # )
+    params_to_optimize = controlnet.parameters()
 
     optimizer = optimizer_cls(
-        controlnet.parameters(),
+        params_to_optimize,
         lr=args.learning_rate,
         betas=(args.adam_beta1, args.adam_beta2),
         weight_decay=args.adam_weight_decay,
@@ -1060,8 +1116,10 @@ def main():
     train_dataloader = DataLoader(
         train_dataset,
         sampler=sampler,
+        collate_fn=lambda examples: collate_fn(examples, args),
         batch_size=args.per_gpu_batch_size,
         num_workers=args.num_workers,
+        prefetch_factor=2 if args.num_workers != 0 else None
     )
 
     # Use regular DataLoader for test set, without shuffling
@@ -1074,8 +1132,7 @@ def main():
 
     # Scheduler and math around the number of training steps.
     overrode_max_train_steps = False
-    num_update_steps_per_epoch = math.ceil(
-        len(train_dataloader) / args.gradient_accumulation_steps)
+    num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
         overrode_max_train_steps = True
@@ -1096,13 +1153,11 @@ def main():
         ema_controlnet.to(accelerator.device)
 
     # We need to recalculate our total training steps as the size of the training dataloader may have changed.
-    num_update_steps_per_epoch = math.ceil(
-        len(train_dataloader) / args.gradient_accumulation_steps)
+    num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
     if overrode_max_train_steps:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
     # Afterwards we recalculate our number of training epochs
-    args.num_train_epochs = math.ceil(
-        args.max_train_steps / num_update_steps_per_epoch)
+    args.num_train_epochs = math.ceil(args.max_train_steps / num_update_steps_per_epoch)
 
     # We need to initialize the trackers we use, and also store our configuration.
     # The trackers initializes automatically on the main process.
@@ -1110,8 +1165,7 @@ def main():
         accelerator.init_trackers("SVD_Con_Mul", config=vars(args))
 
     # Train!
-    total_batch_size = args.per_gpu_batch_size * \
-        accelerator.num_processes * args.gradient_accumulation_steps
+    total_batch_size = args.per_gpu_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
 
     logger.info("***** Running training *****")
     logger.info(f"  Num examples = {len(train_dataset)}")
@@ -1270,7 +1324,11 @@ def main():
                 conditional_latents = conditional_latents.unsqueeze(1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
                 inp_noisy_latents = torch.cat([inp_noisy_latents, conditional_latents], dim=2)
                 controlnet_image = batch["condition_pixel_values"]
-                
+                if args.concat_depth_maps:
+                    if random.random() < args.dropout_rgb:
+                        controlnet_image = controlnet_image * 0
+                    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=1)
+
                 # Get ControlNet and UNet predictions
                 down_block_res_samples, mid_block_res_sample = controlnet(
                     inp_noisy_latents,
@@ -1343,6 +1401,62 @@ def main():
                         disable=not accelerator.is_local_main_process)
     progress_bar.set_description("Steps")
 
+    def run_val(val_dir, num_samples, save_grid=True):
+        image_logs = log_validation(
+            vae,
+            unet,
+            controlnet,
+            args,
+            accelerator,
+            weight_dtype,
+            global_step,
+            num_samples,
+            save_grid=save_grid
+        )
+        os.makedirs(val_dir)
+
+        target_resolutions = [256, 512, 1024, 1536]
+        
+        psnr_scores = {res:0.0 for res in target_resolutions}
+        lpips_scores = {res:0.0 for res in target_resolutions}
+
+        for i, log in enumerate(image_logs):
+            log["validation_image"].save(f"{val_dir}/{i:04d}_input.png")
+            log["images"][-1].save(f"{val_dir}/{i:04d}_pred.png")
+            if "gt" in log and log["gt"] is not None:
+                log["gt"].save(f"{val_dir}/{i:04d}_target.png")
+                total_images = 0
+                for res in target_resolutions:
+                    if log["images"][0].size[0] < res:
+                        continue
+                    for pred in log["images"]:
+                        pred = pred.resize((res, res//2*3))
+                        gt = log["gt"].resize((res, res//2*3))
+                        psnr_scores[res] += 10 * np.log10(255**2 / np.mean((np.array(pred) - np.array(gt))**2))
+                        total_images += 1
+                        with torch.autocast("cuda", dtype=weight_dtype):
+                            lpips_scores[res] += lpips(TF.to_tensor(pred).cuda() * 2 - 1, TF.to_tensor(gt).cuda() * 2 - 1).item()
+                    psnr_scores[res] /= total_images
+                    lpips_scores[res] /= total_images
+        
+        if IS_QUEUED_JOB: 
+            for res in target_resolutions:
+                run.track(psnr_scores[res], name=f'psnr_{res}x{res//2*3}', step=global_step)
+                run.track(lpips_scores[res], name=f'lpips_{res}x{res//2*3}', step=global_step)
+                with open(f"{args.output_dir}/scores_{res}.csv", "a") as f:
+                    print(round(psnr_scores[res],3), round(lpips_scores[res], 3), file=f)
+
+    # if not args.eval_only:
+    # Initialize a new run
+
+    # IS_QUEUED_JOB = (os.getenv("OAR_JOB_NAME", "") != "") or args.force_use_aim
+    # if accelerator.is_main_process and IS_QUEUED_JOB:
+    #     experiment = args.output_dir.split("/")[-2]
+    #     run = Run(experiment=experiment)
+
+    text_encoded = None
+    image_logs = None
+
     for epoch in range(first_epoch, args.num_train_epochs):
         controlnet.train()
         train_loss = 0.0
@@ -1381,17 +1495,14 @@ def main():
                 small_noise_latents = latents + noise * train_noise_aug
                 conditional_latents = small_noise_latents[:, 0, :, :, :]
                 conditional_latents = conditional_latents / vae.config.scaling_factor
-
-                
                 noisy_latents  = latents + noise * sigmas_reshaped
                 timesteps = torch.Tensor(
                     [0.25 * sigma.log() for sigma in sigmas]).to(latents.device)
 
-                
-                
                 inp_noisy_latents = noisy_latents  / ((sigmas_reshaped**2 + 1) ** 0.5)
                 
-                
+                print("pixel_values shape", pixel_values[:, 0, :, :, :].shape)
+
                 # Get the text embedding for conditioning.
                 encoder_hidden_states = encode_image(
                     pixel_values[:, 0, :, :, :])
@@ -1406,6 +1517,23 @@ def main():
                     device=latents.device
                 )
                 added_time_ids = added_time_ids.to(latents.device)
+                # Get the text embedding for conditioning
+                if text_encoded is None: 
+                    # print(encoder_hidden_states.device,text_encoder(batch["input_ids"])[0].device)
+                    # print(text_encoder(batch["input_ids"].to(device=accelerator.device))[0])
+                    # print(text_encoder(batch["input_ids"])[0])
+                    encoder_hidden_states_t = text_encoder(batch["input_ids"])[0]
+                else:
+                    encoder_hidden_states_t = text_encoded
+
+                # print("encoder_hidden_states_t shape", encoder_hidden_states_t.shape)
+
+                # # # Expand encoder_hidden_states along the sequence dimension
+                # # encoder_hidden_states_expanded = encoder_hidden_states.expand(-1, encoder_hidden_states_t.size(1), -1)
+
+                # # Combine the two along the sequence dimension
+                # encoder_hidden_states = torch.cat([encoder_hidden_states_t, encoder_hidden_states], dim=1)
+                # print("merged shape", encoder_hidden_states.shape)
 
                 # Conditioning dropout to support classifier-free guidance during inference. For more details
                 # check out the section 3.2.1 of the original paper https://arxiv.org/abs/2211.09800.
@@ -1417,6 +1545,8 @@ def main():
                     prompt_mask = prompt_mask.reshape(bsz, 1, 1)
                     # Final text conditioning.
                     null_conditioning = torch.zeros_like(encoder_hidden_states)
+                    # print("null_conditioning shape", null_conditioning.shape)
+
                     encoder_hidden_states = torch.where(
                         prompt_mask, null_conditioning, encoder_hidden_states)
 
@@ -1436,22 +1566,18 @@ def main():
                     1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
                 inp_noisy_latents = torch.cat(
                     [inp_noisy_latents, conditional_latents], dim=2)
-                controlnet_image = batch["condition_pixel_values"]
-                # print(pixel_values.shape, controlnet_image.shape)
                 
-                # Get the target for loss depending on the prediction type
-                # if noise_scheduler.config.prediction_type == "epsilon":
-                #     target = latents  # we are computing loss against denoise latents
-                # elif noise_scheduler.config.prediction_type == "v_prediction":
-                #     target = noise_scheduler.get_velocity(
-                #         latents, noise, timesteps)
-                # else:
-                #     raise ValueError(
-                #         f"Unknown prediction type {noise_scheduler.config.prediction_type}")
-
+                controlnet_image = batch["condition_pixel_values"].to(dtype=weight_dtype)
+                if args.concat_depth_maps:
+                    if random.random() < args.dropout_rgb:
+                        controlnet_image = controlnet_image * 0
+                    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=1)
+                # encoder_hidden_states_controlnet = encoder_hidden_states
                 target = latents
                 down_block_res_samples, mid_block_res_sample = controlnet(
-                    inp_noisy_latents, timesteps, encoder_hidden_states,
+                    inp_noisy_latents,
+                    timesteps,
+                    encoder_hidden_states,
                     added_time_ids=added_time_ids,
                     controlnet_cond=controlnet_image,
                     return_dict=False,
@@ -1561,10 +1687,9 @@ def main():
                         or (global_step == 1)
                     ):
                     # turn this off due to low memory
-                    # if (
-                    #     False
-                    # ):
-
+                    if (
+                        False
+                    ):
                         logger.info(
                             f"Running validation... \n Generating {args.num_validation_images} videos."
                         )
@@ -1589,7 +1714,7 @@ def main():
                         pipeline.set_progress_bar_config(disable=True)
 
                         idx = np.random.randint(len(dataset))
-                        train_image, train_cond, _, _ = dataset.process_batch(idx)
+                        train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
                         # I_j
                         train_image = (train_image.detach().cpu().numpy() * 255).astype(np.uint8)
                         # I_i
@@ -1625,7 +1750,7 @@ def main():
                                 width=args.width,
                                 num_frames=args.num_frames,
                                 decode_chunk_size=8,
-                                motion_bucket_id=127,
+                                motion_bucket_id=5,
                                 fps=7,
                                 noise_aug_strength=0.02,
                             ).frames
@@ -1638,93 +1763,52 @@ def main():
                             "pred_img_1": [wandb.Image(flattened_batch_output[1], caption="Prediction 1")],
                         }, step=global_step)
 
-                        for i in range(args.validation_image_num):
-                            # for each loop through the direct underneath
-                            base_dir = os.path.join(args.validation_image_folder)
-                            folder_list = os.listdir(base_dir)
-                            folder_list = sorted(folder_list)
+                        # for i in range(args.validation_image_num):
+                        #     # for each loop through the direct underneath
+                        #     base_dir = os.path.join(args.validation_image_folder)
+                        #     folder_list = os.listdir(base_dir)
+                        #     folder_list = sorted(folder_list)
 
-                            img_folder = os.path.join(args.validation_image_folder,folder_list[i])
-                            control_folder = os.path.join(args.validation_control_folder,folder_list[i])
-                            mask_folder = os.path.join(args.validation_msk_folder,folder_list[i])
+                        #     img_folder = os.path.join(args.validation_image_folder,folder_list[i])
+                        #     control_folder = os.path.join(args.validation_control_folder,folder_list[i])
+                        #     mask_folder = os.path.join(args.validation_msk_folder,folder_list[i])
 
-                            validation_images = load_images_from_folder(img_folder, mask_folder, False)
-                            validation_control_images = load_images_from_folder(control_folder, mask_folder, True)
-                            print(control_folder)
+                        #     validation_images = load_images_from_folder(img_folder, mask_folder, False)
+                        #     validation_control_images = load_images_from_folder(control_folder, mask_folder, True)
+                        #     print(control_folder)
                             
-                            # run inference
-                            val_save_dir = os.path.join(
-                                args.output_dir, "validation_images")
+                        #     # run inference
+                        #     val_save_dir = os.path.join(
+                        #         args.output_dir, "validation_images")
 
-                            if not os.path.exists(val_save_dir):
-                                os.makedirs(val_save_dir)
+                        #     if not os.path.exists(val_save_dir):
+                        #         os.makedirs(val_save_dir)
 
-                            with torch.autocast(
-                                str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
-                            ):
-                                for val_img_idx in range(args.num_validation_images):
-                                    video_frames = pipeline(
-                                        validation_images[0], 
-                                        validation_control_images[:args.num_frames],
-                                        height=args.height,
-                                        width=args.width*2,
-                                        num_frames=args.num_frames,
-                                        decode_chunk_size=8,
-                                        motion_bucket_id=127,
-                                        fps=7,
-                                        noise_aug_strength=0.02,
-                                        # generator=generator,
-                                    ).frames
+                        #     with torch.autocast(
+                        #         str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
+                        #     ):
+                        #         for val_img_idx in range(args.num_validation_images):
+                        #             video_frames = pipeline(
+                        #                 validation_images[0], 
+                        #                 validation_control_images[:args.num_frames],
+                        #                 height=args.height,
+                        #                 width=args.width*2,
+                        #                 num_frames=args.num_frames,
+                        #                 decode_chunk_size=8,
+                        #                 motion_bucket_id=127,
+                        #                 fps=7,
+                        #                 noise_aug_strength=0.02,
+                        #                 # generator=generator,
+                        #             ).frames
 
-                                    out_file = os.path.join(
-                                        val_save_dir,
-                                        f"step_{global_step}_val_img_{val_img_idx}_{i}.mp4",
-                                    )
+                        #             out_file = os.path.join(
+                        #                 val_save_dir,
+                        #                 f"step_{global_step}_val_img_{val_img_idx}_{i}.mp4",
+                        #             )
 
-                                    save_combined_frames(video_frames, validation_images, validation_control_images, val_save_dir, i, global_step)
+                        #             save_combined_frames(video_frames, validation_images, validation_control_images, val_save_dir, i, global_step)
             
      
-                        # validation_images = load_images_from_folder(args.validation_image_folder)
-                        # validation_control_images = load_images_from_folder(args.validation_control_folder)
-                        # # print("vali size:", validation_images.shape, validation_control_images.shape)
-                        
-                        # # run inference
-                        # val_save_dir = os.path.join(
-                        #     args.output_dir, "validation_images")
-
-                        # if not os.path.exists(val_save_dir):
-                        #     os.makedirs(val_save_dir)
-
-                        # with torch.autocast(
-                        #     str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
-                        # ):
-                        #     for val_img_idx in range(args.num_validation_images):
-                        #         num_frames = args.num_frames
-                        #         video_frames = pipeline(
-                        #             validation_images[0], 
-                        #             validation_control_images[:args.num_frames],
-                        #             height=args.height,
-                        #             width=args.width,
-                        #             num_frames=num_frames,
-                        #             decode_chunk_size=8,
-                        #             motion_bucket_id=127,
-                        #             fps=7,
-                        #             noise_aug_strength=0.02,
-                        #             # generator=generator,
-                        #         ).frames
-
-                        #         out_file = os.path.join(
-                        #             val_save_dir,
-                        #             f"step_{global_step}_val_img_{val_img_idx}.mp4",
-                        #         )
-
-                        #         #for i in range(num_frames):
-                        #         #    img = video_frames[i]
-                        #         #    video_frames[i] = np.array(img)
-                        #         save_combined_frames(video_frames, validation_images, validation_control_images,val_save_dir)
-        
-                        #         #export_to_gif(video_frames, out_file, 8)
-
                         if args.use_ema:
                             # Switch back to the original UNet parameters.
                             ema_controlnet.restore(controlnet.parameters())

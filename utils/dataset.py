@@ -130,7 +130,6 @@ class WebVid10M(Dataset):
             # Load motion values
             with open(motion_values_file, 'r') as file:
                 motion_values = float(file.read().strip())
-    
             return pixel_values, depth_pixel_values, motion_values
 
         

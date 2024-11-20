@@ -8,7 +8,7 @@ from chrislib.normal_util import get_omni_normals
 # import model loading and running the pipeline
 from intrinsic.pipeline import run_pipeline, run_gray_pipeline
 from intrinsic.pipeline import load_models
-from pipeline import get_light_coeffs
+from pipeline_mod import get_light_coeffs
 
 from PIL import Image 
 import numpy as np

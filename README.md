@@ -19,9 +19,9 @@ Introducing the Stable Video Diffusion Temporal Controlnet! This tool uses a con
 ## Training
 My example training config is configured like this:
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch train_svd.py \
+CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_con.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
- --output_dir="model_out" \
+ --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_out" \
  --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
  --video_folder="/fs/nexus-scratch/sjxu/WebVid/blender/img" \
  --condition_folder="/fs/nexus-scratch/sjxu/WebVid/blender/shd" \
@@ -40,36 +40,11 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch train_svd.py \
  --gradient_checkpointing \
  --num_train_epochs 1000 \
  --checkpoints_total_limit=1 \
- --report_to="wandb"
- ```
-
-```
-CUDA_VISIBLE_DEVICES=0,1 accelerate launch train_svd_control.py \
- --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
- --output_dir="/sdb2/model_out_3" \
- --csv_path="/sdb2/datasets/WebVid/Don/Don.csv" \
- --video_folder="/sdb2/datasets/WebVid/Don/img" \
- --condition_folder="/sdb2/datasets/WebVid/Don/douga" \
- --motion_folder="/sdb2/datasets/WebVid/Don/motion" \
- --validation_image_folder="/sdb2/datasets/WebVid/Don_VAL/img" \
- --validation_control_folder="/sdb2/datasets/WebVid/Don_VAL/douga" \
- --width=512 \
- --height=512 \
- --learning_rate=4e-5 \
- --per_gpu_batch_size=1 \
- --num_train_epochs=30 \
- --mixed_precision="fp16" \
- --gradient_accumulation_steps=16 \
- --checkpointing_steps=500 \
- --validation_steps=250 \
- --test_steps=10 \
- --validation_image_num=16 \
- --gradient_checkpointing \
- --checkpoints_total_limit=5 \
- --num_frames=5 \
+ --report_to="wandb" \
+ --dropout_rgb=0.1 \
  --sample_n_frames=5 \
- --report_to="wandb"
- ```
+ --num_frames=5
+```
 
 ## Acknowledgements
 - **lllyasviel:** for the original controlnet implementation

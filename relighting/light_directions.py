@@ -27,7 +27,6 @@ def get_light_dir_encoding(ids: Union[torch.Tensor, int]):
         
         if _polar_angles_by_id[id] == {}:
             raise ValueError(f"Direction with id {id} is not available (only directions with a backward-facing camera flash are supported).")
-
         assert _polar_angles_by_id[id]["direction_id"] == id
         phi = _polar_angles_by_id[id]["phi"]
         theta = _polar_angles_by_id[id]["theta"]
