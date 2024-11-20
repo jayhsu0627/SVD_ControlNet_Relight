@@ -28,7 +28,7 @@ from transformers import DepthAnythingConfig, DepthAnythingForDepthEstimation
 from transformers import AutoImageProcessor, AutoModelForDepthEstimation
 
 import diffusers
-
+import PIL
 from PIL import Image
 import requests
 from skimage.transform import resize
@@ -294,33 +294,53 @@ for scene in scenes:
 
     file_list = get_clean_image_list(directory_path)
     print('======Start process ' + scene + "======")
-    print(file_list)
+    # print(file_list)
 
-    file_num = 0
-    alb_list = []
-    luminances = []
-    peak_lum = -99
-    for file_name in file_list:
-        file_path = base_path + scene +'/' + file_name
-        image = load_image(file_path)
-        # Marigold
-        tem_lum = compute_luminance(image)
-        luminances.append(tem_lum)
-    # Only process the depth for median luminance pic
-    median_index = find_median_index(luminances)
+    depth_condition = Image.open(base_path+ scene +'/' + "all_depth.png")
+    width, height = depth_condition.size
+    target_width, target_height = 1500, 1000
+    print(width, height)
+    if width != target_width or height != target_height:
+        print(base_path+ scene +'/' + "all_depth.png")
+
+        file_num = 0
+        alb_list = []
+        luminances = []
+        peak_lum = -99
+        for file_name in file_list:
+            file_path = base_path + scene +'/' + file_name
+            image = load_image(file_path)
+            # Marigold
+            tem_lum = compute_luminance(image)
+            luminances.append(tem_lum)
+        # Only process the depth for median luminance pic
+        median_index = find_median_index(luminances)
+            
+        image = Image.open(base_path + scene +'/' + file_list[median_index])
+        depth = pipe(image)
+        normals = pipe_norm(image)
         
-    image = Image.open(base_path + scene +'/' + file_list[median_index])
-    depth = pipe(image)
-    normals = pipe_norm(image)
-    
-    # https://huggingface.co/docs/diffusers/v0.28.2/en/using-diffusers/marigold_usage
-    depth_16bit = pipe.image_processor.export_depth_to_16bit_png(depth.prediction)
-    depth = depth_16bit[0]
-    depth.save(base_path+ scene +'/' + "all_depth.png")
-    print('saved to', base_path+ scene +'/' + "all_depth.png")
+        # https://huggingface.co/docs/diffusers/v0.28.2/en/using-diffusers/marigold_usage
+        depth_16bit = pipe.image_processor.export_depth_to_16bit_png(depth.prediction)
+        depth = depth_16bit[0]
+        print(depth.size)
+        
+        depth_array = np.array(depth)
+        depth_normalized = depth_array / 65535.0
+        depth_8bit = (depth_normalized * 255).astype(np.uint8)
 
-    vis = pipe_norm.image_processor.visualize_normals(normals.prediction)
-    vis[0].save(base_path+ scene +'/' + "all_normal.png")
+        # Save the normalized depth image as 8-bit
+        depth_8bit_image = Image.fromarray(depth_8bit).convert('L')
+        foo = depth_8bit_image.resize((target_width, target_height), Image.Resampling.LANCZOS)
+
+        foo.save(base_path+ scene +'/' + "all_depth.png")
+
+        print('saved to', base_path+ scene +'/' + "all_depth.png")
+
+        vis = pipe_norm.image_processor.visualize_normals(normals.prediction)
+
+        foo = vis[0].resize((target_width, target_height),Image.Resampling.LANCZOS)
+        foo.save(base_path+ scene +'/' + "all_normal.png")
 
     # for file_name in file_list:
 

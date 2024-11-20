@@ -1,0 +1,53 @@
+2024-11-20 08:26:03,877 INFO    StreamThr :3176113 [internal.py:wandb_internal():85] W&B internal server running at pid: 3176113, started at: 2024-11-20 08:26:03.874517
+2024-11-20 08:26:03,929 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: status
+2024-11-20 08:26:03,963 INFO    WriterThread:3176113 [datastore.py:open_for_write():87] open: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/run-a6wy0xnb.wandb
+2024-11-20 08:26:03,971 DEBUG   SenderThread:3176113 [sender.py:send():391] send: header
+2024-11-20 08:26:03,985 DEBUG   SenderThread:3176113 [sender.py:send():391] send: run
+2024-11-20 08:26:04,437 INFO    SenderThread:3176113 [dir_watcher.py:__init__():211] watching files in: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files
+2024-11-20 08:26:04,437 INFO    SenderThread:3176113 [sender.py:_start_run_threads():1200] run started: a6wy0xnb with start time 1732109163.878428
+2024-11-20 08:26:04,453 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: run_start
+2024-11-20 08:26:04,484 DEBUG   HandlerThread:3176113 [system_info.py:__init__():26] System info init
+2024-11-20 08:26:04,484 DEBUG   HandlerThread:3176113 [system_info.py:__init__():41] System info init done
+2024-11-20 08:26:04,485 INFO    HandlerThread:3176113 [system_monitor.py:start():194] Starting system monitor
+2024-11-20 08:26:04,485 INFO    SystemMonitor:3176113 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-11-20 08:26:04,485 INFO    HandlerThread:3176113 [system_monitor.py:probe():214] Collecting system info
+2024-11-20 08:26:04,486 INFO    SystemMonitor:3176113 [interfaces.py:start():188] Started cpu monitoring
+2024-11-20 08:26:04,488 INFO    SystemMonitor:3176113 [interfaces.py:start():188] Started disk monitoring
+2024-11-20 08:26:04,491 INFO    SystemMonitor:3176113 [interfaces.py:start():188] Started gpu monitoring
+2024-11-20 08:26:04,495 INFO    SystemMonitor:3176113 [interfaces.py:start():188] Started memory monitoring
+2024-11-20 08:26:04,503 INFO    SystemMonitor:3176113 [interfaces.py:start():188] Started network monitoring
+2024-11-20 08:26:04,517 DEBUG   HandlerThread:3176113 [system_info.py:probe():152] Probing system
+2024-11-20 08:26:04,524 DEBUG   HandlerThread:3176113 [system_info.py:_probe_git():137] Probing git
+2024-11-20 08:26:04,550 DEBUG   HandlerThread:3176113 [system_info.py:_probe_git():145] Probing git done
+2024-11-20 08:26:04,550 DEBUG   HandlerThread:3176113 [system_info.py:probe():200] Probing system done
+2024-11-20 08:26:04,550 DEBUG   HandlerThread:3176113 [system_monitor.py:probe():223] {'os': 'Linux-4.18.0-553.22.1.el8_10.x86_64-x86_64-with-glibc2.28', 'python': '3.9.12', 'heartbeatAt': '2024-11-20T13:26:04.517948', 'startedAt': '2024-11-20T13:26:03.831174', 'docker': None, 'cuda': None, 'args': ('--pretrained_model_name_or_path=stabilityai/stable-video-diffusion-img2vid', '--output_dir=/fs/nexus-scratch/sjxu/Model_out/model_out', '--csv_path=/fs/nexus-scratch/sjxu/WebVid/blender.csv', '--video_folder=/fs/nexus-scratch/sjxu/WebVid/blender/img', '--condition_folder=/fs/nexus-scratch/sjxu/WebVid/blender/shd', '--motion_folder=/fs/nexus-scratch/sjxu/WebVid/blender/motion', '--validation_image_folder=/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_blender', '--validation_control_folder=/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_blender', '--width=512', '--height=512', '--learning_rate=1e-4', '--per_gpu_batch_size=2', '--num_train_epochs=30', '--mixed_precision=fp16', '--gradient_accumulation_steps=8', '--checkpointing_steps=2000', '--validation_steps=200', '--gradient_checkpointing', '--checkpoints_total_limit=1', '--report_to=wandb', '--dropout_rgb=0.1', '--sample_n_frames=5', '--num_frames=5'), 'state': 'running', 'program': '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py', 'codePathLocal': 'train_svd_con.py', 'codePath': 'train_svd_con.py', 'git': {'remote': 'git@github.com:jayhsu0627/SVD_ControlNet_Relight.git', 'commit': '9e5f130c352644ef1a2a264160841ea17e7a5b4e'}, 'email': 'jayhsu0627@gmail.com', 'root': '/fs/nexus-scratch/sjxu/svd-temporal-controlnet', 'host': 'gammagpu11.umiacs.umd.edu', 'username': 'sjxu', 'executable': '/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python', 'cpu_count': 16, 'cpu_count_logical': 16, 'cpu_freq': {'current': 3168.514125, 'min': 1500.0, 'max': 3729.491999999999}, 'cpu_freq_per_core': [{'current': 3716.231, 'min': 1500.0, 'max': 3729.492}, {'current': 3715.991, 'min': 1500.0, 'max': 3729.492}, {'current': 3548.001, 'min': 1500.0, 'max': 3729.492}, {'current': 3716.003, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}, {'current': 3000.0, 'min': 1500.0, 'max': 3729.492}], 'disk': {'/': {'total': 39.043426513671875, 'used': 12.274219512939453}}, 'gpu': 'NVIDIA RTX A6000', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}, {'name': 'NVIDIA RTX A6000', 'memory_total': 51527024640}], 'memory': {'total': 125.2570686340332}}
+2024-11-20 08:26:04,550 INFO    HandlerThread:3176113 [system_monitor.py:probe():224] Finished collecting system info
+2024-11-20 08:26:04,550 INFO    HandlerThread:3176113 [system_monitor.py:probe():227] Publishing system info
+2024-11-20 08:26:04,551 DEBUG   HandlerThread:3176113 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-11-20 08:26:05,461 INFO    Thread-12 :3176113 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files/conda-environment.yaml
+2024-11-20 08:26:07,312 DEBUG   HandlerThread:3176113 [system_info.py:_save_conda():224] Saving conda packages done
+2024-11-20 08:26:07,322 INFO    HandlerThread:3176113 [system_monitor.py:probe():229] Finished publishing system info
+2024-11-20 08:26:07,328 DEBUG   SenderThread:3176113 [sender.py:send():391] send: files
+2024-11-20 08:26:07,328 INFO    SenderThread:3176113 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-11-20 08:26:07,469 INFO    Thread-12 :3176113 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files/conda-environment.yaml
+2024-11-20 08:26:07,469 INFO    Thread-12 :3176113 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files/wandb-metadata.json
+2024-11-20 08:26:07,545 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: python_packages
+2024-11-20 08:26:07,545 DEBUG   SenderThread:3176113 [sender.py:send_request():418] send_request: python_packages
+2024-11-20 08:26:07,545 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: stop_status
+2024-11-20 08:26:07,547 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: internal_messages
+2024-11-20 08:26:07,550 DEBUG   SenderThread:3176113 [sender.py:send_request():418] send_request: stop_status
+2024-11-20 08:26:07,585 INFO    wandb-upload_0:3176113 [upload_job.py:push():130] Uploaded file /tmp/tmp7plk31xbwandb/lyzcvhg8-wandb-metadata.json
+2024-11-20 08:26:07,636 DEBUG   SenderThread:3176113 [sender.py:send():391] send: telemetry
+2024-11-20 08:26:07,636 DEBUG   SenderThread:3176113 [sender.py:send():391] send: config
+2024-11-20 08:26:08,471 INFO    Thread-12 :3176113 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files/output.log
+2024-11-20 08:26:08,471 INFO    Thread-12 :3176113 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files/requirements.txt
+2024-11-20 08:26:09,871 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: status_report
+2024-11-20 08:26:10,501 INFO    Thread-12 :3176113 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241120_082603-a6wy0xnb/files/output.log
+2024-11-20 08:26:15,578 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: status_report
+2024-11-20 08:26:17,547 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: internal_messages
+2024-11-20 08:26:21,549 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: status_report
+2024-11-20 08:26:22,547 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: stop_status
+2024-11-20 08:26:22,547 DEBUG   SenderThread:3176113 [sender.py:send_request():418] send_request: stop_status
+2024-11-20 08:26:26,695 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: status_report
+2024-11-20 08:26:27,555 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: internal_messages
+2024-11-20 08:26:32,555 DEBUG   HandlerThread:3176113 [handler.py:handle_request():158] handle_request: status_report

@@ -1,0 +1,64 @@
+11/20/2024 06:31:11 - INFO - __main__ - ***** Running training *****
+11/20/2024 06:31:11 - INFO - __main__ -   Num examples = 15760
+11/20/2024 06:31:11 - INFO - __main__ -   Num Epochs = 1000
+11/20/2024 06:31:11 - INFO - __main__ -   Instantaneous batch size per device = 1
+11/20/2024 06:31:11 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 16
+11/20/2024 06:31:11 - INFO - __main__ -   Gradient Accumulation steps = 16
+11/20/2024 06:31:11 - INFO - __main__ -   Total optimization steps = 985000
+Steps:   0%|                                                                                                                                                                     | 0/985000 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+pixel_values shape torch.Size([1, 3, 512, 512])
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+Steps:   0%|                                                                                                                                           | 0/985000 [00:24<?, ?it/s, lr=2e-5, step_loss=0.173]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:25<?, ?it/s, lr=2e-5, step_loss=0.233]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:27<?, ?it/s, lr=2e-5, step_loss=0.137]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:30<?, ?it/s, lr=2e-5, step_loss=0.158]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:31<?, ?it/s, lr=2e-5, step_loss=0.132]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:34<?, ?it/s, lr=2e-5, step_loss=0.304]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|                                                                                                                                            | 0/985000 [00:36<?, ?it/s, lr=2e-5, step_loss=0.23]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:37<?, ?it/s, lr=2e-5, step_loss=0.143]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:40<?, ?it/s, lr=2e-5, step_loss=0.674]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:42<?, ?it/s, lr=2e-5, step_loss=0.118]
+
+Steps:   0%|                                                                                                                                           | 0/985000 [00:43<?, ?it/s, lr=2e-5, step_loss=0.149]
+Steps:   0%|                                                                                                                             | 1/985000 [00:46<12827:14:45, 46.88s/it, lr=2e-5, step_loss=0.267]11/20/2024 06:31:58 - INFO - __main__ - Running validation...
+ Generating 1 videos.
+pixel_values shape torch.Size([1, 3, 512, 512])
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                                                                                                                                                            Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+{'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.                                                                                     | 0/5 [00:00<?, ?it/s]
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 233.44it/s]
+cond_set A: ['dir_0_mip2.jpg', 'dir_1_mip2.jpg', 'dir_2_mip2.jpg', 'dir_3_mip2.jpg', 'dir_4_mip2.jpg']
+target_set E: ['dir_20_mip2.jpg', 'dir_21_mip2.jpg', 'dir_22_mip2.jpg', 'dir_23_mip2.jpg', 'dir_24_mip2.jpg']
+11/20/2024 06:32:17 - INFO - numexpr.utils - Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+Steps:   0%|                                                                                                                             | 1/985000 [01:06<12827:14:45, 46.88s/it, lr=2e-5, step_loss=0.125]
+Steps:   0%|                                                                                                                             | 1/985000 [01:06<12827:14:45, 46.88s/it, lr=2e-5, step_loss=0.125]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1854, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1619, in main
+    accelerator.backward(loss)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py", line 2155, in backward
+    self.scaler.scale(loss).backward(**kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/autograd/__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/autograd/graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 640.00 MiB. GPU 0 has a total capacity of 23.67 GiB of which 485.12 MiB is free. Including non-PyTorch memory, this process has 23.19 GiB memory in use. Of the allocated memory 22.40 GiB is allocated by PyTorch, and 534.46 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

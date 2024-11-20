@@ -1,0 +1,150 @@
+11/20/2024 06:42:52 - INFO - __main__ - ***** Running training *****
+11/20/2024 06:42:52 - INFO - __main__ -   Num examples = 15760
+11/20/2024 06:42:52 - INFO - __main__ -   Num Epochs = 30
+11/20/2024 06:42:52 - INFO - __main__ -   Instantaneous batch size per device = 1
+11/20/2024 06:42:52 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/20/2024 06:42:52 - INFO - __main__ -   Gradient Accumulation steps = 16
+11/20/2024 06:42:52 - INFO - __main__ -   Total optimization steps = 7410
+Steps:   0%|          | 0/7410 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+pixel_values shape torch.Size([1, 3, 512, 512])
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+pixel_values shape torch.Size([1, 3, 512, 512])
+Steps:   0%|          | 0/7410 [00:20<?, ?it/s, lr=2e-5, step_loss=0.0727]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 0/7410 [00:23<?, ?it/s, lr=2e-5, step_loss=0.249]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 0/7410 [00:25<?, ?it/s, lr=2e-5, step_loss=0.0898]
+
+Steps:   0%|          | 0/7410 [00:27<?, ?it/s, lr=2e-5, step_loss=0.114]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 0/7410 [00:29<?, ?it/s, lr=2e-5, step_loss=0.149]
+
+Steps:   0%|          | 0/7410 [00:31<?, ?it/s, lr=2e-5, step_loss=0.172]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 0/7410 [00:33<?, ?it/s, lr=2e-5, step_loss=0.279]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 0/7410 [00:35<?, ?it/s, lr=2e-5, step_loss=0.105]
+
+Steps:   0%|          | 0/7410 [00:36<?, ?it/s, lr=2e-5, step_loss=0.515]
+Steps:   0%|          | 1/7410 [00:38<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.515]11/20/2024 06:43:30 - INFO - __main__ - Running validation...
+ Generating 1 videos.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                     Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+{'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 276.42it/s]
+target_set B: ['dir_5_mip2.jpg', 'dir_6_mip2.jpg', 'dir_7_mip2.jpg', 'dir_8_mip2.jpg', 'dir_9_mip2.jpg']
+cond_set E: ['dir_20_mip2.jpg', 'dir_21_mip2.jpg', 'dir_22_mip2.jpg', 'dir_23_mip2.jpg', 'dir_24_mip2.jpg']
+11/20/2024 06:43:47 - INFO - numexpr.utils - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+Steps:   0%|          | 1/7410 [00:56<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.195]
+Steps:   0%|          | 1/7410 [00:56<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.195]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+Steps:   0%|          | 1/7410 [00:57<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.106]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 1/7410 [00:59<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.176]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 1/7410 [01:01<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.234]
+
+Steps:   0%|          | 1/7410 [01:02<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.256]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 1/7410 [01:05<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.292]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 1/7410 [01:07<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.175]
+
+Steps:   0%|          | 1/7410 [01:09<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.292]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 1/7410 [01:11<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.0774]
+
+Steps:   0%|          | 1/7410 [01:13<79:42:37, 38.73s/it, lr=2e-5, step_loss=0.927]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 2/7410 [01:16<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.837]
+
+Steps:   0%|          | 2/7410 [01:18<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.209]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 2/7410 [01:19<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.377]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 2/7410 [01:21<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.659]
+
+Steps:   0%|          | 2/7410 [01:23<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.0677]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 2/7410 [01:25<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.062]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 2/7410 [01:28<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.276]
+
+Steps:   0%|          | 2/7410 [01:29<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.0803]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 2/7410 [01:31<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.141]
+
+Steps:   0%|          | 2/7410 [01:34<77:50:35, 37.83s/it, lr=2e-5, step_loss=0.545]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 3/7410 [01:35<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.0886]
+
+Steps:   0%|          | 3/7410 [01:38<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.136]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 3/7410 [01:39<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.292]
+
+Steps:   0%|          | 3/7410 [01:42<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.108]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 3/7410 [01:43<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.234]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 3/7410 [01:45<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.0477]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 3/7410 [01:48<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.231]
+
+Steps:   0%|          | 3/7410 [01:49<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.533]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 3/7410 [01:51<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.0328]
+
+Steps:   0%|          | 3/7410 [01:54<60:54:58, 29.61s/it, lr=2e-5, step_loss=0.058]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 4/7410 [01:55<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.162]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 4/7410 [01:58<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.144]
+
+Steps:   0%|          | 4/7410 [01:59<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.208]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 4/7410 [02:01<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.063]
+
+Steps:   0%|          | 4/7410 [02:04<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.375]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 4/7410 [02:05<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.107]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 4/7410 [02:07<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.0478]
+pixel_values shape torch.Size([1, 3, 512, 512])
+
+Steps:   0%|          | 4/7410 [02:09<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.0738]
+
+Steps:   0%|          | 4/7410 [02:11<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.216]
+
+Steps:   0%|          | 4/7410 [02:13<53:02:48, 25.79s/it, lr=2e-5, step_loss=0.182]

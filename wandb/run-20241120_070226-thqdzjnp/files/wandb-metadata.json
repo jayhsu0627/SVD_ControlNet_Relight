@@ -1,0 +1,164 @@
+{
+    "os": "Linux-4.18.0-553.22.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.9.12",
+    "heartbeatAt": "2024-11-20T12:02:27.758459",
+    "startedAt": "2024-11-20T12:02:26.281291",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--pretrained_model_name_or_path=stabilityai/stable-video-diffusion-img2vid",
+        "--output_dir=/fs/nexus-scratch/sjxu/Model_out/model_out",
+        "--csv_path=/fs/nexus-scratch/sjxu/WebVid/blender.csv",
+        "--video_folder=/fs/nexus-scratch/sjxu/WebVid/blender/img",
+        "--condition_folder=/fs/nexus-scratch/sjxu/WebVid/blender/shd",
+        "--motion_folder=/fs/nexus-scratch/sjxu/WebVid/blender/motion",
+        "--validation_image_folder=/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_blender",
+        "--validation_control_folder=/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_blender",
+        "--width=512",
+        "--height=512",
+        "--learning_rate=2e-5",
+        "--per_gpu_batch_size=1",
+        "--num_train_epochs=30",
+        "--mixed_precision=fp16",
+        "--gradient_accumulation_steps=16",
+        "--checkpointing_steps=2000",
+        "--validation_steps=200",
+        "--gradient_checkpointing",
+        "--checkpoints_total_limit=1",
+        "--report_to=wandb",
+        "--dropout_rgb=0.1",
+        "--sample_n_frames=5",
+        "--num_frames=5"
+    ],
+    "state": "running",
+    "program": "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py",
+    "codePathLocal": "train_svd_con.py",
+    "codePath": "train_svd_con.py",
+    "git": {
+        "remote": "git@github.com:jayhsu0627/SVD_ControlNet_Relight.git",
+        "commit": "9e5f130c352644ef1a2a264160841ea17e7a5b4e"
+    },
+    "email": "jayhsu0627@gmail.com",
+    "root": "/fs/nexus-scratch/sjxu/svd-temporal-controlnet",
+    "host": "gammagpu14.umiacs.umd.edu",
+    "username": "sjxu",
+    "executable": "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3171.7692500000003,
+        "min": 1500.0,
+        "max": 3729.491999999999
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3632.667,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3700.623,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3707.566,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3707.452,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 39.043426513671875,
+            "used": 12.261436462402344
+        }
+    },
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        }
+    ],
+    "memory": {
+        "total": 125.25711822509766
+    }
+}

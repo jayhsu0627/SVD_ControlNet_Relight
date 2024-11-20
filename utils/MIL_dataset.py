@@ -204,10 +204,10 @@ class MIL(Dataset):
             for group_name, files in grouped_files.items():
                 # print(group_name, target_set)                
                 if group_name == target_set:
-                    print(f"target_set {group_name}: {files}")
+                    # print(f"target_set {group_name}: {files}")
                     image_files = files
                 if group_name == cond_set:
-                    print(f"cond_set {group_name}: {files}")
+                    # print(f"cond_set {group_name}: {files}")
                     cond_files = files
             # if image_files == []: continue
             # if cond_files == []: continue
@@ -232,6 +232,7 @@ class MIL(Dataset):
 
             # Load depth frames
             # Read in 16 bit depth png
+            # print(os.path.join(image_path, depth_set))
             numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
             numpy_depth_images = np.stack([numpy_depth_images] * 3, axis=-1)
             depth_pixel_values = numpy_to_pt(numpy_depth_images)
@@ -244,7 +245,8 @@ class MIL(Dataset):
             motion_values = torch.from_numpy(np.array(motion_values))
 
             batch_size = pixel_values.shape[0]
-
+            # print(len(image_files),len(cond_files))
+            # print(depth_pixel_values.shape, normal_pixel_values.shape)
             combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values], dim=0))
             combined = self.transforms_1(combined)
 
@@ -280,8 +282,14 @@ if __name__ == "__main__":
         sample_n_frames=5
         )
 
-    idx = np.random.randint(len(dataset))
-    train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
+    # idx = np.random.randint(len(dataset))
+    # train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
+    
+    for i in range(1000):
+        idx = np.random.randint(len(dataset))
+        train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
+
+
     print('length:', len(dataset))
     print(train_image.shape, train_image.shape)
 

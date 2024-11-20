@@ -31,10 +31,10 @@ CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_con.py \
  --width=512 \
  --height=512 \
  --learning_rate=2e-5 \
- --per_gpu_batch_size=1 \
+ --per_gpu_batch_size=4 \
  --num_train_epochs=5 \
  --mixed_precision="fp16" \
- --gradient_accumulation_steps=16 \
+ --gradient_accumulation_steps=4 \
  --checkpointing_steps=2000 \
  --validation_steps=200 \
  --gradient_checkpointing \

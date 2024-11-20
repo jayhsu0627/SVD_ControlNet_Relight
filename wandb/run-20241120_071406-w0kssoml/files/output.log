@@ -1,0 +1,147 @@
+11/20/2024 07:14:10 - INFO - __main__ - ***** Running training *****
+11/20/2024 07:14:10 - INFO - __main__ -   Num examples = 15760
+11/20/2024 07:14:10 - INFO - __main__ -   Num Epochs = 30
+11/20/2024 07:14:10 - INFO - __main__ -   Instantaneous batch size per device = 1
+11/20/2024 07:14:10 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/20/2024 07:14:10 - INFO - __main__ -   Gradient Accumulation steps = 16
+11/20/2024 07:14:10 - INFO - __main__ -   Total optimization steps = 7410
+Steps:   0%|          | 0/7410 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 1/7410 [00:38<79:10:16, 38.47s/it, lr=2e-5, step_loss=0.247]11/20/2024 07:14:49 - INFO - __main__ - Running validation...
+ Generating 1 videos.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                     {'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 283.64it/s]
+torch.Size([5, 3, 1000, 1500]) torch.Size([5, 3, 1000, 1500]) torch.Size([5, 3, 1000, 1500]) torch.Size([5, 3, 1000, 1500])
+Steps:   0%|          | 1/7410 [00:55<79:10:16, 38.47s/it, lr=2e-5, step_loss=0.168]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 6/7410 [02:49<45:36:11, 22.17s/it, lr=2e-5, step_loss=0.0481]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1854, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1464, in main
+    for step, batch in enumerate(train_dataloader):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/data_loader.py", line 464, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1324, in _next_data
+    return self._process_data(data)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in DataLoader worker process 6.
+Original Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+    data = self.dataset.__getitems__(possibly_batched_index)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in __getitems__
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in <listcomp>
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 256, in __getitem__
+    pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 248, in get_batch
+    combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values], dim=0))
+RuntimeError: Sizes of tensors must match except in dimension 0. Expected size 1000 but got size 250 for tensor number 2 in the list.
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1854, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1464, in main
+[rank0]:     for step, batch in enumerate(train_dataloader):
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/data_loader.py", line 464, in __iter__
+[rank0]:     next_batch = next(dataloader_iter)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1324, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+[rank0]:     raise exception
+[rank0]: RuntimeError: Caught RuntimeError in DataLoader worker process 6.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+[rank0]:     data = self.dataset.__getitems__(possibly_batched_index)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in __getitems__
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in <listcomp>
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 256, in __getitem__
+[rank0]:     pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 248, in get_batch
+[rank0]:     combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values], dim=0))
+[rank0]: RuntimeError: Sizes of tensors must match except in dimension 0. Expected size 1000 but got size 250 for tensor number 2 in the list.

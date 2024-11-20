@@ -1501,7 +1501,7 @@ def main():
 
                 inp_noisy_latents = noisy_latents  / ((sigmas_reshaped**2 + 1) ** 0.5)
                 
-                print("pixel_values shape", pixel_values[:, 0, :, :, :].shape)
+                # print("pixel_values shape", pixel_values[:, 0, :, :, :].shape)
 
                 # Get the text embedding for conditioning.
                 encoder_hidden_states = encode_image(
@@ -1687,9 +1687,9 @@ def main():
                         or (global_step == 1)
                     ):
                     # turn this off due to low memory
-                    if (
-                        False
-                    ):
+                    # if (
+                    #     False
+                    # ):
                         logger.info(
                             f"Running validation... \n Generating {args.num_validation_images} videos."
                         )
