@@ -10,6 +10,7 @@ from decord import VideoReader
 import cv2
 
 import torchvision.transforms as transforms
+import torchvision.transforms.functional as TF
 from torch.utils.data.dataset import Dataset
 import sys
 # Add the project root to the Python path
@@ -20,14 +21,13 @@ from PIL import Image, ImageOps
 import imageio.v3 as iio
 import kornia.augmentation as K
 from kornia.augmentation.container import ImageSequential
+from relighting.light_directions import get_light_dir_encoding, BACKWARD_DIR_IDS
 
 def save_array_as_image(array, filename):
     # Ensure the array has the correct data type (uint8 for images)
     if array.dtype != np.uint8:
-        print('yeah')
         array = array.numpy().astype(np.uint8)
     # array = (array + 1)
-    print('shape:', array.shape)
     array = array.transpose(1, 2, 0)  
 
     # Convert the array to an image using PIL
@@ -38,7 +38,7 @@ def save_array_as_image(array, filename):
 
 def pil_image_to_numpy(image):
     """Convert a PIL image to a NumPy array."""
-    if image.mode != 'RGB':
+    if image.mode != 'RGB' and image.mode != 'L':
         image = image.convert('RGB')
     return np.array(image)
 
@@ -49,33 +49,17 @@ def numpy_to_pt(images: np.ndarray) -> torch.FloatTensor:
     images = torch.from_numpy(images.transpose(0, 3, 1, 2))
     return images.float() / 255
 
-    
-    #         image = Image.open(image_path).convert("RGB")
-    #         probe_path = os.path.dirname(args.images_dir) + "/probes_exr/" + name.replace(".png", "_probe.png")  
-
-    #         conditioning_image_path = args.images_dir + "/" + self.json[i]["conditioning_image"].replace(".jpg", ".png")
-    #         conditioning_image = Image.open(conditioning_image_path).convert("RGB")
-    #         target_dir = get_light_dir_encoding(int(image_path.split("_dir_")[-1].replace(".png", "")))
-
-    #         result = {
-    #             "text": "",
-    #             "image": image,
-    #             "target_dir": target_dir,
-    #             "conditioning_image": conditioning_image,
-    #             "pixel_values": TF.to_tensor(image) * 2 - 1,
-    #             "conditioning_pixel_values": TF.to_tensor(conditioning_image),
-    #             "input_ids": INPUT_IDS,
-    #             **(self.xtras)
-    #         }
-    #         assert "_exr" in image_path #!!! update this
-    #         depth_image = Image.open(image_path.replace("_exr/", "_depths/").split("_dir")[0] + "_dir_10_pred.png").convert("L") #!!! update this
-    #         result["depth_image"] = depth_image
-    #         result["depth_pixel_values"] = TF.to_tensor(depth_image)
-
-    #     except UnidentifiedImageError:
-    #         print(f"WARNING: invalid file for scene {image_path}, will return another random batch item")
-    #         return super().__getitem__(random.choice(list(range(len(self)))))
-    #     return result 
+INPUT_IDS = torch.tensor([
+        49406, 49407,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+        0,     0,     0,     0,     0,     0,     0
+        ] # this is a tokenized version of the empty string
+        )
 
 class MIL(Dataset):
     def __init__(
@@ -108,12 +92,12 @@ class MIL(Dataset):
         sample_size = tuple(sample_size) if not isinstance(sample_size, int) else (sample_size, sample_size)
         print("sample size",sample_size)
 
-        self.pixel_transforms = transforms.Compose([
-            transforms.RandomHorizontalFlip(),
-            transforms.Resize(sample_size),
-            transforms.CenterCrop(sample_size),
-            transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], inplace=True),
-        ])
+        # self.pixel_transforms = transforms.Compose([
+        #     transforms.RandomHorizontalFlip(),
+        #     transforms.Resize(sample_size),
+        #     transforms.CenterCrop(sample_size),
+        #     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], inplace=True),
+        # ])
         self.groups = {
             "A": range(0, 5),
             "B": range(5, 10),
@@ -130,14 +114,14 @@ class MIL(Dataset):
 
         # Blue operation
         self.transforms_1 = ImageSequential(
-            # K.RandomHorizontalFlip(p=0.5),
-            K.RandomAffine(degrees=(-5., 5.), padding_mode=(0), p=0.7),
-            K.RandomPerspective(distortion_scale=0.2, p=0.7),
+            K.RandomHorizontalFlip(p=0.5),
+            K.RandomAffine(degrees=(-5., 5.), padding_mode=(0), p=0.5),
+            K.RandomPerspective(distortion_scale=0.2, p=0.5),
             K.RandomFisheye(
                 center_x = torch.tensor([-.1, .1]),
                 center_y = torch.tensor([-.1, .1]),
                 gamma = torch.tensor([.95, 1.05]),
-                p=0.7,
+                p=0.5,
             ),
             same_on_batch=True  # This enables getting the transformation matrices
         )
@@ -195,13 +179,12 @@ class MIL(Dataset):
             video_id = self.json[idx]["video_id"].replace(".jpg", ".png")
             target_set = self.json[idx]["target_image"].replace(".jpg", ".png")
             cond_set = self.json[idx]["conditioning_image"].replace(".jpg", ".png")
+            depth_set = 'all_depth.png'
+            normal_set = 'all_normal.png'
 
             print(video_id, target_set, cond_set)
             self.video_folder = '/fs/gamma-projects/svd_relight/MIT/train'
             image_path = self.video_folder + "/" + video_id
-
-            # self.video_folder = '/fs/gamma-projects/svd_relight/MIT/train'
-            # image_path = self.video_folder + "/" + video_id
 
             print(image_path)
             filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)[:self.sample_n_frames]
@@ -219,53 +202,50 @@ class MIL(Dataset):
                     print(f"cond_set {group_name}: {files}")
                     cond_files = files
 
-            # preprocessed_dir = os.path.join(self.video_folder, videoid)
-            # condition_folder = os.path.join(self.condition_folder, videoid)
-            # print(self.motion_values_folder, videoid)
-            # motion_values_file = os.path.join(self.motion_values_folder, videoid, videoid + "_average_motion.txt")
+            target_dir = [get_light_dir_encoding(int(img_dir.split("_")[1])) for img_dir in image_files]
 
-            # if not os.path.exists(condition_folder) or not os.path.exists(motion_values_file):
-            #     idx = random.randint(0, len(self.dataset) - 1)
-            #     continue
-    
-            # # Sort and limit the number of image and depth files to 14
-            # image_files = sorted(os.listdir(preprocessed_dir), key=self.sort_frames)[:self.sample_n_frames]
-            # depth_files = sorted(os.listdir(condition_folder), key=self.sort_frames)[:self.sample_n_frames]
-
-            # # Check if there are enough frames for both image and depth
-            # if len(image_files) < self.sample_n_frames or len(depth_files) < self.sample_n_frames:
-            #     idx = random.randint(0, len(self.dataset) - 1)
-            #     continue
-    
             # Load image frames
-            numpy_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, img))) for img in image_files])
+            numpy_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, img)).convert("RGB")) for img in image_files])
             pixel_values = numpy_to_pt(numpy_images)
-    
+
+            # Load control frames
+            numpy_control_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, cond)).convert("RGB")) for cond in cond_files])
+            cond_pixel_values = numpy_to_pt(numpy_control_images)
+
             # Load depth frames
-            numpy_depth_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, cond))) for cond in cond_files])
-            cond_pixel_values = numpy_to_pt(numpy_depth_images)
-    
-            # # Load motion values
-            # with open(motion_values_file, 'r') as file:
-            #     motion_values = float(file.read().strip())
+            # Read in 16 bit depth png
+            numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+            numpy_depth_images = np.stack([numpy_depth_images] * 3, axis=-1)
+            depth_pixel_values = numpy_to_pt(numpy_depth_images)
+
+            # Load normal frames
+            numpy_normal_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, normal_set)).convert("RGB")) for cond in cond_files])
+            normal_pixel_values = numpy_to_pt(numpy_normal_images)
 
             motion_values = [5]*len(cond_files)
             batch_size = pixel_values.shape[0]
 
-            combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values], dim=0))
+            combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values], dim=0))
             combined = self.transforms_1(combined)
 
-            pixel_values, cond_pixel_values = combined[:batch_size], combined[batch_size:]
-            return pixel_values, cond_pixel_values, motion_values
+            pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values = combined[:batch_size], combined[batch_size: batch_size*2], combined[batch_size*2: batch_size*3], combined[batch_size*3:]
+
+            return pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir
 
     def __getitem__(self, idx):
         
-        pixel_values, depth_pixel_values,motion_values = self.get_batch(idx)
+        pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
         pixel_values = self.pixel_transforms(pixel_values)
 
-        sample = dict(pixel_values=pixel_values, depth_pixel_values=depth_pixel_values,motion_values=motion_values)
+        sample = dict(  text="",
+                        target_dir= target_dir,
+                        pixel_values=pixel_values,
+                        condition_pixel_values=cond_pixel_values,
+                        depth_pixel_values=depth_pixel_values,
+                        motion_values=motion_values,
+                        input_ids = INPUT_IDS,
+                        )
         return sample
-
 
 
 
@@ -282,18 +262,25 @@ if __name__ == "__main__":
         )
 
     idx = np.random.randint(len(dataset))
-    train_image, train_cond, _ = dataset.get_batch(idx)
+    train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
     print('length:', len(dataset))
     print(train_image.shape, train_image.shape)
 
     save_array_as_image(train_image[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_0.png')
     save_array_as_image(train_cond[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_0.png')
-
+    save_array_as_image(train_depth[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_0.png')
+    save_array_as_image(train_normal[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_normal_image_0.png')
+    
     save_array_as_image(train_image[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_1.png')
     save_array_as_image(train_cond[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_1.png')
+    save_array_as_image(train_depth[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_1.png')
+    save_array_as_image(train_normal[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_normal_image_1.png')
 
     save_array_as_image(train_image[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_2.png')
     save_array_as_image(train_cond[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_2.png')
+    save_array_as_image(train_depth[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_2.png')
+    save_array_as_image(train_normal[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_normal_image_2.png')
+
 
     # import pdb
     # pdb.set_trace()
