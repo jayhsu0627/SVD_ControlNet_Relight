@@ -1,0 +1,787 @@
+NODELIST=gammagpu12
+MASTER_ADDR=gammagpu12
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `4`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `4`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `4`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+The following values were not passed to `accelerate launch` and had defaults used instead:
+	`--num_processes` was set to a value of `4`
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    result = self._invoke_run(role)
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+srun: error: gammagpu12: tasks 0,2-3: Exited with exit code 1
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py:488: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py:488: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py:488: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py:488: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+11/28/2024 21:33:01 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 2
+Local process index: 2
+Device: cuda:2
+
+Mixed precision type: fp16
+
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+11/28/2024 21:33:01 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 1
+Local process index: 1
+Device: cuda:1
+
+Mixed precision type: fp16
+
+11/28/2024 21:33:01 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 3
+Local process index: 3
+Device: cuda:3
+
+Mixed precision type: fp16
+
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+11/28/2024 21:33:01 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+{'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+11/28/2024 21:33:33 - INFO - __main__ - Initializing controlnet weights from unet
+layers per block is 2
+layers per block is 2
+1
+1
+1
+1
+data scale: 5910
+length 5910
+sample size (512, 512)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+data scale: 5910
+length 5910
+sample size (512, 512)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+length 5910
+sample size (512, 512)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+gammagpu12:649339:649339 [0] NCCL INFO Bootstrap : Using bond0:192.168.44.23<0>
+gammagpu12:649339:649339 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu12:649339:649339 [0] NCCL INFO cudaDriverVersion 12040
+NCCL version 2.20.5+cuda12.4
+gammagpu12:649340:649340 [1] NCCL INFO cudaDriverVersion 12040
+gammagpu12:649342:649342 [3] NCCL INFO cudaDriverVersion 12040
+gammagpu12:649341:649341 [2] NCCL INFO cudaDriverVersion 12040
+gammagpu12:649340:649340 [1] NCCL INFO Bootstrap : Using bond0:192.168.44.23<0>
+gammagpu12:649342:649342 [3] NCCL INFO Bootstrap : Using bond0:192.168.44.23<0>
+gammagpu12:649341:649341 [2] NCCL INFO Bootstrap : Using bond0:192.168.44.23<0>
+gammagpu12:649340:649340 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu12:649341:649341 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu12:649342:649342 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu12:649339:649483 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu12:649342:649485 [3] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu12:649339:649483 [0] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.23<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::bca9:ff:feb6:baff%enp67s0f3u2u3c2<0>
+gammagpu12:649342:649485 [3] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.23<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::bca9:ff:feb6:baff%enp67s0f3u2u3c2<0>
+gammagpu12:649341:649486 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu12:649339:649483 [0] NCCL INFO Using non-device net plugin version 0
+gammagpu12:649340:649484 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu12:649339:649483 [0] NCCL INFO Using network Socket
+gammagpu12:649342:649485 [3] NCCL INFO Using non-device net plugin version 0
+gammagpu12:649342:649485 [3] NCCL INFO Using network Socket
+gammagpu12:649341:649486 [2] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.23<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::bca9:ff:feb6:baff%enp67s0f3u2u3c2<0>
+gammagpu12:649340:649484 [1] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.23<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::bca9:ff:feb6:baff%enp67s0f3u2u3c2<0>
+gammagpu12:649341:649486 [2] NCCL INFO Using non-device net plugin version 0
+gammagpu12:649340:649484 [1] NCCL INFO Using non-device net plugin version 0
+gammagpu12:649341:649486 [2] NCCL INFO Using network Socket
+gammagpu12:649340:649484 [1] NCCL INFO Using network Socket
+gammagpu12:649342:649485 [3] NCCL INFO comm 0x55c828382280 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x6393e38d294a1e52 - Init START
+gammagpu12:649339:649483 [0] NCCL INFO comm 0x55d3e68a1d40 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x6393e38d294a1e52 - Init START
+gammagpu12:649341:649486 [2] NCCL INFO comm 0x561bd972b480 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x6393e38d294a1e52 - Init START
+gammagpu12:649340:649484 [1] NCCL INFO comm 0x55ca9db2b7c0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x6393e38d294a1e52 - Init START
+gammagpu12:649340:649484 [1] NCCL INFO NVLS multicast support is not available on dev 1
+gammagpu12:649339:649483 [0] NCCL INFO NVLS multicast support is not available on dev 0
+gammagpu12:649342:649485 [3] NCCL INFO NVLS multicast support is not available on dev 3
+gammagpu12:649341:649486 [2] NCCL INFO NVLS multicast support is not available on dev 2
+gammagpu12:649340:649484 [1] NCCL INFO comm 0x55ca9db2b7c0 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+gammagpu12:649340:649484 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0
+gammagpu12:649340:649484 [1] NCCL INFO P2P Chunksize set to 131072
+gammagpu12:649341:649486 [2] NCCL INFO comm 0x561bd972b480 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+gammagpu12:649339:649483 [0] NCCL INFO comm 0x55d3e68a1d40 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+gammagpu12:649342:649485 [3] NCCL INFO comm 0x55c828382280 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+gammagpu12:649339:649483 [0] NCCL INFO Channel 00/04 :    0   1   2   3
+gammagpu12:649341:649486 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1
+gammagpu12:649339:649483 [0] NCCL INFO Channel 01/04 :    0   1   2   3
+gammagpu12:649341:649486 [2] NCCL INFO P2P Chunksize set to 131072
+gammagpu12:649339:649483 [0] NCCL INFO Channel 02/04 :    0   1   2   3
+gammagpu12:649339:649483 [0] NCCL INFO Channel 03/04 :    0   1   2   3
+gammagpu12:649342:649485 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2
+gammagpu12:649342:649485 [3] NCCL INFO P2P Chunksize set to 131072
+gammagpu12:649339:649483 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1
+gammagpu12:649339:649483 [0] NCCL INFO P2P Chunksize set to 131072
+gammagpu12:649340:649484 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu12:649339:649483 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu12:649339:649483 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu12:649339:649483 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu12:649339:649483 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Connected all rings
+gammagpu12:649342:649485 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Connected all rings
+gammagpu12:649339:649483 [0] NCCL INFO Connected all rings
+gammagpu12:649340:649484 [1] NCCL INFO Connected all rings
+gammagpu12:649342:649485 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu12:649341:649486 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu12:649340:649484 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu12:649342:649485 [3] NCCL INFO Connected all trees
+gammagpu12:649342:649485 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu12:649342:649485 [3] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu12:649339:649483 [0] NCCL INFO Connected all trees
+gammagpu12:649339:649483 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu12:649339:649483 [0] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu12:649341:649486 [2] NCCL INFO Connected all trees
+gammagpu12:649341:649486 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu12:649341:649486 [2] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu12:649340:649484 [1] NCCL INFO Connected all trees
+gammagpu12:649340:649484 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu12:649340:649484 [1] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu12:649342:649485 [3] NCCL INFO comm 0x55c828382280 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x6393e38d294a1e52 - Init COMPLETE
+gammagpu12:649341:649486 [2] NCCL INFO comm 0x561bd972b480 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x6393e38d294a1e52 - Init COMPLETE
+gammagpu12:649340:649484 [1] NCCL INFO comm 0x55ca9db2b7c0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x6393e38d294a1e52 - Init COMPLETE
+gammagpu12:649339:649483 [0] NCCL INFO comm 0x55d3e68a1d40 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x6393e38d294a1e52 - Init COMPLETE
+wandb: Tracking run with wandb version 0.17.8
+wandb: Run data is saved locally in /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241128_213351-fwn7hhx8
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run good-feather-64
+wandb: ⭐️ View project at https://wandb.ai/sjxu_gamma/SVD_Con_Mul
+wandb: 🚀 View run at https://wandb.ai/sjxu_gamma/SVD_Con_Mul/runs/fwn7hhx8
+11/28/2024 21:33:56 - INFO - __main__ - ***** Running training *****
+11/28/2024 21:33:56 - INFO - __main__ -   Num examples = 4728
+11/28/2024 21:33:56 - INFO - __main__ -   Num Epochs = 30
+11/28/2024 21:33:56 - INFO - __main__ -   Instantaneous batch size per device = 2
+11/28/2024 21:33:56 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/28/2024 21:33:56 - INFO - __main__ -   Gradient Accumulation steps = 8
+11/28/2024 21:33:56 - INFO - __main__ -   Total optimization steps = 2220
+  0%|          | 0/2220 [00:00<?, ?it/s]Steps:   0%|          | 0/2220 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+torch.Size([2, 6, 3, 512, 512])
+===$$$$====
+torch.Size([2, 6, 6, 512, 512]) torch.Size([2, 6, 3, 512, 512])
+torch.Size([2, 6, 8, 64, 64]) torch.Size([2, 6, 6, 512, 512])
+torch.Size([2, 6, 3, 512, 512])
+===$$$$====
+torch.Size([2, 6, 6, 512, 512]) torch.Size([2, 6, 3, 512, 512])
+torch.Size([2, 6, 8, 64, 64]) torch.Size([2, 6, 6, 512, 512])
+torch.Size([2, 6, 3, 512, 512])
+===$$$$====
+torch.Size([2, 6, 6, 512, 512]) torch.Size([2, 6, 3, 512, 512])
+torch.Size([2, 6, 8, 64, 64]) torch.Size([2, 6, 6, 512, 512])
+torch.Size([2, 6, 3, 512, 512])
+===$$$$====
+torch.Size([2, 6, 6, 512, 512]) torch.Size([2, 6, 3, 512, 512])
+torch.Size([2, 6, 8, 64, 64]) torch.Size([2, 6, 6, 512, 512])
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+    controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+    embedding = self.conv_in(conditioning)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+[rank3]:     main()
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+[rank3]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank3]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank3]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank3]:     return model_forward(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank3]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank3]:     return func(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+[rank3]:     controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+[rank3]:     embedding = self.conv_in(conditioning)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+[rank3]:     return self._conv_forward(input, self.weight, self.bias)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+[rank3]:     return F.conv2d(input, weight, bias, self.stride,
+[rank3]: RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+    controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+    embedding = self.conv_in(conditioning)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+    controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+    embedding = self.conv_in(conditioning)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+[rank0]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank0]:     return model_forward(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank0]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+[rank0]:     controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+[rank0]:     embedding = self.conv_in(conditioning)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+[rank0]:     return self._conv_forward(input, self.weight, self.bias)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+[rank0]:     return F.conv2d(input, weight, bias, self.stride,
+[rank0]: RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+[rank1]:     main()
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+[rank1]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank1]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank1]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank1]:     return model_forward(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank1]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank1]:     return func(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+[rank1]:     controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+[rank1]:     embedding = self.conv_in(conditioning)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+[rank1]:     return self._conv_forward(input, self.weight, self.bias)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+[rank1]:     return F.conv2d(input, weight, bias, self.stride,
+[rank1]: RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+    controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+    embedding = self.conv_in(conditioning)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1863, in <module>
+[rank2]:     main()
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1588, in main
+[rank2]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank2]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank2]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank2]:     return model_forward(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank2]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank2]:     return func(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 515, in forward
+[rank2]:     controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 101, in forward
+[rank2]:     embedding = self.conv_in(conditioning)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+[rank2]:     return self._conv_forward(input, self.weight, self.bias)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+[rank2]:     return F.conv2d(input, weight, bias, self.stride,
+[rank2]: RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[12, 6, 512, 512] to have 3 channels, but got 6 channels instead
+W1128 21:34:24.446423 140498088624896 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 649339 closing signal SIGTERM
+W1128 21:34:24.446768 140498088624896 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 649341 closing signal SIGTERM
+E1128 21:34:24.760867 140498088624896 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 1 (pid: 649340) of binary: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_svd_con.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-11-28_21:34:24
+  host      : gammagpu12.umiacs.umd.edu
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 649342)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-11-28_21:34:24
+  host      : gammagpu12.umiacs.umd.edu
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 649340)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: gammagpu12: task 1: Exited with exit code 1

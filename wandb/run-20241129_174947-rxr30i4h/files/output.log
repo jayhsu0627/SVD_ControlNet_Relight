@@ -1,0 +1,47 @@
+11/29/2024 17:49:53 - INFO - __main__ - ***** Running training *****
+11/29/2024 17:49:53 - INFO - __main__ -   Num examples = 4728
+11/29/2024 17:49:53 - INFO - __main__ -   Num Epochs = 30
+11/29/2024 17:49:53 - INFO - __main__ -   Instantaneous batch size per device = 2
+11/29/2024 17:49:53 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/29/2024 17:49:53 - INFO - __main__ -   Gradient Accumulation steps = 8
+11/29/2024 17:49:53 - INFO - __main__ -   Total optimization steps = 2220
+Steps:   0%|          | 0/2220 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1911, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1550, in main
+    encoder_hidden_states = encode_image(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1226, in encode_image
+    pixel_values = feature_extractor(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/image_processing_utils.py", line 41, in __call__
+    return self.preprocess(images, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/models/clip/image_processing_clip.py", line 310, in preprocess
+    images = [to_numpy_array(image) for image in images]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/models/clip/image_processing_clip.py", line 310, in <listcomp>
+    images = [to_numpy_array(image) for image in images]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/image_utils.py", line 217, in to_numpy_array
+    return to_numpy(img)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/utils/generic.py", line 305, in to_numpy
+    return framework_to_numpy[framework](obj)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/utils/generic.py", line 290, in <lambda>
+    "pt": lambda obj: obj.detach().cpu().numpy(),
+TypeError: Got unsupported ScalarType BFloat16
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1911, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1550, in main
+[rank0]:     encoder_hidden_states = encode_image(
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1226, in encode_image
+[rank0]:     pixel_values = feature_extractor(
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/image_processing_utils.py", line 41, in __call__
+[rank0]:     return self.preprocess(images, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/models/clip/image_processing_clip.py", line 310, in preprocess
+[rank0]:     images = [to_numpy_array(image) for image in images]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/models/clip/image_processing_clip.py", line 310, in <listcomp>
+[rank0]:     images = [to_numpy_array(image) for image in images]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/image_utils.py", line 217, in to_numpy_array
+[rank0]:     return to_numpy(img)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/utils/generic.py", line 305, in to_numpy
+[rank0]:     return framework_to_numpy[framework](obj)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/utils/generic.py", line 290, in <lambda>
+[rank0]:     "pt": lambda obj: obj.detach().cpu().numpy(),
+[rank0]: TypeError: Got unsupported ScalarType BFloat16

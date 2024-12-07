@@ -1,0 +1,251 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 319940
+INFO:__main__:  Num Epochs = 30
+INFO:__main__:  Instantaneous batch size per device = 2
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 16
+INFO:__main__:  Gradient Accumulation steps = 8
+INFO:__main__:  Total optimization steps = 599910
+Steps:   0%|                                                                                                                                         | 0/599910 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+Steps:   0%|                                                                                                                    | 0/599910 [00:05<?, ?it/s, loss=0.2, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                                   | 0/599910 [00:06<?, ?it/s, loss=0.12, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                                 | 0/599910 [00:09<?, ?it/s, loss=0.0782, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                                  | 0/599910 [00:11<?, ?it/s, loss=0.107, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 1/599910 [00:13<1965:45:01, 11.80s/it, loss=0.101, lr=0.0001]
+tensor(-0.9297, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9141, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 1/599910 [00:15<1965:45:01, 11.80s/it, loss=0.107, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 1/599910 [00:16<1965:45:01, 11.80s/it, loss=0.0949, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 1/599910 [00:19<1965:45:01, 11.80s/it, loss=0.156, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 2/599910 [00:21<1690:44:16, 10.15s/it, loss=0.0685, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 2/599910 [00:23<1690:44:16, 10.15s/it, loss=0.0752, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 2/599910 [00:24<1690:44:16, 10.15s/it, loss=0.0878, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                      | 2/599910 [00:26<1690:44:16, 10.15s/it, loss=0.19, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 3/599910 [00:29<1603:53:35,  9.62s/it, loss=0.119, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 3/599910 [00:31<1603:53:35,  9.62s/it, loss=0.108, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 3/599910 [00:33<1603:53:35,  9.62s/it, loss=0.125, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 3/599910 [00:34<1603:53:35,  9.62s/it, loss=0.107, lr=0.0001][34m[1mwandb[39m[22m: 429 encountered (Filestream rate limit exceeded, retrying in 2.0 seconds.), retrying request
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+Steps:   0%|                                                                                                    | 3/599910 [00:37<1603:53:35,  9.62s/it, loss=0.0819, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 4/599910 [00:39<1564:19:08,  9.39s/it, loss=0.126, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 4/599910 [00:41<1564:19:08,  9.39s/it, loss=0.123, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 4/599910 [00:42<1564:19:08,  9.39s/it, loss=0.101, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                      | 5/599910 [00:47<1540:14:09,  9.24s/it, loss=0.14, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 5/599910 [00:49<1540:14:09,  9.24s/it, loss=0.0949, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9844, device='cuda:0', dtype=torch.bfloat16) tensor(0.7812, device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 5/599910 [00:51<1540:14:09,  9.24s/it, loss=0.103, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 5/599910 [00:52<1540:14:09,  9.24s/it, loss=0.0932, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 5/599910 [00:55<1540:14:09,  9.24s/it, loss=0.0929, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9609, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 6/599910 [00:57<1524:27:22,  9.15s/it, loss=0.104, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 6/599910 [00:58<1524:27:22,  9.15s/it, loss=0.0992, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9531, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9609, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 6/599910 [01:00<1524:27:22,  9.15s/it, loss=0.222, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 6/599910 [01:02<1524:27:22,  9.15s/it, loss=0.0621, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 6/599910 [01:05<1524:27:22,  9.15s/it, loss=0.126, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 7/599910 [01:07<1517:27:40,  9.11s/it, loss=0.106, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 7/599910 [01:08<1517:27:40,  9.11s/it, loss=0.0874, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 7/599910 [01:10<1517:27:40,  9.11s/it, loss=0.116, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 7/599910 [01:13<1517:27:40,  9.11s/it, loss=0.219, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 8/599910 [01:15<1511:36:39,  9.07s/it, loss=0.0924, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                    | 8/599910 [01:16<1511:36:39,  9.07s/it, loss=0.0808, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9844, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 8/599910 [01:18<1511:36:39,  9.07s/it, loss=0.115, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(0.9844, device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 8/599910 [01:20<1511:36:39,  9.07s/it, loss=0.123, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 8/599910 [01:23<1511:36:39,  9.07s/it, loss=0.111, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 9/599910 [01:25<1507:50:16,  9.05s/it, loss=0.091, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 9/599910 [01:26<1507:50:16,  9.05s/it, loss=0.103, lr=0.0001]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9609, device='cuda:0', dtype=torch.bfloat16) tensor(0.8906, device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+
+Steps:   0%|                                                                                                     | 9/599910 [01:28<1507:50:16,  9.05s/it, loss=0.139, lr=0.0001]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/queues.py", line 251, in _feed
+    send_bytes(obj)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/queues.py", line 251, in _feed
+    send_bytes(obj)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/queues.py", line 251, in _feed
+    send_bytes(obj)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/queues.py", line 251, in _feed
+    send_bytes(obj)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 416, in _send_bytes
+    self._send(header + buf)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/multiprocessing/connection.py", line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 1670, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 1655, in main
+    logs = {"loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
+KeyboardInterrupt

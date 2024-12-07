@@ -1,0 +1,37 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 319940
+INFO:__main__:  Num Epochs = 30
+INFO:__main__:  Instantaneous batch size per device = 2
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 16
+INFO:__main__:  Gradient Accumulation steps = 8
+INFO:__main__:  Total optimization steps = 599910
+Steps:   0%|                                                                                                                                                                                  | 0/599910 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 1573, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 1477, in main
+    for step, batch in enumerate(train_dataloader):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/data_loader.py", line 454, in __iter__
+    current_batch = next(dataloader_iter)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+    return self._process_data(data)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+KeyError: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 55, in fetch
+    return self.collate_fn(data)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 1136, in <lambda>
+    collate_fn=lambda examples: collate_fn(examples, args),
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 906, in collate_fn
+    conditioning_pixel_values = torch.stack([example["condition_pixel_values"] for example in examples])
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py", line 906, in <listcomp>
+    conditioning_pixel_values = torch.stack([example["condition_pixel_values"] for example in examples])
+KeyError: 'condition_pixel_values'

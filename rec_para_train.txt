@@ -4,6 +4,7 @@ time_embedding.linear_1.weight
 time_embedding.linear_1.bias
 time_embedding.linear_2.weight
 time_embedding.linear_2.bias
+time_embedding.cond_proj.weight
 add_embedding.linear_1.weight
 add_embedding.linear_1.bias
 add_embedding.linear_2.weight

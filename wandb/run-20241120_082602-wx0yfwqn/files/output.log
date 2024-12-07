@@ -12,3 +12,190 @@ Steps:   0%|          | 0/7410 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3
 
 
 
+
+
+
+Steps:   0%|          | 1/7410 [00:47<97:54:01, 47.57s/it, lr=0.0001, step_loss=0.157]11/20/2024 08:26:53 - INFO - __main__ - Running validation...
+ Generating 1 videos.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                     {'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 54.80it/s]
+Steps:   0%|          | 1/7410 [01:05<97:54:01, 47.57s/it, lr=0.0001, step_loss=0.191]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 10/7410 [03:49<35:54:47, 17.47s/it, lr=0.0001, step_loss=0.0859]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1854, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1464, in main
+    for step, batch in enumerate(train_dataloader):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/data_loader.py", line 464, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1324, in _next_data
+    return self._process_data(data)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+OSError: Caught OSError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/ImageFile.py", line 273, in load
+    s = read(self.decodermaxblock)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/PngImagePlugin.py", line 962, in load_read
+    cid, pos, length = self.png.read()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/PngImagePlugin.py", line 172, in read
+    length = i32(s)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/_binary.py", line 95, in i32be
+    return unpack_from(">I", c, o)[0]
+struct.error: unpack_from requires a buffer of at least 4 bytes for unpacking 4 bytes at offset 0 (actual buffer size is 0)
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+    data = self.dataset.__getitems__(possibly_batched_index)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in __getitems__
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in <listcomp>
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 258, in __getitem__
+    pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 236, in get_batch
+    numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 236, in <listcomp>
+    numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/Image.py", line 742, in __array_interface__
+    new["data"] = self.tobytes()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/Image.py", line 802, in tobytes
+    self.load()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/ImageFile.py", line 280, in load
+    raise OSError(msg) from e
+OSError: image file is truncated
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1854, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1464, in main
+[rank0]:     for step, batch in enumerate(train_dataloader):
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/data_loader.py", line 464, in __iter__
+[rank0]:     next_batch = next(dataloader_iter)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1324, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+[rank0]:     raise exception
+[rank0]: OSError: Caught OSError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/ImageFile.py", line 273, in load
+[rank0]:     s = read(self.decodermaxblock)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/PngImagePlugin.py", line 962, in load_read
+[rank0]:     cid, pos, length = self.png.read()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/PngImagePlugin.py", line 172, in read
+[rank0]:     length = i32(s)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/_binary.py", line 95, in i32be
+[rank0]:     return unpack_from(">I", c, o)[0]
+[rank0]: struct.error: unpack_from requires a buffer of at least 4 bytes for unpacking 4 bytes at offset 0 (actual buffer size is 0)
+[rank0]: The above exception was the direct cause of the following exception:
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+[rank0]:     data = self.dataset.__getitems__(possibly_batched_index)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in __getitems__
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in <listcomp>
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 258, in __getitem__
+[rank0]:     pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 236, in get_batch
+[rank0]:     numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/MIL_dataset.py", line 236, in <listcomp>
+[rank0]:     numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/Image.py", line 742, in __array_interface__
+[rank0]:     new["data"] = self.tobytes()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/Image.py", line 802, in tobytes
+[rank0]:     self.load()
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/PIL/ImageFile.py", line 280, in load
+[rank0]:     raise OSError(msg) from e
+[rank0]: OSError: image file is truncated

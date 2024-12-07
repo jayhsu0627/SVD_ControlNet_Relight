@@ -1,0 +1,49 @@
+11/28/2024 23:57:45 - INFO - __main__ - ***** Running training *****
+11/28/2024 23:57:45 - INFO - __main__ -   Num examples = 4728
+11/28/2024 23:57:45 - INFO - __main__ -   Num Epochs = 30
+11/28/2024 23:57:45 - INFO - __main__ -   Instantaneous batch size per device = 2
+11/28/2024 23:57:45 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/28/2024 23:57:45 - INFO - __main__ -   Gradient Accumulation steps = 8
+11/28/2024 23:57:45 - INFO - __main__ -   Total optimization steps = 2220
+Steps:   0%|          | 0/2220 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1900, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1499, in main
+    with accelerator.accumulate(controlnet):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 119, in __enter__
+    return next(self.gen)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py", line 1075, in accumulate
+    cm_stack.enter_context(contextlib.nullcontext() if allow_gradient_sync else self.no_sync(m))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 448, in enter_context
+    result = _cm_type.__enter__(cm)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 119, in __enter__
+    return next(self.gen)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py", line 956, in no_sync
+    with context():
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 119, in __enter__
+    return next(self.gen)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 1995, in no_sync
+    assert not self.zero_optimization_partition_gradients(), \
+AssertionError: no_sync context manager is incompatible with gradient partitioning logic of ZeRO stage 2
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1900, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1499, in main
+[rank0]:     with accelerator.accumulate(controlnet):
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 119, in __enter__
+[rank0]:     return next(self.gen)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py", line 1075, in accumulate
+[rank0]:     cm_stack.enter_context(contextlib.nullcontext() if allow_gradient_sync else self.no_sync(m))
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 448, in enter_context
+[rank0]:     result = _cm_type.__enter__(cm)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 119, in __enter__
+[rank0]:     return next(self.gen)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/accelerator.py", line 956, in no_sync
+[rank0]:     with context():
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/contextlib.py", line 119, in __enter__
+[rank0]:     return next(self.gen)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 1995, in no_sync
+[rank0]:     assert not self.zero_optimization_partition_gradients(), \
+[rank0]: AssertionError: no_sync context manager is incompatible with gradient partitioning logic of ZeRO stage 2

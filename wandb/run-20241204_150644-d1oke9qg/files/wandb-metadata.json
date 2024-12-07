@@ -1,0 +1,156 @@
+{
+    "os": "Linux-4.18.0-553.27.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.9.12",
+    "heartbeatAt": "2024-12-04T20:06:44.945465",
+    "startedAt": "2024-12-04T20:06:44.533639",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--output_dir=/fs/nexus-scratch/sjxu/Model_out/decoder",
+        "--width=512",
+        "--height=512",
+        "--learning_rate=1e-4",
+        "--per_gpu_batch_size=2",
+        "--num_train_epochs=30",
+        "--mixed_precision=bf16",
+        "--gradient_accumulation_steps=8",
+        "--checkpointing_steps=100",
+        "--validation_steps=200",
+        "--gradient_checkpointing",
+        "--checkpoints_total_limit=5",
+        "--report_to=wandb",
+        "--num_workers=4",
+        "--mse_weight=0.4"
+    ],
+    "state": "running",
+    "program": "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py",
+    "codePathLocal": "train_svd_decoder.py",
+    "codePath": "train_svd_decoder.py",
+    "git": {
+        "remote": "git@github.com:jayhsu0627/SVD_ControlNet_Relight.git",
+        "commit": "8c9b50c41de731091e814ae71aa7c241793367cc"
+    },
+    "email": null,
+    "root": "/fs/nexus-scratch/sjxu/svd-temporal-controlnet",
+    "host": "gammagpu15.umiacs.umd.edu",
+    "username": "sjxu",
+    "executable": "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python",
+    "cpu_count": 16,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3174.689875,
+        "min": 1500.0,
+        "max": 3729.491999999999
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3645.356,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3716.721,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3716.603,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3716.358,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        },
+        {
+            "current": 3000.0,
+            "min": 1500.0,
+            "max": 3729.492
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 39.043426513671875,
+            "used": 12.263568878173828
+        }
+    },
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        },
+        {
+            "name": "NVIDIA RTX A6000",
+            "memory_total": 51527024640
+        }
+    ],
+    "memory": {
+        "total": 125.25707244873047
+    }
+}

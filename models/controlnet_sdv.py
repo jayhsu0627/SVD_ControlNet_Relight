@@ -20,6 +20,8 @@ from torch.nn import functional as F
 
 from diffusers.configuration_utils import ConfigMixin, register_to_config
 from diffusers.loaders import FromOriginalControlnetMixin
+# from diffusers.loaders.controlnet import FromOriginalControlnetMixin
+
 from diffusers.utils import BaseOutput, logging
 from diffusers.models.attention_processor import (
     ADDED_KV_ATTENTION_PROCESSORS,
@@ -225,9 +227,9 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalControlnetMixin):
         time_embed_dim = block_out_channels[0] * 4
 
         self.time_proj = Timesteps(block_out_channels[0], True, downscale_freq_shift=0)
-        timestep_input_dim = block_out_channels[0]
+        self.timestep_input_dim = block_out_channels[0]
 
-        self.time_embedding = TimestepEmbedding(timestep_input_dim, time_embed_dim)
+        self.time_embedding = TimestepEmbedding(self.timestep_input_dim, time_embed_dim)
 
         self.add_time_proj = Timesteps(addition_time_embed_dim, True, downscale_freq_shift=0)
         self.add_embedding = TimestepEmbedding(projection_class_embeddings_input_dim, time_embed_dim)

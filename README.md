@@ -19,7 +19,7 @@ Introducing the Stable Video Diffusion Temporal Controlnet! This tool uses a con
 ## Training
 My example training config is configured like this:
 ```
-CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_con.py \
+CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_controlnet.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
  --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_out" \
  --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
@@ -43,8 +43,41 @@ CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_con.py \
  --report_to="wandb" \
  --dropout_rgb=0.1 \
  --sample_n_frames=5 \
- --num_frames=5
+ --num_frames=5 \
 ```
+decoder training
+```
+CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_decoder.py \
+ --output_dir="/fs/nexus-scratch/sjxu/Model_out/decoder" \
+ --width=512 \
+ --height=512 \
+ --learning_rate=1e-4 \
+ --per_gpu_batch_size=2 \
+ --num_train_epochs=30 \
+ --mixed_precision="bf16" \
+ --gradient_accumulation_steps=8 \
+ --checkpointing_steps=500 \
+ --validation_steps=200 \
+ --gradient_checkpointing \
+ --checkpoints_total_limit=5 \
+ --report_to="wandb" \
+ --num_workers=4 \
+ --mse_weight=0.4
+
+```
+
+inference
+```
+python eval_svd_controlnet.py \
+ --validation_image_folder="/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/" \
+ --concat_depth_maps \
+ --width=512 \
+ --height=512 \
+ --mixed_precision="bf16" \
+ --target_light='23, 0, 1, 18, 19' \
+ --validation_image_num=2
+```
+
 
 ## Acknowledgements
 - **lllyasviel:** for the original controlnet implementation

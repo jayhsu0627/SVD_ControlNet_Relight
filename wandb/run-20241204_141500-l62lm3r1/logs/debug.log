@@ -1,0 +1,28 @@
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Current SDK version is 0.17.8
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Configure stats pid to 1565107
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Loading settings from /fs/nexus-scratch/sjxu/.config/wandb/settings
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Loading settings from /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/settings
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Loading settings from environment variables: {}
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Inferring run settings from compute environment: {'program_relpath': 'train_svd_decoder.py', 'program_abspath': '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py', 'program': '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py'}
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Applying login settings: {'api_key': '***REDACTED***'}
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Applying login settings: {'api_key': '***REDACTED***'}
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_setup.py:_flush():77] Applying login settings: {}
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_init.py:_log_setup():524] Logging user logs to /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241204_141500-l62lm3r1/logs/debug.log
+2024-12-04 14:15:00,148 INFO    MainThread:1565107 [wandb_init.py:_log_setup():525] Logging internal logs to /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241204_141500-l62lm3r1/logs/debug-internal.log
+2024-12-04 14:15:00,149 INFO    MainThread:1565107 [wandb_init.py:init():607] calling init triggers
+2024-12-04 14:15:00,149 INFO    MainThread:1565107 [wandb_init.py:init():614] wandb.init called with sweep_config: {}
+config: {}
+2024-12-04 14:15:00,149 INFO    MainThread:1565107 [wandb_init.py:init():657] starting backend
+2024-12-04 14:15:00,149 INFO    MainThread:1565107 [wandb_init.py:init():661] setting up manager
+2024-12-04 14:15:00,150 INFO    MainThread:1565107 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-12-04 14:15:00,153 INFO    MainThread:1565107 [wandb_init.py:init():669] backend started and connected
+2024-12-04 14:15:00,156 INFO    MainThread:1565107 [wandb_init.py:init():767] updated telemetry
+2024-12-04 14:15:00,194 INFO    MainThread:1565107 [wandb_init.py:init():800] communicating run to backend with 90.0 second timeout
+2024-12-04 14:15:00,401 INFO    MainThread:1565107 [wandb_init.py:init():851] starting run threads in backend
+2024-12-04 14:15:03,222 INFO    MainThread:1565107 [wandb_run.py:_console_start():2463] atexit reg
+2024-12-04 14:15:03,222 INFO    MainThread:1565107 [wandb_run.py:_redirect():2309] redirect: wrap_raw
+2024-12-04 14:15:03,222 INFO    MainThread:1565107 [wandb_run.py:_redirect():2374] Wrapping output streams.
+2024-12-04 14:15:03,222 INFO    MainThread:1565107 [wandb_run.py:_redirect():2399] Redirects installed.
+2024-12-04 14:15:03,227 INFO    MainThread:1565107 [wandb_init.py:init():894] run started, returning control to user process
+2024-12-04 14:15:03,228 INFO    MainThread:1565107 [wandb_run.py:_config_callback():1392] config_cb None None {'pretrained_model_name_or_path': 'stabilityai/stable-video-diffusion-img2vid', 'controlnet_model_name_or_path': None, 'revision': None, 'num_frames': 14, 'width': 512, 'height': 512, 'num_validation_images': 1, 'validation_steps': 200, 'test_steps': 20, 'output_dir': '/fs/nexus-scratch/sjxu/Model_out/decoder', 'seed': None, 'per_gpu_batch_size': 2, 'num_train_epochs': 30, 'max_train_steps': 599910, 'gradient_accumulation_steps': 8, 'gradient_checkpointing': True, 'learning_rate': 0.0001, 'scale_lr': False, 'lr_scheduler': 'constant', 'lr_warmup_steps': 500, 'conditioning_dropout_prob': 0.1, 'use_8bit_adam': False, 'allow_tf32': False, 'use_ema': False, 'non_ema_revision': None, 'num_workers': 1, 'adam_beta1': 0.9, 'adam_beta2': 0.999, 'adam_weight_decay': 0.01, 'adam_epsilon': 1e-08, 'max_grad_norm': 1.0, 'push_to_hub': False, 'hub_token': None, 'hub_model_id': None, 'logging_dir': 'logs', 'mixed_precision': 'fp16', 'report_to': 'wandb', 'local_rank': -1, 'checkpointing_steps': 500, 'checkpoints_total_limit': 5, 'resume_from_checkpoint': None, 'enable_xformers_memory_efficient_attention': False, 'pretrain_unet': None, 'rank': 128, 'csv_path': None, 'video_folder': None, 'condition_folder': None, 'motion_folder': None, 'validation_prompt': None, 'validation_image_num': None, 'validation_image_folder': None, 'validation_control_folder': None, 'sample_n_frames': 15, 'json_path': None, 'inject_lighting_direction': False, 'concat_depth_maps': False, 'dir_sh': -1, 'deepspeed': False, 'mse_weight': 0.4, 'global_batch_size': 2}
+2024-12-04 14:15:11,059 WARNING MsgRouterThr:1565107 [router.py:message_loop():77] message_loop has been closed

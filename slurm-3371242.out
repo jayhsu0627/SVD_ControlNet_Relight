@@ -1,0 +1,269 @@
+NODELIST=gammagpu10
+MASTER_ADDR=gammagpu10
+[2024-11-29 15:10:09,994] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-11-29 15:10:09,997] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-11-29 15:10:09,998] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-11-29 15:10:09,998] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+W1129 15:10:12.068806 140170404930560 torch/distributed/run.py:779] 
+W1129 15:10:12.068806 140170404930560 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.068806 140170404930560 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1129 15:10:12.068806 140170404930560 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.083165 140003150992384 torch/distributed/run.py:779] 
+W1129 15:10:12.083165 140003150992384 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.083165 140003150992384 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1129 15:10:12.083165 140003150992384 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.083483 140112897709056 torch/distributed/run.py:779] 
+W1129 15:10:12.083483 140112897709056 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.083483 140112897709056 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1129 15:10:12.083483 140112897709056 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.083934 140020142781440 torch/distributed/run.py:779] 
+W1129 15:10:12.083934 140020142781440 torch/distributed/run.py:779] *****************************************
+W1129 15:10:12.083934 140020142781440 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1129 15:10:12.083934 140020142781440 torch/distributed/run.py:779] *****************************************
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+srun: error: gammagpu10: tasks 0-1: Exited with exit code 1
+srun: error: gammagpu10: task 2: Exited with exit code 1
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1911, in <module>
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1911, in <module>
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1911, in <module>
+        main()main()
+
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 900, in main
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 900, in main
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1911, in <module>
+    zero2_plugin_0 = DeepSpeedPlugin(hf_ds_config="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/zero2_config.json")
+  File "<string>", line 17, in __init__
+    main()    
+zero2_plugin_0 = DeepSpeedPlugin(hf_ds_config="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/zero2_config.json")
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 900, in main
+  File "<string>", line 17, in __init__
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1120, in __post_init__
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1120, in __post_init__
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 900, in main
+    zero2_plugin_0 = DeepSpeedPlugin(hf_ds_config="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/zero2_config.json")
+  File "<string>", line 17, in __init__
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1120, in __post_init__
+    zero2_plugin_0 = DeepSpeedPlugin(hf_ds_config="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/utils/zero2_config.json")
+  File "<string>", line 17, in __init__
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1120, in __post_init__
+    self._deepspeed_config_checks()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1337, in _deepspeed_config_checks
+    self._deepspeed_config_checks()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1337, in _deepspeed_config_checks
+    self._deepspeed_config_checks()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1337, in _deepspeed_config_checks
+    self._deepspeed_config_checks()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py", line 1337, in _deepspeed_config_checks
+    raise ValueError(
+ValueError: When using `deepspeed_config_file`, the following accelerate config variables will be ignored: ['gradient_accumulation_steps', 'gradient_clipping', 'zero_stage', 'offload_optimizer_device', 'offload_param_device', 'offload_param_nvme_path', 'offload_optimizer_nvme_path', 'zero3_save_16bit_model', 'mixed_precision'].
+Please specify them appropriately in the DeepSpeed config file.
+If you are using an accelerate config file, remove others config variables mentioned in the above specified list.
+The easiest method is to create a new config following the questionnaire via `accelerate config`.
+It will only ask for the necessary config variables when using `deepspeed_config_file`.
+    raise ValueError(
+ValueError: When using `deepspeed_config_file`, the following accelerate config variables will be ignored: ['gradient_accumulation_steps', 'gradient_clipping', 'zero_stage', 'offload_optimizer_device', 'offload_param_device', 'offload_param_nvme_path', 'offload_optimizer_nvme_path', 'zero3_save_16bit_model', 'mixed_precision'].
+Please specify them appropriately in the DeepSpeed config file.
+If you are using an accelerate config file, remove others config variables mentioned in the above specified list.
+The easiest method is to create a new config following the questionnaire via `accelerate config`.
+It will only ask for the necessary config variables when using `deepspeed_config_file`.
+    raise ValueError(
+ValueError: When using `deepspeed_config_file`, the following accelerate config variables will be ignored: ['gradient_accumulation_steps', 'gradient_clipping', 'zero_stage', 'offload_optimizer_device', 'offload_param_device', 'offload_param_nvme_path', 'offload_optimizer_nvme_path', 'zero3_save_16bit_model', 'mixed_precision'].
+Please specify them appropriately in the DeepSpeed config file.
+If you are using an accelerate config file, remove others config variables mentioned in the above specified list.
+The easiest method is to create a new config following the questionnaire via `accelerate config`.
+It will only ask for the necessary config variables when using `deepspeed_config_file`.
+    raise ValueError(
+ValueError: When using `deepspeed_config_file`, the following accelerate config variables will be ignored: ['gradient_accumulation_steps', 'gradient_clipping', 'zero_stage', 'offload_optimizer_device', 'offload_param_device', 'offload_param_nvme_path', 'offload_optimizer_nvme_path', 'zero3_save_16bit_model', 'mixed_precision'].
+Please specify them appropriately in the DeepSpeed config file.
+If you are using an accelerate config file, remove others config variables mentioned in the above specified list.
+The easiest method is to create a new config following the questionnaire via `accelerate config`.
+It will only ask for the necessary config variables when using `deepspeed_config_file`.
+E1129 15:10:17.905069 140170404930560 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 0 (pid: 1481333) of binary: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_svd_con.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-11-29_15:10:17
+  host      : gammagpu10.umiacs.umd.edu
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 1481334)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[2]:
+  time      : 2024-11-29_15:10:17
+  host      : gammagpu10.umiacs.umd.edu
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 1481335)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+[3]:
+  time      : 2024-11-29_15:10:17
+  host      : gammagpu10.umiacs.umd.edu
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 1481339)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-11-29_15:10:17
+  host      : gammagpu10.umiacs.umd.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1481333)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: gammagpu10: task 3: Exited with exit code 1

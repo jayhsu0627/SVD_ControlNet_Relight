@@ -1,0 +1,223 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.9.12
+    cli_version: 0.17.8
+    framework: huggingface
+    huggingface_version: 4.44.0
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1733342463
+    t:
+      1:
+      - 1
+      - 11
+      - 41
+      - 49
+      - 55
+      - 71
+      - 79
+      - 83
+      2:
+      - 1
+      - 11
+      - 41
+      - 49
+      - 55
+      - 71
+      - 79
+      - 83
+      3:
+      - 23
+      - 61
+      4: 3.9.12
+      5: 0.17.8
+      6: 4.44.0
+      8:
+      - 5
+      13: linux-x86_64
+pretrained_model_name_or_path:
+  desc: null
+  value: stabilityai/stable-video-diffusion-img2vid
+controlnet_model_name_or_path:
+  desc: null
+  value: null
+revision:
+  desc: null
+  value: null
+num_frames:
+  desc: null
+  value: 14
+width:
+  desc: null
+  value: 512
+height:
+  desc: null
+  value: 512
+num_validation_images:
+  desc: null
+  value: 1
+validation_steps:
+  desc: null
+  value: 200
+test_steps:
+  desc: null
+  value: 20
+output_dir:
+  desc: null
+  value: /fs/nexus-scratch/sjxu/Model_out/decoder
+seed:
+  desc: null
+  value: null
+per_gpu_batch_size:
+  desc: null
+  value: 2
+num_train_epochs:
+  desc: null
+  value: 30
+max_train_steps:
+  desc: null
+  value: 599910
+gradient_accumulation_steps:
+  desc: null
+  value: 8
+gradient_checkpointing:
+  desc: null
+  value: true
+learning_rate:
+  desc: null
+  value: 0.0001
+scale_lr:
+  desc: null
+  value: false
+lr_scheduler:
+  desc: null
+  value: constant
+lr_warmup_steps:
+  desc: null
+  value: 500
+conditioning_dropout_prob:
+  desc: null
+  value: 0.1
+use_8bit_adam:
+  desc: null
+  value: false
+allow_tf32:
+  desc: null
+  value: false
+use_ema:
+  desc: null
+  value: false
+non_ema_revision:
+  desc: null
+  value: null
+num_workers:
+  desc: null
+  value: 1
+adam_beta1:
+  desc: null
+  value: 0.9
+adam_beta2:
+  desc: null
+  value: 0.999
+adam_weight_decay:
+  desc: null
+  value: 0.01
+adam_epsilon:
+  desc: null
+  value: 1.0e-08
+max_grad_norm:
+  desc: null
+  value: 1.0
+push_to_hub:
+  desc: null
+  value: false
+hub_token:
+  desc: null
+  value: null
+hub_model_id:
+  desc: null
+  value: null
+logging_dir:
+  desc: null
+  value: logs
+mixed_precision:
+  desc: null
+  value: bf16
+report_to:
+  desc: null
+  value: wandb
+local_rank:
+  desc: null
+  value: -1
+checkpointing_steps:
+  desc: null
+  value: 500
+checkpoints_total_limit:
+  desc: null
+  value: 5
+resume_from_checkpoint:
+  desc: null
+  value: null
+enable_xformers_memory_efficient_attention:
+  desc: null
+  value: false
+pretrain_unet:
+  desc: null
+  value: null
+rank:
+  desc: null
+  value: 128
+csv_path:
+  desc: null
+  value: null
+video_folder:
+  desc: null
+  value: null
+condition_folder:
+  desc: null
+  value: null
+motion_folder:
+  desc: null
+  value: null
+validation_prompt:
+  desc: null
+  value: null
+validation_image_num:
+  desc: null
+  value: null
+validation_image_folder:
+  desc: null
+  value: null
+validation_control_folder:
+  desc: null
+  value: null
+sample_n_frames:
+  desc: null
+  value: 15
+json_path:
+  desc: null
+  value: null
+inject_lighting_direction:
+  desc: null
+  value: false
+concat_depth_maps:
+  desc: null
+  value: false
+dir_sh:
+  desc: null
+  value: -1
+deepspeed:
+  desc: null
+  value: false
+mse_weight:
+  desc: null
+  value: 0.4
+set_grads_to_none:
+  desc: null
+  value: false
+global_batch_size:
+  desc: null
+  value: 2

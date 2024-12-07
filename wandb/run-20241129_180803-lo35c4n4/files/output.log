@@ -1,0 +1,38 @@
+11/29/2024 18:08:07 - INFO - __main__ - ***** Running training *****
+11/29/2024 18:08:07 - INFO - __main__ -   Num examples = 4728
+11/29/2024 18:08:07 - INFO - __main__ -   Num Epochs = 30
+11/29/2024 18:08:07 - INFO - __main__ -   Instantaneous batch size per device = 2
+11/29/2024 18:08:07 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/29/2024 18:08:07 - INFO - __main__ -   Gradient Accumulation steps = 8
+11/29/2024 18:08:07 - INFO - __main__ -   Total optimization steps = 2220
+Steps:   0%|          | 0/2220 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+Steps:   0%|          | 0/2220 [00:21<?, ?it/s, lr=0.0001, step_loss=0.279]
+[2024-11-29 18:08:29,060] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4294967296, reducing to 2147483648
+
+Steps:   0%|          | 0/2220 [01:25<?, ?it/s, lr=0.0001, step_loss=0.371]
+
+Steps:   0%|          | 0/2220 [01:29<?, ?it/s, lr=0.0001, step_loss=0.257]
+
+
+Steps:   0%|          | 0/2220 [01:38<?, ?it/s, lr=0.0001, step_loss=0.118]
+
+Steps:   0%|          | 0/2220 [01:42<?, ?it/s, lr=0.0001, step_loss=0.184]
+[2024-11-29 18:09:49,681] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 134217728, reducing to 67108864
+
+Steps:   0%|          | 0/2220 [01:46<?, ?it/s, lr=0.0001, step_loss=0.169]
+Steps:   0%|          | 1/2220 [01:50<68:12:44, 110.66s/it, lr=0.0001, step_loss=0.169]11/29/2024 18:09:58 - INFO - __main__ - Running validation...
+ Generating 1 videos.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                     {'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 253.67it/s]
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)

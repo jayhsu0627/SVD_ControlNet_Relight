@@ -23,15 +23,32 @@ import kornia.augmentation as K
 from kornia.augmentation.container import ImageSequential
 from relighting.light_directions import get_light_dir_encoding, BACKWARD_DIR_IDS
 
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 def save_array_as_image(array, filename):
     # Ensure the array has the correct data type (uint8 for images)
     if array.dtype != np.uint8:
         array = array.numpy().astype(np.uint8)
     # array = (array + 1)
     array = array.transpose(1, 2, 0)  
+    print("rgb",array.shape)
 
     # Convert the array to an image using PIL
     img = Image.fromarray(array)
+    
+    # Save the image to the specified filename
+    img.save(filename)
+
+def save_array_as_image_depth(array, filename):
+    # Ensure the array has the correct data type (uint8 for images)
+    if array.dtype != np.uint8:
+        array = array.numpy().astype(np.uint8)
+    # array = (array + 1)
+    array = array.transpose(1, 2, 0)[:,:,0]
+    print(array.shape)
+    # Convert the array to an image using PIL
+    img = Image.fromarray(array, mode="L")
     
     # Save the image to the specified filename
     img.save(filename)
@@ -69,7 +86,7 @@ class MIL(Dataset):
         ):
 
         self.json = [
-            json.loads(line) for line in open(f"relighting/training.json", "r").read().splitlines()
+            json.loads(line) for line in open(f"relighting/training_edit.json", "r").read().splitlines()
         ]
 
         zero_rank_print(f"loading annotations from {csv_path} ...")
@@ -96,12 +113,18 @@ class MIL(Dataset):
         #     transforms.CenterCrop(sample_size),
         #     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], inplace=True),
         # ])
+        # self.groups = {
+        #     "A": range(0, 5),
+        #     "B": range(5, 10),
+        #     "C": range(10, 15),
+        #     "D": range(15, 20),
+        #     "E": range(20, 25)
+        # }
+
         self.groups = {
-            "A": range(0, 5),
-            "B": range(5, 10),
-            "C": range(10, 15),
-            "D": range(15, 20),
-            "E": range(20, 25)
+            "A": [0, 1, 4, 5, 6, 7],
+            "B": [8, 9, 10, 11, 12, 13],
+            "C": [14, 15, 16, 17, 18, 23],
         }
 
         # Crop operation
@@ -248,10 +271,10 @@ class MIL(Dataset):
             # print(len(image_files),len(cond_files))
             # print(depth_pixel_values.shape, normal_pixel_values.shape)
             combined = self.transforms_0(torch.cat([pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values], dim=0))
-            combined = self.transforms_1(combined)
+            # combined = self.transforms_1(combined)
 
             pixel_values, cond_pixel_values, depth_pixel_values, normal_pixel_values = combined[:batch_size], combined[batch_size: batch_size*2], combined[batch_size*2: batch_size*3], combined[batch_size*3:]
-            return pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir
+            return pixel_values, cond_pixel_values, motion_values, depth_pixel_values[:, 0:1, :, :], normal_pixel_values, target_dir
 
     def __getitem__(self, idx):
         
@@ -279,7 +302,7 @@ if __name__ == "__main__":
         condition_folder = "/fs/nexus-scratch/sjxu/WebVid/blender_random/shd",
         motion_folder = "/fs/nexus-scratch/sjxu/WebVid/blender_random/motion",
         sample_size=512,
-        sample_n_frames=5
+        sample_n_frames=6
         )
 
     # idx = np.random.randint(len(dataset))
@@ -295,17 +318,17 @@ if __name__ == "__main__":
 
     save_array_as_image(train_image[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_0.png')
     save_array_as_image(train_cond[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_0.png')
-    save_array_as_image(train_depth[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_0.png')
+    save_array_as_image_depth(train_depth[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_0.png')
     save_array_as_image(train_normal[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_normal_image_0.png')
     
     save_array_as_image(train_image[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_1.png')
     save_array_as_image(train_cond[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_1.png')
-    save_array_as_image(train_depth[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_1.png')
+    save_array_as_image_depth(train_depth[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_1.png')
     save_array_as_image(train_normal[1]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_normal_image_1.png')
 
     save_array_as_image(train_image[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_2.png')
     save_array_as_image(train_cond[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_2.png')
-    save_array_as_image(train_depth[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_2.png')
+    save_array_as_image_depth(train_depth[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_depth_image_2.png')
     save_array_as_image(train_normal[2]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_normal_image_2.png')
 
 

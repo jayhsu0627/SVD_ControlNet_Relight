@@ -1,0 +1,24 @@
+11/29/2024 18:01:41 - INFO - __main__ - ***** Running training *****
+11/29/2024 18:01:41 - INFO - __main__ -   Num examples = 4728
+11/29/2024 18:01:41 - INFO - __main__ -   Num Epochs = 30
+11/29/2024 18:01:41 - INFO - __main__ -   Instantaneous batch size per device = 2
+11/29/2024 18:01:41 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+11/29/2024 18:01:41 - INFO - __main__ -   Gradient Accumulation steps = 8
+11/29/2024 18:01:41 - INFO - __main__ -   Total optimization steps = 2220
+Steps:   0%|          | 0/2220 [00:00<?, ?it/s]
+Steps:   0%|          | 0/2220 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1916, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1558, in main
+    added_time_ids = _get_add_time_ids(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1280, in _get_add_time_ids
+    passed_add_embed_dim = unet.config.addition_time_embed_dim * add_time_ids.size(1)
+AttributeError: 'dict' object has no attribute 'addition_time_embed_dim'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1916, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1558, in main
+[rank0]:     added_time_ids = _get_add_time_ids(
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_con.py", line 1280, in _get_add_time_ids
+[rank0]:     passed_add_embed_dim = unet.config.addition_time_embed_dim * add_time_ids.size(1)
+[rank0]: AttributeError: 'dict' object has no attribute 'addition_time_embed_dim'

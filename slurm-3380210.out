@@ -1,0 +1,963 @@
+NODELIST=gammagpu17
+MASTER_ADDR=gammagpu17
+[2024-12-01 16:21:18,817] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-12-01 16:21:18,818] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-12-01 16:21:18,819] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-12-01 16:21:18,820] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+W1201 16:21:22.540297 139634992305152 torch/distributed/run.py:779] 
+W1201 16:21:22.540297 139634992305152 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.540297 139634992305152 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1201 16:21:22.540297 139634992305152 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.541039 140021436916736 torch/distributed/run.py:779] 
+W1201 16:21:22.541039 140021436916736 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.541039 140021436916736 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1201 16:21:22.541039 140021436916736 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.541100 140092694316032 torch/distributed/run.py:779] 
+W1201 16:21:22.541100 140092694316032 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.541100 140092694316032 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1201 16:21:22.541100 140092694316032 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.550821 139847652230144 torch/distributed/run.py:779] 
+W1201 16:21:22.550821 139847652230144 torch/distributed/run.py:779] *****************************************
+W1201 16:21:22.550821 139847652230144 torch/distributed/run.py:779] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1201 16:21:22.550821 139847652230144 torch/distributed/run.py:779] *****************************************
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+srun: error: gammagpu17: tasks 0-1,3: Exited with exit code 1
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/kornia/feature/lightglue.py:44: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py:1183: UserWarning: DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.
+  warnings.warn("DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py:1183: UserWarning: DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.
+  warnings.warn("DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py:1183: UserWarning: DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.
+  warnings.warn("DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.")
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/dataclasses.py:1183: UserWarning: DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.
+  warnings.warn("DeepSpeed Zero3 Init flag is only applicable for ZeRO Stage 3. Setting it to False.")
+[2024-12-01 16:21:30,863] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-12-01 16:21:30,864] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-12-01 16:21:30,864] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-12-01 16:21:30,864] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2024-12-01 16:21:32,382] [INFO] [comm.py:652:init_distributed] cdb=None
+[2024-12-01 16:21:32,382] [INFO] [comm.py:683:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-12-01 16:21:32,382] [INFO] [comm.py:652:init_distributed] cdb=None
+[2024-12-01 16:21:32,382] [INFO] [comm.py:652:init_distributed] cdb=None
+[2024-12-01 16:21:32,382] [INFO] [comm.py:652:init_distributed] cdb=None
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/deepspeed.py:24: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/deepspeed.py:24: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/deepspeed.py:24: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/transformers/deepspeed.py:24: FutureWarning: transformers.deepspeed module is deprecated and will be removed in a future version. Please import deepspeed modules directly from transformers.integrations
+  warnings.warn(
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+12/01/2024 16:21:34 - INFO - __main__ - Distributed environment: DEEPSPEED  Backend: nccl
+Num processes: 4
+Process index: 3
+Local process index: 3
+Device: cuda:3
+
+Mixed precision type: fp16
+ds_config: {'bf16': {'enabled': False}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu', 'pin_memory': True}}, 'gradient_accumulation_steps': 1, 'gradient_clipping': 'auto', 'train_batch_size': 'auto', 'train_micro_batch_size_per_gpu': 'auto', 'steps_per_print': inf, 'fp16': {'enabled': True, 'auto_cast': True}}
+
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+12/01/2024 16:21:34 - INFO - __main__ - Distributed environment: DEEPSPEED  Backend: nccl
+Num processes: 4
+Process index: 1
+Local process index: 1
+Device: cuda:1
+
+Mixed precision type: fp16
+ds_config: {'bf16': {'enabled': False}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu', 'pin_memory': True}}, 'gradient_accumulation_steps': 1, 'gradient_clipping': 'auto', 'train_batch_size': 'auto', 'train_micro_batch_size_per_gpu': 'auto', 'steps_per_print': inf, 'fp16': {'enabled': True, 'auto_cast': True}}
+
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+12/01/2024 16:21:34 - INFO - __main__ - Distributed environment: DEEPSPEED  Backend: nccl
+Num processes: 4
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+ds_config: {'bf16': {'enabled': False}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu', 'pin_memory': True}}, 'gradient_accumulation_steps': 1, 'gradient_clipping': 'auto', 'train_batch_size': 'auto', 'train_micro_batch_size_per_gpu': 'auto', 'steps_per_print': inf, 'fp16': {'enabled': True, 'auto_cast': True}}
+
+12/01/2024 16:21:34 - INFO - __main__ - Distributed environment: DEEPSPEED  Backend: nccl
+Num processes: 4
+Process index: 2
+Local process index: 2
+Device: cuda:2
+
+Mixed precision type: fp16
+ds_config: {'bf16': {'enabled': False}, 'zero_optimization': {'stage': 2, 'offload_optimizer': {'device': 'cpu', 'pin_memory': True}}, 'gradient_accumulation_steps': 1, 'gradient_clipping': 'auto', 'train_batch_size': 'auto', 'train_micro_batch_size_per_gpu': 'auto', 'steps_per_print': inf, 'fp16': {'enabled': True, 'auto_cast': True}}
+
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/outputs.py:63: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  torch.utils._pytree._register_pytree_node(
+{'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/lpips.py:107: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.load_state_dict(torch.load(model_path, map_location='cpu'), strict=False)
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+12/01/2024 16:22:06 - INFO - __main__ - Initializing controlnet weights from unet
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+layers per block is 2
+1
+1
+1
+1
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+Using /fs/nexus-scratch/sjxu/.cache/torch_extensions/py39_cu121 as PyTorch extensions root...
+Using /fs/nexus-scratch/sjxu/.cache/torch_extensions/py39_cu121 as PyTorch extensions root...
+Using /fs/nexus-scratch/sjxu/.cache/torch_extensions/py39_cu121 as PyTorch extensions root...
+Using /fs/nexus-scratch/sjxu/.cache/torch_extensions/py39_cu121 as PyTorch extensions root...
+Emitting ninja build file /fs/nexus-scratch/sjxu/.cache/torch_extensions/py39_cu121/cpu_adam/build.ninja...
+Building extension module cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.202172040939331 seconds
+Adam Optimizer #0 is created with AVX2 arithmetic capability.
+Config: alpha=0.000100, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-12-01 16:22:28,503] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed info: version=0.15.4, git-hash=unknown, git-branch=unknown
+[2024-12-01 16:22:28,503] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.243196964263916 seconds
+Adam Optimizer #0 is created with AVX2 arithmetic capability.
+Config: alpha=0.000100, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-12-01 16:22:28,547] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.25260066986084 seconds
+Adam Optimizer #0 is created with AVX2 arithmetic capability.
+Config: alpha=0.000100, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-12-01 16:22:28,552] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 3.291994571685791 seconds
+Adam Optimizer #0 is created with AVX2 arithmetic capability.
+Config: alpha=0.000100, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+[2024-12-01 16:22:28,593] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+gammagpu17:1834561:1834561 [0] NCCL INFO Bootstrap : Using bond0:192.168.44.28<0>
+gammagpu17:1834561:1834561 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu17:1834561:1834561 [0] NCCL INFO cudaDriverVersion 12040
+NCCL version 2.20.5+cuda12.4
+gammagpu17:1834562:1834562 [1] NCCL INFO cudaDriverVersion 12040
+gammagpu17:1834564:1834564 [3] NCCL INFO cudaDriverVersion 12040
+gammagpu17:1834562:1834562 [1] NCCL INFO Bootstrap : Using bond0:192.168.44.28<0>
+gammagpu17:1834564:1834564 [3] NCCL INFO Bootstrap : Using bond0:192.168.44.28<0>
+gammagpu17:1834562:1834562 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu17:1834564:1834564 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu17:1834563:1834563 [2] NCCL INFO cudaDriverVersion 12040
+gammagpu17:1834563:1834563 [2] NCCL INFO Bootstrap : Using bond0:192.168.44.28<0>
+gammagpu17:1834563:1834563 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu17:1834562:1834954 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu17:1834562:1834954 [1] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.28<0> [1]virbr0:192.168.122.1<0>
+gammagpu17:1834562:1834954 [1] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834562:1834954 [1] NCCL INFO Using network Socket
+gammagpu17:1834564:1834953 [3] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu17:1834564:1834953 [3] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.28<0> [1]virbr0:192.168.122.1<0>
+gammagpu17:1834564:1834953 [3] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834564:1834953 [3] NCCL INFO Using network Socket
+gammagpu17:1834561:1834948 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu17:1834561:1834948 [0] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.28<0> [1]virbr0:192.168.122.1<0>
+gammagpu17:1834561:1834948 [0] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834561:1834948 [0] NCCL INFO Using network Socket
+gammagpu17:1834563:1834956 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu17:1834563:1834956 [2] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.28<0> [1]virbr0:192.168.122.1<0>
+gammagpu17:1834563:1834956 [2] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834563:1834956 [2] NCCL INFO Using network Socket
+gammagpu17:1834563:1834956 [2] NCCL INFO comm 0x55fbc0b5e780 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x53926ad3ffe7d72b - Init START
+gammagpu17:1834561:1834948 [0] NCCL INFO comm 0x562b9facc880 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x53926ad3ffe7d72b - Init START
+gammagpu17:1834564:1834953 [3] NCCL INFO comm 0x56152f487080 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x53926ad3ffe7d72b - Init START
+gammagpu17:1834562:1834954 [1] NCCL INFO comm 0x558b7aeba480 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x53926ad3ffe7d72b - Init START
+gammagpu17:1834561:1834948 [0] NCCL INFO NVLS multicast support is not available on dev 0
+gammagpu17:1834562:1834954 [1] NCCL INFO NVLS multicast support is not available on dev 1
+gammagpu17:1834563:1834956 [2] NCCL INFO NVLS multicast support is not available on dev 2
+gammagpu17:1834564:1834953 [3] NCCL INFO NVLS multicast support is not available on dev 3
+gammagpu17:1834563:1834956 [2] NCCL INFO comm 0x55fbc0b5e780 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+gammagpu17:1834563:1834956 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1
+gammagpu17:1834564:1834953 [3] NCCL INFO comm 0x56152f487080 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+gammagpu17:1834563:1834956 [2] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834562:1834954 [1] NCCL INFO comm 0x558b7aeba480 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+gammagpu17:1834561:1834948 [0] NCCL INFO comm 0x562b9facc880 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+gammagpu17:1834564:1834953 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2
+gammagpu17:1834564:1834953 [3] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834562:1834954 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 00/04 :    0   1   2   3
+gammagpu17:1834562:1834954 [1] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 01/04 :    0   1   2   3
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 02/04 :    0   1   2   3
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 03/04 :    0   1   2   3
+gammagpu17:1834561:1834948 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1
+gammagpu17:1834561:1834948 [0] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834561:1834948 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Connected all rings
+gammagpu17:1834561:1834948 [0] NCCL INFO Connected all rings
+gammagpu17:1834563:1834956 [2] NCCL INFO Connected all rings
+gammagpu17:1834564:1834953 [3] NCCL INFO Connected all rings
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834954 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834956 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834564:1834953 [3] NCCL INFO Connected all trees
+gammagpu17:1834561:1834948 [0] NCCL INFO Connected all trees
+gammagpu17:1834564:1834953 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834564:1834953 [3] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834561:1834948 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834561:1834948 [0] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834563:1834956 [2] NCCL INFO Connected all trees
+gammagpu17:1834563:1834956 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834563:1834956 [2] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834562:1834954 [1] NCCL INFO Connected all trees
+gammagpu17:1834562:1834954 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834562:1834954 [1] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834562:1834954 [1] NCCL INFO comm 0x558b7aeba480 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x53926ad3ffe7d72b - Init COMPLETE
+gammagpu17:1834564:1834953 [3] NCCL INFO comm 0x56152f487080 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x53926ad3ffe7d72b - Init COMPLETE
+gammagpu17:1834561:1834948 [0] NCCL INFO comm 0x562b9facc880 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x53926ad3ffe7d72b - Init COMPLETE
+gammagpu17:1834563:1834956 [2] NCCL INFO comm 0x55fbc0b5e780 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x53926ad3ffe7d72b - Init COMPLETE
+[2024-12-01 16:22:30,078] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-12-01 16:22:30,079] [INFO] [logging.py:128:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-12-01 16:22:30,079] [INFO] [logging.py:128:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-12-01 16:22:30,127] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2024-12-01 16:22:30,127] [INFO] [utils.py:59:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2024-12-01 16:22:30,127] [INFO] [logging.py:128:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 2 optimizer
+[2024-12-01 16:22:30,128] [INFO] [stage_1_and_2.py:149:__init__] Reduce bucket size 500000000
+[2024-12-01 16:22:30,128] [INFO] [stage_1_and_2.py:150:__init__] Allgather bucket size 500000000
+[2024-12-01 16:22:30,128] [INFO] [stage_1_and_2.py:151:__init__] CPU Offload: True
+[2024-12-01 16:22:30,128] [INFO] [stage_1_and_2.py:152:__init__] Round robin gradient partitioning: False
+[2024-12-01 16:22:32,000] [INFO] [utils.py:781:see_memory_usage] Before initializing optimizer states
+[2024-12-01 16:22:32,000] [INFO] [utils.py:782:see_memory_usage] MA 6.16 GB         Max_MA 6.16 GB         CA 6.35 GB         Max_CA 6 GB 
+[2024-12-01 16:22:32,001] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 33.12 GB, percent = 26.4%
+[2024-12-01 16:22:32,591] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:32,592] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:32,592] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:32,753] [INFO] [utils.py:781:see_memory_usage] After initializing optimizer states
+[2024-12-01 16:22:32,754] [INFO] [utils.py:782:see_memory_usage] MA 6.16 GB         Max_MA 6.16 GB         CA 6.35 GB         Max_CA 6 GB 
+[2024-12-01 16:22:32,754] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 34.88 GB, percent = 27.8%
+[2024-12-01 16:22:32,754] [INFO] [stage_1_and_2.py:544:__init__] optimizer state initialized
+[2024-12-01 16:22:32,882] [INFO] [utils.py:781:see_memory_usage] After initializing ZeRO optimizer
+[2024-12-01 16:22:32,882] [INFO] [utils.py:782:see_memory_usage] MA 6.16 GB         Max_MA 6.16 GB         CA 6.35 GB         Max_CA 6 GB 
+[2024-12-01 16:22:32,882] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 34.88 GB, percent = 27.8%
+[2024-12-01 16:22:32,889] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedZeroOptimizer
+[2024-12-01 16:22:32,889] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = None
+[2024-12-01 16:22:32,889] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+[2024-12-01 16:22:32,889] [INFO] [logging.py:128:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001], mom=[(0.9, 0.999)]
+[2024-12-01 16:22:32,890] [INFO] [config.py:999:print] DeepSpeedEngine configuration:
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True, 'use_gds': False}
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   amp_enabled .................. False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   amp_params ................... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   bfloat16_enabled ............. False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   bfloat16_immediate_grad_update  False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   checkpoint_parallel_write_pipeline  False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   checkpoint_tag_validation_enabled  True
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   checkpoint_tag_validation_fail  False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f5d8883a520>
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   communication_data_type ...... None
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   curriculum_enabled_legacy .... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   curriculum_params_legacy ..... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   data_efficiency_enabled ...... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   dataloader_drop_last ......... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   disable_allgather ............ False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   dump_state ................... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   dynamic_loss_scale_args ...... None
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_enabled ........... False
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_gas_boundary_resolution  1
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_layer_num ......... 0
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_max_iter .......... 100
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_stability ......... 1e-06
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_tol ............... 0.01
+[2024-12-01 16:22:32,891] [INFO] [config.py:1003:print]   eigenvalue_verbose ........... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   elasticity_enabled ........... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   fp16_auto_cast ............... True
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   fp16_enabled ................. True
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   fp16_master_weights_and_gradients  False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   global_rank .................. 0
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   grad_accum_dtype ............. None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   gradient_accumulation_steps .. 1
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   gradient_clipping ............ 1.0
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   gradient_predivide_factor .... 1.0
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   graph_harvesting ............. False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   initial_dynamic_scale ........ 65536
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   load_universal_checkpoint .... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   loss_scale ................... 0
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   memory_breakdown ............. False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   mics_hierarchial_params_gather  False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   mics_shard_size .............. -1
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName')
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   optimizer_legacy_fusion ...... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   optimizer_name ............... None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   optimizer_params ............. None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   pld_enabled .................. False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   pld_params ................... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   prescale_gradients ........... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   scheduler_name ............... None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   scheduler_params ............. None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   seq_parallel_communication_data_type  torch.float32
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   sparse_attention ............. None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   sparse_gradients_enabled ..... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   steps_per_print .............. inf
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   timers_config ................ enabled=True synchronized=True
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   train_batch_size ............. 8
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   train_micro_batch_size_per_gpu  2
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   use_data_before_expert_parallel_  False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   use_node_local_storage ....... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   wall_clock_breakdown ......... False
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   weight_quantization_config ... None
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   world_size ................... 4
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   zero_allow_untested_optimizer  True
+[2024-12-01 16:22:32,892] [INFO] [config.py:1003:print]   zero_config .................. stage=2 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=True, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-12-01 16:22:32,893] [INFO] [config.py:1003:print]   zero_enabled ................. True
+[2024-12-01 16:22:32,893] [INFO] [config.py:1003:print]   zero_force_ds_cpu_optimizer .. True
+[2024-12-01 16:22:32,893] [INFO] [config.py:1003:print]   zero_optimization_stage ...... 2
+[2024-12-01 16:22:32,893] [INFO] [config.py:989:print_user_config]   json = {
+    "bf16": {
+        "enabled": false
+    }, 
+    "zero_optimization": {
+        "stage": 2, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true
+        }
+    }, 
+    "gradient_accumulation_steps": 1, 
+    "gradient_clipping": 1.0, 
+    "train_batch_size": 8, 
+    "train_micro_batch_size_per_gpu": 2, 
+    "steps_per_print": inf, 
+    "fp16": {
+        "enabled": true, 
+        "auto_cast": true
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+[2024-12-01 16:22:32,903] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed info: version=0.15.4, git-hash=unknown, git-branch=unknown
+[2024-12-01 16:22:32,903] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:32,984] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:32,985] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:32,987] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+[2024-12-01 16:22:33,007] [INFO] [logging.py:128:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-12-01 16:22:33,011] [INFO] [logging.py:128:log_dist] [Rank 0] Creating ZeRO Offload
+[2024-12-01 16:22:33,149] [INFO] [utils.py:781:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-12-01 16:22:33,149] [INFO] [utils.py:782:see_memory_usage] MA 6.16 GB         Max_MA 6.16 GB         CA 6.35 GB         Max_CA 6 GB 
+[2024-12-01 16:22:33,149] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 34.88 GB, percent = 27.8%
+[2024-12-01 16:22:33,164] [INFO] [config.py:733:__init__] Config mesh_device None world_size = 4
+gammagpu17:1834561:1834971 [0] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834561:1834971 [0] NCCL INFO Using network Socket
+gammagpu17:1834564:1834973 [3] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834564:1834973 [3] NCCL INFO Using network Socket
+gammagpu17:1834562:1834974 [1] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834562:1834974 [1] NCCL INFO Using network Socket
+gammagpu17:1834563:1834972 [2] NCCL INFO Using non-device net plugin version 0
+gammagpu17:1834563:1834972 [2] NCCL INFO Using network Socket
+gammagpu17:1834563:1834972 [2] NCCL INFO comm 0x55fbb7363060 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0xb4b0d3ebdc97de5f - Init START
+gammagpu17:1834562:1834974 [1] NCCL INFO comm 0x558b3ce9fea0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0xb4b0d3ebdc97de5f - Init START
+gammagpu17:1834561:1834971 [0] NCCL INFO comm 0x562ba3f002e0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0xb4b0d3ebdc97de5f - Init START
+gammagpu17:1834564:1834973 [3] NCCL INFO comm 0x5614fd47dee0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0xb4b0d3ebdc97de5f - Init START
+gammagpu17:1834562:1834974 [1] NCCL INFO NVLS multicast support is not available on dev 1
+gammagpu17:1834561:1834971 [0] NCCL INFO NVLS multicast support is not available on dev 0
+gammagpu17:1834563:1834972 [2] NCCL INFO NVLS multicast support is not available on dev 2
+gammagpu17:1834564:1834973 [3] NCCL INFO NVLS multicast support is not available on dev 3
+gammagpu17:1834563:1834972 [2] NCCL INFO comm 0x55fbb7363060 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+gammagpu17:1834563:1834972 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1
+gammagpu17:1834564:1834973 [3] NCCL INFO comm 0x5614fd47dee0 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+gammagpu17:1834563:1834972 [2] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834561:1834971 [0] NCCL INFO comm 0x562ba3f002e0 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+gammagpu17:1834562:1834974 [1] NCCL INFO comm 0x558b3ce9fea0 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+gammagpu17:1834564:1834973 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 00/04 :    0   1   2   3
+gammagpu17:1834564:1834973 [3] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 01/04 :    0   1   2   3
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 02/04 :    0   1   2   3
+gammagpu17:1834562:1834974 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 03/04 :    0   1   2   3
+gammagpu17:1834562:1834974 [1] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834561:1834971 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1
+gammagpu17:1834561:1834971 [0] NCCL INFO P2P Chunksize set to 131072
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834561:1834971 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Connected all rings
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Connected all rings
+gammagpu17:1834561:1834971 [0] NCCL INFO Connected all rings
+gammagpu17:1834562:1834974 [1] NCCL INFO Connected all rings
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834563:1834972 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834562:1834974 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu17:1834564:1834973 [3] NCCL INFO Connected all trees
+gammagpu17:1834564:1834973 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834564:1834973 [3] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834561:1834971 [0] NCCL INFO Connected all trees
+gammagpu17:1834561:1834971 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834561:1834971 [0] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834563:1834972 [2] NCCL INFO Connected all trees
+gammagpu17:1834563:1834972 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834563:1834972 [2] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834562:1834974 [1] NCCL INFO Connected all trees
+gammagpu17:1834562:1834974 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu17:1834562:1834974 [1] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu17:1834564:1834973 [3] NCCL INFO comm 0x5614fd47dee0 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0xb4b0d3ebdc97de5f - Init COMPLETE
+gammagpu17:1834562:1834974 [1] NCCL INFO comm 0x558b3ce9fea0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0xb4b0d3ebdc97de5f - Init COMPLETE
+gammagpu17:1834563:1834972 [2] NCCL INFO comm 0x55fbb7363060 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0xb4b0d3ebdc97de5f - Init COMPLETE
+gammagpu17:1834561:1834971 [0] NCCL INFO comm 0x562ba3f002e0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0xb4b0d3ebdc97de5f - Init COMPLETE
+Parameter Offload: Total persistent parameters: 1033962 in 856 params
+[2024-12-01 16:22:34,315] [INFO] [utils.py:781:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-12-01 16:22:34,316] [INFO] [utils.py:782:see_memory_usage] MA 4.02 GB         Max_MA 6.16 GB         CA 6.43 GB         Max_CA 6 GB 
+[2024-12-01 16:22:34,316] [INFO] [utils.py:789:see_memory_usage] CPU Virtual Memory:  used = 35.09 GB, percent = 28.0%
+[2024-12-01 16:22:34,319] [INFO] [config.py:999:print] DeepSpeedEngine configuration:
+[2024-12-01 16:22:34,319] [INFO] [config.py:1003:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-12-01 16:22:34,319] [INFO] [config.py:1003:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True, 'use_gds': False}
+[2024-12-01 16:22:34,319] [INFO] [config.py:1003:print]   amp_enabled .................. False
+[2024-12-01 16:22:34,319] [INFO] [config.py:1003:print]   amp_params ................... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   bfloat16_enabled ............. False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   bfloat16_immediate_grad_update  False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   checkpoint_parallel_write_pipeline  False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   checkpoint_tag_validation_enabled  True
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   checkpoint_tag_validation_fail  False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f5d72055b50>
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   communication_data_type ...... None
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   curriculum_enabled_legacy .... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   curriculum_params_legacy ..... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   data_efficiency_enabled ...... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   dataloader_drop_last ......... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   disable_allgather ............ False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   dump_state ................... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   dynamic_loss_scale_args ...... None
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_enabled ........... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_gas_boundary_resolution  1
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_layer_num ......... 0
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_max_iter .......... 100
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_stability ......... 1e-06
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_tol ............... 0.01
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   eigenvalue_verbose ........... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   elasticity_enabled ........... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   fp16_auto_cast ............... True
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   fp16_enabled ................. True
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   fp16_master_weights_and_gradients  False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   global_rank .................. 0
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   grad_accum_dtype ............. None
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   gradient_accumulation_steps .. 1
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   gradient_clipping ............ 0.0
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   gradient_predivide_factor .... 1.0
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   graph_harvesting ............. False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   initial_dynamic_scale ........ 65536
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   load_universal_checkpoint .... False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   loss_scale ................... 0
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   memory_breakdown ............. False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   mics_hierarchial_params_gather  False
+[2024-12-01 16:22:34,320] [INFO] [config.py:1003:print]   mics_shard_size .............. -1
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') comet=CometConfig(enabled=False, samples_log_interval=100, project=None, workspace=None, api_key=None, experiment_name=None, experiment_key=None, online=None, mode=None) wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName')
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   optimizer_legacy_fusion ...... False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   optimizer_name ............... None
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   optimizer_params ............. None
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   pld_enabled .................. False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   pld_params ................... False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   prescale_gradients ........... False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   scheduler_name ............... None
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   scheduler_params ............. None
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   seq_parallel_communication_data_type  torch.float32
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   sparse_attention ............. None
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   sparse_gradients_enabled ..... False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   steps_per_print .............. inf
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   timers_config ................ enabled=True synchronized=True
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   train_batch_size ............. 4
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   train_micro_batch_size_per_gpu  1
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   use_data_before_expert_parallel_  False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   use_node_local_storage ....... False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   wall_clock_breakdown ......... False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   weight_quantization_config ... None
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   world_size ................... 4
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   zero_allow_untested_optimizer  False
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50000000 param_persistence_threshold=100000 model_persistence_threshold=9223372036854775807 max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False use_all_reduce_for_fetch_params=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   zero_enabled ................. True
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   zero_force_ds_cpu_optimizer .. True
+[2024-12-01 16:22:34,321] [INFO] [config.py:1003:print]   zero_optimization_stage ...... 3
+[2024-12-01 16:22:34,321] [INFO] [config.py:989:print_user_config]   json = {
+    "bf16": {
+        "enabled": false
+    }, 
+    "zero_optimization": {
+        "stage": 3, 
+        "overlap_comm": true
+    }, 
+    "stage3_prefetch_bucket_size": 0, 
+    "stage3_max_live_parameters": 0, 
+    "stage3_max_reuse_distance": 0, 
+    "train_micro_batch_size_per_gpu": 1, 
+    "gradient_accumulation_steps": 1, 
+    "steps_per_print": inf, 
+    "fp16": {
+        "enabled": true, 
+        "auto_cast": true
+    }
+}
+12/01/2024 16:22:34 - WARNING - accelerate.accelerator - A wrapped DeepSpeed engine reference is currently tied for this `Accelerator()` instance. If you want to call `accelerator.backward()` referencing a new model/engine, please create a separate `Accelerator()` instance and call `accelerator.prepare()` on it.
+wandb: Tracking run with wandb version 0.17.8
+wandb: Run data is saved locally in /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241201_162234-ekzkhwvt
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run zany-music-84
+wandb: ⭐️ View project at https://wandb.ai/sjxu_gamma/SVD_Con_Mul
+wandb: 🚀 View run at https://wandb.ai/sjxu_gamma/SVD_Con_Mul/runs/ekzkhwvt
+12/01/2024 16:22:39 - INFO - __main__ - ***** Running training *****
+12/01/2024 16:22:39 - INFO - __main__ -   Num examples = 4728
+12/01/2024 16:22:39 - INFO - __main__ -   Num Epochs = 30
+12/01/2024 16:22:39 - INFO - __main__ -   Instantaneous batch size per device = 2
+12/01/2024 16:22:39 - INFO - __main__ -   Total train batch size (w. parallel, distributed & accumulation) = 64
+12/01/2024 16:22:39 - INFO - __main__ -   Gradient Accumulation steps = 8
+12/01/2024 16:22:39 - INFO - __main__ -   Total optimization steps = 2220
+  0%|          | 0/2220 [00:00<?, ?it/s]Steps:   0%|          | 0/2220 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/checkpoint.py:1399: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with device_autocast_ctx, torch.cpu.amp.autocast(**cpu_autocast_kwargs), recompute_context:  # type: ignore[attr-defined]
+[2024-12-01 16:23:01,005] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4294967296, reducing to 2147483648
+[2024-12-01 16:24:04,207] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2147483648, reducing to 1073741824
+[2024-12-01 16:24:08,733] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 1073741824, reducing to 536870912
+[2024-12-01 16:24:12,769] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 536870912, reducing to 268435456
+[2024-12-01 16:24:17,246] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 268435456, reducing to 134217728
+[2024-12-01 16:24:21,505] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 134217728, reducing to 67108864
+[2024-12-01 16:24:25,500] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 67108864, reducing to 33554432
+[2024-12-01 16:24:29,577] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 33554432, reducing to 16777216
+Steps:   0%|          | 0/2220 [00:21<?, ?it/s, lr=0.0001, step_loss=0.206]Steps:   0%|          | 0/2220 [01:24<?, ?it/s, lr=0.0001, step_loss=0.182]Steps:   0%|          | 0/2220 [01:28<?, ?it/s, lr=0.0001, step_loss=0.194]Steps:   0%|          | 0/2220 [01:32<?, ?it/s, lr=0.0001, step_loss=0.196]Steps:   0%|          | 0/2220 [01:37<?, ?it/s, lr=0.0001, step_loss=0.0995]Steps:   0%|          | 0/2220 [01:41<?, ?it/s, lr=0.0001, step_loss=0.169] Steps:   0%|          | 0/2220 [01:45<?, ?it/s, lr=0.0001, step_loss=0.272]Steps:   0%|          | 1/2220 [01:49<67:36:20, 109.68s/it, lr=0.0001, step_loss=0.272]12/01/2024 16:24:29 - INFO - __main__ - Running validation... 
+ Generating 1 videos.
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+{'controlnet'} was not found in config. Values will be initialized to default values.
+
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s][A{'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 267.91it/s]
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+here
+Invalidate trace cache @ step 6124: expected module 0, but got module 1537
+[rank3]:[E1201 16:54:35.977081995 ProcessGroupNCCL.cpp:607] [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=3378, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=8, Timeout(ms)=1800000) ran for 1800013 milliseconds before timing out.
+[rank3]:[E1201 16:54:35.977141117 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 3] Exception (either an error or timeout) detected by watchdog at work: 3378, last enqueued NCCL work: 3378, last completed NCCL work: 3377.
+[rank2]:[E1201 16:54:35.995037224 ProcessGroupNCCL.cpp:607] [Rank 2] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=3378, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=8, Timeout(ms)=1800000) ran for 1800020 milliseconds before timing out.
+[rank2]:[E1201 16:54:35.995077079 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 2] Exception (either an error or timeout) detected by watchdog at work: 3378, last enqueued NCCL work: 3378, last completed NCCL work: 3377.
+[rank1]:[E1201 16:54:35.066035501 ProcessGroupNCCL.cpp:607] [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=3378, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=8, Timeout(ms)=1800000) ran for 1800085 milliseconds before timing out.
+[rank1]:[E1201 16:54:35.066077270 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 1] Exception (either an error or timeout) detected by watchdog at work: 3378, last enqueued NCCL work: 3378, last completed NCCL work: 3377.
+gammagpu17:1834563:1834979 [2] NCCL INFO [Service thread] Connection closed by localRank 2
+gammagpu17:1834564:1834976 [3] NCCL INFO [Service thread] Connection closed by localRank 3
+gammagpu17:1834564:1834697 [3] NCCL INFO comm 0x5614fd47dee0 rank 3 nranks 4 cudaDev 3 busId c1000 - Abort COMPLETE
+[rank3]:[E1201 16:54:35.152515070 ProcessGroupNCCL.cpp:1709] [PG 0 (default_pg) Rank 3] Timeout at NCCL work: 3378, last enqueued NCCL work: 3378, last completed NCCL work: 3377.
+[rank3]:[E1201 16:54:35.152523867 ProcessGroupNCCL.cpp:621] [Rank 3] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
+[rank3]:[E1201 16:54:35.152527253 ProcessGroupNCCL.cpp:627] [Rank 3] To avoid data inconsistency, we are taking the entire process down.
+[rank3]:[E1201 16:54:35.174876708 ProcessGroupNCCL.cpp:1515] [PG 0 (default_pg) Rank 3] Process group watchdog thread terminated with exception: [Rank 3] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=3378, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=8, Timeout(ms)=1800000) ran for 1800013 milliseconds before timing out.
+Exception raised from checkTimeout at ../torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:609 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x96 (0x7f7fb41dff86 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libc10.so)
+frame #1: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1d2 (0x7f7fb54dc8d2 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::watchdogHandler() + 0x233 (0x7f7fb54e3313 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x10c (0x7f7fb54e56fc in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xdbbf4 (0x7f80070e4bf4 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/../lib/libstdc++.so.6)
+frame #5: <unknown function> + 0x81ca (0x7f80146471ca in /lib64/libpthread.so.0)
+frame #6: clone + 0x43 (0x7f80142a28d3 in /lib64/libc.so.6)
+
+gammagpu17:1834562:1834977 [1] NCCL INFO [Service thread] Connection closed by localRank 1
+[rank0]:[E1201 16:54:35.330047884 ProcessGroupNCCL.cpp:607] [Rank 0] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=3379, OpType=_ALLGATHER_BASE, NumelIn=102400, NumelOut=409600, Timeout(ms)=1800000) ran for 1800096 milliseconds before timing out.
+[rank0]:[E1201 16:54:35.330134418 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 0] Exception (either an error or timeout) detected by watchdog at work: 3379, last enqueued NCCL work: 3382, last completed NCCL work: 3378.
+gammagpu17:1834562:1834699 [1] NCCL INFO comm 0x558b3ce9fea0 rank 1 nranks 4 cudaDev 1 busId 41000 - Abort COMPLETE
+[rank1]:[E1201 16:54:35.413090421 ProcessGroupNCCL.cpp:1709] [PG 0 (default_pg) Rank 1] Timeout at NCCL work: 3378, last enqueued NCCL work: 3378, last completed NCCL work: 3377.
+[rank1]:[E1201 16:54:35.413102494 ProcessGroupNCCL.cpp:621] [Rank 1] Some NCCL operations have failed or timed out. Due to the asynchronous nature of CUDA kernels, subsequent GPU operations might run on corrupted/incomplete data.
+[rank1]:[E1201 16:54:35.413106602 ProcessGroupNCCL.cpp:627] [Rank 1] To avoid data inconsistency, we are taking the entire process down.
+[rank1]:[E1201 16:54:35.413985126 ProcessGroupNCCL.cpp:1515] [PG 0 (default_pg) Rank 1] Process group watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=3378, OpType=_ALLGATHER_BASE, NumelIn=2, NumelOut=8, Timeout(ms)=1800000) ran for 1800085 milliseconds before timing out.
+Exception raised from checkTimeout at ../torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:609 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x96 (0x7f7eb6881f86 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libc10.so)
+frame #1: c10d::ProcessGroupNCCL::WorkNCCL::checkTimeout(std::optional<std::chrono::duration<long, std::ratio<1l, 1000l> > >) + 0x1d2 (0x7f7eb7b7e8d2 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::watchdogHandler() + 0x233 (0x7f7eb7b85313 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::ncclCommWatchdog() + 0x10c (0x7f7eb7b876fc in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: <unknown function> + 0xdbbf4 (0x7f7f09786bf4 in /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/../lib/libstdc++.so.6)
+frame #5: <unknown function> + 0x81ca (0x7f7f16ce91ca in /lib64/libpthread.so.0)
+frame #6: clone + 0x43 (0x7f7f169448d3 in /lib64/libc.so.6)
+
+W1201 16:54:35.961684 140092694316032 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1834561 closing signal SIGTERM
+W1201 16:54:35.961996 140092694316032 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1834562 closing signal SIGTERM
+W1201 16:54:35.962400 140092694316032 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1834563 closing signal SIGTERM
+E1201 16:54:37.769196 140092694316032 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: -6) local_rank: 3 (pid: 1834564) of binary: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python
+Warning: The cache directory for DeepSpeed Triton autotune, /fs/nexus-scratch/sjxu/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1153, in launch_command
+    deepspeed_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 846, in deepspeed_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+========================================================
+train_svd_con.py FAILED
+--------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+--------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-12-01_16:54:35
+  host      : gammagpu17.umiacs.umd.edu
+  rank      : 3 (local_rank: 3)
+  exitcode  : -6 (pid: 1834564)
+  error_file: <N/A>
+  traceback : Signal 6 (SIGABRT) received by PID 1834564
+========================================================
+srun: error: gammagpu17: task 2: Exited with exit code 1

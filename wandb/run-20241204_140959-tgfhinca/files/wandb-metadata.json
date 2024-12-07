@@ -1,0 +1,303 @@
+{
+    "os": "Linux-4.18.0-553.27.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.9.12",
+    "heartbeatAt": "2024-12-04T19:10:00.057706",
+    "startedAt": "2024-12-04T19:09:59.751114",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--output_dir=/fs/nexus-scratch/sjxu/Model_out/decoder",
+        "--width=512",
+        "--height=512",
+        "--learning_rate=1e-4",
+        "--per_gpu_batch_size=2",
+        "--num_train_epochs=30",
+        "--mixed_precision=fp16",
+        "--gradient_accumulation_steps=8",
+        "--checkpointing_steps=500",
+        "--validation_steps=200",
+        "--gradient_checkpointing",
+        "--checkpoints_total_limit=5",
+        "--report_to=wandb",
+        "--num_workers=1"
+    ],
+    "state": "running",
+    "program": "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_decoder.py",
+    "codePathLocal": "train_svd_decoder.py",
+    "codePath": "train_svd_decoder.py",
+    "git": {
+        "remote": "git@github.com:jayhsu0627/SVD_ControlNet_Relight.git",
+        "commit": "8c9b50c41de731091e814ae71aa7c241793367cc"
+    },
+    "email": null,
+    "root": "/fs/nexus-scratch/sjxu/svd-temporal-controlnet",
+    "host": "tron49.umiacs.umd.edu",
+    "username": "sjxu",
+    "executable": "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python",
+    "cpu_count": 48,
+    "cpu_count_logical": 48,
+    "cpu_freq": {
+        "current": 2350.773625,
+        "min": 1500.0,
+        "max": 2300.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 3111.263,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 3117.132,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 3108.739,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        },
+        {
+            "current": 2300.0,
+            "min": 1500.0,
+            "max": 2300.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 39.043426513671875,
+            "used": 14.057262420654297
+        }
+    },
+    "gpu": "NVIDIA RTX A5000",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA RTX A5000",
+            "memory_total": 25757220864
+        }
+    ],
+    "memory": {
+        "total": 251.2499771118164
+    }
+}

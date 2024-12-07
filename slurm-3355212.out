@@ -1,0 +1,5 @@
+NODELIST=gammagpu[12-13]
+MASTER_ADDR=gammagpu12
+srun: Job step aborted: Waiting up to 302 seconds for job step to finish.
+slurmstepd: error: *** JOB 3355212 ON gammagpu12 CANCELLED AT 2024-11-23T06:11:23 ***
+slurmstepd: error: *** STEP 3355212.0 ON gammagpu12 CANCELLED AT 2024-11-23T06:11:23 ***
