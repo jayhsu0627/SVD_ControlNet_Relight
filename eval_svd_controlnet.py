@@ -884,56 +884,6 @@ def main():
     unet.to("cuda", dtype=weight_dtype)
     # controlnet.to("cuda", dtype=weight_dtype)
 
-    # # check para
-    # if accelerator.is_main_process:
-    #     rec_txt1 = open('rec_para.txt', 'w')
-    #     rec_txt2 = open('rec_para_train.txt', 'w')
-    #     for name, para in controlnet.named_parameters():
-    #         if para.requires_grad is False:
-    #             rec_txt1.write(f'{name}\n')
-    #         else:
-    #             rec_txt2.write(f'{name}\n')
-    #     rec_txt1.close()
-    #     rec_txt2.close()
-
-    # DataLoaders creation:
-    # args.global_batch_size = args.per_gpu_batch_size * accelerator.num_processes
-
-    # dataset = make_train_dataset(args)
-
-    # # Define split sizes
-    # dataset_size = len(dataset)
-    # train_size = int(0.8 * dataset_size)
-    # test_size = dataset_size - train_size
-
-    # # Randomly shuffle indices and split
-    # indices = np.random.permutation(dataset_size)
-    # train_indices, test_indices = indices[:train_size], indices[train_size:]
-
-    # # Create training and test subsets
-    # train_dataset = Subset(dataset, train_indices)
-    # test_dataset = Subset(dataset, test_indices)
-
-    # # Dataloaders
-    # sampler = RandomSampler(train_dataset)
-    # train_dataloader = DataLoader(
-    #     train_dataset,
-    #     sampler=sampler,
-    #     collate_fn=lambda examples: collate_fn(examples, args),
-    #     batch_size=args.per_gpu_batch_size,
-    #     num_workers=args.num_workers,
-    #     prefetch_factor=2 if args.num_workers != 0 else None
-    # )
-
-    # # Use regular DataLoader for test set, without shuffling
-    # test_dataloader = DataLoader(
-    #     test_dataset,
-    #     batch_size=args.per_gpu_batch_size,
-    #     num_workers=args.num_workers,
-    #     shuffle=False
-    # )
-
-
     # Inference!
     # total_batch_size = args.per_gpu_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
 
@@ -984,23 +934,23 @@ def main():
         img_folder = os.path.join(args.validation_image_folder, folder_list[i])
         print(img_folder)
         validation_image = [load_images_from_folder(img_folder)[0]]
-        validation_control_images = load_images_from_folder(img_folder)[:args.num_validation_images]
+        validation_control_images = load_images_from_folder(img_folder)[:args.num_frames]
         for img in validation_control_images:
             with torch.autocast("cuda"):
                 depth_map = depth_pipeline(img).prediction[0]
             img = np.array(img)
             print(img.shape, depth_map.shape)
-            img_array = np.concatenate((img, depth_map), axis=2)
+            img_array = np.concatenate((img, depth_map), axis=2).astype(np.uint8)
 
-            # fullres_image = Image.fromarray(img_array)
+            fullres_image = Image.fromarray(img_array)
 
             # print(fullres_image.shape)
-            validation_control_images_cat.append(img_array)
+            validation_control_images_cat.append(fullres_image)
             # control_image = F.interpolate(fullres_image, (height, width), mode="bicubic", antialias=True)
 
         print('num',len(validation_image))
         print('num',len(validation_control_images_cat))
-        
+
         # run inference
         val_save_dir = os.path.join(
             args.output_dir, folder_list[i])
@@ -1009,7 +959,6 @@ def main():
         if not os.path.exists(val_save_dir):
             os.makedirs(val_save_dir)
 
-        # with torch.autocast(str("cuda").replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"):
         with torch.autocast(device_type="cuda"):
             video_frames = pipeline(
                 validation_image[0], 
@@ -1023,14 +972,15 @@ def main():
                 noise_aug_strength=0.02,
                 # generator=generator,
             ).frames
-
-    #             out_file = os.path.join(
-    #                 val_save_dir,
-    #                 f"step_{global_step}_val_img_{val_img_idx}_{i}.mp4",
-    #             )
-
-    #             save_combined_frames(video_frames, validation_images, validation_control_images, val_save_dir, i, global_step)
             
+            out_file_path = os.path.join(
+                val_save_dir,
+                f"test.mp4",
+            )
+            flattened_batch_output = [img for sublist in video_frames for img in sublist]
+            # print(flattened_batch_output[0].shape)
+
+            export_to_gif(flattened_batch_output, out_file_path, 30)    
 
 if __name__ == "__main__":
     main()

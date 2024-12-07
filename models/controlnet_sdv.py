@@ -511,7 +511,6 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
 
         # 2. pre-process
         sample = self.conv_in(sample)
-        print(sample.shape, controlnet_cond.shape)
         #controlnet cond
         if controlnet_cond != None:
             controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)

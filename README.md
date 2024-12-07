@@ -76,7 +76,7 @@ python eval_svd_controlnet.py \
  --height=512 \
  --mixed_precision="bf16" \
  --target_light='23, 0, 1, 18, 19' \
- --num_validation_images=5 \
+ --num_frames=5 \
 ```
 
 
