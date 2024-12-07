@@ -60,6 +60,7 @@ from diffusers.models.lora import LoRALinearLayer
 
 from diffusers import (
     AsymmetricAutoencoderKL,
+    MarigoldDepthPipeline,
     AutoencoderKLTemporalDecoder,
     EulerDiscreteScheduler,
     UNetSpatioTemporalConditionModel,
@@ -83,6 +84,7 @@ from accelerate.utils import DistributedDataParallelKwargs
 import kornia.augmentation as K
 from kornia.augmentation.container import ImageSequential
 from torchvision import transforms
+import torchvision.transforms.functional as TF
 import kornia
 import imageio.v3 as iio
 
@@ -963,54 +965,64 @@ def main():
         torch_dtype=weight_dtype,
     )
 
-    # depth_pipeline = MarigoldDepthPipeline.from_pretrained("prs-eth/marigold-lcm-v1-0")
+    depth_pipeline = MarigoldDepthPipeline.from_pretrained("prs-eth/marigold-lcm-v1-0")
     
     pipeline = pipeline.to("cuda")
-    # depth_pipeline = depth_pipeline.to("cuda")
+    depth_pipeline = depth_pipeline.to("cuda")
     pipeline.set_progress_bar_config(disable=True)
 
+    # for each loop through the direct underneath
+    base_dir = os.path.join(args.validation_image_folder)
+    folder_list = os.listdir(base_dir)
+    folder_list = sorted(folder_list)
 
-    for i in range(args.validation_image_num):
+    num_folders = len(folder_list)
+    validation_control_images_cat = []
+    for i in range(num_folders):
         print(i)
-        # for each loop through the direct underneath
-        base_dir = os.path.join(args.validation_image_folder)
-        folder_list = os.listdir(base_dir)
-        folder_list = sorted(folder_list)
         
         img_folder = os.path.join(args.validation_image_folder, folder_list[i])
         print(img_folder)
+        validation_image = [load_images_from_folder(img_folder)[0]]
+        validation_control_images = load_images_from_folder(img_folder)[:args.num_validation_images]
+        for img in validation_control_images:
+            with torch.autocast("cuda"):
+                depth_map = depth_pipeline(img).prediction[0]
+            img = np.array(img)
+            print(img.shape, depth_map.shape)
+            img_array = np.concatenate((img, depth_map), axis=2)
 
-        # control_folder = os.path.join(args.validation_control_folder,folder_list[i])
-        # mask_folder = os.path.join(args.validation_msk_folder,folder_list[i])
+            # fullres_image = Image.fromarray(img_array)
 
-        validation_images = load_images_from_folder(img_folder)
+            # print(fullres_image.shape)
+            validation_control_images_cat.append(img_array)
+            # control_image = F.interpolate(fullres_image, (height, width), mode="bicubic", antialias=True)
 
-    #     validation_control_images = load_images_from_folder(control_folder, mask_folder, True)
-    #     print(control_folder)
+        print('num',len(validation_image))
+        print('num',len(validation_control_images_cat))
         
-    #     # run inference
-    #     val_save_dir = os.path.join(
-    #         args.output_dir, "validation_images")
+        # run inference
+        val_save_dir = os.path.join(
+            args.output_dir, folder_list[i])
+        print(val_save_dir)
 
-    #     if not os.path.exists(val_save_dir):
-    #         os.makedirs(val_save_dir)
+        if not os.path.exists(val_save_dir):
+            os.makedirs(val_save_dir)
 
-    #     with torch.autocast(
-    #         str("cuda").replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
-    #     ):
-    #         for val_img_idx in range(args.num_validation_images):
-    #             video_frames = pipeline(
-    #                 validation_images[0], 
-    #                 validation_control_images[:args.num_frames],
-    #                 height=args.height,
-    #                 width=args.width*2,
-    #                 num_frames=args.num_frames,
-    #                 decode_chunk_size=8,
-    #                 motion_bucket_id=127,
-    #                 fps=7,
-    #                 noise_aug_strength=0.02,
-    #                 # generator=generator,
-    #             ).frames
+        # with torch.autocast(str("cuda").replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"):
+        with torch.autocast(device_type="cuda"):
+            video_frames = pipeline(
+                validation_image[0], 
+                validation_control_images_cat,
+                height=args.height,
+                width=args.width*2,
+                num_frames=args.num_frames,
+                decode_chunk_size=8,
+                motion_bucket_id=127,
+                fps=7,
+                noise_aug_strength=0.02,
+                # generator=generator,
+            ).frames
 
     #             out_file = os.path.join(
     #                 val_save_dir,

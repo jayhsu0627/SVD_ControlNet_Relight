@@ -70,12 +70,13 @@ inference
 ```
 python eval_svd_controlnet.py \
  --validation_image_folder="/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/" \
+ --output_dir="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output" \
  --concat_depth_maps \
  --width=512 \
  --height=512 \
  --mixed_precision="bf16" \
  --target_light='23, 0, 1, 18, 19' \
- --validation_image_num=2
+ --num_validation_images=5 \
 ```
 
 

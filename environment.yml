@@ -56,8 +56,8 @@ dependencies:
       - colorama==0.4.6
       - datasets==2.21.0
       - decord==0.6.0
-      - diffusers==0.25.0
-      # - diffusers==0.28.0
+      # - diffusers==0.25.0
+      - diffusers==0.29.1
       - dill==0.3.8
       - docker-pycreds==0.4.0
       - docutils==0.16
