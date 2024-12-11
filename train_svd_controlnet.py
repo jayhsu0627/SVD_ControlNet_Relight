@@ -29,6 +29,8 @@ import cv2
 import shutil
 from pathlib import Path
 from urllib.parse import urlparse
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 import accelerate
 import numpy as np
@@ -65,8 +67,6 @@ from diffusers.optimization import get_scheduler
 from diffusers.training_utils import EMAModel
 from diffusers.utils import check_min_version, deprecate, is_wandb_available, load_image
 from diffusers.utils.import_utils import is_xformers_available
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
 from utils.MIL_dataset import MIL
 from models.unet_spatio_temporal_condition_controlnet import UNetSpatioTemporalConditionControlNetModel
 from pipeline.pipeline_stable_video_diffusion_controlnet import StableVideoDiffusionPipelineControlNet
@@ -241,7 +241,7 @@ def stratified_uniform(shape, group=0, groups=1, dtype=None, device=None):
     u = torch.rand(shape, dtype=dtype, device=device)
     return (offsets + u) / n
 
-
+# https://www.zainnasir.com/blog/cosine-beta-schedule-for-denoising-diffusion-models/
 def rand_cosine_interpolated(shape, image_d, noise_d_low, noise_d_high, sigma_data=1., min_value=1e-3, max_value=1e3, device='cpu', dtype=torch.float32):
     """Draws samples from an interpolated cosine timestep distribution (from simple diffusion)."""
 
@@ -438,12 +438,10 @@ def export_to_gif(frames, output_gif_path, fps):
 
 def tensor_to_vae_latent(t, vae):
     video_length = t.shape[1]
-
     t = rearrange(t, "b f c h w -> (b f) c h w")
     latents = vae.encode(t).latent_dist.sample()
     latents = rearrange(latents, "(b f) c h w -> b f c h w", f=video_length)
     latents = latents * vae.config.scaling_factor
-
     return latents
 
 
@@ -965,6 +963,8 @@ def main():
 
     # Load scheduler, tokenizer and models.
     noise_scheduler = EulerDiscreteScheduler.from_pretrained(args.pretrained_model_name_or_path, subfolder="scheduler")
+
+    print('prediction_type:', noise_scheduler.config.prediction_type)
     text_encoder = CLIPTextModel.from_pretrained("stabilityai/stable-diffusion-2-1", subfolder="text_encoder")
     vae = AutoencoderKLTemporalDecoder.from_pretrained(
         args.pretrained_model_name_or_path,
@@ -996,9 +996,14 @@ def main():
     @torch.no_grad()
     def modify_layers(controlnet):
         if args.inject_lighting_direction:
-            print(len(get_light_dir_encoding(0)))
-            controlnet.time_embedding.cond_proj = torch.nn.Linear(len(get_light_dir_encoding(0)), controlnet.timestep_input_dim, bias=False)
-    
+            # print('modify_layers in progress:', len(get_light_dir_encoding(0)))
+            print('modify_layers in progress:', get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[1] * get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[0])
+
+            # controlnet.time_embedding.cond_proj = torch.nn.Linear(len(get_light_dir_encoding(0)), controlnet.timestep_input_dim, bias=False)
+            # controlnet.time_embedding.cond_proj = torch.nn.Linear(get_light_dir_encoding(torch.tensor([0])).shape[1], controlnet.timestep_input_dim, bias=False)
+            controlnet.time_embedding.cond_proj = torch.nn.Linear(get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[1] * get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[0],
+                                                                    controlnet.timestep_input_dim, bias=False)
+
     modify_layers(controlnet)
 
     # Freeze vae and image_encoder
@@ -1321,7 +1326,7 @@ def main():
                 pixel_values = batch["pixel_values"].to(weight_dtype).to(accelerator.device, non_blocking=True)
                 latents = tensor_to_vae_latent(pixel_values, vae)
                 
-                # Sample noise
+                # Sample noise that we'll add to the latents
                 noise = torch.randn_like(latents)
                 bsz = latents.shape[0]
                 
@@ -1353,8 +1358,12 @@ def main():
                 
                 # Get conditioning
                 encoder_hidden_states = encode_image(pixel_values[:, 0, :, :, :])
+
+                # https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Perazzi_A_Benchmark_Dataset_CVPR_2016_paper.pdf
+                # DAVIS is 24fps
+                fps = 6
                 added_time_ids = _get_add_time_ids(
-                    6,
+                    fps,
                     batch["motion_values"],
                     train_noise_aug,
                     encoder_hidden_states.dtype,
@@ -1373,7 +1382,6 @@ def main():
                         controlnet_image = controlnet_image * 0
                     controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
                     # controlnet_image = controlnet_image * 0.5 + batch["depth_pixel_values"].to(dtype=weight_dtype) * 0.5
-
 
                 # Get ControlNet and UNet predictions
                 down_block_res_samples, mid_block_res_sample = controlnet(
@@ -1576,7 +1584,7 @@ def main():
                 else:
                     encoder_hidden_states_t = text_encoded
 
-                # print("encoder_hidden_states_t shape", encoder_hidden_states_t.shape)
+                print("encoder_hidden_states_t shape", encoder_hidden_states_t.shape)
 
                 # # # Expand encoder_hidden_states along the sequence dimension
                 # # encoder_hidden_states_expanded = encoder_hidden_states.expand(-1, encoder_hidden_states_t.size(1), -1)
@@ -1594,11 +1602,13 @@ def main():
                     prompt_mask = random_p < 2 * args.conditioning_dropout_prob
                     prompt_mask = prompt_mask.reshape(bsz, 1, 1)
                     # Final text conditioning.
-                    null_conditioning = torch.zeros_like(encoder_hidden_states)
+                    # null_conditioning = torch.zeros_like(encoder_hidden_states)
+                    null_conditioning = torch.zeros_like(encoder_hidden_states_t)
+
                     # print("null_conditioning shape", null_conditioning.shape)
 
                     encoder_hidden_states = torch.where(
-                        prompt_mask, null_conditioning, encoder_hidden_states)
+                        prompt_mask, null_conditioning, encoder_hidden_states_t)
 
                     # Sample masks for the original images.
                     image_mask_dtype = conditional_latents.dtype
@@ -1618,25 +1628,36 @@ def main():
                     [inp_noisy_latents, conditional_latents], dim=2)
                 
                 controlnet_image = batch["condition_pixel_values"].to(dtype=weight_dtype)
-                # print(controlnet_image.shape)
                 if args.concat_depth_maps:
                     if random.random() < args.dropout_rgb:
                         controlnet_image = controlnet_image * 0
                     controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
-                    # controlnet_image = controlnet_image * 0.5 + batch["depth_pixel_values"].to(dtype=weight_dtype) * 0.5
 
                 # print("===$$$$====")
                 # print(controlnet_image.shape, batch["depth_pixel_values"].to(dtype=weight_dtype).shape)
                 # print(inp_noisy_latents.shape, controlnet_image.shape)
                 # encoder_hidden_states_controlnet = encoder_hidden_states
+
+                # # Get the target for loss depending on the prediction type
+                # if noise_scheduler.config.prediction_type == "epsilon":
+                #     target = latents
+                # elif noise_scheduler.config.prediction_type == "v_prediction":
+                #     target = noise_scheduler.get_velocity(latents, noise, timesteps)
+                # else:
+                #     raise ValueError(f"Unknown prediction type {noise_scheduler.config.prediction_type}")
+
                 target = latents
+                print('time steps:', timesteps)
+                print('before controlnet:', inp_noisy_latents.shape, timesteps.shape, encoder_hidden_states.shape, added_time_ids.shape, controlnet_image.shape, batch["target_dir"].shape)
+
                 down_block_res_samples, mid_block_res_sample = controlnet(
                     inp_noisy_latents,
                     timesteps,
                     encoder_hidden_states,
-                    added_time_ids=added_time_ids,
-                    controlnet_cond=controlnet_image,
-                    return_dict=False,
+                    added_time_ids = added_time_ids,
+                    controlnet_cond = controlnet_image,
+                    return_dict = False,
+                    timestep_cond=batch["target_dir"] if args.inject_lighting_direction else None
                 )
 
                 # Predict the noise residual
@@ -1816,7 +1837,7 @@ def main():
                                 num_frames=args.num_frames,
                                 decode_chunk_size=8,
                                 motion_bucket_id=5,
-                                fps=7,
+                                fps= fps,
                                 noise_aug_strength=0.02,
                             ).frames
                         print('here2')

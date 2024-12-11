@@ -33,7 +33,7 @@ echo "MASTER_ADDR="$MASTER_ADDR
 ## run
 srun accelerate launch train_svd_controlnet.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
- --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_out" \
+ --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_add_light" \
  --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
  --video_folder="/fs/nexus-scratch/sjxu/WebVid/blender/img" \
  --condition_folder="/fs/nexus-scratch/sjxu/WebVid/blender/shd" \
@@ -57,5 +57,5 @@ srun accelerate launch train_svd_controlnet.py \
  --num_frames=6 \
  --inject_lighting_direction \
  --concat_depth_maps \
- --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000/controlnet" \
- --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000"
+#  --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000/controlnet" \
+#  --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000" \

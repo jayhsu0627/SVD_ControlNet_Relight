@@ -1,0 +1,83 @@
+NODELIST=gammagpu12
+MASTER_ADDR=gammagpu12
+Some weights of the model checkpoint were not used when initializing ControlNetSDVModel: 
+ ['time_embedding.cond_proj.weight']
+Keyword arguments {'text_encoder': CLIPTextModel(
+  (text_model): CLIPTextTransformer(
+    (embeddings): CLIPTextEmbeddings(
+      (token_embedding): Embedding(49408, 1024)
+      (position_embedding): Embedding(77, 1024)
+    )
+    (encoder): CLIPEncoder(
+      (layers): ModuleList(
+        (0-22): 23 x CLIPEncoderLayer(
+          (self_attn): CLIPSdpaAttention(
+            (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          )
+          (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (mlp): CLIPMLP(
+            (activation_fn): GELUActivation()
+            (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+            (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+          )
+          (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+  )
+)} are not expected by StableVideoDiffusionPipelineControlNet and will be ignored.
+Loading existing controlnet weights
+layers per block is 2
+Loading existing controlnet weights
+***** Running training *****
+  Num Epochs = 100
+  Instantaneous batch size per device = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = None
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 233.12it/s]
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  60%|██████    | 3/5 [00:00<00:00, 14.69it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 14.91it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 14.86it/s]
+0
+/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/001
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+Diffusion steps...: 100%|██████████| 1/1 [00:00<00:00,  6.92it/s][A
+                                                                 [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  6.90it/s]Marigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  6.90it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.69it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.82it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.83it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.84it/s]
+(512, 1024, 3) (512, 1024, 1)
+num 1
+num 5
+/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/001
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 993, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 970, in main
+    video_frames = pipeline(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/pipeline/pipeline_stable_video_diffusion_controlnet.py", line 442, in __call__
+    image_embeddings = self._encode_image(image, device, num_videos_per_prompt, do_classifier_free_guidance)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/pipeline/pipeline_stable_video_diffusion_controlnet.py", line 150, in _encode_image
+    image = self.image_processor.numpy_to_pt(image)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/image_processor.py", line 140, in numpy_to_pt
+    images = torch.from_numpy(images.transpose(0, 3, 1, 2))
+ValueError: axes don't match array
+srun: error: gammagpu12: task 0: Exited with exit code 1

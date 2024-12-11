@@ -237,6 +237,7 @@ class MIL(Dataset):
 
             target_dir = [get_light_dir_encoding(int(img_dir.split("_")[1])) for img_dir in image_files]
             target_dir = torch.from_numpy(np.array(target_dir))
+            # print(target_dir.shape)
 
             # Check if there are enough frames for both image and depth
             if len(image_files) < self.sample_n_frames or len(cond_files) < self.sample_n_frames:
@@ -308,13 +309,13 @@ if __name__ == "__main__":
     # idx = np.random.randint(len(dataset))
     # train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
     
-    for i in range(1000):
+    for i in range(2):
         idx = np.random.randint(len(dataset))
-        train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
+        train_image, train_cond, _, train_depth, train_normal, train_dir = dataset.get_batch(idx)
 
 
     print('length:', len(dataset))
-    print(train_image.shape, train_image.shape)
+    print(train_image.shape, train_image.shape, train_dir.shape)
 
     save_array_as_image(train_image[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_0.png')
     save_array_as_image(train_cond[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_0.png')

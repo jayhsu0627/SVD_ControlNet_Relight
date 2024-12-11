@@ -174,6 +174,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
             "CrossAttnUpBlockSpatioTemporal",
         ),
         block_out_channels: Tuple[int] = (320, 640, 1280, 1280),
+        act_fn: str = "silu",
         addition_time_embed_dim: int = 256,
         projection_class_embeddings_input_dim: int = 768,
         layers_per_block: Union[int, Tuple[int]] = 2,
@@ -229,7 +230,12 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         self.time_proj = Timesteps(block_out_channels[0], True, downscale_freq_shift=0)
         self.timestep_input_dim = block_out_channels[0]
 
-        self.time_embedding = TimestepEmbedding(self.timestep_input_dim, time_embed_dim)
+        # self.time_embedding = TimestepEmbedding(self.timestep_input_dim, time_embed_dim)
+        self.time_embedding = TimestepEmbedding(
+            self.timestep_input_dim,
+            time_embed_dim,
+            act_fn=act_fn,
+        )
 
         self.add_time_proj = Timesteps(addition_time_embed_dim, True, downscale_freq_shift=0)
         self.add_embedding = TimestepEmbedding(projection_class_embeddings_input_dim, time_embed_dim)
@@ -440,6 +446,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         encoder_hidden_states: torch.Tensor,
         added_time_ids: torch.Tensor,
         controlnet_cond: torch.FloatTensor = None,
+        timestep_cond: Optional[torch.Tensor] = None,
         image_only_indicator: Optional[torch.Tensor] = None,
         return_dict: bool = True,
         guess_mode: bool = False,
@@ -459,6 +466,10 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
             added_time_ids: (`torch.FloatTensor`):
                 The additional time ids with shape `(batch, num_additional_ids)`. These are encoded with sinusoidal
                 embeddings and added to the time embeddings.
+            timestep_cond (`torch.Tensor`, *optional*, defaults to `None`):
+                Additional conditional embeddings for timestep. If provided, the embeddings will be summed with the
+                timestep_embedding passed through the `self.time_embedding` layer to obtain the final timestep
+                embeddings.
             return_dict (`bool`, *optional*, defaults to `True`):
                 Whether or not to return a [`~models.unet_slatio_temporal.UNetSpatioTemporalConditionOutput`] instead of a plain
                 tuple.
@@ -492,7 +503,14 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         # there might be better ways to encapsulate this.
         t_emb = t_emb.to(dtype=sample.dtype)
 
-        emb = self.time_embedding(t_emb)
+        # emb = self.time_embedding(t_emb)
+        # timestep_cond = self.time_proj(timestep_cond)
+
+        print('emb', t_emb.shape, timestep_cond.shape)
+        emb = self.time_embedding(t_emb, timestep_cond)
+
+        # emb = self.time_embedding(t_emb)
+        print('emb', emb.shape)
 
         time_embeds = self.add_time_proj(added_time_ids.flatten())
         time_embeds = time_embeds.reshape((batch_size, -1))
@@ -520,6 +538,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         image_only_indicator = torch.zeros(batch_size, num_frames, dtype=sample.dtype, device=sample.device)
 
         down_block_res_samples = (sample,)
+        print("before downsample:", sample.shape, emb.shape, encoder_hidden_states.shape)
         for downsample_block in self.down_blocks:
             if hasattr(downsample_block, "has_cross_attention") and downsample_block.has_cross_attention:
                 sample, res_samples = downsample_block(

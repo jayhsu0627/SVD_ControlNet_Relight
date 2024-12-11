@@ -928,12 +928,15 @@ def main():
 
     num_folders = len(folder_list)
     validation_control_images_cat = []
+    # Prepare condition images (input)
     for i in range(num_folders):
         print(i)
         
         img_folder = os.path.join(args.validation_image_folder, folder_list[i])
         print(img_folder)
-        validation_image = [load_images_from_folder(img_folder)[0]]
+        # validation_image = [load_images_from_folder(img_folder)[0]]
+        validation_image = load_images_from_folder(img_folder)[:args.num_frames]
+
         validation_control_images = load_images_from_folder(img_folder)[:args.num_frames]
         for img in validation_control_images:
             with torch.autocast("cuda"):
@@ -959,9 +962,13 @@ def main():
         if not os.path.exists(val_save_dir):
             os.makedirs(val_save_dir)
 
+    #    # Prepare lighting index
+    #     if isinstance(light_dirs_or_ids, int):
+    #         light_dirs_or_ids = torch.tensor([args.target_light] * control_images.shape[0]).cuda()
+ 
         with torch.autocast(device_type="cuda"):
             video_frames = pipeline(
-                validation_image[0], 
+                validation_image, 
                 validation_control_images_cat,
                 height=args.height,
                 width=args.width*2,
@@ -969,13 +976,13 @@ def main():
                 decode_chunk_size=8,
                 motion_bucket_id=127,
                 fps=7,
-                noise_aug_strength=0.02,
+                noise_aug_strength=0.5,
                 # generator=generator,
             ).frames
             
             out_file_path = os.path.join(
                 val_save_dir,
-                f"test.mp4",
+                f"test_3_more_img.mp4",
             )
             flattened_batch_output = [img for sublist in video_frames for img in sublist]
             # print(flattened_batch_output[0].shape)

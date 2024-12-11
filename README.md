@@ -1,20 +1,18 @@
-# Stable Video Diffusion Temporal Controlnet
+# Stable Video Diffusion Temporal Controlnet for Video Relighting
 
 ## Overview
-Introducing the Stable Video Diffusion Temporal Controlnet! This tool uses a controlnet style encoder with the svd base. It's designed to enhance your video diffusion projects by providing precise temporal control.
+Introducing the Stable Video Diffusion Temporal Controlnet for Video Relighting!
+This tool uses a ControlNet style encoder with the Stable Video Diffusion base. It's designed to enhance your video diffusion projects by providing precise lighting control.
+
+![](./SVD_controlnet.001.png)
 
 ## Setup
 - **Controlnet Model:** you can get the depth model by running the inference script, it will automatically download the depth model to the cache, the model files can be found here: [temporal-controlnet-depth-svd-v1](https://huggingface.co/CiaraRowles/temporal-controlnet-depth-svd-v1)
 - **Installation:** run `conda env create -f environment.yml`
-- **Execution:** Run "run_inference_mod.py".
 
 ## Demo
 
-![combined_with_square_image_new_gif](https://github.com/CiaraStrawberry/sdv_controlnet/assets/13116982/055c8d3b-074e-4aeb-9ddc-70d12b5504d5)
-
-## Notes
-- **Focus on Central Object:** The system tends to extract motion features primarily from a central object and, occasionally, from the background. It's best to avoid overly complex motion or obscure objects.
-- **Simplicity in Motion:** Stick to motions that svd can handle well without the controlnet. This ensures it will be able to apply the motion.
+![](./image_grid.png)
 
 ## Training
 My example training config is configured like this:
@@ -65,6 +63,7 @@ CUDA_VISIBLE_DEVICES=0 accelerate launch train_svd_decoder.py \
  --mse_weight=0.4
 
 ```
+## Inference
 
 inference
 ```
@@ -85,3 +84,5 @@ python eval_svd_controlnet.py \
 - **Stability:** for stable video diffusion.
 - **Diffusers Team:** For the svd implementation.
 - **Pixeli99:** For providing a practical svd training script: [SVD_Xtend](https://github.com/pixeli99/SVD_Xtend)
+- **Stable Video Diffusion Temporal Controlnet** For providing the foundation SVD temporal ControlNet code base  [Code](https://github.com/CiaraStrawberry/svd-temporal-controlnet/)
+- **Controlnet Diffusers Relighting** For providing the image-based SD ControlNet relighting code  [Code](https://github.com/graphdeco-inria/controlnet-diffusers-relighting/)

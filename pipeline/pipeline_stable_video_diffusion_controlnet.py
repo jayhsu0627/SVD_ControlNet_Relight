@@ -424,13 +424,14 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         # 1. Check inputs. Raise error if not correct
         self.check_inputs(image, height, width)
 
-        # 2. Define call parameters
-        #if isinstance(image, PIL.Image.Image):
+        # # 2. Define call parameters
+        # if isinstance(image, PIL.Image.Image):
         #    batch_size = 1
-        #elif isinstance(image, list):
+        # elif isinstance(image, list):
         #    batch_size = len(image)
-        #else:
+        # else:
         #    batch_size = image.shape[0]
+
         device = self._execution_device
         # here `guidance_scale` is defined analog to the guidance weight `w` of equation (2)
         # of the Imagen paper: https://arxiv.org/pdf/2205.11487.pdf . `guidance_scale = 1`
