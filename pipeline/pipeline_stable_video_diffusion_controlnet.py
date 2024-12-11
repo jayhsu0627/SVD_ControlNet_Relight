@@ -127,6 +127,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         controlnet: ControlNetSDVModel,
         scheduler: EulerDiscreteScheduler,
         feature_extractor: CLIPImageProcessor,
+        insert_light=False,  # Add this line
     ):
         super().__init__()
     
@@ -141,6 +142,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         
         self.vae_scale_factor = 2 ** (len(self.vae.config.block_out_channels) - 1)
         self.image_processor = VaeImageProcessor(vae_scale_factor=self.vae_scale_factor)
+        self.insert_light = insert_light  # Store the value
 
     def _encode_image(self, image, device, num_videos_per_prompt, do_classifier_free_guidance):
         dtype = next(self.image_encoder.parameters()).dtype
@@ -337,6 +339,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         return_dict: bool = True,
         controlnet_cond_scale=1.0,
         batch_size=1,
+        train_dir=None,
     ):
         r"""
         The call function to the pipeline for generation.
@@ -534,7 +537,8 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
                 latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
 
                 # Concatenate image_latents over channels dimention
-                
+                # print(latents.device)
+
                 latent_model_input = torch.cat([latent_model_input, image_latents], dim=2)
                 down_block_res_samples, mid_block_res_sample = self.controlnet(
                     latent_model_input,
@@ -545,6 +549,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
                     conditioning_scale=controlnet_cond_scale,
                     guess_mode=False,
                     return_dict=False,
+                    timestep_cond = train_dir if self.insert_light else None
                 )
 
 

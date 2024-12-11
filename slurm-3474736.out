@@ -1,0 +1,589 @@
+NODELIST=gammagpu11
+MASTER_ADDR=gammagpu11
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+srun: error: gammagpu11: tasks 1-3: Exited with exit code 1
+WARNING:accelerate.utils.other:Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 2
+Local process index: 2
+Device: cuda:2
+
+Mixed precision type: fp16
+
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 1
+Local process index: 1
+Device: cuda:1
+
+Mixed precision type: fp16
+
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 3
+Local process index: 3
+Device: cuda:3
+
+Mixed precision type: fp16
+
+{'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+prediction_type: v_prediction
+prediction_type: v_prediction
+prediction_type: v_prediction
+prediction_type: v_prediction
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+INFO:__main__:Loading existing controlnet weights
+layers per block islayers per block islayers per block is  22 
+
+2
+layers per block is 2
+{'act_fn'} was not found in config. Values will be initialized to default values.
+Some weights of the model checkpoint were not used when initializing ControlNetSDVModel: 
+ ['time_embedding.cond_proj.weight']
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+gammagpu11:1852261:1852261 [0] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1852261:1852261 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1852261:1852261 [0] NCCL INFO cudaDriverVersion 12040
+NCCL version 2.20.5+cuda12.4
+gammagpu11:1852262:1852262 [1] NCCL INFO cudaDriverVersion 12040
+gammagpu11:1852262:1852262 [1] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1852262:1852262 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1852263:1852263 [2] NCCL INFO cudaDriverVersion 12040
+gammagpu11:1852263:1852263 [2] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1852263:1852263 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1852264:1852264 [3] NCCL INFO cudaDriverVersion 12040
+gammagpu11:1852264:1852264 [3] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1852264:1852264 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1852262:1852391 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1852262:1852391 [1] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::2c48:4bff:fe0d:ac77%enp67s0f3u2u3c2<0>
+gammagpu11:1852262:1852391 [1] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1852262:1852391 [1] NCCL INFO Using network Socket
+gammagpu11:1852263:1852392 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1852263:1852392 [2] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::2c48:4bff:fe0d:ac77%enp67s0f3u2u3c2<0>
+gammagpu11:1852263:1852392 [2] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1852263:1852392 [2] NCCL INFO Using network Socket
+gammagpu11:1852261:1852390 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1852261:1852390 [0] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::2c48:4bff:fe0d:ac77%enp67s0f3u2u3c2<0>
+gammagpu11:1852261:1852390 [0] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1852261:1852390 [0] NCCL INFO Using network Socket
+gammagpu11:1852264:1852393 [3] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1852264:1852393 [3] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0> [2]enp67s0f3u2u3c2:fe80::2c48:4bff:fe0d:ac77%enp67s0f3u2u3c2<0>
+gammagpu11:1852264:1852393 [3] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1852264:1852393 [3] NCCL INFO Using network Socket
+gammagpu11:1852264:1852393 [3] NCCL INFO comm 0x55e1d446d780 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x8597639696a2296 - Init START
+gammagpu11:1852261:1852390 [0] NCCL INFO comm 0x55f743292e00 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x8597639696a2296 - Init START
+gammagpu11:1852263:1852392 [2] NCCL INFO comm 0x558b0c0ca400 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x8597639696a2296 - Init START
+gammagpu11:1852262:1852391 [1] NCCL INFO comm 0x55db09baad00 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x8597639696a2296 - Init START
+gammagpu11:1852263:1852392 [2] NCCL INFO NVLS multicast support is not available on dev 2
+gammagpu11:1852264:1852393 [3] NCCL INFO NVLS multicast support is not available on dev 3
+gammagpu11:1852261:1852390 [0] NCCL INFO NVLS multicast support is not available on dev 0
+gammagpu11:1852262:1852391 [1] NCCL INFO NVLS multicast support is not available on dev 1
+gammagpu11:1852261:1852390 [0] NCCL INFO comm 0x55f743292e00 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+gammagpu11:1852262:1852391 [1] NCCL INFO comm 0x55db09baad00 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+gammagpu11:1852264:1852393 [3] NCCL INFO comm 0x55e1d446d780 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+gammagpu11:1852263:1852392 [2] NCCL INFO comm 0x558b0c0ca400 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 00/04 :    0   1   2   3
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 01/04 :    0   1   2   3
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 02/04 :    0   1   2   3
+gammagpu11:1852262:1852391 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 03/04 :    0   1   2   3
+gammagpu11:1852262:1852391 [1] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1852264:1852393 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2
+gammagpu11:1852261:1852390 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1
+gammagpu11:1852263:1852392 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1
+gammagpu11:1852264:1852393 [3] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1852261:1852390 [0] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1852263:1852392 [2] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1852261:1852390 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Connected all rings
+gammagpu11:1852262:1852391 [1] NCCL INFO Connected all rings
+gammagpu11:1852264:1852393 [3] NCCL INFO Connected all rings
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1852261:1852390 [0] NCCL INFO Connected all rings
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1852263:1852392 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1852262:1852391 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1852264:1852393 [3] NCCL INFO Connected all trees
+gammagpu11:1852264:1852393 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1852264:1852393 [3] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1852261:1852390 [0] NCCL INFO Connected all trees
+gammagpu11:1852261:1852390 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1852261:1852390 [0] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1852263:1852392 [2] NCCL INFO Connected all trees
+gammagpu11:1852263:1852392 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1852263:1852392 [2] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1852262:1852391 [1] NCCL INFO Connected all trees
+gammagpu11:1852262:1852391 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1852262:1852391 [1] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1852264:1852393 [3] NCCL INFO comm 0x55e1d446d780 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x8597639696a2296 - Init COMPLETE
+gammagpu11:1852262:1852391 [1] NCCL INFO comm 0x55db09baad00 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x8597639696a2296 - Init COMPLETE
+gammagpu11:1852263:1852392 [2] NCCL INFO comm 0x558b0c0ca400 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x8597639696a2296 - Init COMPLETE
+gammagpu11:1852261:1852390 [0] NCCL INFO comm 0x55f743292e00 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x8597639696a2296 - Init COMPLETE
+wandb: Tracking run with wandb version 0.17.8
+wandb: Run data is saved locally in /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241211_024918-enufou9d
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run ethereal-flower-174
+wandb: ⭐️ View project at https://wandb.ai/sjxu_gamma/SVD_Con_Mul
+wandb: 🚀 View run at https://wandb.ai/sjxu_gamma/SVD_Con_Mul/runs/enufou9d
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+  0%|          | 0/8880 [00:00<?, ?it/s]Steps:   0%|          | 0/8880 [00:00<?, ?it/s]Steps:   0%|          | 0/8880 [00:10<?, ?it/s, lr=0.0001, step_loss=0.0657]Steps:   0%|          | 0/8880 [00:11<?, ?it/s, lr=0.0001, step_loss=0.0863]Steps:   0%|          | 0/8880 [00:12<?, ?it/s, lr=0.0001, step_loss=0.041] Steps:   0%|          | 0/8880 [00:13<?, ?it/s, lr=0.0001, step_loss=0.108]Steps:   0%|          | 0/8880 [00:15<?, ?it/s, lr=0.0001, step_loss=0.612]Steps:   0%|          | 0/8880 [00:16<?, ?it/s, lr=0.0001, step_loss=0.0537]Steps:   0%|          | 0/8880 [00:18<?, ?it/s, lr=0.0001, step_loss=0.0639]Steps:   0%|          | 0/8880 [00:19<?, ?it/s, lr=0.0001, step_loss=0.0638]Steps:   0%|          | 0/8880 [00:20<?, ?it/s, lr=0.0001, step_loss=0.0524]Steps:   0%|          | 0/8880 [00:22<?, ?it/s, lr=0.0001, step_loss=0.0506]Steps:   0%|          | 0/8880 [00:23<?, ?it/s, lr=0.0001, step_loss=0.158] Steps:   0%|          | 0/8880 [00:24<?, ?it/s, lr=0.0001, step_loss=0.109]Steps:   0%|          | 0/8880 [00:26<?, ?it/s, lr=0.0001, step_loss=0.0616]Steps:   0%|          | 0/8880 [00:27<?, ?it/s, lr=0.0001, step_loss=0.065] Steps:   0%|          | 0/8880 [00:28<?, ?it/s, lr=0.0001, step_loss=0.988][rank2]:[W1211 02:49:50.461059004 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank0]:[W1211 02:49:50.500681795 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank1]:[W1211 02:49:50.507976535 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank3]:[W1211 02:49:50.588377842 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+Steps:   0%|          | 1/8880 [00:30<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.988]INFO:__main__:Running validation... 
+ Generating 1 videos.
+{'controlnet', 'insert_light'} was not found in config. Values will be initialized to default values.
+
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s][A{'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 315.91it/s]
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+Steps:   0%|          | 1/8880 [00:48<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0403]Steps:   0%|          | 1/8880 [00:49<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0849]Steps:   0%|          | 1/8880 [00:51<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0578]Steps:   0%|          | 1/8880 [00:52<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.104] Steps:   0%|          | 1/8880 [00:53<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0883]Steps:   0%|          | 1/8880 [00:55<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0424]Steps:   0%|          | 1/8880 [00:56<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.409] Steps:   0%|          | 1/8880 [00:57<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.17] Steps:   0%|          | 1/8880 [00:58<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0525]Steps:   0%|          | 1/8880 [01:00<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0342]Steps:   0%|          | 1/8880 [01:01<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.0519]Steps:   0%|          | 1/8880 [01:03<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.138] Steps:   0%|          | 1/8880 [01:04<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.825]Steps:   0%|          | 1/8880 [01:05<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.13] Steps:   0%|          | 1/8880 [01:07<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.177]Steps:   0%|          | 1/8880 [01:08<75:31:41, 30.62s/it, lr=0.0001, step_loss=0.338]Steps:   0%|          | 2/8880 [01:10<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.338]Steps:   0%|          | 2/8880 [01:10<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.604]Steps:   0%|          | 2/8880 [01:11<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.138]Steps:   0%|          | 2/8880 [01:12<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.132]Steps:   0%|          | 2/8880 [01:14<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.0421]Steps:   0%|          | 2/8880 [01:15<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.325] Steps:   0%|          | 2/8880 [01:16<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.223]Steps:   0%|          | 2/8880 [01:18<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.0714]Steps:   0%|          | 2/8880 [01:19<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.106] Steps:   0%|          | 2/8880 [01:20<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.201]Steps:   0%|          | 2/8880 [01:22<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.999]Steps:   0%|          | 2/8880 [01:23<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.205]Steps:   0%|          | 2/8880 [01:24<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.418]Steps:   0%|          | 2/8880 [01:26<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.0604]Steps:   0%|          | 2/8880 [01:27<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.268] Steps:   0%|          | 2/8880 [01:28<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.0444]Steps:   0%|          | 2/8880 [01:30<88:19:43, 35.82s/it, lr=0.0001, step_loss=0.0731]Steps:   0%|          | 3/8880 [01:31<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0731]Steps:   0%|          | 3/8880 [01:31<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0834]Steps:   0%|          | 3/8880 [01:32<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.147] Steps:   0%|          | 3/8880 [01:34<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0761]Steps:   0%|          | 3/8880 [01:35<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.113] Steps:   0%|          | 3/8880 [01:36<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0972]Steps:   0%|          | 3/8880 [01:38<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.309] Steps:   0%|          | 3/8880 [01:39<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.109]Steps:   0%|          | 3/8880 [01:41<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.062]Steps:   0%|          | 3/8880 [01:42<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.194]Steps:   0%|          | 3/8880 [01:43<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0889]Steps:   0%|          | 3/8880 [01:45<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0705]Steps:   0%|          | 3/8880 [01:46<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0504]Steps:   0%|          | 3/8880 [01:47<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.85]  Steps:   0%|          | 3/8880 [01:49<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.0802]Steps:   0%|          | 3/8880 [01:50<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.177] Steps:   0%|          | 3/8880 [01:51<72:16:42, 29.31s/it, lr=0.0001, step_loss=0.577]Steps:   0%|          | 4/8880 [01:53<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.577]Steps:   0%|          | 4/8880 [01:53<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0678]Steps:   0%|          | 4/8880 [01:54<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0462]Steps:   0%|          | 4/8880 [01:56<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.736] Steps:   0%|          | 4/8880 [01:57<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.986]Steps:   0%|          | 4/8880 [01:58<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.161]Steps:   0%|          | 4/8880 [01:59<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0714]Steps:   0%|          | 4/8880 [02:01<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.427] Steps:   0%|          | 4/8880 [02:02<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0727]Steps:   0%|          | 4/8880 [02:04<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.841] Steps:   0%|          | 4/8880 [02:05<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0769]Steps:   0%|          | 4/8880 [02:06<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0945]Steps:   0%|          | 4/8880 [02:08<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.643] Steps:   0%|          | 4/8880 [02:09<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.117]Steps:   0%|          | 4/8880 [02:10<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0619]Steps:   0%|          | 4/8880 [02:12<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0501]Steps:   0%|          | 4/8880 [02:13<64:55:08, 26.33s/it, lr=0.0001, step_loss=0.0799]Steps:   0%|          | 5/8880 [02:15<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0799]Steps:   0%|          | 5/8880 [02:15<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.197] Steps:   0%|          | 5/8880 [02:16<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.159]Steps:   0%|          | 5/8880 [02:17<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.109]Steps:   0%|          | 5/8880 [02:19<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0902]Steps:   0%|          | 5/8880 [02:20<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.078] Steps:   0%|          | 5/8880 [02:21<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0459]Steps:   0%|          | 5/8880 [02:22<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.157] Steps:   0%|          | 5/8880 [02:24<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.171]Steps:   0%|          | 5/8880 [02:25<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.21] Steps:   0%|          | 5/8880 [02:27<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0848]Steps:   0%|          | 5/8880 [02:28<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0422]Steps:   0%|          | 5/8880 [02:29<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.183] Steps:   0%|          | 5/8880 [02:31<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0696]Steps:   0%|          | 5/8880 [02:32<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.873] Steps:   0%|          | 5/8880 [02:33<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.065]Steps:   0%|          | 5/8880 [02:35<60:44:05, 24.64s/it, lr=0.0001, step_loss=0.0676]Steps:   0%|          | 6/8880 [02:36<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0676]Steps:   0%|          | 6/8880 [02:36<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.126] Steps:   0%|          | 6/8880 [02:37<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0704]Steps:   0%|          | 6/8880 [02:39<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0729]Steps:   0%|          | 6/8880 [02:40<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0641]Steps:   0%|          | 6/8880 [02:41<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.901] Steps:   0%|          | 6/8880 [02:43<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.107]Steps:   0%|          | 6/8880 [02:44<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.163]Steps:   0%|          | 6/8880 [02:45<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.056]Steps:   0%|          | 6/8880 [02:47<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0648]Steps:   0%|          | 6/8880 [02:48<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.766] Steps:   0%|          | 6/8880 [02:49<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0521]Steps:   0%|          | 6/8880 [02:51<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.264] Steps:   0%|          | 6/8880 [02:52<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.27] Steps:   0%|          | 6/8880 [02:53<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0631]Steps:   0%|          | 6/8880 [02:55<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.486] Steps:   0%|          | 6/8880 [02:56<58:04:08, 23.56s/it, lr=0.0001, step_loss=0.0561]Steps:   0%|          | 7/8880 [02:58<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0561]Steps:   0%|          | 7/8880 [02:58<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.144] Steps:   0%|          | 7/8880 [02:59<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.069]Steps:   0%|          | 7/8880 [03:00<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.123]Steps:   0%|          | 7/8880 [03:02<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0477]Steps:   0%|          | 7/8880 [03:03<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.224] Steps:   0%|          | 7/8880 [03:04<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.114]Steps:   0%|          | 7/8880 [03:06<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.107]Steps:   0%|          | 7/8880 [03:07<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.835]Steps:   0%|          | 7/8880 [03:08<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0555]Steps:   0%|          | 7/8880 [03:10<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0593]Steps:   0%|          | 7/8880 [03:11<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0695]Steps:   0%|          | 7/8880 [03:13<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0253]Steps:   0%|          | 7/8880 [03:14<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.111] Steps:   0%|          | 7/8880 [03:15<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.181]Steps:   0%|          | 7/8880 [03:17<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.367]Steps:   0%|          | 7/8880 [03:18<56:30:52, 22.93s/it, lr=0.0001, step_loss=0.0415]Steps:   0%|          | 8/8880 [03:20<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0415]Steps:   0%|          | 8/8880 [03:20<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0249]Steps:   0%|          | 8/8880 [03:21<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.149] Steps:   0%|          | 8/8880 [03:22<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0349]Steps:   0%|          | 8/8880 [03:24<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0483]Steps:   0%|          | 8/8880 [03:25<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0593]Steps:   0%|          | 8/8880 [03:26<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.416] Steps:   0%|          | 8/8880 [03:28<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0737]Steps:   0%|          | 8/8880 [03:29<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.219] Steps:   0%|          | 8/8880 [03:30<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.12] Steps:   0%|          | 8/8880 [03:32<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.252]Steps:   0%|          | 8/8880 [03:33<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0784]Steps:   0%|          | 8/8880 [03:34<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.128] Steps:   0%|          | 8/8880 [03:36<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.0692]Steps:   0%|          | 8/8880 [03:37<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.564] Steps:   0%|          | 8/8880 [03:38<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.494]Steps:   0%|          | 8/8880 [03:39<55:49:35, 22.65s/it, lr=0.0001, step_loss=0.157]Steps:   0%|          | 9/8880 [03:41<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.157]Steps:   0%|          | 9/8880 [03:41<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.546]Steps:   0%|          | 9/8880 [03:42<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0637]Steps:   0%|          | 9/8880 [03:44<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.124] Steps:   0%|          | 9/8880 [03:45<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.221]Steps:   0%|          | 9/8880 [03:46<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.036]Steps:   0%|          | 9/8880 [03:48<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.434]Steps:   0%|          | 9/8880 [03:49<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.13] Steps:   0%|          | 9/8880 [03:50<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0819]Steps:   0%|          | 9/8880 [03:52<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0739]Steps:   0%|          | 9/8880 [03:53<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0694]Steps:   0%|          | 9/8880 [03:55<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0307]Steps:   0%|          | 9/8880 [03:56<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0682]Steps:   0%|          | 9/8880 [03:57<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.14]  Steps:   0%|          | 9/8880 [03:58<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.148]Steps:   0%|          | 9/8880 [04:00<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0362]Steps:   0%|          | 9/8880 [04:01<54:48:56, 22.25s/it, lr=0.0001, step_loss=0.0529]Steps:   0%|          | 10/8880 [04:03<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0529]Steps:   0%|          | 10/8880 [04:03<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0758]Steps:   0%|          | 10/8880 [04:04<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0545]Steps:   0%|          | 10/8880 [04:06<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.106] Steps:   0%|          | 10/8880 [04:07<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0675]Steps:   0%|          | 10/8880 [04:08<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0694]Steps:   0%|          | 10/8880 [04:10<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0868]Steps:   0%|          | 10/8880 [04:11<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0567]Steps:   0%|          | 10/8880 [04:12<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.131] Steps:   0%|          | 10/8880 [04:14<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.324]Steps:   0%|          | 10/8880 [04:15<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.158]Steps:   0%|          | 10/8880 [04:16<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.154]Steps:   0%|          | 10/8880 [04:18<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.306]Steps:   0%|          | 10/8880 [04:19<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0712]Steps:   0%|          | 10/8880 [04:20<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.395] Steps:   0%|          | 10/8880 [04:21<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.704]Steps:   0%|          | 10/8880 [04:23<54:23:34, 22.08s/it, lr=0.0001, step_loss=0.0362]Steps:   0%|          | 11/8880 [04:25<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0362]Steps:   0%|          | 11/8880 [04:25<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0358]Steps:   0%|          | 11/8880 [04:26<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.101] Steps:   0%|          | 11/8880 [04:27<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0629]Steps:   0%|          | 11/8880 [04:29<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.544] Steps:   0%|          | 11/8880 [04:30<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0894]Steps:   0%|          | 11/8880 [04:31<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0527]Steps:   0%|          | 11/8880 [04:32<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0706]Steps:   0%|          | 11/8880 [04:34<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0851]Steps:   0%|          | 11/8880 [04:35<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.128] Steps:   0%|          | 11/8880 [04:36<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.349]Steps:   0%|          | 11/8880 [04:38<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0434]Steps:   0%|          | 11/8880 [04:39<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0585]Steps:   0%|          | 11/8880 [04:40<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0438]Steps:   0%|          | 11/8880 [04:42<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.319] Steps:   0%|          | 11/8880 [04:43<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.243]Steps:   0%|          | 11/8880 [04:44<54:08:51, 21.98s/it, lr=0.0001, step_loss=0.0433]Steps:   0%|          | 12/8880 [04:46<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.0433]Steps:   0%|          | 12/8880 [04:46<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.296] Steps:   0%|          | 12/8880 [04:47<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.064]Steps:   0%|          | 12/8880 [04:48<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.057]Steps:   0%|          | 12/8880 [04:50<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.237]Steps:   0%|          | 12/8880 [04:51<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.496]Steps:   0%|          | 12/8880 [04:53<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.081]Steps:   0%|          | 12/8880 [04:54<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.157]Steps:   0%|          | 12/8880 [04:55<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.0651]Steps:   0%|          | 12/8880 [04:56<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.0842]Steps:   0%|          | 12/8880 [04:58<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.225] Steps:   0%|          | 12/8880 [04:59<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.0864]Steps:   0%|          | 12/8880 [05:00<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.125] Steps:   0%|          | 12/8880 [05:02<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.263]Steps:   0%|          | 12/8880 [05:03<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.0833]Steps:   0%|          | 12/8880 [05:05<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.105] Steps:   0%|          | 12/8880 [05:06<53:41:33, 21.80s/it, lr=0.0001, step_loss=0.0835]Steps:   0%|          | 13/8880 [05:07<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0835]Steps:   0%|          | 13/8880 [05:08<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.137] Steps:   0%|          | 13/8880 [05:09<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.115]Steps:   0%|          | 13/8880 [05:10<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0673]Steps:   0%|          | 13/8880 [05:12<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0386]Steps:   0%|          | 13/8880 [05:13<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.052] Steps:   0%|          | 13/8880 [05:14<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.109]Steps:   0%|          | 13/8880 [05:16<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.104]Steps:   0%|          | 13/8880 [05:17<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0338]Steps:   0%|          | 13/8880 [05:18<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0638]Steps:   0%|          | 13/8880 [05:20<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0313]Steps:   0%|          | 13/8880 [05:21<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0426]Steps:   0%|          | 13/8880 [05:22<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0718]Steps:   0%|          | 13/8880 [05:24<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0733]Steps:   0%|          | 13/8880 [05:25<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.191] Steps:   0%|          | 13/8880 [05:26<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.0809]Steps:   0%|          | 13/8880 [05:28<53:32:31, 21.74s/it, lr=0.0001, step_loss=0.139] Steps:   0%|          | 14/8880 [05:29<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.139]Steps:   0%|          | 14/8880 [05:29<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.103]Steps:   0%|          | 14/8880 [05:30<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.157]Steps:   0%|          | 14/8880 [05:32<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.104]Steps:   0%|          | 14/8880 [05:33<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0381]Steps:   0%|          | 14/8880 [05:35<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.164] Steps:   0%|          | 14/8880 [05:36<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0851]Steps:   0%|          | 14/8880 [05:37<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.197] Steps:   0%|          | 14/8880 [05:38<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0902]Steps:   0%|          | 14/8880 [05:40<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0783]Steps:   0%|          | 14/8880 [05:41<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0805]Steps:   0%|          | 14/8880 [05:42<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.972] Steps:   0%|          | 14/8880 [05:44<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0512]Steps:   0%|          | 14/8880 [05:45<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0609]Steps:   0%|          | 14/8880 [05:46<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.145] Steps:   0%|          | 14/8880 [05:48<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.0558]Steps:   0%|          | 14/8880 [05:49<53:28:08, 21.71s/it, lr=0.0001, step_loss=0.17]  Steps:   0%|          | 15/8880 [05:50<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.17]Steps:   0%|          | 15/8880 [05:51<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.272]Steps:   0%|          | 15/8880 [05:52<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0512]Steps:   0%|          | 15/8880 [05:53<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0712]Steps:   0%|          | 15/8880 [05:54<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.15]  Steps:   0%|          | 15/8880 [05:56<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0684]Steps:   0%|          | 15/8880 [05:57<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.108] Steps:   0%|          | 15/8880 [05:59<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0438]Steps:   0%|          | 15/8880 [06:00<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0819]Steps:   0%|          | 15/8880 [06:01<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0813]Steps:   0%|          | 15/8880 [06:03<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0618]Steps:   0%|          | 15/8880 [06:04<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0383]Steps:   0%|          | 15/8880 [06:05<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0679]Steps:   0%|          | 15/8880 [06:07<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0996]Steps:   0%|          | 15/8880 [06:08<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.123] Steps:   0%|          | 15/8880 [06:09<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.467]Steps:   0%|          | 15/8880 [06:11<53:09:37, 21.59s/it, lr=0.0001, step_loss=0.0596]Steps:   0%|          | 16/8880 [06:12<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0596]Steps:   0%|          | 16/8880 [06:12<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0571]Steps:   0%|          | 16/8880 [06:14<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.045] Steps:   0%|          | 16/8880 [06:15<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.195]Steps:   0%|          | 16/8880 [06:16<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.174]Steps:   0%|          | 16/8880 [06:17<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.264]Steps:   0%|          | 16/8880 [06:19<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0243]Steps:   0%|          | 16/8880 [06:20<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.134] Steps:   0%|          | 16/8880 [06:21<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0796]Steps:   0%|          | 16/8880 [06:23<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0495]Steps:   0%|          | 16/8880 [06:24<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.189] Steps:   0%|          | 16/8880 [06:25<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0798]Steps:   0%|          | 16/8880 [06:27<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.19]  Steps:   0%|          | 16/8880 [06:28<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.12]Steps:   0%|          | 16/8880 [06:29<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.124]Steps:   0%|          | 16/8880 [06:31<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.0498]Steps:   0%|          | 16/8880 [06:32<53:18:35, 21.65s/it, lr=0.0001, step_loss=0.296] Steps:   0%|          | 17/8880 [06:34<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.296]Steps:   0%|          | 17/8880 [06:34<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0533]Steps:   0%|          | 17/8880 [06:35<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.265] Steps:   0%|          | 17/8880 [06:36<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0466]Steps:   0%|          | 17/8880 [06:38<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0395]Steps:   0%|          | 17/8880 [06:39<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0534]Steps:   0%|          | 17/8880 [06:40<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0703]Steps:   0%|          | 17/8880 [06:42<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0614]Steps:   0%|          | 17/8880 [06:43<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.637] Steps:   0%|          | 17/8880 [06:44<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0455]Steps:   0%|          | 17/8880 [06:45<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.137] Steps:   0%|          | 17/8880 [06:47<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0635]Steps:   0%|          | 17/8880 [06:48<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0733]Steps:   0%|          | 17/8880 [06:49<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0656]Steps:   0%|          | 17/8880 [06:51<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.107] Steps:   0%|          | 17/8880 [06:52<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.0946]Steps:   0%|          | 17/8880 [06:53<53:02:26, 21.54s/it, lr=0.0001, step_loss=0.497] Steps:   0%|          | 18/8880 [06:55<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.497]Steps:   0%|          | 18/8880 [06:55<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.251]Steps:   0%|          | 18/8880 [06:57<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.352]Steps:   0%|          | 18/8880 [06:58<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0801]Steps:   0%|          | 18/8880 [06:59<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.5]   Steps:   0%|          | 18/8880 [07:00<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.146]Steps:   0%|          | 18/8880 [07:02<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0675]Steps:   0%|          | 18/8880 [07:03<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0551]Steps:   0%|          | 18/8880 [07:05<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.706] Steps:   0%|          | 18/8880 [07:06<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0198]Steps:   0%|          | 18/8880 [07:07<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.025] Steps:   0%|          | 18/8880 [07:09<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.092]Steps:   0%|          | 18/8880 [07:10<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0659]Steps:   0%|          | 18/8880 [07:11<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0856]Steps:   0%|          | 18/8880 [07:13<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.0588]Steps:   0%|          | 18/8880 [07:14<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.328] Steps:   0%|          | 18/8880 [07:15<52:58:02, 21.52s/it, lr=0.0001, step_loss=0.829]Steps:   0%|          | 19/8880 [07:17<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.829]Steps:   0%|          | 19/8880 [07:17<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.805]Steps:   0%|          | 19/8880 [07:18<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.081]Steps:   0%|          | 19/8880 [07:19<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.129]Steps:   0%|          | 19/8880 [07:21<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.837]Steps:   0%|          | 19/8880 [07:22<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.207]Steps:   0%|          | 19/8880 [07:23<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.192]Steps:   0%|          | 19/8880 [07:25<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.134]Steps:   0%|          | 19/8880 [07:26<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.0454]Steps:   0%|          | 19/8880 [07:27<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.186] Steps:   0%|          | 19/8880 [07:29<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.325]Steps:   0%|          | 19/8880 [07:30<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.0809]Steps:   0%|          | 19/8880 [07:31<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.0558]Steps:   0%|          | 19/8880 [07:33<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.111] Steps:   0%|          | 19/8880 [07:34<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.357]Steps:   0%|          | 19/8880 [07:35<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.14] Steps:   0%|          | 19/8880 [07:37<53:07:26, 21.58s/it, lr=0.0001, step_loss=0.149]Steps:   0%|          | 20/8880 [07:38<53:01:18, 21.54s/it, lr=0.0001, step_loss=0.149]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+    timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+AttributeError: 'NoneType' object has no attribute 'view'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+[rank0]:     test_loss = evaluate_on_test_set(
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+[rank0]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank0]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank0]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank0]:     return model_forward(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank0]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+[rank0]:     timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+[rank0]: AttributeError: 'NoneType' object has no attribute 'view'
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+    timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+AttributeError: 'NoneType' object has no attribute 'view'
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+[rank2]:     main()
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+[rank2]:     test_loss = evaluate_on_test_set(
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+[rank2]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank2]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank2]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank2]:     return self._call_impl(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank2]:     return forward_call(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank2]:     return model_forward(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank2]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank2]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank2]:     return func(*args, **kwargs)
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+[rank2]:     timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+[rank2]: AttributeError: 'NoneType' object has no attribute 'view'
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+    timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+AttributeError: 'NoneType' object has no attribute 'view'
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+[rank1]:     main()
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+[rank1]:     test_loss = evaluate_on_test_set(
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+[rank1]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank1]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank1]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank1]:     return model_forward(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank1]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank1]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank1]:     return func(*args, **kwargs)
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+[rank1]:     timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+[rank1]: AttributeError: 'NoneType' object has no attribute 'view'
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+    timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+AttributeError: 'NoneType' object has no attribute 'view'
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1961, in <module>
+[rank3]:     main()
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1719, in main
+[rank3]:     test_loss = evaluate_on_test_set(
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1397, in evaluate_on_test_set
+[rank3]:     down_block_res_samples, mid_block_res_sample = controlnet(
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1636, in forward
+[rank3]:     else self._run_ddp_forward(*inputs, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1454, in _run_ddp_forward
+[rank3]:     return self.module(*inputs, **kwargs)  # type: ignore[index]
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank3]:     return self._call_impl(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank3]:     return forward_call(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+[rank3]:     return model_forward(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+[rank3]:     return convert_to_fp32(self.model_forward(*args, **kwargs))
+[rank3]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+[rank3]:     return func(*args, **kwargs)
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 511, in forward
+[rank3]:     timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+[rank3]: AttributeError: 'NoneType' object has no attribute 'view'
+W1211 02:57:32.077632 139873221583872 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1852261 closing signal SIGTERM
+W1211 02:57:32.078003 139873221583872 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1852262 closing signal SIGTERM
+W1211 02:57:32.078083 139873221583872 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1852264 closing signal SIGTERM
+wandb: - 4.357 MB of 4.357 MB uploadedE1211 02:57:32.542482 139873221583872 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 2 (pid: 1852263) of binary: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_svd_controlnet.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-12-11_02:57:32
+  host      : gammagpu11.umiacs.umd.edu
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 1852263)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: gammagpu11: task 0: Exited with exit code 1

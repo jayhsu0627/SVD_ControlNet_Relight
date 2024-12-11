@@ -1,0 +1,37 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 1/8880 [00:32<80:27:19, 32.62s/it, lr=0.0001, step_loss=0.738]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'insert_light', 'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                     Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+{'final_sigmas_type', 'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 252.19it/s]
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+
+
+
+
+
+

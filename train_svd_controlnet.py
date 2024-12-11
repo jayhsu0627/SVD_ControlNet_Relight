@@ -996,13 +996,16 @@ def main():
     @torch.no_grad()
     def modify_layers(controlnet):
         if args.inject_lighting_direction:
-            # print('modify_layers in progress:', len(get_light_dir_encoding(0)))
-            print('modify_layers in progress:', get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[1] * get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[0])
+            # sample_light_vec = get_light_dir_encoding(torch.tensor([0] * args.num_frames )) 
+            sample_light_vec = [get_light_dir_encoding(0)] * args.num_frames
+            sample_light_vec = torch.from_numpy(np.array(sample_light_vec))
+            print('modify_layers in progress:', sample_light_vec.shape)
+            # print('modify_layers in progress:', sample_light_vec.shap[0] * sample_light_vec.shape[2], controlnet.timestep_input_dim)
+            print('modify_layers in progress:', sample_light_vec.shape[2], controlnet.timestep_input_dim)
 
             # controlnet.time_embedding.cond_proj = torch.nn.Linear(len(get_light_dir_encoding(0)), controlnet.timestep_input_dim, bias=False)
             # controlnet.time_embedding.cond_proj = torch.nn.Linear(get_light_dir_encoding(torch.tensor([0])).shape[1], controlnet.timestep_input_dim, bias=False)
-            controlnet.time_embedding.cond_proj = torch.nn.Linear(get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[1] * get_light_dir_encoding(torch.tensor([0] * args.num_frames )).shape[0],
-                                                                    controlnet.timestep_input_dim, bias=False)
+            controlnet.time_embedding.cond_proj = torch.nn.Linear(sample_light_vec.shape[0] * sample_light_vec.shape[2], controlnet.timestep_input_dim, bias=False)
 
     modify_layers(controlnet)
 
@@ -1158,6 +1161,13 @@ def main():
         num_workers=args.num_workers,
         prefetch_factor=2 if args.num_workers != 0 else None
     )
+    # train_dataloader = DataLoader(
+    #     train_dataset,
+    #     sampler=sampler,
+    #     batch_size=args.per_gpu_batch_size,
+    #     num_workers=args.num_workers,
+    #     prefetch_factor=2 if args.num_workers != 0 else None
+    # )
 
     # Use regular DataLoader for test set, without shuffling
     test_dataloader = DataLoader(
@@ -1584,7 +1594,7 @@ def main():
                 else:
                     encoder_hidden_states_t = text_encoded
 
-                print("encoder_hidden_states_t shape", encoder_hidden_states_t.shape)
+                # print("encoder_hidden_states_t shape", encoder_hidden_states_t.shape)
 
                 # # # Expand encoder_hidden_states along the sequence dimension
                 # # encoder_hidden_states_expanded = encoder_hidden_states.expand(-1, encoder_hidden_states_t.size(1), -1)
@@ -1647,8 +1657,8 @@ def main():
                 #     raise ValueError(f"Unknown prediction type {noise_scheduler.config.prediction_type}")
 
                 target = latents
-                print('time steps:', timesteps)
-                print('before controlnet:', inp_noisy_latents.shape, timesteps.shape, encoder_hidden_states.shape, added_time_ids.shape, controlnet_image.shape, batch["target_dir"].shape)
+                # print('time steps:', timesteps)
+                # print('before controlnet:', inp_noisy_latents.shape, timesteps.shape, encoder_hidden_states.shape, added_time_ids.shape, controlnet_image.shape, batch["target_dir"].shape)
 
                 down_block_res_samples, mid_block_res_sample = controlnet(
                     inp_noisy_latents,
@@ -1777,19 +1787,18 @@ def main():
                         pipeline = StableVideoDiffusionPipelineControlNet.from_pretrained(
                             args.pretrained_model_name_or_path,
                             unet=accelerator.unwrap_model(unet),
-                            controlnet=accelerator.unwrap_model(
-                                controlnet),
-                            image_encoder=accelerator.unwrap_model(
-                                image_encoder),
+                            controlnet=accelerator.unwrap_model(controlnet),
+                            image_encoder=accelerator.unwrap_model(image_encoder),
                             vae=accelerator.unwrap_model(vae),
                             revision=args.revision,
                             torch_dtype=weight_dtype,
+                            insert_light = True if args.inject_lighting_direction else False
                         )
                         pipeline = pipeline.to(accelerator.device)
                         pipeline.set_progress_bar_config(disable=True)
 
                         idx = np.random.randint(len(dataset))
-                        train_image, train_cond, _, train_depth, train_normal, _ = dataset.get_batch(idx)
+                        train_image, train_cond, _, train_depth, train_normal, train_dir = dataset.get_batch(idx)
                         # I_j
                         train_image = (train_image.detach().cpu().numpy() * 255).astype(np.uint8)
                         # I_i
@@ -1797,10 +1806,13 @@ def main():
                         # I_depth
                         train_depth = (train_depth.detach().cpu().numpy() * 255).astype(np.uint8)
 
+                        # ( t, m, n) to (b, t, m, n)
+                        train_dir = train_dir.unsqueeze(0)
+                        train_dir = train_dir.to(accelerator.device)
+
                         # Convert each image in the array to a PIL image
                         train_images = []
                         cond_images = []
-
                         # 
                         for i in range(args.num_frames):
                             img_array = train_image[i]  # Shape (3, h, w)
@@ -1828,7 +1840,6 @@ def main():
                         with torch.autocast(
                             str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
                         ):
-                            print('here')
                             video_frames = pipeline(
                                 train_images[0], 
                                 cond_images[:args.num_frames],
@@ -1837,10 +1848,10 @@ def main():
                                 num_frames=args.num_frames,
                                 decode_chunk_size=8,
                                 motion_bucket_id=5,
-                                fps= fps,
+                                fps=args.num_frames,
                                 noise_aug_strength=0.02,
+                                train_dir=train_dir,
                             ).frames
-                        print('here2')
 
                         flattened_batch_output = [img for sublist in video_frames for img in sublist]
 
@@ -1849,6 +1860,14 @@ def main():
                             "pred_img_0": [wandb.Image(flattened_batch_output[0], caption="Prediction 0")],
                             "gt_img_1": [wandb.Image(train_images[1] ,caption="Ground Truth 1")],
                             "pred_img_1": [wandb.Image(flattened_batch_output[1], caption="Prediction 1")],
+                            "gt_img_2": [wandb.Image(train_images[2] ,caption="Ground Truth 2")],
+                            "pred_img_2": [wandb.Image(flattened_batch_output[2], caption="Prediction 2")],
+                            "gt_img_3": [wandb.Image(train_images[3] ,caption="Ground Truth 3")],
+                            "pred_img_3": [wandb.Image(flattened_batch_output[3], caption="Prediction 3")],
+                            "gt_img_4": [wandb.Image(train_images[4] ,caption="Ground Truth 4")],
+                            "pred_img_4": [wandb.Image(flattened_batch_output[4], caption="Prediction 4")],
+                            "gt_img_5": [wandb.Image(train_images[5] ,caption="Ground Truth 5")],
+                            "pred_img_5": [wandb.Image(flattened_batch_output[5], caption="Prediction 5")],
                         }, step=global_step)
 
                         # for i in range(args.validation_image_num):

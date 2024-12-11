@@ -43,10 +43,10 @@ srun accelerate launch train_svd_controlnet.py \
  --width=512 \
  --height=512 \
  --learning_rate=1e-4 \
- --per_gpu_batch_size=2 \
+ --per_gpu_batch_size=1 \
  --num_train_epochs=120 \
  --mixed_precision="fp16" \
- --gradient_accumulation_steps=8 \
+ --gradient_accumulation_steps=16 \
  --checkpointing_steps=500 \
  --validation_steps=200 \
  --gradient_checkpointing \
@@ -57,5 +57,5 @@ srun accelerate launch train_svd_controlnet.py \
  --num_frames=6 \
  --inject_lighting_direction \
  --concat_depth_maps \
-#  --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000/controlnet" \
+ --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-8500/controlnet" \
 #  --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000" \

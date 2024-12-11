@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 import torch
 from torch import nn
 from torch.nn import functional as F
+import numpy as np
 
 from diffusers.configuration_utils import ConfigMixin, register_to_config
 # from diffusers.loaders import FromOriginalControlnetMixin
@@ -494,6 +495,8 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
 
         # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
         batch_size, num_frames = sample.shape[:2]
+        # print(batch_size, num_frames)
+        
         timesteps = timesteps.expand(batch_size)
 
         t_emb = self.time_proj(timesteps)
@@ -504,13 +507,14 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         t_emb = t_emb.to(dtype=sample.dtype)
 
         # emb = self.time_embedding(t_emb)
-        # timestep_cond = self.time_proj(timestep_cond)
 
-        print('emb', t_emb.shape, timestep_cond.shape)
+        timestep_cond = timestep_cond.view(timestep_cond.shape[0], -1)
+
+        # print('emb', t_emb.shape, timestep_cond.shape)
         emb = self.time_embedding(t_emb, timestep_cond)
 
         # emb = self.time_embedding(t_emb)
-        print('emb', emb.shape)
+        # print('emb', emb.shape)
 
         time_embeds = self.add_time_proj(added_time_ids.flatten())
         time_embeds = time_embeds.reshape((batch_size, -1))
@@ -538,7 +542,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         image_only_indicator = torch.zeros(batch_size, num_frames, dtype=sample.dtype, device=sample.device)
 
         down_block_res_samples = (sample,)
-        print("before downsample:", sample.shape, emb.shape, encoder_hidden_states.shape)
+        # print("before downsample:", sample.shape, emb.shape, encoder_hidden_states.shape)
         for downsample_block in self.down_blocks:
             if hasattr(downsample_block, "has_cross_attention") and downsample_block.has_cross_attention:
                 sample, res_samples = downsample_block(
