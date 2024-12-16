@@ -1,0 +1,84 @@
+NODELIST=gammagpu10
+MASTER_ADDR=gammagpu10
+Some weights of the model checkpoint were not used when initializing ControlNetSDVModel: 
+ ['time_embedding.cond_proj.weight']
+Keyword arguments {'text_encoder': CLIPTextModel(
+  (text_model): CLIPTextTransformer(
+    (embeddings): CLIPTextEmbeddings(
+      (token_embedding): Embedding(49408, 1024)
+      (position_embedding): Embedding(77, 1024)
+    )
+    (encoder): CLIPEncoder(
+      (layers): ModuleList(
+        (0-22): 23 x CLIPEncoderLayer(
+          (self_attn): CLIPSdpaAttention(
+            (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          )
+          (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (mlp): CLIPMLP(
+            (activation_fn): GELUActivation()
+            (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+            (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+          )
+          (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+  )
+)} are not expected by StableVideoDiffusionPipelineControlNet and will be ignored.
+Loading existing controlnet weights
+layers per block is 2
+Loading existing vae weights
+***** Running training *****
+  Num Epochs = 100
+  Instantaneous batch size per device = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = None
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 234.66it/s]
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  60%|██████    | 3/5 [00:00<00:00, 15.57it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 14.70it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 14.85it/s]
+0
+/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/001
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+Diffusion steps...: 100%|██████████| 1/1 [00:00<00:00,  8.31it/s][A
+                                                                 [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  8.26it/s]Marigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  8.25it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.84it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.91it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.91it/s]
+(512, 1024, 3) (512, 1024, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.88it/s]
+(512, 1024, 3) (512, 1024, 1)
+num 5
+num 5
+/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/001
+torch.Size([5, 1, 16])
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 1003, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 980, in main
+    video_frames = pipeline(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/pipeline/pipeline_stable_video_diffusion_controlnet.py", line 492, in __call__
+    latents = self.prepare_latents(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/pipeline/pipeline_stable_video_diffusion_controlnet.py", line 295, in prepare_latents
+    latents = randn_tensor(shape, generator=generator, device=device, dtype=dtype)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/utils/torch_utils.py", line 81, in randn_tensor
+    latents = torch.randn(shape, generator=generator, device=rand_device, dtype=dtype, layout=layout).to(device)
+TypeError: randn(): argument 'size' failed to unpack the object at pos 5 with error "type must be tuple of ints,but got float"
+srun: error: gammagpu10: task 0: Exited with exit code 1

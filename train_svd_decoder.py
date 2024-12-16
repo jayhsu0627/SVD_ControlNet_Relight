@@ -567,7 +567,7 @@ def parse_args():
         help="Path to pretrained model or model identifier from huggingface.co/models.",
     )
     parser.add_argument(
-        "--controlnet_model_name_or_path",
+        "--vae_model_name_or_path",
         type=str,
         default=None,
         help="Path to pretrained controlnet model or model identifier from huggingface.co/models."
@@ -1082,7 +1082,14 @@ def main():
             ).repo_idmodel_pre
 
     # Load scheduler, tokenizer and models.
-    vae = AsymmetricAutoencoderKL.from_pretrained("cross-attention/asymmetric-autoencoder-kl-x-1-5")
+    
+    if args.vae_model_name_or_path:
+        logger.info("Loading existing vae weights")
+        # controlnet = ControlNetSDVModel.from_pretrained(args.controlnet_model_name_or_path, conditioning_channels=4 if args.concat_depth_maps else 3)
+        vae = AsymmetricAutoencoderKL.from_pretrained(args.vae_model_name_or_path)
+    else:
+        logger.info("Initializing vae weights from unet")
+        vae = AsymmetricAutoencoderKL.from_pretrained("cross-attention/asymmetric-autoencoder-kl-x-1-5")
 
     lpips = LPIPS(net="alex").cuda()
     lpips_vgg = LPIPS(net="vgg").cuda()
@@ -1117,40 +1124,40 @@ def main():
     #     ema_controlnet = EMAModel(unet.parameters(
     #     ), model_cls=UNetSpatioTemporalConditionModel, model_config=unet.config)
 
-    # # `accelerate` 0.16.0 will have better support for customized saving
-    # if version.parse(accelerate.__version__) >= version.parse("0.16.0"):
-    #     # create custom saving & loading hooks so that `accelerator.save_state(...)` serializes in a nice format
-    #     def save_model_hook(models, weights, output_dir):
-    #         if args.use_ema:
-    #             ema_controlnet.save_pretrained(os.path.join(output_dir, "controlnet_ema"))
+    # `accelerate` 0.16.0 will have better support for customized saving
+    if version.parse(accelerate.__version__) >= version.parse("0.16.0"):
+        # create custom saving & loading hooks so that `accelerator.save_state(...)` serializes in a nice format
+        def save_model_hook(models, weights, output_dir):
+            if args.use_ema:
+                ema_controlnet.save_pretrained(os.path.join(output_dir, "controlnet_ema"))
 
-    #         for i, model in enumerate(models):
-    #             model.save_pretrained(os.path.join(output_dir, "controlnet"))
+            for i, model in enumerate(models):
+                model.save_pretrained(os.path.join(output_dir, "decoder"))
 
-    #             # make sure to pop weight so that corresponding model is not saved again
-    #             weights.pop()
+                # make sure to pop weight so that corresponding model is not saved again
+                weights.pop()
 
-    #     def load_model_hook(models, input_dir):
-    #         if args.use_ema:
-    #             load_model = EMAModel.from_pretrained(os.path.join(
-    #                 input_dir, "unet_ema"), UNetSpatioTemporalConditionModel)
-    #             ema_controlnet.load_state_dict(load_model.state_dict())
-    #             ema_controlnet.to(accelerator.device)
-    #             del load_model
+        def load_model_hook(models, input_dir):
+            if args.use_ema:
+                load_model = EMAModel.from_pretrained(os.path.join(
+                    input_dir, "unet_ema"), UNetSpatioTemporalConditionModel)
+                ema_controlnet.load_state_dict(load_model.state_dict())
+                ema_controlnet.to(accelerator.device)
+                del load_model
 
-    #         for i in range(len(models)):
-    #             # pop models so that they are not loaded again
-    #             model = models.pop()
+            for i in range(len(models)):
+                # pop models so that they are not loaded again
+                model = models.pop()
 
-    #             # load diffusers style into model
-    #             load_model = ControlNetSDVModel.from_pretrained(input_dir, subfolder="controlnet")
-    #             model.register_to_config(**load_model.config)
+                # load diffusers style into model
+                load_model = ControlNetSDVModel.from_pretrained(input_dir, subfolder="decoder")
+                model.register_to_config(**load_model.config)
 
-    #             model.load_state_dict(load_model.state_dict())
-    #             del load_model
+                model.load_state_dict(load_model.state_dict())
+                del load_model
 
-    #     accelerator.register_save_state_pre_hook(save_model_hook)
-    #     accelerator.register_load_state_pre_hook(load_model_hook)
+        accelerator.register_save_state_pre_hook(save_model_hook)
+        accelerator.register_load_state_pre_hook(load_model_hook)
 
     # Enable TF32 for faster training on Ampere GPUs,
     # cf https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices
@@ -1480,6 +1487,7 @@ def main():
             args.resume_from_checkpoint = None
         else:
             accelerator.print(f"Resuming from checkpoint {path}")
+            print(path)
             # accelerator.load_state(os.path.join(args.output_dir, path))
             global_step = int(path.split("-")[1])
 

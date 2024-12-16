@@ -225,7 +225,7 @@ def load_images_from_folder(folder):
 
     # Sorting files based on frame number
     sorted_files = sorted(os.listdir(folder), key=frame_number)
-
+    print(len(sorted_files))
     # Load images in sorted order
     for filename in sorted_files:
         ext = os.path.splitext(filename)[1].lower()
@@ -852,9 +852,15 @@ def main():
         controlnet = ControlNetSDVModel.from_unet(unet, conditioning_channels=4 if args.concat_depth_maps else 3)
 
     if args.decoder_model_name_or_path:
-        print("Loading existing controlnet weights")
-    
+        print("Loading existing vae weights")
         vae = _load_decoder_pipeline(args.decoder_model_name_or_path)
+    else:
+        print("Initializing vae weights from unet")
+        vae = AutoencoderKLTemporalDecoder.from_pretrained(
+            args.pretrained_model_name_or_path,
+            subfolder="vae",
+            revision=args.revision,
+            variant="fp16")
 
     image_encoder = CLIPVisionModelWithProjection.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="image_encoder", revision=args.revision, variant="fp16"
@@ -863,11 +869,11 @@ def main():
     @torch.no_grad()
     def modify_layers(controlnet):
         if args.inject_lighting_direction:
-            print(len(get_light_dir_encoding(0)))
-            controlnet.time_embedding.cond_proj = torch.nn.Linear(len(get_light_dir_encoding(0)), controlnet.timestep_input_dim, bias=False)
-    
+            sample_light_vec = [get_light_dir_encoding(0)] * args.num_frames
+            sample_light_vec = torch.from_numpy(np.array(sample_light_vec))
+            controlnet.time_embedding.cond_proj = torch.nn.Linear(sample_light_vec.shape[0] * sample_light_vec.shape[2], controlnet.timestep_input_dim, bias=False)
+   
     modify_layers(controlnet)
-
 
     # For mixed precision training we cast the text_encoder and vae weights to half-precision
     # as these models are only used for inference, keeping weights in full precision is not required.
@@ -888,14 +894,9 @@ def main():
     # total_batch_size = args.per_gpu_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
 
     print("***** Running training *****")
-    # print(f"  Num examples = {len(train_dataset)}")
     print(f"  Num Epochs = {args.num_train_epochs}")
-    print(
-        f"  Instantaneous batch size per device = {args.per_gpu_batch_size}")
-    # print(
-    #     f"  Total train batch size (w. parallel, distributed & accumulation) = {total_batch_size}")
-    print(
-        f"  Gradient Accumulation steps = {args.gradient_accumulation_steps}")
+    print(f"  Instantaneous batch size per device = {args.per_gpu_batch_size}")
+    print(f"  Gradient Accumulation steps = {args.gradient_accumulation_steps}")
     print(f"  Total optimization steps = {args.max_train_steps}")
     global_step = 0
     first_epoch = 0
@@ -913,8 +914,8 @@ def main():
         text_encoder=text_encoder,
         revision=args.revision,
         torch_dtype=weight_dtype,
+        insert_light = True if args.inject_lighting_direction else False
     )
-
     depth_pipeline = MarigoldDepthPipeline.from_pretrained("prs-eth/marigold-lcm-v1-0")
     
     pipeline = pipeline.to("cuda")
@@ -927,10 +928,10 @@ def main():
     folder_list = sorted(folder_list)
 
     num_folders = len(folder_list)
-    validation_control_images_cat = []
     # Prepare condition images (input)
     for i in range(num_folders):
         print(i)
+        validation_control_images_cat = []
         
         img_folder = os.path.join(args.validation_image_folder, folder_list[i])
         print(img_folder)
@@ -962,27 +963,36 @@ def main():
         if not os.path.exists(val_save_dir):
             os.makedirs(val_save_dir)
 
-    #    # Prepare lighting index
-    #     if isinstance(light_dirs_or_ids, int):
-    #         light_dirs_or_ids = torch.tensor([args.target_light] * control_images.shape[0]).cuda()
- 
+       # Prepare lighting index
+        if args.inject_lighting_direction:
+            numbers_list = [int(num) for num in args.target_light.split(', ')]
+            target_dir = [get_light_dir_encoding(index) for index in numbers_list]
+            target_dir = torch.from_numpy(np.array(target_dir))
+            print(target_dir.shape)
+
+            # ( t, m, n) to (b, t, m, n)
+            target_dir = target_dir.unsqueeze(0)
+            target_dir = target_dir.to("cuda")
+
+        w, h = validation_image[0].size
+        ratio = w/h
         with torch.autocast(device_type="cuda"):
             video_frames = pipeline(
-                validation_image, 
+                validation_image[0], 
                 validation_control_images_cat,
                 height=args.height,
-                width=args.width*2,
+                width=int(args.height * ratio),
                 num_frames=args.num_frames,
                 decode_chunk_size=8,
-                motion_bucket_id=127,
-                fps=7,
-                noise_aug_strength=0.5,
-                # generator=generator,
+                motion_bucket_id=5,
+                fps=args.num_frames,
+                noise_aug_strength=0.02,
+                train_dir=target_dir,
             ).frames
             
             out_file_path = os.path.join(
                 val_save_dir,
-                f"test_3_more_img.mp4",
+                folder_list[i]+ f"_SVD_vae_5500.mp4",
             )
             flattened_batch_output = [img for sublist in video_frames for img in sublist]
             # print(flattened_batch_output[0].shape)
@@ -991,3 +1001,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+ß

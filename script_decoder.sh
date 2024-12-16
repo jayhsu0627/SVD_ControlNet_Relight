@@ -46,7 +46,8 @@ srun accelerate launch train_svd_decoder.py \
  --checkpoints_total_limit=5 \
  --report_to="wandb" \
  --num_workers=4 \
- --mse_weight=0.4
-
+ --mse_weight=0.4 \
+ --vae_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-25100/" \
+ --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-25100"
 #  --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-4500/controlnet" \
 #  --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-4500"

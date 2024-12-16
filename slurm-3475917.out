@@ -1,0 +1,32 @@
+NODELIST=gammagpu12
+MASTER_ADDR=gammagpu12
+Loading existing controlnet weights
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/configuration_utils.py", line 383, in load_config
+    config_file = hf_hub_download(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/utils/_deprecation.py", line 101, in inner_f
+    return f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/fs/nexus-scratch/sjxu/Model_out/model_add_light/checkpoint-2000/controlnet'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 1003, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 849, in main
+    controlnet = ControlNetSDVModel.from_pretrained(args.controlnet_model_name_or_path, conditioning_channels=4 if args.concat_depth_maps else 3)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/models/modeling_utils.py", line 616, in from_pretrained
+    config, unused_kwargs, commit_hash = cls.load_config(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/configuration_utils.py", line 420, in load_config
+    raise EnvironmentError(
+OSError: We couldn't connect to 'https://huggingface.co' to load this model, couldn't find it in the cached files and it looks like /fs/nexus-scratch/sjxu/Model_out/model_add_light/checkpoint-2000/controlnet is not the path to a directory containing a config.json file.
+Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/diffusers/installation#offline-mode'.
+srun: error: gammagpu12: task 0: Exited with exit code 1

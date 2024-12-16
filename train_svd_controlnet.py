@@ -1391,7 +1391,6 @@ def main():
                     if random.random() < args.dropout_rgb:
                         controlnet_image = controlnet_image * 0
                     controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
-                    # controlnet_image = controlnet_image * 0.5 + batch["depth_pixel_values"].to(dtype=weight_dtype) * 0.5
 
                 # Get ControlNet and UNet predictions
                 down_block_res_samples, mid_block_res_sample = controlnet(
@@ -1401,6 +1400,7 @@ def main():
                     added_time_ids=added_time_ids,
                     controlnet_cond=controlnet_image,
                     return_dict=False,
+                    timestep_cond=batch["target_dir"] if args.inject_lighting_direction else None
                 )
                 
                 model_pred = unet(

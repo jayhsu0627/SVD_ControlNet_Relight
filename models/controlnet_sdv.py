@@ -495,7 +495,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
 
         # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
         batch_size, num_frames = sample.shape[:2]
-        # print(batch_size, num_frames)
+        print(batch_size, num_frames)
         
         timesteps = timesteps.expand(batch_size)
 

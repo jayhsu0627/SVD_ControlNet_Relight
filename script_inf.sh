@@ -38,5 +38,9 @@ srun python eval_svd_controlnet.py \
  --width=512 \
  --height=512 \
  --mixed_precision="bf16" \
+ --inject_lighting_direction \
  --target_light='23, 0, 1, 18, 19' \
  --num_frames=5 \
+ --controlnet_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/model_add_light/checkpoint-5000/controlnet' \
+ --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-27200/decoder/diffusion_pytorch_model.safetensors'
+#  --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/weights/decoder_1536x1024.safetensors'

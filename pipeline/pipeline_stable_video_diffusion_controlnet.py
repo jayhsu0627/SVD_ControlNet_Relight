@@ -427,13 +427,13 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         # 1. Check inputs. Raise error if not correct
         self.check_inputs(image, height, width)
 
-        # # 2. Define call parameters
-        # if isinstance(image, PIL.Image.Image):
-        #    batch_size = 1
-        # elif isinstance(image, list):
-        #    batch_size = len(image)
-        # else:
-        #    batch_size = image.shape[0]
+        # 2. Define call parameters
+        if isinstance(image, PIL.Image.Image):
+           batch_size = 1
+        elif isinstance(image, list):
+           batch_size = len(image)
+        else:
+           batch_size = image.shape[0]
 
         device = self._execution_device
         # here `guidance_scale` is defined analog to the guidance weight `w` of equation (2)
@@ -533,11 +533,14 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         with self.progress_bar(total=num_inference_steps) as progress_bar:
             for i, t in enumerate(timesteps):
                 # expand the latents if we are doing classifier free guidance
+                # b_size = len(image_latents)
                 latent_model_input = torch.cat([latents] * 2) if do_classifier_free_guidance else latents
-                latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
+                # latent_model_input = torch.cat([latents] * b_size) if do_classifier_free_guidance else latents
 
+                latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
+            
                 # Concatenate image_latents over channels dimention
-                # print(latents.device)
+                print(latent_model_input.shape, image_latents.shape)
 
                 latent_model_input = torch.cat([latent_model_input, image_latents], dim=2)
                 down_block_res_samples, mid_block_res_sample = self.controlnet(
