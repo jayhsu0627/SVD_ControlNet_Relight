@@ -23,6 +23,8 @@ from transformers import CLIPImageProcessor, CLIPVisionModelWithProjection
 from models.controlnet_sdv import ControlNetSDVModel
 
 from diffusers.image_processor import VaeImageProcessor
+from diffusers.video_processor import VideoProcessor
+
 from diffusers.models import AutoencoderKLTemporalDecoder, UNetSpatioTemporalConditionModel
 from diffusers.utils import BaseOutput, logging
 from diffusers.utils.torch_utils import randn_tensor
@@ -128,6 +130,8 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         scheduler: EulerDiscreteScheduler,
         feature_extractor: CLIPImageProcessor,
         insert_light=False,  # Add this line
+        multi_frame=False,  # Add this line
+
     ):
         super().__init__()
     
@@ -142,14 +146,19 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         
         self.vae_scale_factor = 2 ** (len(self.vae.config.block_out_channels) - 1)
         self.image_processor = VaeImageProcessor(vae_scale_factor=self.vae_scale_factor)
+        self.video_processor = VideoProcessor(do_resize=True, vae_scale_factor=self.vae_scale_factor)
+
         self.insert_light = insert_light  # Store the value
+        self.multi_frame = multi_frame  # Store the value
 
     def _encode_image(self, image, device, num_videos_per_prompt, do_classifier_free_guidance):
         dtype = next(self.image_encoder.parameters()).dtype
 
         if not isinstance(image, torch.Tensor):
-            image = self.image_processor.pil_to_numpy(image)
-            image = self.image_processor.numpy_to_pt(image)
+            # image = self.image_processor.pil_to_numpy(image)
+            # image = self.image_processor.numpy_to_pt(image)
+            image = self.video_processor.pil_to_numpy(image)
+            image = self.video_processor.numpy_to_pt(image)
 
         #image = image.unsqueeze(0)
         image = _resize_with_antialiasing(image, (224, 224))
@@ -418,22 +427,23 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         ```
         """
         # 0. Default height and width to unet
-        height = height or self.unet.config.sample_size * self.vae_scale_factor
-        width = width or self.unet.config.sample_size * self.vae_scale_factor
+        # height = height or self.unet.config.sample_size * self.vae_scale_factor
+        # width = width or self.unet.config.sample_size * self.vae_scale_factor
 
+        print(height, width)
         num_frames = num_frames if num_frames is not None else self.unet.config.num_frames
         decode_chunk_size = decode_chunk_size if decode_chunk_size is not None else num_frames
 
         # 1. Check inputs. Raise error if not correct
         self.check_inputs(image, height, width)
 
-        # 2. Define call parameters
-        if isinstance(image, PIL.Image.Image):
-           batch_size = 1
-        elif isinstance(image, list):
-           batch_size = len(image)
-        else:
-           batch_size = image.shape[0]
+        # # 2. Define call parameters
+        # if isinstance(image, PIL.Image.Image):
+        #    batch_size = 1
+        # elif isinstance(image, list):
+        #    batch_size = len(image)
+        # else:
+        #    batch_size = image.shape[0]
 
         device = self._execution_device
         # here `guidance_scale` is defined analog to the guidance weight `w` of equation (2)
@@ -442,7 +452,17 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         do_classifier_free_guidance = max_guidance_scale > 1.0
 
         # 3. Encode input image
-        image_embeddings = self._encode_image(image, device, num_videos_per_prompt, do_classifier_free_guidance)
+        if not self.multi_frame:
+            # (batchxframes, ch, hxw)
+            image_embeddings = self._encode_image(image, device, num_videos_per_prompt, do_classifier_free_guidance)
+            print("multi_frame ", image_embeddings.shape)
+
+        else:
+            image_embeddings = self._encode_image(image[0], device, num_videos_per_prompt, do_classifier_free_guidance)
+            encoder_hidden_states = self._encode_image(image, device, num_videos_per_prompt, do_classifier_free_guidance)
+            print("image_embeddings ", image_embeddings.shape)
+
+            print("encoder_hidden_states ", encoder_hidden_states.shape)
 
         # NOTE: Stable Diffusion Video was conditioned on fps - 1, which
         # is why it is reduced here.
@@ -450,7 +470,16 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         fps = fps - 1
 
         # 4. Encode input image using VAE
-        image = self.image_processor.preprocess(image, height=height, width=width)
+        if not self.multi_frame:
+            # image = self.image_processor.preprocess(image, height=height, width=width)
+            image = self.video_processor.preprocess(image, height=height, width=width).to(device)
+        else:
+            # image = self.video_processor.preprocess(image[0], height=height, width=width).to(device)
+            #  [num_frames, channels, height, width]
+            print("before:", image[0].size)
+            image = self.video_processor.preprocess(image, height=height, width=width).to(device)
+        print("loaded:", image.shape)
+
         noise = randn_tensor(image.shape, generator=generator, device=image.device, dtype=image.dtype)
         image = image + noise_aug_strength * noise
 
@@ -467,9 +496,13 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
 
         # Repeat the image latents for each frame so we can concatenate them with the noise
         # image_latents [batch, channels, height, width] ->[batch, num_frames, channels, height, width]
-        image_latents = image_latents.unsqueeze(1).repeat(1, num_frames, 1, 1, 1)
-        #image_latents = torch.cat([image_latents] * 2) if do_classifier_free_guidance else image_latents
-        
+        if not self.multi_frame:
+            image_latents = image_latents.unsqueeze(1).repeat(1, num_frames, 1, 1, 1)
+        else:
+            # DO NOT REPEAST SO WE HAVE PER FRAME INITIALIZATION
+            b, ch, h, w = image_latents.shape
+            image_latents = image_latents.view(int(b/num_frames), num_frames, ch, h, w)
+
         # 5. Get Added Time IDs
         added_time_ids = self._get_add_time_ids(
             fps,
@@ -481,7 +514,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
             do_classifier_free_guidance,
         )
         added_time_ids = added_time_ids.to(device)
-
+        
         # 4. Prepare timesteps
         self.scheduler.set_timesteps(num_inference_steps, device=device)
         timesteps = self.scheduler.timesteps
@@ -515,27 +548,27 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         self._guidance_scale = guidance_scale
 
         noise_aug_strength = 0.02 #"¯\_(ツ)_/¯
+
         added_time_ids = _get_add_time_ids(
             noise_aug_strength,
             image_embeddings.dtype,
             batch_size,
             6,
-            128,
+            20,
             unet=self.unet,
         )
         added_time_ids = torch.cat([added_time_ids] * 2) 
         added_time_ids = added_time_ids.to(latents.device)
 
-        
+        # print("added_time_ids", added_time_ids.shape)
+
         # 8. Denoising loop
         num_warmup_steps = len(timesteps) - num_inference_steps * self.scheduler.order
         self._num_timesteps = len(timesteps)
         with self.progress_bar(total=num_inference_steps) as progress_bar:
             for i, t in enumerate(timesteps):
                 # expand the latents if we are doing classifier free guidance
-                # b_size = len(image_latents)
                 latent_model_input = torch.cat([latents] * 2) if do_classifier_free_guidance else latents
-                # latent_model_input = torch.cat([latents] * b_size) if do_classifier_free_guidance else latents
 
                 latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
             
@@ -546,13 +579,14 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
                 down_block_res_samples, mid_block_res_sample = self.controlnet(
                     latent_model_input,
                     t,
-                    encoder_hidden_states=image_embeddings,
+                    encoder_hidden_states=image_embeddings if not self.multi_frame else encoder_hidden_states,
                     controlnet_cond=controlnet_condition,
                     added_time_ids=added_time_ids,
                     conditioning_scale=controlnet_cond_scale,
                     guess_mode=False,
                     return_dict=False,
-                    timestep_cond = train_dir if self.insert_light else None
+                    timestep_cond = train_dir if self.insert_light else None,
+                    multi_frame = True if self.multi_frame else False
                 )
 
 

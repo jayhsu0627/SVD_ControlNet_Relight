@@ -1,0 +1,74 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+Steps:   0%|          | 0/8880 [00:00<?, ?it/s]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:11<?, ?it/s, lr=0.0001, step_loss=0.0762]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+1 6
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:13<?, ?it/s, lr=0.0001, step_loss=0.0588]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:15<?, ?it/s, lr=0.0001, step_loss=0.107]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:17<?, ?it/s, lr=0.0001, step_loss=0.82]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+1 6
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:19<?, ?it/s, lr=0.0001, step_loss=0.0259]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:21<?, ?it/s, lr=0.0001, step_loss=0.063]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+1 6
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:23<?, ?it/s, lr=0.0001, step_loss=0.252]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:25<?, ?it/s, lr=0.0001, step_loss=0.383]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+1 6
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:27<?, ?it/s, lr=0.0001, step_loss=0.049]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+
+Steps:   0%|          | 0/8880 [00:30<?, ?it/s, lr=0.0001, step_loss=0.107]
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+1 6
+torch.Size([1, 6, 4, 64, 64]) torch.Size([1, 6, 4, 64, 64])
+Steps:   0%|          | 1/8880 [00:31<78:28:51, 31.82s/it, lr=0.0001, step_loss=0.107]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'controlnet', 'insert_light', 'multi_frame'} was not found in config. Values will be initialized to default values.
+                                                                     Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+{'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 261.68it/s]
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+(512, 512, 3) (512, 512, 1)
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1990, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1873, in main
+    validation_image[0] if not args.multi_frame_inference else validation_image,
+NameError: name 'validation_image' is not defined
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1990, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1873, in main
+[rank0]:     validation_image[0] if not args.multi_frame_inference else validation_image,
+[rank0]: NameError: name 'validation_image' is not defined
+(512, 512, 3) (512, 512, 1)

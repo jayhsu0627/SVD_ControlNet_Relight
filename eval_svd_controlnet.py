@@ -179,8 +179,43 @@ def save_combined_frames(batch_output, validation_images, validation_control_ima
     else:
         print("Failed to create image grid")
 
-def resize_and_pad_image(image, target_size=(1024, 512), background_color=(255, 255, 255)):
+def resize_and_pad_image(image, target_size=(768, 512), background_color=(255, 255, 255)):
     
+    # # Resize the image while preserving aspect ratio
+    # width, height = image.size
+
+    # target_height = target_size[1]
+    # aspect_ratio = width / height
+
+    # target_width = aspect_ratio * target_height
+
+    # target_aspect_ratio = target_width / target_height
+    
+    # new_width = int((target_width // 8) * 8)
+    # new_height = int(target_height)
+
+
+    # # if aspect_ratio > target_aspect_ratio:
+    # #     new_width = target_width
+    # #     new_height = int(target_width / aspect_ratio)
+    # # else:
+    # #     new_height = target_height
+    # #     new_width = int(target_height * aspect_ratio)
+    
+    # image = image.resize((new_width, new_height), resample=PIL.Image.BICUBIC)
+    
+    # # Convert the resized image to have a transparent background
+    # image = image.convert("RGB")
+    
+    # # # Create a new image with the target size and white background
+    # # result = Image.new('RGBA', (new_width, new_height), background_color)
+    
+    # # # Paste the resized image into the center of the new image
+    # # x = (new_width) // 2
+    # # y = (new_height) // 2
+    # # result.paste(image, (x, y), image)
+    
+    # return image
     # Resize the image while preserving aspect ratio
     width, height = image.size
     target_width, target_height = target_size
@@ -707,6 +742,13 @@ def parse_args():
         action="store_true",
     )
     parser.add_argument(
+        "--multi_frame_inference",
+        action="store_true",
+        help=(
+            "Use multi frames as reference. Vid2Vid."
+        )
+    )
+    parser.add_argument(
         "--concat_depth_maps",
         action="store_true",
     )
@@ -732,6 +774,7 @@ def parse_args():
             "insert lighting vector for inference"
         )
     )
+
 
     args = parser.parse_args()
     env_local_rank = int(os.environ.get("LOCAL_RANK", -1))
@@ -914,7 +957,9 @@ def main():
         text_encoder=text_encoder,
         revision=args.revision,
         torch_dtype=weight_dtype,
-        insert_light = True if args.inject_lighting_direction else False
+        insert_light = True if args.inject_lighting_direction else False,
+        multi_frame = True if args.multi_frame_inference else False
+
     )
     depth_pipeline = MarigoldDepthPipeline.from_pretrained("prs-eth/marigold-lcm-v1-0")
     
@@ -975,10 +1020,12 @@ def main():
             target_dir = target_dir.to("cuda")
 
         w, h = validation_image[0].size
+        print(w, h)
         ratio = w/h
+        print("======",args.height, int(args.height * ratio))
         with torch.autocast(device_type="cuda"):
             video_frames = pipeline(
-                validation_image[0], 
+                validation_image[0] if not args.multi_frame_inference else validation_image,
                 validation_control_images_cat,
                 height=args.height,
                 width=int(args.height * ratio),
@@ -992,7 +1039,7 @@ def main():
             
             out_file_path = os.path.join(
                 val_save_dir,
-                folder_list[i]+ f"_SVD_vae_5500.mp4",
+                folder_list[i]+ f"_SVD_vae_6500_v2v_fix18.mp4",
             )
             flattened_batch_output = [img for sublist in video_frames for img in sublist]
             # print(flattened_batch_output[0].shape)

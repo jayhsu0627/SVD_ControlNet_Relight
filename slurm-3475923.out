@@ -1,356 +1,0 @@
-NODELIST=gammagpu12
-MASTER_ADDR=gammagpu12
-Some weights of the model checkpoint were not used when initializing ControlNetSDVModel: 
- ['time_embedding.cond_proj.weight']
-Keyword arguments {'text_encoder': CLIPTextModel(
-  (text_model): CLIPTextTransformer(
-    (embeddings): CLIPTextEmbeddings(
-      (token_embedding): Embedding(49408, 1024)
-      (position_embedding): Embedding(77, 1024)
-    )
-    (encoder): CLIPEncoder(
-      (layers): ModuleList(
-        (0-22): 23 x CLIPEncoderLayer(
-          (self_attn): CLIPSdpaAttention(
-            (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
-            (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
-            (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
-            (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
-          )
-          (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
-          (mlp): CLIPMLP(
-            (activation_fn): GELUActivation()
-            (fc1): Linear(in_features=1024, out_features=4096, bias=True)
-            (fc2): Linear(in_features=4096, out_features=1024, bias=True)
-          )
-          (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
-        )
-      )
-    )
-    (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
-  )
-)} are not expected by StableVideoDiffusionPipelineControlNet and will be ignored.
-Loading existing controlnet weights
-layers per block is 2
-Loading existing vae weights
-***** Running training *****
-  Num Epochs = 100
-  Instantaneous batch size per device = 1
-  Gradient Accumulation steps = 1
-  Total optimization steps = None
-Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  80%|████████  | 4/5 [00:00<00:00, 38.96it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 47.76it/s]
-Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  20%|██        | 1/5 [00:00<00:02,  1.36it/s]Loading pipeline components...:  40%|████      | 2/5 [00:00<00:01,  2.44it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:01<00:00,  4.10it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:01<00:00,  3.45it/s]
-0
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/001
-15
-15
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-Diffusion steps...: 100%|██████████| 1/1 [00:00<00:00,  2.08it/s][A
-                                                                 [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  2.07it/s]Marigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  2.07it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.72it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.79it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.75it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.72it/s]
-(512, 1024, 3) (512, 1024, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/001
-torch.Size([5, 1, 16])
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-1
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/002
-5
-5
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.80it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.72it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.68it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.68it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.67it/s]
-(512, 1024, 3) (512, 1024, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/002
-torch.Size([5, 1, 16])
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-2
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/003
-5
-5
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.75it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.53it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.62it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.64it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.65it/s]
-(512, 1024, 3) (512, 1024, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/003
-torch.Size([5, 1, 16])
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-3
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/004
-5
-5
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.64it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.53it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.51it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.55it/s]
-(512, 1024, 3) (512, 1024, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.54it/s]
-(512, 1024, 3) (512, 1024, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/004
-torch.Size([5, 1, 16])
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-torch.Size([2, 5, 4, 64, 128]) torch.Size([2, 5, 4, 64, 128])
-2 5
-/var/spool/slurm/slurmd.spool/job3475923/slurm_script: line 46: --decoder_model_name_or_path=/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-25100/model.safetensors: No such file or directory

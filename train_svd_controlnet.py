@@ -806,6 +806,13 @@ def parse_args():
         action="store_true",
     )
     parser.add_argument(
+        "--multi_frame_inference",
+        action="store_true",
+        help=(
+            "Use multi frames as reference. Vid2Vid."
+        )
+    )
+    parser.add_argument(
         "--concat_depth_maps",
         action="store_true",
     )
@@ -1358,7 +1365,11 @@ def main():
                 # Add small noise for conditional image
                 train_noise_aug = 0.02
                 small_noise_latents = latents + noise * train_noise_aug
-                conditional_latents = small_noise_latents[:, 0, :, :, :]
+                if not args.multi_frame_inference:
+                    conditional_latents = small_noise_latents[:, 0, :, :, :]
+                else:
+                    conditional_latents = small_noise_latents
+
                 conditional_latents = conditional_latents / vae.config.scaling_factor
                 
                 # Add noise to latents
@@ -1384,7 +1395,13 @@ def main():
                 added_time_ids = added_time_ids.to(latents.device)
                 
                 # Prepare input
-                conditional_latents = conditional_latents.unsqueeze(1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
+                if not args.multi_frame_inference:
+                    conditional_latents = conditional_latents.unsqueeze(1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
+                else:
+                # DO NOT REPEAST SO WE HAVE PER FRAME INITIALIZATION
+                    b, ch, h, w = conditional_latents.shape
+                    conditional_latents = conditional_latents.view(int(b/noisy_latents.shape[1]), noisy_latents.shape[1], ch, h, w)
+
                 inp_noisy_latents = torch.cat([inp_noisy_latents, conditional_latents], dim=2)
                 controlnet_image = batch["condition_pixel_values"]
                 if args.concat_depth_maps:
@@ -1561,16 +1578,20 @@ def main():
                     
                 train_noise_aug = 0.02
                 small_noise_latents = latents + noise * train_noise_aug
-                conditional_latents = small_noise_latents[:, 0, :, :, :]
+                if not args.multi_frame_inference:
+                    conditional_latents = small_noise_latents[:, 0, :, :, :]
+                else:
+                    conditional_latents = small_noise_latents
+
                 conditional_latents = conditional_latents / vae.config.scaling_factor
+
+                
                 noisy_latents  = latents + noise * sigmas_reshaped
                 timesteps = torch.Tensor(
                     [0.25 * sigma.log() for sigma in sigmas]).to(latents.device)
 
                 inp_noisy_latents = noisy_latents  / ((sigmas_reshaped**2 + 1) ** 0.5)
                 
-                # print("pixel_values shape", pixel_values[:, 0, :, :, :].shape)
-
                 # Get the text embedding for conditioning.
                 encoder_hidden_states = encode_image(
                     pixel_values[:, 0, :, :, :])
@@ -1632,8 +1653,16 @@ def main():
                     conditional_latents = image_mask * conditional_latents
 
                 # Concatenate the `conditional_latents` with the `noisy_latents`.
-                conditional_latents = conditional_latents.unsqueeze(
-                    1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
+
+                if not args.multi_frame_inference:
+                    conditional_latents = conditional_latents.unsqueeze(1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
+                else:
+                # DO NOT REPEAST SO WE HAVE PER FRAME INITIALIZATION
+                    b, ch, h, w = conditional_latents.shape
+                    conditional_latents = conditional_latents.view(int(b/noisy_latents.shape[1]), noisy_latents.shape[1], ch, h, w)
+
+                # print(inp_noisy_latents.shape, conditional_latents.shape)
+
                 inp_noisy_latents = torch.cat(
                     [inp_noisy_latents, conditional_latents], dim=2)
                 
@@ -1829,7 +1858,8 @@ def main():
                                 img_array_depth = train_depth[i]
                                 img_array_depth = np.transpose(img_array_depth, (1, 2, 0))  # Change to (h, w, 1)
                                 # img_array_depth = np.expand_dims(img_array_depth, axis=-1)
-                                print(img_array.shape, img_array_depth.shape)
+                                # print(img_array.shape, img_array_depth.shape)
+                                
                                 img_array = np.concatenate((img_array, img_array_depth), axis=2)
 
                             pil_image = Image.fromarray(img_array)  # Convert to PIL Image
@@ -1841,7 +1871,7 @@ def main():
                             str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
                         ):
                             video_frames = pipeline(
-                                train_images[0], 
+                                train_images[0] if not args.multi_frame_inference else train_images,
                                 cond_images[:args.num_frames],
                                 height=args.height,
                                 width=args.width,

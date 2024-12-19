@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --mem=122G
 #SBATCH --gres=gpu:rtxa6000:4
-#SBATCH --time=1-23:00:00
+#SBATCH --time=23:00:00
 #SBATCH --account=gamma
 #SBATCH --partition=gamma
 #SBATCH --qos=huge-long
@@ -33,7 +33,7 @@ echo "MASTER_ADDR="$MASTER_ADDR
 ## run
 srun accelerate launch train_svd_controlnet.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
- --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_add_light" \
+ --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_2" \
  --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
  --video_folder="/fs/nexus-scratch/sjxu/WebVid/blender/img" \
  --condition_folder="/fs/nexus-scratch/sjxu/WebVid/blender/shd" \
@@ -58,4 +58,5 @@ srun accelerate launch train_svd_controlnet.py \
  --inject_lighting_direction \
  --concat_depth_maps \
  --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-8500/controlnet" \
+ --checkpoints_total_limit=5
 #  --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000" \

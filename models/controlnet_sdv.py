@@ -452,7 +452,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         return_dict: bool = True,
         guess_mode: bool = False,
         conditioning_scale: float = 1.0,
-
+        multi_frame=False,  # determine if it's V2V
 
     ) -> Union[ControlNetOutput, Tuple]:
         r"""
@@ -524,15 +524,24 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
 
         # Flatten the batch and frames dimensions
         # sample: [batch, frames, channels, height, width] -> [batch * frames, channels, height, width]
+        # print("sample", sample.shape)
         sample = sample.flatten(0, 1)
+        # print("sample", sample.shape)
+
         # Repeat the embeddings num_video_frames times
         # emb: [batch, channels] -> [batch * frames, channels]
         emb = emb.repeat_interleave(num_frames, dim=0)
         # encoder_hidden_states: [batch, 1, channels] -> [batch * frames, 1, channels]
-        encoder_hidden_states = encoder_hidden_states.repeat_interleave(num_frames, dim=0)
-
+        if not multi_frame:
+            encoder_hidden_states = encoder_hidden_states.repeat_interleave(num_frames, dim=0)
+        else:
+            print("encoder_hidden_states", encoder_hidden_states.shape)
+            encoder_hidden_states = encoder_hidden_states
+        
         # 2. pre-process
         sample = self.conv_in(sample)
+        # print("sample", sample.shape)
+
         #controlnet cond
         if controlnet_cond != None:
             controlnet_cond = self.controlnet_cond_embedding(controlnet_cond)
