@@ -19,6 +19,7 @@ from utils.util import zero_rank_print
 #from torchvision.io import read_image
 from PIL import Image, ImageOps
 import imageio.v3 as iio
+import torch.nn.functional as F
 import kornia.augmentation as K
 from kornia.augmentation.container import ImageSequential
 from relighting.light_directions import get_light_dir_encoding, BACKWARD_DIR_IDS
@@ -55,9 +56,21 @@ def save_array_as_image_depth(array, filename):
 
 def pil_image_to_numpy(image):
     """Convert a PIL image to a NumPy array."""
-    if image.mode != 'RGB' and image.mode != 'L':
+    if image.mode != 'RGB':
         image = image.convert('RGB')
+    
+    width, height = image.size
+    aspect_ratio = width / height
+    
+    new_width = 512
+    new_height = int(new_width /aspect_ratio)
+
+    # Resize the image
+    new_size = (new_width, new_height)  # Specify the desired width and height
+    image = image.resize(new_size)
+    
     return np.array(image)
+
 
 def numpy_to_pt(images: np.ndarray) -> torch.FloatTensor:
     """Convert a NumPy image to a PyTorch tensor."""
@@ -129,7 +142,7 @@ class MIL(Dataset):
 
         # Crop operation
         self.transforms_0 = ImageSequential(
-            K.RandomCrop((sample_width, sample_width)),
+            K.CenterCrop((336, 512)),
             same_on_batch=True  # This enables getting the transformation matrices
         )
 
@@ -212,7 +225,7 @@ class MIL(Dataset):
                 idx = random.randint(0, len(self.dataset) - 1)
                 continue    
 
-            # print(image_path)
+            print(image_path)
             # filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)[:self.sample_n_frames]
             filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)
 
@@ -249,6 +262,7 @@ class MIL(Dataset):
             # Load image frames
             numpy_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, img)).convert("RGB")) for img in image_files])
             pixel_values = numpy_to_pt(numpy_images)
+            height, width = numpy_images[0].shape[:2]
 
             # Load control frames
             numpy_control_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, cond)).convert("RGB")) for cond in cond_files])
@@ -260,10 +274,12 @@ class MIL(Dataset):
             numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
             numpy_depth_images = np.stack([numpy_depth_images] * 3, axis=-1)
             depth_pixel_values = numpy_to_pt(numpy_depth_images)
+            depth_pixel_values = F.interpolate(depth_pixel_values, size=(height, width), mode='bilinear', align_corners=False)
 
             # Load normal frames
             numpy_normal_images = np.array([pil_image_to_numpy(Image.open(os.path.join(image_path, normal_set)).convert("RGB")) for cond in cond_files])
             normal_pixel_values = numpy_to_pt(numpy_normal_images)
+            normal_pixel_values = F.interpolate(normal_pixel_values, size=(height, width), mode='bilinear', align_corners=False)
 
             motion_values = [5]
             motion_values = torch.from_numpy(np.array(motion_values))

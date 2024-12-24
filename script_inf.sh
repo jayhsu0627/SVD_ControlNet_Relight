@@ -42,7 +42,7 @@ srun python eval_svd_controlnet.py \
  --target_light='18, 18, 18, 18, 18' \
  --num_frames=5 \
  --controlnet_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/model_add_light/checkpoint-6500/controlnet' \
- --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-50200/decoder/diffusion_pytorch_model.safetensors' \
  --multi_frame_inference \
+#  --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-50200/decoder/diffusion_pytorch_model.safetensors' \
 #  --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/weights/decoder_1536x1024.safetensors'
 #  --target_light='23, 0, 1, 18, 19' \

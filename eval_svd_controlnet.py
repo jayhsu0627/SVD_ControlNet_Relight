@@ -391,8 +391,7 @@ def parse_args():
     )
     parser.add_argument(
         "--decoder_model_name_or_path",
-        type=str,
-        default='/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-25100/model.safetensors',
+        action="store_true",
         help="Path to pretrained controlnet model or model identifier from huggingface.co/models."
         " If not specified controlnet weights are initialized from unet.",
     )
@@ -1039,7 +1038,7 @@ def main():
             
             out_file_path = os.path.join(
                 val_save_dir,
-                folder_list[i]+ f"_SVD_vae_6500_v2v_fix18.mp4",
+                folder_list[i]+ f"_SVD_vae_6500_v2v_fix18_vae.mp4",
             )
             flattened_batch_output = [img for sublist in video_frames for img in sublist]
             # print(flattened_batch_output[0].shape)
