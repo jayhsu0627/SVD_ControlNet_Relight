@@ -14,7 +14,6 @@ export NCCL_DEBUG=INFO
 # export NCCL_SOCKET_IFNAME=ens3f0  # or the relevant network interface name
 export HOST_GPU_NUM=1
 export NCCL_IB_DISABLE=1
-# export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 export CUDA_VISIBLE_DEVICES=0
 
 ### change 5-digit MASTER_PORT as you wish, slurm will raise Error if duplicated with others
@@ -36,13 +35,19 @@ srun python eval_svd_controlnet.py \
  --output_dir="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output" \
  --concat_depth_maps \
  --width=512 \
- --height=512 \
+ --height=256 \
  --mixed_precision="bf16" \
  --inject_lighting_direction \
- --target_light='18, 18, 18, 18, 18' \
+ --target_light='23, 0, 1, 18, 19' \
  --num_frames=5 \
- --controlnet_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/model_add_light/checkpoint-6500/controlnet' \
+ --controlnet_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_3/checkpoint-4000/controlnet' \
  --multi_frame_inference \
+ --enable_xformers_memory_efficient_attention \
+ --allow_tf32 \
+ --use_8bit_adam
+#  --controlnet_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_2_change_HD/checkpoint-5000/controlnet' \
 #  --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-50200/decoder/diffusion_pytorch_model.safetensors' \
 #  --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/weights/decoder_1536x1024.safetensors'
+#  --decoder_model_name_or_path='/fs/nexus-scratch/sjxu/Model_out/decoder/checkpoint-50200/decoder/diffusion_pytorch_model.safetensors' \
 #  --target_light='23, 0, 1, 18, 19' \
+#  --target_light='18, 18, 18, 18, 18' \

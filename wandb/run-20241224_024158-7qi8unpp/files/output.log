@@ -1,0 +1,153 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 8
+INFO:__main__:  Gradient Accumulation steps = 8
+INFO:__main__:  Total optimization steps = 70920
+Steps:   0%|                                                                                                            | 0/70920 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+
+
+
+Steps:   0%|                                                                    | 1/70920 [00:21<431:19:27, 21.89s/it, lr=0.0001, step_loss=0.208]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'multi_frame', 'insert_light', 'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                                                                                                  {'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.        | 0/5 [00:00<?, ?it/s]
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 232.15it/s]
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+INFO:numexpr.utils:Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:numexpr.utils:NumExpr defaulting to 8 threads.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|                                                                  | 20/70920 [03:50<200:45:43, 10.19s/it, lr=0.0001, step_loss=0.0333]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2005, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1759, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1410, in evaluate_on_test_set
+    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument tensors in method wrapper_CUDA_cat)

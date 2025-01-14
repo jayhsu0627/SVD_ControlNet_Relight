@@ -1,0 +1,19 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+Steps:   0%|          | 0/8880 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2019, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1737, in main
+    sigmas = sigmas_reshaped
+NameError: name 'sigmas_reshaped' is not defined
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2019, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1737, in main
+[rank0]:     sigmas = sigmas_reshaped
+[rank0]: NameError: name 'sigmas_reshaped' is not defined

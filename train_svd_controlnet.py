@@ -270,6 +270,12 @@ def rand_cosine_interpolated(shape, image_d, noise_d_low, noise_d_high, sigma_da
         u, image_d, noise_d_low, noise_d_high, logsnr_min, logsnr_max)
     return torch.exp(-logsnr / 2) * sigma_data
 
+# copy from https://github.com/crowsonkb/k-diffusion.git
+def rand_log_normal(shape, loc=0., scale=1., device='cpu', dtype=torch.float32):
+    """Draws samples from an lognormal distribution."""
+    u = torch.rand(shape, dtype=dtype, device=device) * (1 - 2e-7) + 1e-7
+    return torch.distributions.Normal(loc, scale).icdf(u).exp()
+
 
 min_value = 0.002
 max_value = 700
@@ -501,7 +507,7 @@ def parse_args():
     parser.add_argument(
         "--test_steps",
         type=int,
-        default=20,
+        default=50,
         help=(
             "Run fine-tuning test every X epochs."
         ),
@@ -568,8 +574,7 @@ def parse_args():
     )
     parser.add_argument(
         "--conditioning_dropout_prob",
-        type=float,
-        default=0.1,
+        action="store_true",
         help="Conditioning dropout probability. Drops out the conditionings (image and edit prompt) used in training InstructPix2Pix. See section 3.2.1 in the paper: https://arxiv.org/abs/2211.09800.",
     )
     parser.add_argument(
@@ -977,7 +982,9 @@ def main():
         args.pretrained_model_name_or_path,
         subfolder="vae",
         revision=args.revision,
-        variant="fp16")
+        variant="fp16",
+    )
+
     unet = UNetSpatioTemporalConditionControlNetModel.from_pretrained(
         args.pretrained_model_name_or_path if args.pretrain_unet is None else args.pretrain_unet,
         subfolder="unet",
@@ -1052,6 +1059,7 @@ def main():
                     "xFormers 0.0.16 cannot be used for training in some GPUs. If you observe problems during training, please update xFormers to at least 0.0.17. See https://huggingface.co/docs/diffusers/main/en/optimization/xformers for more details."
                 )
             unet.enable_xformers_memory_efficient_attention()
+            controlnet.enable_xformers_memory_efficient_attention()
         else:
             raise ValueError(
                 "xformers is not available. Make sure it is installed correctly")
@@ -1097,8 +1105,8 @@ def main():
 
     # # Enable TF32 for faster training on Ampere GPUs,
     # # cf https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices
-    # if args.allow_tf32:
-    #     torch.backends.cuda.matmul.allow_tf32 = True
+    if args.allow_tf32:
+        torch.backends.cuda.matmul.allow_tf32 = True
 
     if args.scale_lr:
         args.learning_rate = (
@@ -1331,99 +1339,110 @@ def main():
         
         test_dataloader = DataLoader(
             test_dataset,
-            batch_size=5,
+            batch_size=2,
             sampler=test_sampler,
             num_workers=args.num_workers
         )
+
 
         with torch.no_grad():
             for batch in test_dataloader:
                 if num_batches > 10:
                     break
-                pixel_values = batch["pixel_values"].to(weight_dtype).to(accelerator.device, non_blocking=True)
+                pixel_values = batch["pixel_values"].to(weight_dtype).to(
+                    accelerator.device, non_blocking=True
+                )
+                controlnet_image = batch["condition_pixel_values"].to(weight_dtype).to(
+                    accelerator.device, non_blocking=True
+                )
+
+                # make sure conditional_pixel_values is ch=3
+                if not args.multi_frame_inference:
+                    conditional_pixel_values = controlnet_image[:, 0, :, :, :].to(accelerator.device)
+                else:
+                    conditional_pixel_values = controlnet_image.to(accelerator.device)
+                if args.concat_depth_maps:
+                    if random.random() < args.dropout_rgb:
+                        controlnet_image = controlnet_image * 0
+                    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(weight_dtype).to(accelerator.device)], dim=2)
+
                 latents = tensor_to_vae_latent(pixel_values, vae)
-                
+
                 # Sample noise that we'll add to the latents
                 noise = torch.randn_like(latents)
                 bsz = latents.shape[0]
+
+                # Sample a random timestep for each image
+                # sigmas = rand_cosine_interpolated(shape=[bsz,], image_d=image_d, noise_d_low=noise_d_low, noise_d_high=noise_d_high,
+                #                                   sigma_data=sigma_data, min_value=min_value, max_value=max_value).to(latents.device)
                 
-                # Sample timesteps
-                sigmas = rand_cosine_interpolated(
-                    shape=[bsz,], 
-                    image_d=image_d, 
-                    noise_d_low=noise_d_low,
-                    noise_d_high=noise_d_high,
-                    sigma_data=sigma_data,
-                    min_value=min_value,
-                    max_value=max_value
-                ).to(latents.device)
-                
-                sigmas_reshaped = sigmas.clone()
-                while len(sigmas_reshaped.shape) < len(latents.shape):
-                    sigmas_reshaped = sigmas_reshaped.unsqueeze(-1)
-                
-                # Add small noise for conditional image
+                cond_sigmas = rand_log_normal(shape=[bsz,], loc=-3.0, scale=0.5).to(latents)
+                noise_aug_strength = cond_sigmas[0] # TODO: support batch > 1
+                cond_sigmas = cond_sigmas[:, None, None, None, None]
+                conditional_pixel_values = torch.randn_like(conditional_pixel_values) * cond_sigmas + conditional_pixel_values
+                conditional_latents = tensor_to_vae_latent(conditional_pixel_values, vae)
+                conditional_latents = conditional_latents / vae.config.scaling_factor
+                    
                 train_noise_aug = 0.02
                 small_noise_latents = latents + noise * train_noise_aug
-                if not args.multi_frame_inference:
-                    conditional_latents = small_noise_latents[:, 0, :, :, :]
-                else:
-                    conditional_latents = small_noise_latents
 
-                conditional_latents = conditional_latents / vae.config.scaling_factor
-                
-                # Add noise to latents
-                noisy_latents = latents + noise * sigmas_reshaped
-                timesteps = torch.Tensor([0.25 * sigma.log() for sigma in sigmas]).to(latents.device)
-                inp_noisy_latents = noisy_latents / ((sigmas_reshaped**2 + 1) ** 0.5)
-                
-                # Get conditioning
-                encoder_hidden_states = encode_image(pixel_values[:, 0, :, :, :])
+                # Sample a random timestep for each image
+                # P_mean=0.7 P_std=1.6
+                sigmas = rand_log_normal(shape=[bsz,], loc=0.7, scale=1.6).to(latents.device)
+                # Add noise to the latents according to the noise magnitude at each timestep
+                # (this is the forward diffusion process)
+                sigmas = sigmas[:, None, None, None, None]
+                noisy_latents  = latents + noise * sigmas
+                timesteps = torch.Tensor(
+                    [0.25 * sigma.log() for sigma in sigmas]).to(latents.device)
 
-                # https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Perazzi_A_Benchmark_Dataset_CVPR_2016_paper.pdf
-                # DAVIS is 24fps
-                fps = 6
+                inp_noisy_latents = noisy_latents  / ((sigmas**2 + 1) ** 0.5)
+                
+                # Get the text embedding for conditioning.
+                encoder_hidden_states = encode_image(
+                    pixel_values[:, 0, :, :, :])
+
                 added_time_ids = _get_add_time_ids(
-                    fps,
+                    6,
                     batch["motion_values"],
-                    train_noise_aug,
+                    train_noise_aug, # noise_aug_strength == 0.0
                     encoder_hidden_states.dtype,
                     bsz,
                     unet,
                     device=latents.device
                 )
                 added_time_ids = added_time_ids.to(latents.device)
-                
-                # Prepare input
+                # Get the text embedding for conditioning
+                if text_encoded is None: 
+                    # empty CLIP token
+                    encoder_hidden_states_t = text_encoder(batch["input_ids"].to(accelerator.device))[0]
+                else:
+                    encoder_hidden_states_t = text_encoded
+
                 if not args.multi_frame_inference:
                     conditional_latents = conditional_latents.unsqueeze(1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
                 else:
                 # DO NOT REPEAST SO WE HAVE PER FRAME INITIALIZATION
-                    b, ch, h, w = conditional_latents.shape
-                    conditional_latents = conditional_latents.view(int(b/noisy_latents.shape[1]), noisy_latents.shape[1], ch, h, w)
+                    conditional_latents = conditional_latents
 
-                inp_noisy_latents = torch.cat([inp_noisy_latents, conditional_latents], dim=2)
-                controlnet_image = batch["condition_pixel_values"]
-                if args.concat_depth_maps:
-                    if random.random() < args.dropout_rgb:
-                        controlnet_image = controlnet_image * 0
-                    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
+                inp_noisy_latents = torch.cat(
+                    [inp_noisy_latents, conditional_latents], dim=2)
 
                 # Get ControlNet and UNet predictions
                 down_block_res_samples, mid_block_res_sample = controlnet(
                     inp_noisy_latents,
                     timesteps,
-                    encoder_hidden_states,
+                    encoder_hidden_states=encoder_hidden_states_t,
                     added_time_ids=added_time_ids,
                     controlnet_cond=controlnet_image,
                     return_dict=False,
-                    timestep_cond=batch["target_dir"] if args.inject_lighting_direction else None
+                    timestep_cond=batch["target_dir"].to(weight_dtype).to(latents.device) if args.inject_lighting_direction else None
                 )
                 
                 model_pred = unet(
                     inp_noisy_latents,
                     timesteps,
-                    encoder_hidden_states,
+                    encoder_hidden_states=encoder_hidden_states_t,
                     added_time_ids=added_time_ids,
                     down_block_additional_residuals=[
                         sample.to(dtype=weight_dtype) for sample in down_block_res_samples
@@ -1432,7 +1451,6 @@ def main():
                 ).sample
                 
                 # Calculate loss
-                sigmas = sigmas_reshaped
                 c_out = -sigmas / ((sigmas**2 + 1)**0.5)
                 c_skip = 1 / (sigmas**2 + 1)
                 denoised_latents = model_pred * c_out + c_skip * noisy_latents
@@ -1556,41 +1574,53 @@ def main():
                 pixel_values = batch["pixel_values"].to(weight_dtype).to(
                     accelerator.device, non_blocking=True
                 )
-                latents = tensor_to_vae_latent(pixel_values, vae)
-                # print('latents:', latents.shape)
-                # if args.concat_depth_maps:
-                #     latents =  torch.cat([latents, torch.zeros_like(latents)][:,:,:], dim=2)
+                controlnet_image = batch["condition_pixel_values"].to(weight_dtype).to(
+                    accelerator.device, non_blocking=True
+                )
 
-                #conditional_latents = latents[:, 0, :, :, :]
-                #conditional_latents = conditional_latents / vae.config.scaling_factor
+                # make sure conditional_pixel_values is ch=3
+                if not args.multi_frame_inference:
+                    conditional_pixel_values = controlnet_image[:, 0, :, :, :]
+                else:
+                    conditional_pixel_values = controlnet_image
+                if args.concat_depth_maps:
+                    if random.random() < args.dropout_rgb:
+                        controlnet_image = controlnet_image * 0
+                    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
+
+                latents = tensor_to_vae_latent(pixel_values, vae)
+
 
                 # Sample noise that we'll add to the latents
                 noise = torch.randn_like(latents)
                 bsz = latents.shape[0]
+
                 # Sample a random timestep for each image
-                sigmas = rand_cosine_interpolated(shape=[bsz,], image_d=image_d, noise_d_low=noise_d_low, noise_d_high=noise_d_high,
-                                                  sigma_data=sigma_data, min_value=min_value, max_value=max_value).to(latents.device)
-                # Add noise to the latents according to the noise magnitude at each timestep
-                # (this is the forward diffusion process)
-                sigmas_reshaped = sigmas.clone()
-                while len(sigmas_reshaped.shape) < len(latents.shape):
-                    sigmas_reshaped = sigmas_reshaped.unsqueeze(-1)
+                # sigmas = rand_cosine_interpolated(shape=[bsz,], image_d=image_d, noise_d_low=noise_d_low, noise_d_high=noise_d_high,
+                #                                   sigma_data=sigma_data, min_value=min_value, max_value=max_value).to(latents.device)
+                
+                cond_sigmas = rand_log_normal(shape=[bsz,], loc=-3.0, scale=0.5).to(latents)
+                noise_aug_strength = cond_sigmas[0] # TODO: support batch > 1
+                cond_sigmas = cond_sigmas[:, None, None, None, None]
+                conditional_pixel_values = torch.randn_like(conditional_pixel_values) * cond_sigmas + conditional_pixel_values
+                conditional_latents = tensor_to_vae_latent(conditional_pixel_values, vae)
+                conditional_latents = conditional_latents / vae.config.scaling_factor
                     
                 train_noise_aug = 0.02
                 small_noise_latents = latents + noise * train_noise_aug
-                if not args.multi_frame_inference:
-                    conditional_latents = small_noise_latents[:, 0, :, :, :]
-                else:
-                    conditional_latents = small_noise_latents
 
-                conditional_latents = conditional_latents / vae.config.scaling_factor
 
-                
-                noisy_latents  = latents + noise * sigmas_reshaped
+                # Sample a random timestep for each image
+                # P_mean=0.7 P_std=1.6
+                sigmas = rand_log_normal(shape=[bsz,], loc=0.7, scale=1.6).to(latents.device)
+                # Add noise to the latents according to the noise magnitude at each timestep
+                # (this is the forward diffusion process)
+                sigmas = sigmas[:, None, None, None, None]
+                noisy_latents  = latents + noise * sigmas
                 timesteps = torch.Tensor(
                     [0.25 * sigma.log() for sigma in sigmas]).to(latents.device)
 
-                inp_noisy_latents = noisy_latents  / ((sigmas_reshaped**2 + 1) ** 0.5)
+                inp_noisy_latents = noisy_latents  / ((sigmas**2 + 1) ** 0.5)
                 
                 # Get the text embedding for conditioning.
                 encoder_hidden_states = encode_image(
@@ -1608,9 +1638,7 @@ def main():
                 added_time_ids = added_time_ids.to(latents.device)
                 # Get the text embedding for conditioning
                 if text_encoded is None: 
-                    # print(encoder_hidden_states.device,text_encoder(batch["input_ids"])[0].device)
-                    # print(text_encoder(batch["input_ids"].to(device=accelerator.device))[0])
-                    # print(text_encoder(batch["input_ids"])[0])
+                    # empty CLIP token
                     encoder_hidden_states_t = text_encoder(batch["input_ids"])[0]
                 else:
                     encoder_hidden_states_t = text_encoded
@@ -1626,31 +1654,38 @@ def main():
 
                 # Conditioning dropout to support classifier-free guidance during inference. For more details
                 # check out the section 3.2.1 of the original paper https://arxiv.org/abs/2211.09800.
-                if args.conditioning_dropout_prob is not None:
-                    random_p = torch.rand(
-                        bsz, device=latents.device, generator=generator)
-                    # Sample masks for the edit prompts.
-                    prompt_mask = random_p < 2 * args.conditioning_dropout_prob
-                    prompt_mask = prompt_mask.reshape(bsz, 1, 1)
-                    # Final text conditioning.
-                    # null_conditioning = torch.zeros_like(encoder_hidden_states)
-                    null_conditioning = torch.zeros_like(encoder_hidden_states_t)
+                # if args.conditioning_dropout_prob:
+                #     random_p = torch.rand(
+                #         bsz, device=latents.device, generator=generator)
+                #     # Sample masks for the edit prompts.
+                #     prompt_mask = random_p < 2 * args.conditioning_dropout_prob
+                #     prompt_mask = prompt_mask.reshape(bsz, 1, 1)
 
-                    # print("null_conditioning shape", null_conditioning.shape)
+                #     # Final text conditioning.
+                #     # null_conditioning = torch.zeros_like(encoder_hidden_states)
+                #     null_conditioning = torch.zeros_like(encoder_hidden_states_t)
 
-                    encoder_hidden_states = torch.where(
-                        prompt_mask, null_conditioning, encoder_hidden_states_t)
+                #     # print("null_conditioning shape", null_conditioning.shape)
 
-                    # Sample masks for the original images.
-                    image_mask_dtype = conditional_latents.dtype
-                    image_mask = 1 - (
-                        (random_p >= args.conditioning_dropout_prob).to(
-                            image_mask_dtype)
-                        * (random_p < 3 * args.conditioning_dropout_prob).to(image_mask_dtype)
-                    )
-                    image_mask = image_mask.reshape(bsz, 1, 1, 1)
-                    # Final image conditioning.
-                    conditional_latents = image_mask * conditional_latents
+                #     encoder_hidden_states = torch.where(
+                #         prompt_mask, null_conditioning, encoder_hidden_states_t)
+
+                #     # Sample masks for the original images.
+                #     image_mask_dtype = conditional_latents.dtype
+                #     image_mask = 1 - (
+                #         (random_p >= args.conditioning_dropout_prob).to(
+                #             image_mask_dtype)
+                #         * (random_p < 3 * args.conditioning_dropout_prob).to(image_mask_dtype)
+                #     )
+                    
+                #     if not args.multi_frame_inference:
+                #         image_mask = image_mask.reshape(bsz, 1, 1, 1)
+                #     else:
+                #         # image_mask = image_mask.repeat(1, args.num_frames, 1, 1, 1)
+                #         image_mask = image_mask.reshape(bsz, args.num_frames, 1, 1, 1)
+                #     # Final image conditioning.
+                #     print(image_mask.shape, conditional_latents.shape)
+                #     conditional_latents = image_mask * conditional_latents
 
                 # Concatenate the `conditional_latents` with the `noisy_latents`.
 
@@ -1658,20 +1693,14 @@ def main():
                     conditional_latents = conditional_latents.unsqueeze(1).repeat(1, noisy_latents.shape[1], 1, 1, 1)
                 else:
                 # DO NOT REPEAST SO WE HAVE PER FRAME INITIALIZATION
-                    b, ch, h, w = conditional_latents.shape
-                    conditional_latents = conditional_latents.view(int(b/noisy_latents.shape[1]), noisy_latents.shape[1], ch, h, w)
-
+                    # b, frames, ch, h, w = conditional_latents.shape
+                    # conditional_latents = conditional_latents.view(int(b/noisy_latents.shape[1]), noisy_latents.shape[1], ch, h, w)
+                    conditional_latents = conditional_latents
                 # print(inp_noisy_latents.shape, conditional_latents.shape)
 
                 inp_noisy_latents = torch.cat(
                     [inp_noisy_latents, conditional_latents], dim=2)
                 
-                controlnet_image = batch["condition_pixel_values"].to(dtype=weight_dtype)
-                if args.concat_depth_maps:
-                    if random.random() < args.dropout_rgb:
-                        controlnet_image = controlnet_image * 0
-                    controlnet_image = torch.cat([controlnet_image, batch["depth_pixel_values"].to(dtype=weight_dtype)], dim=2)
-
                 # print("===$$$$====")
                 # print(controlnet_image.shape, batch["depth_pixel_values"].to(dtype=weight_dtype).shape)
                 # print(inp_noisy_latents.shape, controlnet_image.shape)
@@ -1686,13 +1715,14 @@ def main():
                 #     raise ValueError(f"Unknown prediction type {noise_scheduler.config.prediction_type}")
 
                 target = latents
+
                 # print('time steps:', timesteps)
                 # print('before controlnet:', inp_noisy_latents.shape, timesteps.shape, encoder_hidden_states.shape, added_time_ids.shape, controlnet_image.shape, batch["target_dir"].shape)
 
                 down_block_res_samples, mid_block_res_sample = controlnet(
                     inp_noisy_latents,
                     timesteps,
-                    encoder_hidden_states,
+                    encoder_hidden_states=encoder_hidden_states_t,
                     added_time_ids = added_time_ids,
                     controlnet_cond = controlnet_image,
                     return_dict = False,
@@ -1709,7 +1739,6 @@ def main():
                     mid_block_additional_residual=mid_block_res_sample.to(dtype=weight_dtype),
                 ).sample
 
-                sigmas = sigmas_reshaped
                 # Denoise the latents
                 c_out = -sigmas / ((sigmas**2 + 1)**0.5)
                 c_skip = 1 / (sigmas**2 + 1)
@@ -1821,7 +1850,8 @@ def main():
                             vae=accelerator.unwrap_model(vae),
                             revision=args.revision,
                             torch_dtype=weight_dtype,
-                            insert_light = True if args.inject_lighting_direction else False
+                            insert_light = True if args.inject_lighting_direction else False,
+                            multi_frame = True if args.multi_frame_inference else False
                         )
                         pipeline = pipeline.to(accelerator.device)
                         pipeline.set_progress_bar_config(disable=True)
@@ -1842,17 +1872,18 @@ def main():
                         # Convert each image in the array to a PIL image
                         train_images = []
                         cond_images = []
-                        # 
                         for i in range(args.num_frames):
-                            img_array = train_image[i]  # Shape (3, h, w)
-                            # print(img_array.shape)
-                            img_array = np.transpose(img_array, (1, 2, 0))  # Change to (h, w, 3)
-                            # print(img_array.shape)
-                            pil_image = Image.fromarray(img_array)  # Convert to PIL Image
-                            train_images.append(pil_image)
+                            # img_array = train_image[i]  # Shape (3, h, w)
+                            # # print(img_array.shape)
+                            # img_array = np.transpose(img_array, (1, 2, 0))  # Change to (h, w, 3)
+                            # # print(img_array.shape)
+                            # pil_image = Image.fromarray(img_array)  # Convert to PIL Image
+                            # train_images.append(pil_image)
 
                             img_array = train_cond[i]  # Shape (3, h, w)
                             img_array = np.transpose(img_array, (1, 2, 0))  # Change to (h, w, 3)
+                            pil_image = Image.fromarray(img_array)  # Convert to PIL Image
+                            train_images.append(pil_image)
 
                             if args.concat_depth_maps:
                                 img_array_depth = train_depth[i]
@@ -1865,7 +1896,9 @@ def main():
                             pil_image = Image.fromarray(img_array)  # Convert to PIL Image
                             cond_images.append(pil_image)
 
-                        # print(train_image.shape, (train_image[0]).max())
+                        # print(train_images.shape)
+                        # print(cond_images[:args.num_frames].shape)
+
                         # print(train_cond.shape, (train_cond[0]).max())
                         with torch.autocast(
                             str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"

@@ -1,0 +1,368 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 8
+INFO:__main__:  Gradient Accumulation steps = 8
+INFO:__main__:  Total optimization steps = 70920
+Steps:   0%|                                                                                                            | 0/70920 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+1 6
+1 6
+Steps:   0%|                                                                                | 0/70920 [00:12<?, ?it/s, lr=0.0001, step_loss=0.276]
+
+Steps:   0%|                                                                                | 0/70920 [00:14<?, ?it/s, lr=0.0001, step_loss=0.164]
+1 6
+
+Steps:   0%|                                                                               | 0/70920 [00:16<?, ?it/s, lr=0.0001, step_loss=0.0828]
+1 6
+
+Steps:   0%|                                                                                 | 0/70920 [00:18<?, ?it/s, lr=0.0001, step_loss=0.18]
+
+Steps:   0%|                                                                    | 1/70920 [00:20<412:13:18, 20.93s/it, lr=0.0001, step_loss=0.108]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'insert_light', 'controlnet', 'multi_frame'} was not found in config. Values will be initialized to default values.
+                                                                                                                                                  {'final_sigmas_type', 'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.        | 0/5 [00:00<?, ?it/s]
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 235.14it/s]
+256 512
+image_embeddings  torch.Size([2, 1, 1024])
+encoder_hidden_states  torch.Size([12, 1, 1024])
+before: (512, 256)
+loaded: torch.Size([6, 3, 256, 512])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+2 6
+encoder_hidden_states torch.Size([12, 1, 1024])
+INFO:numexpr.utils:Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:numexpr.utils:NumExpr defaulting to 8 threads.
+1 6
+1 6
+Steps:   0%|                                                                    | 1/70920 [00:36<412:13:18, 20.93s/it, lr=0.0001, step_loss=0.105]
+
+Steps:   0%|                                                                   | 1/70920 [00:38<412:13:18, 20.93s/it, lr=0.0001, step_loss=0.0758]
+1 6
+
+Steps:   0%|                                                                    | 1/70920 [00:40<412:13:18, 20.93s/it, lr=0.0001, step_loss=0.084]
+
+Steps:   0%|                                                                    | 1/70920 [00:42<412:13:18, 20.93s/it, lr=0.0001, step_loss=0.135]
+1 6
+
+Steps:   0%|                                                                   | 2/70920 [00:44<443:01:50, 22.49s/it, lr=0.0001, step_loss=0.0838]
+
+Steps:   0%|                                                                   | 2/70920 [00:45<443:01:50, 22.49s/it, lr=0.0001, step_loss=0.0413]
+1 6
+
+Steps:   0%|                                                                   | 2/70920 [00:48<443:01:50, 22.49s/it, lr=0.0001, step_loss=0.0572]
+
+Steps:   0%|                                                                     | 2/70920 [00:49<443:01:50, 22.49s/it, lr=0.0001, step_loss=0.25]
+1 6
+
+Steps:   0%|                                                                   | 2/70920 [00:52<443:01:50, 22.49s/it, lr=0.0001, step_loss=0.0679]
+
+Steps:   0%|                                                                   | 2/70920 [00:53<443:01:50, 22.49s/it, lr=0.0001, step_loss=0.0924]
+1 6
+
+Steps:   0%|                                                                   | 3/70920 [00:56<336:26:11, 17.08s/it, lr=0.0001, step_loss=0.0628]
+1 6
+
+Steps:   0%|                                                                    | 3/70920 [00:58<336:26:11, 17.08s/it, lr=0.0001, step_loss=0.697]
+
+Steps:   0%|                                                                   | 3/70920 [01:00<336:26:11, 17.08s/it, lr=0.0001, step_loss=0.0674]
+1 6
+
+Steps:   0%|                                                                    | 3/70920 [01:02<336:26:11, 17.08s/it, lr=0.0001, step_loss=0.182]
+
+Steps:   0%|                                                                    | 3/70920 [01:04<336:26:11, 17.08s/it, lr=0.0001, step_loss=0.123]
+1 6
+
+Steps:   0%|                                                                   | 4/70920 [01:06<283:23:23, 14.39s/it, lr=0.0001, step_loss=0.0619]
+1 6
+
+Steps:   0%|                                                                    | 4/70920 [01:07<283:23:23, 14.39s/it, lr=0.0001, step_loss=0.112]
+
+Steps:   0%|                                                                    | 4/70920 [01:10<283:23:23, 14.39s/it, lr=0.0001, step_loss=0.252]
+
+Steps:   0%|                                                                    | 4/70920 [01:12<283:23:23, 14.39s/it, lr=0.0001, step_loss=0.209]
+1 6
+
+Steps:   0%|                                                                    | 4/70920 [01:14<283:23:23, 14.39s/it, lr=0.0001, step_loss=0.732]
+1 6
+
+Steps:   0%|                                                                   | 5/70920 [01:15<254:50:20, 12.94s/it, lr=0.0001, step_loss=0.0856]
+
+Steps:   0%|                                                                   | 5/70920 [01:18<254:50:20, 12.94s/it, lr=0.0001, step_loss=0.0724]
+1 6
+
+Steps:   0%|                                                                   | 5/70920 [01:20<254:50:20, 12.94s/it, lr=0.0001, step_loss=0.0823]
+
+Steps:   0%|                                                                    | 5/70920 [01:22<254:50:20, 12.94s/it, lr=0.0001, step_loss=0.114]
+1 6
+
+Steps:   0%|                                                                    | 5/70920 [01:24<254:50:20, 12.94s/it, lr=0.0001, step_loss=0.246]
+
+Steps:   0%|                                                                    | 6/70920 [01:26<239:23:45, 12.15s/it, lr=0.0001, step_loss=0.926]
+1 6
+
+Steps:   0%|                                                                   | 6/70920 [01:29<239:23:45, 12.15s/it, lr=0.0001, step_loss=0.0919]
+
+Steps:   0%|                                                                    | 6/70920 [01:30<239:23:45, 12.15s/it, lr=0.0001, step_loss=0.193]
+1 6
+
+Steps:   0%|                                                                    | 6/70920 [01:32<239:23:45, 12.15s/it, lr=0.0001, step_loss=0.118]
+1 6
+
+Steps:   0%|                                                                    | 6/70920 [01:34<239:23:45, 12.15s/it, lr=0.0001, step_loss=0.294]
+
+Steps:   0%|                                                                   | 7/70920 [01:36<226:42:48, 11.51s/it, lr=0.0001, step_loss=0.0995]
+1 6
+
+Steps:   0%|                                                                    | 7/70920 [01:37<226:42:48, 11.51s/it, lr=0.0001, step_loss=0.958]
+
+Steps:   0%|                                                                    | 7/70920 [01:40<226:42:48, 11.51s/it, lr=0.0001, step_loss=0.124]
+1 6
+
+Steps:   0%|                                                                   | 7/70920 [01:41<226:42:48, 11.51s/it, lr=0.0001, step_loss=0.0835]
+
+Steps:   0%|                                                                   | 7/70920 [01:44<226:42:48, 11.51s/it, lr=0.0001, step_loss=0.0501]
+1 6
+
+Steps:   0%|                                                                    | 7/70920 [01:45<226:42:48, 11.51s/it, lr=0.0001, step_loss=0.142]
+
+Steps:   0%|                                                                    | 8/70920 [01:48<220:48:11, 11.21s/it, lr=0.0001, step_loss=0.122]
+1 6
+
+Steps:   0%|                                                                    | 8/70920 [01:50<220:48:11, 11.21s/it, lr=0.0001, step_loss=0.349]
+
+Steps:   0%|                                                                    | 8/70920 [01:52<220:48:11, 11.21s/it, lr=0.0001, step_loss=0.153]
+1 6
+
+Steps:   0%|                                                                    | 8/70920 [01:54<220:48:11, 11.21s/it, lr=0.0001, step_loss=0.348]
+
+Steps:   0%|                                                                   | 8/70920 [01:55<220:48:11, 11.21s/it, lr=0.0001, step_loss=0.0565]
+1 6
+
+Steps:   0%|                                                                   | 9/70920 [01:58<216:50:08, 11.01s/it, lr=0.0001, step_loss=0.0734]
+
+Steps:   0%|                                                                   | 9/70920 [02:00<216:50:08, 11.01s/it, lr=0.0001, step_loss=0.0857]
+1 6
+
+Steps:   0%|                                                                    | 9/70920 [02:02<216:50:08, 11.01s/it, lr=0.0001, step_loss=0.239]
+
+Steps:   0%|                                                                   | 9/70920 [02:04<216:50:08, 11.01s/it, lr=0.0001, step_loss=0.0462]
+1 6
+
+Steps:   0%|                                                                    | 9/70920 [02:06<216:50:08, 11.01s/it, lr=0.0001, step_loss=0.193]
+
+Steps:   0%|                                                                   | 10/70920 [02:07<211:47:47, 10.75s/it, lr=0.0001, step_loss=0.133]
+1 6
+
+Steps:   0%|                                                                  | 10/70920 [02:10<211:47:47, 10.75s/it, lr=0.0001, step_loss=0.0845]
+1 6
+
+Steps:   0%|                                                                  | 10/70920 [02:13<211:47:47, 10.75s/it, lr=0.0001, step_loss=0.0596]
+
+Steps:   0%|                                                                   | 10/70920 [02:14<211:47:47, 10.75s/it, lr=0.0001, step_loss=0.122]
+1 6
+
+Steps:   0%|                                                                   | 10/70920 [02:17<211:47:47, 10.75s/it, lr=0.0001, step_loss=0.107]
+
+Steps:   0%|                                                                  | 11/70920 [02:18<210:41:53, 10.70s/it, lr=0.0001, step_loss=0.0474]
+1 6
+
+Steps:   0%|                                                                   | 11/70920 [02:20<210:41:53, 10.70s/it, lr=0.0001, step_loss=0.812]
+
+Steps:   0%|                                                                   | 11/70920 [02:22<210:41:53, 10.70s/it, lr=0.0001, step_loss=0.562]
+1 6
+
+Steps:   0%|                                                                   | 11/70920 [02:24<210:41:53, 10.70s/it, lr=0.0001, step_loss=0.129]
+1 6
+
+Steps:   0%|                                                                   | 11/70920 [02:26<210:41:53, 10.70s/it, lr=0.0001, step_loss=0.103]
+
+Steps:   0%|                                                                  | 12/70920 [02:28<207:47:06, 10.55s/it, lr=0.0001, step_loss=0.0588]
+1 6
+
+Steps:   0%|                                                                  | 12/70920 [02:31<207:47:06, 10.55s/it, lr=0.0001, step_loss=0.0955]
+
+Steps:   0%|                                                                  | 12/70920 [02:32<207:47:06, 10.55s/it, lr=0.0001, step_loss=0.0504]
+1 6
+
+Steps:   0%|                                                                   | 12/70920 [02:35<207:47:06, 10.55s/it, lr=0.0001, step_loss=0.143]
+1 6
+
+Steps:   0%|                                                                  | 12/70920 [02:36<207:47:06, 10.55s/it, lr=0.0001, step_loss=0.0834]
+
+Steps:   0%|                                                                   | 13/70920 [02:38<205:45:20, 10.45s/it, lr=0.0001, step_loss=0.064]
+1 6
+
+Steps:   0%|                                                                  | 13/70920 [02:41<205:45:20, 10.45s/it, lr=0.0001, step_loss=0.0624]
+
+Steps:   0%|                                                                  | 13/70920 [02:42<205:45:20, 10.45s/it, lr=0.0001, step_loss=0.0765]
+1 6
+
+Steps:   0%|                                                                  | 13/70920 [02:45<205:45:20, 10.45s/it, lr=0.0001, step_loss=0.0501]
+
+Steps:   0%|                                                                  | 13/70920 [02:46<205:45:20, 10.45s/it, lr=0.0001, step_loss=0.0755]
+1 6
+
+Steps:   0%|                                                                  | 13/70920 [02:47<205:45:20, 10.45s/it, lr=0.0001, step_loss=0.0504]
+
+Steps:   0%|                                                                   | 14/70920 [02:50<204:07:07, 10.36s/it, lr=0.0001, step_loss=0.109]
+1 6
+
+Steps:   0%|                                                                  | 14/70920 [02:52<204:07:07, 10.36s/it, lr=0.0001, step_loss=0.0874]
+1 6
+
+Steps:   0%|                                                                  | 14/70920 [02:54<204:07:07, 10.36s/it, lr=0.0001, step_loss=0.0474]
+
+Steps:   0%|                                                                  | 14/70920 [02:56<204:07:07, 10.36s/it, lr=0.0001, step_loss=0.0811]
+1 6
+
+Steps:   0%|                                                                  | 15/70920 [02:59<202:24:37, 10.28s/it, lr=0.0001, step_loss=0.0491]
+
+Steps:   0%|                                                                  | 15/70920 [03:00<202:24:37, 10.28s/it, lr=0.0001, step_loss=0.0407]
+1 6
+
+Steps:   0%|                                                                  | 15/70920 [03:03<202:24:37, 10.28s/it, lr=0.0001, step_loss=0.0703]
+1 6
+
+Steps:   0%|                                                                   | 15/70920 [03:04<202:24:37, 10.28s/it, lr=0.0001, step_loss=0.427]
+
+Steps:   0%|                                                                  | 15/70920 [03:07<202:24:37, 10.28s/it, lr=0.0001, step_loss=0.0489]
+
+Steps:   0%|                                                                  | 15/70920 [03:08<202:24:37, 10.28s/it, lr=0.0001, step_loss=0.0664]
+1 6
+
+Steps:   0%|                                                                  | 16/70920 [03:10<205:18:24, 10.42s/it, lr=0.0001, step_loss=0.0386]
+
+Steps:   0%|                                                                   | 16/70920 [03:12<205:18:24, 10.42s/it, lr=0.0001, step_loss=0.056]
+1 6
+
+Steps:   0%|                                                                  | 16/70920 [03:14<205:18:24, 10.42s/it, lr=0.0001, step_loss=0.0892]
+1 6
+
+Steps:   0%|                                                                  | 16/70920 [03:16<205:18:24, 10.42s/it, lr=0.0001, step_loss=0.0655]
+
+Steps:   0%|                                                                  | 16/70920 [03:18<205:18:24, 10.42s/it, lr=0.0001, step_loss=0.0764]
+1 6
+
+1 6
+
+Steps:   0%|                                                                  | 17/70920 [03:22<203:33:22, 10.34s/it, lr=0.0001, step_loss=0.0893]
+1 6
+
+Steps:   0%|                                                                  | 17/70920 [03:25<203:33:22, 10.34s/it, lr=0.0001, step_loss=0.0679]
+
+Steps:   0%|                                                                   | 17/70920 [03:26<203:33:22, 10.34s/it, lr=0.0001, step_loss=0.355]
+1 6
+
+Steps:   0%|                                                                   | 17/70920 [03:29<203:33:22, 10.34s/it, lr=0.0001, step_loss=0.106]
+
+Steps:   0%|                                                                  | 18/70920 [03:30<203:57:15, 10.36s/it, lr=0.0001, step_loss=0.0534]
+1 6
+
+Steps:   0%|                                                                  | 18/70920 [03:32<203:57:15, 10.36s/it, lr=0.0001, step_loss=0.0661]
+1 6
+
+Steps:   0%|                                                                  | 18/70920 [03:35<203:57:15, 10.36s/it, lr=0.0001, step_loss=0.0632]
+
+Steps:   0%|                                                                   | 18/70920 [03:36<203:57:15, 10.36s/it, lr=0.0001, step_loss=0.448]
+1 6
+
+Steps:   0%|                                                                  | 18/70920 [03:39<203:57:15, 10.36s/it, lr=0.0001, step_loss=0.0494]
+
+Steps:   0%|                                                                   | 19/70920 [03:40<202:38:21, 10.29s/it, lr=0.0001, step_loss=0.325]
+1 6
+
+Steps:   0%|                                                                  | 19/70920 [03:42<202:38:21, 10.29s/it, lr=0.0001, step_loss=0.0534]
+1 6
+
+Steps:   0%|                                                                   | 19/70920 [03:45<202:38:21, 10.29s/it, lr=0.0001, step_loss=0.194]
+
+Steps:   0%|                                                                   | 19/70920 [03:46<202:38:21, 10.29s/it, lr=0.0001, step_loss=0.546]
+1 6
+
+Steps:   0%|                                                                  | 19/70920 [03:49<202:38:21, 10.29s/it, lr=0.0001, step_loss=0.0766]
+Steps:   0%|                                                                  | 20/70920 [03:50<199:45:15, 10.14s/it, lr=0.0001, step_loss=0.0766]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2004, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1758, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1401, in evaluate_on_test_set
+    b, ch, h, w = conditional_latents.shape
+ValueError: too many values to unpack (expected 4)

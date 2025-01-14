@@ -1,0 +1,202 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 8
+INFO:__main__:  Gradient Accumulation steps = 8
+INFO:__main__:  Total optimization steps = 70920
+Steps:   0%|                                                                                                            | 0/70920 [00:00<?, ?it/s]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+
+
+
+
+Steps:   0%|                                                                    | 1/70920 [00:21<420:55:23, 21.37s/it, lr=0.0001, step_loss=0.161]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'insert_light', 'controlnet', 'multi_frame'} was not found in config. Values will be initialized to default values.
+                                                                                                                                                  Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+{'final_sigmas_type', 'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.      | 0/5 [00:00<?, ?it/s]
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 240.12it/s]
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+torch.Size([2, 6, 4, 32, 64]) torch.Size([2, 6, 4, 32, 64])
+encoder_hidden_states torch.Size([12, 1, 1024])
+INFO:numexpr.utils:Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+INFO:numexpr.utils:NumExpr defaulting to 8 threads.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|                                                                   | 20/70920 [03:47<201:01:16, 10.21s/it, lr=0.0001, step_loss=0.799]/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2005, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1759, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1413, in evaluate_on_test_set
+    down_block_res_samples, mid_block_res_sample = controlnet(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 43, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/models/controlnet_sdv.py", line 514, in forward
+    emb = self.time_embedding(t_emb, timestep_cond)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/diffusers/models/embeddings.py", line 375, in forward
+    sample = sample + self.cond_proj(condition)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 117, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:0! (when checking argument for argument mat2 in method wrapper_CUDA_mm)

@@ -1,0 +1,43 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 1/8880 [00:29<72:16:12, 29.30s/it, lr=0.0001, step_loss=0.198]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'multi_frame', 'insert_light', 'controlnet'} was not found in config. Values will be initialized to default values.
+                                                                     Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+{'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 263.39it/s]
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2024, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1905, in main
+    video_frames = pipeline(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/pipeline/pipeline_stable_video_diffusion_controlnet.py", line 461, in __call__
+    image_embeddings = self._encode_image(image[0], device, num_videos_per_prompt, do_classifier_free_guidance)
+TypeError: 'Image' object is not subscriptable
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2024, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1905, in main
+[rank0]:     video_frames = pipeline(
+[rank0]:   File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/pipeline/pipeline_stable_video_diffusion_controlnet.py", line 461, in __call__
+[rank0]:     image_embeddings = self._encode_image(image[0], device, num_videos_per_prompt, do_classifier_free_guidance)
+[rank0]: TypeError: 'Image' object is not subscriptable

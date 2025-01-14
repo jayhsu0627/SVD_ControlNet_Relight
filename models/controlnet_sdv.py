@@ -495,7 +495,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
 
         # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
         batch_size, num_frames = sample.shape[:2]
-        print(batch_size, num_frames)
+        # print(batch_size, num_frames)
         
         timesteps = timesteps.expand(batch_size)
 
@@ -535,7 +535,7 @@ class ControlNetSDVModel(ModelMixin, ConfigMixin, FromOriginalModelMixin):
         if not multi_frame:
             encoder_hidden_states = encoder_hidden_states.repeat_interleave(num_frames, dim=0)
         else:
-            print("encoder_hidden_states", encoder_hidden_states.shape)
+            # print("encoder_hidden_states", encoder_hidden_states.shape)
             encoder_hidden_states = encoder_hidden_states
         
         # 2. pre-process

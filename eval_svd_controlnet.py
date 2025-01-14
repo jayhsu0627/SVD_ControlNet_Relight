@@ -180,42 +180,6 @@ def save_combined_frames(batch_output, validation_images, validation_control_ima
         print("Failed to create image grid")
 
 def resize_and_pad_image(image, target_size=(768, 512), background_color=(255, 255, 255)):
-    
-    # # Resize the image while preserving aspect ratio
-    # width, height = image.size
-
-    # target_height = target_size[1]
-    # aspect_ratio = width / height
-
-    # target_width = aspect_ratio * target_height
-
-    # target_aspect_ratio = target_width / target_height
-    
-    # new_width = int((target_width // 8) * 8)
-    # new_height = int(target_height)
-
-
-    # # if aspect_ratio > target_aspect_ratio:
-    # #     new_width = target_width
-    # #     new_height = int(target_width / aspect_ratio)
-    # # else:
-    # #     new_height = target_height
-    # #     new_width = int(target_height * aspect_ratio)
-    
-    # image = image.resize((new_width, new_height), resample=PIL.Image.BICUBIC)
-    
-    # # Convert the resized image to have a transparent background
-    # image = image.convert("RGB")
-    
-    # # # Create a new image with the target size and white background
-    # # result = Image.new('RGBA', (new_width, new_height), background_color)
-    
-    # # # Paste the resized image into the center of the new image
-    # # x = (new_width) // 2
-    # # y = (new_height) // 2
-    # # result.paste(image, (x, y), image)
-    
-    # return image
     # Resize the image while preserving aspect ratio
     width, height = image.size
     target_width, target_height = target_size
@@ -385,13 +349,12 @@ def parse_args():
     parser.add_argument(
         "--controlnet_model_name_or_path",
         type=str,
-        default='/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-8500/controlnet',
         help="Path to pretrained controlnet model or model identifier from huggingface.co/models."
         " If not specified controlnet weights are initialized from unet.",
     )
     parser.add_argument(
         "--decoder_model_name_or_path",
-        action="store_true",
+        type=str,
         help="Path to pretrained controlnet model or model identifier from huggingface.co/models."
         " If not specified controlnet weights are initialized from unet.",
     )
@@ -932,6 +895,39 @@ def main():
     unet.to("cuda", dtype=weight_dtype)
     # controlnet.to("cuda", dtype=weight_dtype)
 
+    if args.enable_xformers_memory_efficient_attention:
+        if is_xformers_available():
+            import xformers
+
+            xformers_version = version.parse(xformers.__version__)
+            if xformers_version == version.parse("0.0.16"):
+                logger.warn(
+                    "xFormers 0.0.16 cannot be used for training in some GPUs. If you observe problems during training, please update xFormers to at least 0.0.17. See https://huggingface.co/docs/diffusers/main/en/optimization/xformers for more details."
+                )
+            unet.enable_xformers_memory_efficient_attention()
+            controlnet.enable_xformers_memory_efficient_attention()
+        else:
+            raise ValueError(
+                "xformers is not available. Make sure it is installed correctly")
+
+    # # Enable TF32 for faster training on Ampere GPUs,
+    # # cf https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices
+    if args.allow_tf32:
+        torch.backends.cuda.matmul.allow_tf32 = True
+
+    # Initialize the optimizer
+    if args.use_8bit_adam:
+        try:
+            import bitsandbytes as bnb
+        except ImportError:
+            raise ImportError(
+                "Please install bitsandbytes to use 8-bit Adam. You can do so by running `pip install bitsandbytes`"
+            )
+
+        optimizer_cls = bnb.optim.AdamW8bit
+    else:
+        optimizer_cls = torch.optim.AdamW
+
     # Inference!
     # total_batch_size = args.per_gpu_batch_size * accelerator.num_processes * args.gradient_accumulation_steps
 
@@ -979,10 +975,12 @@ def main():
         
         img_folder = os.path.join(args.validation_image_folder, folder_list[i])
         print(img_folder)
-        # validation_image = [load_images_from_folder(img_folder)[0]]
+        # controlnet images
         validation_image = load_images_from_folder(img_folder)[:args.num_frames]
-
+    
+        # controlnet images
         validation_control_images = load_images_from_folder(img_folder)[:args.num_frames]
+        
         for img in validation_control_images:
             with torch.autocast("cuda"):
                 depth_map = depth_pipeline(img).prediction[0]
@@ -1009,7 +1007,9 @@ def main():
 
        # Prepare lighting index
         if args.inject_lighting_direction:
+            print("inject_lighting_direction")
             numbers_list = [int(num) for num in args.target_light.split(', ')]
+            print(numbers_list)
             target_dir = [get_light_dir_encoding(index) for index in numbers_list]
             target_dir = torch.from_numpy(np.array(target_dir))
             print(target_dir.shape)
@@ -1023,6 +1023,10 @@ def main():
         ratio = w/h
         print("======",args.height, int(args.height * ratio))
         with torch.autocast(device_type="cuda"):
+        # with torch.autocast(
+        #     str(accelerator.device).replace(":0", ""), enabled=accelerator.mixed_precision == "fp16"
+        #                 ):
+
             video_frames = pipeline(
                 validation_image[0] if not args.multi_frame_inference else validation_image,
                 validation_control_images_cat,
@@ -1038,7 +1042,7 @@ def main():
             
             out_file_path = os.path.join(
                 val_save_dir,
-                folder_list[i]+ f"_SVD_vae_6500_v2v_fix18_vae.mp4",
+                folder_list[i]+ f"_SVD_nn_fin_v2_4000_sm.mp4",
             )
             flattened_batch_output = [img for sublist in video_frames for img in sublist]
             # print(flattened_batch_output[0].shape)
@@ -1047,4 +1051,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-ß

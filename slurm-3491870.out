@@ -1,488 +1,0 @@
-NODELIST=gammagpu10
-MASTER_ADDR=gammagpu10
-Some weights of the model checkpoint were not used when initializing ControlNetSDVModel: 
- ['time_embedding.cond_proj.weight']
-Keyword arguments {'text_encoder': CLIPTextModel(
-  (text_model): CLIPTextTransformer(
-    (embeddings): CLIPTextEmbeddings(
-      (token_embedding): Embedding(49408, 1024)
-      (position_embedding): Embedding(77, 1024)
-    )
-    (encoder): CLIPEncoder(
-      (layers): ModuleList(
-        (0-22): 23 x CLIPEncoderLayer(
-          (self_attn): CLIPSdpaAttention(
-            (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
-            (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
-            (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
-            (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
-          )
-          (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
-          (mlp): CLIPMLP(
-            (activation_fn): GELUActivation()
-            (fc1): Linear(in_features=1024, out_features=4096, bias=True)
-            (fc2): Linear(in_features=4096, out_features=1024, bias=True)
-          )
-          (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
-        )
-      )
-    )
-    (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
-  )
-)} are not expected by StableVideoDiffusionPipelineControlNet and will be ignored.
-Loading existing controlnet weights
-layers per block is 2
-Initializing vae weights from unet
-***** Running training *****
-  Num Epochs = 100
-  Instantaneous batch size per device = 1
-  Gradient Accumulation steps = 1
-  Total optimization steps = None
-Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 44.17it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 44.10it/s]
-Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  20%|██        | 1/5 [00:00<00:03,  1.29it/s]Loading pipeline components...:  40%|████      | 2/5 [00:00<00:01,  2.29it/s]Loading pipeline components...:  60%|██████    | 3/5 [00:01<00:00,  2.17it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:01<00:00,  3.28it/s]
-0
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/001
-15
-15
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-Diffusion steps...: 100%|██████████| 1/1 [00:00<00:00,  2.12it/s][A
-                                                                 [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s]Marigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  2.11it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.45it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.32it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.38it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.36it/s]
-(512, 768, 3) (512, 768, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/001
-torch.Size([5, 1, 16])
-768 512
-====== 512 768
-512 768
-image_embeddings  torch.Size([2, 1, 1024])
-encoder_hidden_states  torch.Size([10, 1, 1024])
-before: (768, 512)
-loaded: torch.Size([5, 3, 512, 768])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-1
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/002
-5
-5
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.49it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.42it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.35it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.39it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.35it/s]
-(512, 768, 3) (512, 768, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/002
-torch.Size([5, 1, 16])
-768 512
-====== 512 768
-512 768
-image_embeddings  torch.Size([2, 1, 1024])
-encoder_hidden_states  torch.Size([10, 1, 1024])
-before: (768, 512)
-loaded: torch.Size([5, 3, 512, 768])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-2
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/003
-5
-5
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.44it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.32it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.30it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.31it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.32it/s]
-(512, 768, 3) (512, 768, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/003
-torch.Size([5, 1, 16])
-768 512
-====== 512 768
-512 768
-image_embeddings  torch.Size([2, 1, 1024])
-encoder_hidden_states  torch.Size([10, 1, 1024])
-before: (768, 512)
-loaded: torch.Size([5, 3, 512, 768])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-3
-/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/004
-5
-5
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.33it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.20it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.19it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.19it/s]
-(512, 768, 3) (512, 768, 1)
-Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
-Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
-                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 11.19it/s]
-(512, 768, 3) (512, 768, 1)
-num 5
-num 5
-/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/004
-torch.Size([5, 1, 16])
-768 512
-====== 512 768
-512 768
-image_embeddings  torch.Size([2, 1, 1024])
-encoder_hidden_states  torch.Size([10, 1, 1024])
-before: (768, 512)
-loaded: torch.Size([5, 3, 512, 768])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-torch.Size([2, 5, 4, 64, 96]) torch.Size([2, 5, 4, 64, 96])
-2 5
-encoder_hidden_states torch.Size([10, 1, 1024])
-Traceback (most recent call last):
-  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 1050, in <module>
-    ß
-NameError: name 'ß' is not defined
-srun: error: gammagpu10: task 0: Exited with exit code 1

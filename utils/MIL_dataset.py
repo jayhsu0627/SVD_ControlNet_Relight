@@ -142,7 +142,7 @@ class MIL(Dataset):
 
         # Crop operation
         self.transforms_0 = ImageSequential(
-            K.CenterCrop((336, 512)),
+            K.CenterCrop((256, 512)),
             same_on_batch=True  # This enables getting the transformation matrices
         )
 
@@ -225,7 +225,7 @@ class MIL(Dataset):
                 idx = random.randint(0, len(self.dataset) - 1)
                 continue    
 
-            print(image_path)
+            # print(image_path)
             # filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)[:self.sample_n_frames]
             filenames = sorted([f for f in os.listdir(image_path) if f.endswith(".jpg")], key=self.sort_frames)
 
@@ -331,7 +331,7 @@ if __name__ == "__main__":
 
 
     print('length:', len(dataset))
-    print(train_image.shape, train_image.shape, train_dir.shape)
+    print(train_image.shape, train_cond.shape, train_depth.shape, train_dir.shape)
 
     save_array_as_image(train_image[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_image_0.png')
     save_array_as_image(train_cond[0]*255, '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output_cond_image_0.png')

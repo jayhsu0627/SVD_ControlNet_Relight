@@ -477,6 +477,7 @@ class UNetSpatioTemporalConditionControlNetModel(ModelMixin, ConfigMixin, UNet2D
             down_block_res_samples = down_block_res_samples[: -len(upsample_block.resnets)]
 
             if hasattr(upsample_block, "has_cross_attention") and upsample_block.has_cross_attention:
+                # print(encoder_hidden_states.shape)
                 sample = upsample_block(
                     hidden_states=sample,
                     temb=emb,

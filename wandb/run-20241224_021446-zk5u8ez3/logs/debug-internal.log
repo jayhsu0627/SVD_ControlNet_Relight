@@ -1,0 +1,205 @@
+2024-12-24 02:14:46,853 INFO    StreamThr :221684 [internal.py:wandb_internal():85] W&B internal server running at pid: 221684, started at: 2024-12-24 02:14:46.849087
+2024-12-24 02:14:46,855 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status
+2024-12-24 02:14:46,856 INFO    WriterThread:221684 [datastore.py:open_for_write():87] open: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/run-zk5u8ez3.wandb
+2024-12-24 02:14:46,880 DEBUG   SenderThread:221684 [sender.py:send():391] send: header
+2024-12-24 02:14:46,920 DEBUG   SenderThread:221684 [sender.py:send():391] send: run
+2024-12-24 02:14:47,078 INFO    SenderThread:221684 [dir_watcher.py:__init__():211] watching files in: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files
+2024-12-24 02:14:47,079 INFO    SenderThread:221684 [sender.py:_start_run_threads():1200] run started: zk5u8ez3 with start time 1735024486.851121
+2024-12-24 02:14:47,091 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: run_start
+2024-12-24 02:14:47,113 DEBUG   HandlerThread:221684 [system_info.py:__init__():26] System info init
+2024-12-24 02:14:47,113 DEBUG   HandlerThread:221684 [system_info.py:__init__():41] System info init done
+2024-12-24 02:14:47,113 INFO    HandlerThread:221684 [system_monitor.py:start():194] Starting system monitor
+2024-12-24 02:14:47,114 INFO    SystemMonitor:221684 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-12-24 02:14:47,114 INFO    HandlerThread:221684 [system_monitor.py:probe():214] Collecting system info
+2024-12-24 02:14:47,128 INFO    SystemMonitor:221684 [interfaces.py:start():188] Started cpu monitoring
+2024-12-24 02:14:47,129 INFO    SystemMonitor:221684 [interfaces.py:start():188] Started disk monitoring
+2024-12-24 02:14:47,130 INFO    SystemMonitor:221684 [interfaces.py:start():188] Started gpu monitoring
+2024-12-24 02:14:47,130 INFO    SystemMonitor:221684 [interfaces.py:start():188] Started memory monitoring
+2024-12-24 02:14:47,130 INFO    SystemMonitor:221684 [interfaces.py:start():188] Started network monitoring
+2024-12-24 02:14:47,132 DEBUG   HandlerThread:221684 [system_info.py:probe():152] Probing system
+2024-12-24 02:14:47,142 DEBUG   HandlerThread:221684 [system_info.py:_probe_git():137] Probing git
+2024-12-24 02:14:47,161 DEBUG   HandlerThread:221684 [system_info.py:_probe_git():145] Probing git done
+2024-12-24 02:14:47,161 DEBUG   HandlerThread:221684 [system_info.py:probe():200] Probing system done
+2024-12-24 02:14:47,161 DEBUG   HandlerThread:221684 [system_monitor.py:probe():223] {'os': 'Linux-4.18.0-553.32.1.el8_10.x86_64-x86_64-with-glibc2.28', 'python': '3.9.12', 'heartbeatAt': '2024-12-24T07:14:47.132410', 'startedAt': '2024-12-24T07:14:46.810841', 'docker': None, 'cuda': None, 'args': ('--pretrained_model_name_or_path=stabilityai/stable-video-diffusion-img2vid', '--output_dir=/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_2_change_HD', '--csv_path=/fs/nexus-scratch/sjxu/WebVid/blender.csv', '--video_folder=/fs/nexus-scratch/sjxu/WebVid/blender/img', '--condition_folder=/fs/nexus-scratch/sjxu/WebVid/blender/shd', '--motion_folder=/fs/nexus-scratch/sjxu/WebVid/blender/motion', '--validation_image_folder=/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_blender', '--validation_control_folder=/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_blender', '--width=512', '--height=256', '--learning_rate=1e-4', '--per_gpu_batch_size=1', '--num_train_epochs=120', '--mixed_precision=fp16', '--gradient_accumulation_steps=8', '--checkpointing_steps=500', '--validation_steps=200', '--gradient_checkpointing', '--checkpoints_total_limit=5', '--report_to=wandb', '--sample_n_frames=6', '--num_frames=6', '--inject_lighting_direction', '--concat_depth_maps', '--multi_frame_inference', '--dropout_rgb=0.1'), 'state': 'running', 'program': '/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py', 'codePathLocal': 'train_svd_controlnet.py', 'codePath': 'train_svd_controlnet.py', 'git': {'remote': 'git@github.com:jayhsu0627/SVD_ControlNet_Relight.git', 'commit': '7496986edaf6d680618998b75fa85462fe15f82a'}, 'email': 'jayhsu0627@gmail.com', 'root': '/fs/nexus-scratch/sjxu/svd-temporal-controlnet', 'host': 'tron47.umiacs.umd.edu', 'username': 'sjxu', 'executable': '/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python', 'cpu_count': 48, 'cpu_count_logical': 48, 'cpu_freq': {'current': 2317.674833333333, 'min': 1500.0, 'max': 2300.0}, 'cpu_freq_per_core': [{'current': 3148.392, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}, {'current': 2300.0, 'min': 1500.0, 'max': 2300.0}], 'disk': {'/': {'total': 39.043426513671875, 'used': 14.017314910888672}}, 'gpu': 'NVIDIA RTX A5000', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA RTX A5000', 'memory_total': 25757220864}], 'memory': {'total': 251.24997329711914}}
+2024-12-24 02:14:47,161 INFO    HandlerThread:221684 [system_monitor.py:probe():224] Finished collecting system info
+2024-12-24 02:14:47,161 INFO    HandlerThread:221684 [system_monitor.py:probe():227] Publishing system info
+2024-12-24 02:14:47,161 DEBUG   HandlerThread:221684 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-12-24 02:14:48,104 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/conda-environment.yaml
+2024-12-24 02:14:49,655 DEBUG   HandlerThread:221684 [system_info.py:_save_conda():224] Saving conda packages done
+2024-12-24 02:14:49,661 INFO    HandlerThread:221684 [system_monitor.py:probe():229] Finished publishing system info
+2024-12-24 02:14:49,666 DEBUG   SenderThread:221684 [sender.py:send():391] send: files
+2024-12-24 02:14:49,666 INFO    SenderThread:221684 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2024-12-24 02:14:49,840 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: python_packages
+2024-12-24 02:14:49,840 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: python_packages
+2024-12-24 02:14:49,841 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: stop_status
+2024-12-24 02:14:49,842 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: internal_messages
+2024-12-24 02:14:49,844 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: stop_status
+2024-12-24 02:14:49,904 INFO    wandb-upload_0:221684 [upload_job.py:push():130] Uploaded file /tmp/tmpermnl_wbwandb/jpm5e3v3-wandb-metadata.json
+2024-12-24 02:14:49,917 DEBUG   SenderThread:221684 [sender.py:send():391] send: telemetry
+2024-12-24 02:14:49,917 DEBUG   SenderThread:221684 [sender.py:send():391] send: config
+2024-12-24 02:14:50,125 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/conda-environment.yaml
+2024-12-24 02:14:50,125 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/wandb-metadata.json
+2024-12-24 02:14:50,125 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/requirements.txt
+2024-12-24 02:14:50,125 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:14:52,395 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status_report
+2024-12-24 02:14:54,161 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:14:57,856 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status_report
+2024-12-24 02:14:59,851 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: internal_messages
+2024-12-24 02:15:00,209 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:02,225 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:02,967 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status_report
+2024-12-24 02:15:04,228 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:04,876 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: stop_status
+2024-12-24 02:15:04,876 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: stop_status
+2024-12-24 02:15:06,265 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:08,283 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status_report
+2024-12-24 02:15:08,305 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:09,851 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: internal_messages
+2024-12-24 02:15:10,329 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:11,146 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: partial_history
+2024-12-24 02:15:11,147 DEBUG   SenderThread:221684 [sender.py:send():391] send: telemetry
+2024-12-24 02:15:12,406 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:13,213 DEBUG   SenderThread:221684 [sender.py:send():391] send: exit
+2024-12-24 02:15:13,213 INFO    SenderThread:221684 [sender.py:send_exit():598] handling exit code: 1
+2024-12-24 02:15:13,213 INFO    SenderThread:221684 [sender.py:send_exit():600] handling runtime: 26
+2024-12-24 02:15:13,217 INFO    SenderThread:221684 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-12-24 02:15:13,218 INFO    SenderThread:221684 [sender.py:send_exit():606] send defer
+2024-12-24 02:15:13,218 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,218 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 0
+2024-12-24 02:15:13,218 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,218 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 0
+2024-12-24 02:15:13,218 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 1
+2024-12-24 02:15:13,218 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,218 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 1
+2024-12-24 02:15:13,218 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,218 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 1
+2024-12-24 02:15:13,218 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 2
+2024-12-24 02:15:13,218 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,218 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 2
+2024-12-24 02:15:13,218 INFO    HandlerThread:221684 [system_monitor.py:finish():203] Stopping system monitor
+2024-12-24 02:15:13,218 DEBUG   SystemMonitor:221684 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-12-24 02:15:13,218 DEBUG   SystemMonitor:221684 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-12-24 02:15:13,218 DEBUG   SystemMonitor:221684 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-12-24 02:15:13,229 INFO    HandlerThread:221684 [interfaces.py:finish():200] Joined cpu monitor
+2024-12-24 02:15:13,229 INFO    HandlerThread:221684 [interfaces.py:finish():200] Joined disk monitor
+2024-12-24 02:15:13,286 INFO    HandlerThread:221684 [interfaces.py:finish():200] Joined gpu monitor
+2024-12-24 02:15:13,286 INFO    HandlerThread:221684 [interfaces.py:finish():200] Joined memory monitor
+2024-12-24 02:15:13,286 INFO    HandlerThread:221684 [interfaces.py:finish():200] Joined network monitor
+2024-12-24 02:15:13,286 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,286 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 2
+2024-12-24 02:15:13,286 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 3
+2024-12-24 02:15:13,286 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,286 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 3
+2024-12-24 02:15:13,287 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status_report
+2024-12-24 02:15:13,287 DEBUG   SenderThread:221684 [sender.py:send():391] send: history
+2024-12-24 02:15:13,287 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: summary_record
+2024-12-24 02:15:13,291 INFO    SenderThread:221684 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-12-24 02:15:13,291 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,291 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 3
+2024-12-24 02:15:13,291 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 4
+2024-12-24 02:15:13,291 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,291 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 4
+2024-12-24 02:15:13,291 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,291 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 4
+2024-12-24 02:15:13,291 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 5
+2024-12-24 02:15:13,291 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,291 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 5
+2024-12-24 02:15:13,292 DEBUG   SenderThread:221684 [sender.py:send():391] send: summary
+2024-12-24 02:15:13,295 INFO    SenderThread:221684 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2024-12-24 02:15:13,295 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,295 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 5
+2024-12-24 02:15:13,295 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 6
+2024-12-24 02:15:13,295 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,295 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 6
+2024-12-24 02:15:13,295 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,295 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 6
+2024-12-24 02:15:13,299 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: status_report
+2024-12-24 02:15:13,389 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 7
+2024-12-24 02:15:13,389 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:13,389 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 7
+2024-12-24 02:15:13,389 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:13,389 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 7
+2024-12-24 02:15:13,408 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/config.yaml
+2024-12-24 02:15:13,408 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_created():271] file/dir created: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/wandb-summary.json
+2024-12-24 02:15:14,213 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: poll_exit
+2024-12-24 02:15:14,215 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 8
+2024-12-24 02:15:14,215 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: poll_exit
+2024-12-24 02:15:14,215 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:14,215 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 8
+2024-12-24 02:15:14,216 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:14,216 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 8
+2024-12-24 02:15:14,216 INFO    SenderThread:221684 [job_builder.py:build():443] Attempting to build job artifact
+2024-12-24 02:15:14,216 INFO    SenderThread:221684 [job_builder.py:_get_source_type():572] is repo sourced job
+2024-12-24 02:15:14,247 INFO    SenderThread:221684 [job_builder.py:build():548] adding wandb-job metadata file
+2024-12-24 02:15:14,261 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 9
+2024-12-24 02:15:14,261 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:14,261 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 9
+2024-12-24 02:15:14,261 DEBUG   SenderThread:221684 [sender.py:send():391] send: artifact
+2024-12-24 02:15:14,409 INFO    Thread-12 :221684 [dir_watcher.py:_on_file_modified():288] file/dir modified: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:14,487 INFO    SenderThread:221684 [sender.py:send_artifact():1549] sent artifact job-git_github.com_jayhsu0627_SVD_ControlNet_Relight.git_train_svd_controlnet.py - {'id': 'QXJ0aWZhY3Q6MTQwMjk1NTk0Nw==', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjUwMjI2MTgwOQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTQwMjk1NTk0Nw==', 'versionIndex': 6}}}
+2024-12-24 02:15:14,487 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:14,487 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 9
+2024-12-24 02:15:14,487 INFO    SenderThread:221684 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-12-24 02:15:15,214 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: poll_exit
+2024-12-24 02:15:15,410 INFO    SenderThread:221684 [dir_watcher.py:finish():388] scan: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [dir_watcher.py:finish():402] scan save: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/conda-environment.yaml conda-environment.yaml
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [dir_watcher.py:finish():402] scan save: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/config.yaml config.yaml
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [dir_watcher.py:finish():402] scan save: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log output.log
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [dir_watcher.py:finish():402] scan save: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/requirements.txt requirements.txt
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [dir_watcher.py:finish():402] scan save: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/wandb-metadata.json wandb-metadata.json
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [dir_watcher.py:finish():402] scan save: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/wandb-summary.json wandb-summary.json
+2024-12-24 02:15:15,411 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 10
+2024-12-24 02:15:15,411 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: poll_exit
+2024-12-24 02:15:15,411 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:15,411 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 10
+2024-12-24 02:15:15,413 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:15,414 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 10
+2024-12-24 02:15:15,414 INFO    SenderThread:221684 [file_pusher.py:finish():169] shutting down file pusher
+2024-12-24 02:15:15,585 INFO    wandb-upload_0:221684 [upload_job.py:push():130] Uploaded file /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/conda-environment.yaml
+2024-12-24 02:15:15,622 INFO    wandb-upload_1:221684 [upload_job.py:push():130] Uploaded file /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/config.yaml
+2024-12-24 02:15:15,623 INFO    wandb-upload_3:221684 [upload_job.py:push():130] Uploaded file /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/requirements.txt
+2024-12-24 02:15:15,624 INFO    wandb-upload_2:221684 [upload_job.py:push():130] Uploaded file /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/output.log
+2024-12-24 02:15:15,630 INFO    wandb-upload_4:221684 [upload_job.py:push():130] Uploaded file /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/files/wandb-summary.json
+2024-12-24 02:15:15,831 INFO    Thread-11 :221684 [sender.py:transition_state():626] send defer: 11
+2024-12-24 02:15:15,831 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:15,831 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 11
+2024-12-24 02:15:15,831 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:15,831 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 11
+2024-12-24 02:15:15,831 INFO    SenderThread:221684 [file_pusher.py:join():175] waiting for file pusher
+2024-12-24 02:15:15,831 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 12
+2024-12-24 02:15:15,832 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:15,832 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 12
+2024-12-24 02:15:15,832 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:15,832 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 12
+2024-12-24 02:15:15,832 INFO    SenderThread:221684 [file_stream.py:finish():601] file stream finish called
+2024-12-24 02:15:15,884 INFO    SenderThread:221684 [file_stream.py:finish():605] file stream finish is done
+2024-12-24 02:15:15,884 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 13
+2024-12-24 02:15:15,884 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:15,884 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 13
+2024-12-24 02:15:15,884 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:15,884 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 13
+2024-12-24 02:15:15,885 INFO    SenderThread:221684 [sender.py:transition_state():626] send defer: 14
+2024-12-24 02:15:15,885 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: defer
+2024-12-24 02:15:15,885 INFO    HandlerThread:221684 [handler.py:handle_request_defer():184] handle defer: 14
+2024-12-24 02:15:15,885 DEBUG   SenderThread:221684 [sender.py:send():391] send: final
+2024-12-24 02:15:15,885 DEBUG   SenderThread:221684 [sender.py:send():391] send: footer
+2024-12-24 02:15:15,885 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: defer
+2024-12-24 02:15:15,885 INFO    SenderThread:221684 [sender.py:send_request_defer():622] handle sender defer: 14
+2024-12-24 02:15:15,886 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: poll_exit
+2024-12-24 02:15:15,886 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: server_info
+2024-12-24 02:15:15,886 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: poll_exit
+2024-12-24 02:15:15,886 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: get_summary
+2024-12-24 02:15:15,886 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: sampled_history
+2024-12-24 02:15:15,886 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: internal_messages
+2024-12-24 02:15:15,886 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: poll_exit
+2024-12-24 02:15:15,886 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: server_info
+2024-12-24 02:15:15,931 DEBUG   SenderThread:221684 [sender.py:send_request():418] send_request: poll_exit
+2024-12-24 02:15:15,931 INFO    MainThread:221684 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2024-12-24 02:15:15,931 INFO    MainThread:221684 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2024-12-24 02:15:15,931 INFO    MainThread:221684 [wandb_run.py:_footer_sync_info():4037] logging synced files
+2024-12-24 02:15:15,932 DEBUG   HandlerThread:221684 [handler.py:handle_request():158] handle_request: shutdown
+2024-12-24 02:15:15,932 INFO    HandlerThread:221684 [handler.py:finish():884] shutting down handler
+2024-12-24 02:15:16,886 INFO    WriterThread:221684 [datastore.py:close():296] close: /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20241224_021446-zk5u8ez3/run-zk5u8ez3.wandb
+2024-12-24 02:15:16,931 INFO    SenderThread:221684 [sender.py:finish():1631] shutting down sender
+2024-12-24 02:15:16,931 INFO    SenderThread:221684 [file_pusher.py:finish():169] shutting down file pusher
+2024-12-24 02:15:16,931 INFO    SenderThread:221684 [file_pusher.py:join():175] waiting for file pusher

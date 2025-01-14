@@ -1,0 +1,88 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 1/8880 [00:27<68:22:27, 27.72s/it, lr=0.0001, step_loss=0.171]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'insert_light', 'controlnet', 'multi_frame'} was not found in config. Values will be initialized to default values.
+                                                                     {'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 269.06it/s]
+image_embeddings  torch.Size([2, 1, 1024])
+encoder_hidden_states  torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

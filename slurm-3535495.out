@@ -1,0 +1,176 @@
+NODELIST=gammagpu13
+MASTER_ADDR=gammagpu13
+Some weights of the model checkpoint were not used when initializing ControlNetSDVModel: 
+ ['time_embedding.cond_proj.weight']
+Keyword arguments {'text_encoder': CLIPTextModel(
+  (text_model): CLIPTextTransformer(
+    (embeddings): CLIPTextEmbeddings(
+      (token_embedding): Embedding(49408, 1024)
+      (position_embedding): Embedding(77, 1024)
+    )
+    (encoder): CLIPEncoder(
+      (layers): ModuleList(
+        (0-22): 23 x CLIPEncoderLayer(
+          (self_attn): CLIPSdpaAttention(
+            (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+            (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          )
+          (layer_norm1): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+          (mlp): CLIPMLP(
+            (activation_fn): GELUActivation()
+            (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+            (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+          )
+          (layer_norm2): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+    (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+  )
+)} are not expected by StableVideoDiffusionPipelineControlNet and will be ignored.
+Loading existing controlnet weights
+layers per block is 2
+Initializing vae weights from unet
+***** Running training *****
+  Num Epochs = 100
+  Instantaneous batch size per device = 1
+  Gradient Accumulation steps = 1
+  Total optimization steps = None
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 234.45it/s]
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s]Loading pipeline components...:  40%|████      | 2/5 [00:00<00:00,  7.79it/s]Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 14.90it/s]
+0
+/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/001
+15
+15
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+Diffusion steps...: 100%|██████████| 1/1 [00:00<00:00,  7.20it/s][A
+                                                                 [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  7.17it/s]Marigold predictions...: 100%|██████████| 1/1 [00:00<00:00,  7.17it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.36it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.82it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.87it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.79it/s]
+(256, 512, 3) (256, 512, 1)
+num 5
+num 5
+/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/001
+inject_lighting_direction
+[18, 18, 18, 18, 18]
+torch.Size([5, 1, 16])
+512 256
+====== 256 512
+1
+/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/002
+5
+5
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.91it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.71it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.75it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.78it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.76it/s]
+(256, 512, 3) (256, 512, 1)
+num 5
+num 5
+/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/002
+inject_lighting_direction
+[18, 18, 18, 18, 18]
+torch.Size([5, 1, 16])
+512 256
+====== 256 512
+2
+/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/003
+5
+5
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.83it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.74it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.77it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.72it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.67it/s]
+(256, 512, 3) (256, 512, 1)
+num 5
+num 5
+/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/003
+inject_lighting_direction
+[18, 18, 18, 18, 18]
+torch.Size([5, 1, 16])
+512 256
+====== 256 512
+3
+/fs/nexus-scratch/sjxu/controlnet-diffusers-relighting/exemplars/004
+5
+5
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.83it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.63it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.65it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.71it/s]
+(256, 512, 3) (256, 512, 1)
+Marigold predictions...:   0%|          | 0/1 [00:00<?, ?it/s]
+Diffusion steps...:   0%|          | 0/1 [00:00<?, ?it/s][A
+                                                         [AMarigold predictions...: 100%|██████████| 1/1 [00:00<00:00, 13.63it/s]
+(256, 512, 3) (256, 512, 1)
+num 5
+num 5
+/fs/nexus-scratch/sjxu/svd-temporal-controlnet/output/004
+inject_lighting_direction
+[18, 18, 18, 18, 18]
+torch.Size([5, 1, 16])
+512 256
+====== 256 512
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/eval_svd_controlnet.py", line 1054, in <module>
+    ß
+NameError: name 'ß' is not defined
+srun: error: gammagpu13: task 0: Exited with exit code 1

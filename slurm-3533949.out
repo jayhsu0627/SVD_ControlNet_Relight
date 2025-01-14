@@ -1,0 +1,424 @@
+NODELIST=gammagpu11
+MASTER_ADDR=gammagpu11
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 680, in run
+    result = self._invoke_run(role)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 829, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 652, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 489, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 66, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+RuntimeError: The server socket has failed to listen on any local network address. useIpv6: 0, code: -98, name: EADDRINUSE, message: address already in use
+srun: error: gammagpu11: tasks 0-1,3: Exited with exit code 1
+WARNING:accelerate.utils.other:Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: sjxu (sjxu_gamma). Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /fs/nexus-scratch/sjxu/.netrc
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 1
+Local process index: 1
+Device: cuda:1
+
+Mixed precision type: fp16
+
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 2
+Local process index: 2
+Device: cuda:2
+
+Mixed precision type: fp16
+
+INFO:__main__:Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 3
+Local process index: 3
+Device: cuda:3
+
+Mixed precision type: fp16
+
+{'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+prediction_type: v_prediction
+prediction_type: v_prediction
+prediction_type: v_prediction
+prediction_type: v_prediction
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pthLoading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+Loading model from: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionControlNetModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+INFO:__main__:Initializing controlnet weights from unet
+layers per block is 2
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionControlNetModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionControlNetModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+FrozenDict([('sample_size', 96), ('in_channels', 8), ('out_channels', 4), ('down_block_types', ['CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'CrossAttnDownBlockSpatioTemporal', 'DownBlockSpatioTemporal']), ('up_block_types', ['UpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal', 'CrossAttnUpBlockSpatioTemporal']), ('block_out_channels', [320, 640, 1280, 1280]), ('addition_time_embed_dim', 256), ('projection_class_embeddings_input_dim', 768), ('layers_per_block', 2), ('cross_attention_dim', 1024), ('transformer_layers_per_block', 1), ('num_attention_heads', [5, 10, 20, 20]), ('num_frames', 14), ('_class_name', 'UNetSpatioTemporalConditionControlNetModel'), ('_diffusers_version', '0.24.0.dev0'), ('_name_or_path', 'stabilityai/stable-video-diffusion-img2vid')])
+layers per block is 2
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+modify_layers in progress: torch.Size([6, 1, 16])
+modify_layers in progress: 16 320
+data scale: 5910
+data scale: 5910
+length 5910
+sample size (512, 512)
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+data scale: 5910
+length 5910
+sample size (512, 512)
+gammagpu11:1301042:1301042 [0] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1301042:1301042 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1301042:1301042 [0] NCCL INFO cudaDriverVersion 12040
+NCCL version 2.20.5+cuda12.4
+gammagpu11:1301044:1301044 [2] NCCL INFO cudaDriverVersion 12040
+gammagpu11:1301043:1301043 [1] NCCL INFO cudaDriverVersion 12040
+gammagpu11:1301044:1301044 [2] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1301043:1301043 [1] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1301044:1301044 [2] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1301043:1301043 [1] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1301045:1301045 [3] NCCL INFO cudaDriverVersion 12040
+gammagpu11:1301045:1301045 [3] NCCL INFO Bootstrap : Using bond0:192.168.44.22<0>
+gammagpu11:1301045:1301045 [3] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+gammagpu11:1301044:1301172 [2] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1301043:1301173 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1301044:1301172 [2] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0>
+gammagpu11:1301043:1301173 [1] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0>
+gammagpu11:1301043:1301173 [1] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1301044:1301172 [2] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1301043:1301173 [1] NCCL INFO Using network Socket
+gammagpu11:1301044:1301172 [2] NCCL INFO Using network Socket
+gammagpu11:1301042:1301171 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1301042:1301171 [0] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0>
+gammagpu11:1301042:1301171 [0] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1301042:1301171 [0] NCCL INFO Using network Socket
+gammagpu11:1301045:1301174 [3] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+gammagpu11:1301045:1301174 [3] NCCL INFO NET/Socket : Using [0]bond0:192.168.44.22<0> [1]virbr0:192.168.122.1<0>
+gammagpu11:1301045:1301174 [3] NCCL INFO Using non-device net plugin version 0
+gammagpu11:1301045:1301174 [3] NCCL INFO Using network Socket
+gammagpu11:1301042:1301171 [0] NCCL INFO comm 0x5652a7bfa0c0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x1130103a1cac8125 - Init START
+gammagpu11:1301045:1301174 [3] NCCL INFO comm 0x55d200d67a80 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x1130103a1cac8125 - Init START
+gammagpu11:1301044:1301172 [2] NCCL INFO comm 0x556a3834f350 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x1130103a1cac8125 - Init START
+gammagpu11:1301043:1301173 [1] NCCL INFO comm 0x562804852d80 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x1130103a1cac8125 - Init START
+gammagpu11:1301042:1301171 [0] NCCL INFO NVLS multicast support is not available on dev 0
+gammagpu11:1301044:1301172 [2] NCCL INFO NVLS multicast support is not available on dev 2
+gammagpu11:1301043:1301173 [1] NCCL INFO NVLS multicast support is not available on dev 1
+gammagpu11:1301045:1301174 [3] NCCL INFO NVLS multicast support is not available on dev 3
+gammagpu11:1301044:1301172 [2] NCCL INFO comm 0x556a3834f350 rank 2 nRanks 4 nNodes 1 localRanks 4 localRank 2 MNNVL 0
+gammagpu11:1301044:1301172 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] 3/-1/-1->2->1 [3] 3/-1/-1->2->1
+gammagpu11:1301044:1301172 [2] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1301045:1301174 [3] NCCL INFO comm 0x55d200d67a80 rank 3 nRanks 4 nNodes 1 localRanks 4 localRank 3 MNNVL 0
+gammagpu11:1301043:1301173 [1] NCCL INFO comm 0x562804852d80 rank 1 nRanks 4 nNodes 1 localRanks 4 localRank 1 MNNVL 0
+gammagpu11:1301042:1301171 [0] NCCL INFO comm 0x5652a7bfa0c0 rank 0 nRanks 4 nNodes 1 localRanks 4 localRank 0 MNNVL 0
+gammagpu11:1301045:1301174 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] -1/-1/-1->3->2 [3] -1/-1/-1->3->2
+gammagpu11:1301043:1301173 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 2/-1/-1->1->0 [3] 2/-1/-1->1->0
+gammagpu11:1301045:1301174 [3] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1301043:1301173 [1] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 00/04 :    0   1   2   3
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 01/04 :    0   1   2   3
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 02/04 :    0   1   2   3
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 03/04 :    0   1   2   3
+gammagpu11:1301042:1301171 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1
+gammagpu11:1301042:1301171 [0] NCCL INFO P2P Chunksize set to 131072
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 01/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 00/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 03/0 : 1[1] -> 2[2] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 00/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 01/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 01/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 02/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 02/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 03/0 : 3[3] -> 0[0] via P2P/CUMEM
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 03/0 : 2[2] -> 3[3] via P2P/CUMEM
+gammagpu11:1301042:1301171 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Connected all rings
+gammagpu11:1301045:1301174 [3] NCCL INFO Connected all rings
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 00/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1301042:1301171 [0] NCCL INFO Connected all rings
+gammagpu11:1301043:1301173 [1] NCCL INFO Connected all rings
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 01/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 02/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1301045:1301174 [3] NCCL INFO Channel 03/0 : 3[3] -> 2[2] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 00/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1301043:1301173 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 01/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 02/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1301044:1301172 [2] NCCL INFO Channel 03/0 : 2[2] -> 1[1] via P2P/CUMEM
+gammagpu11:1301042:1301171 [0] NCCL INFO Connected all trees
+gammagpu11:1301042:1301171 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1301042:1301171 [0] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1301043:1301173 [1] NCCL INFO Connected all trees
+gammagpu11:1301043:1301173 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1301043:1301173 [1] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1301045:1301174 [3] NCCL INFO Connected all trees
+gammagpu11:1301045:1301174 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1301045:1301174 [3] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1301044:1301172 [2] NCCL INFO Connected all trees
+gammagpu11:1301044:1301172 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+gammagpu11:1301044:1301172 [2] NCCL INFO 4 coll channels, 0 collnet channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+gammagpu11:1301044:1301172 [2] NCCL INFO comm 0x556a3834f350 rank 2 nranks 4 cudaDev 2 nvmlDev 2 busId 81000 commId 0x1130103a1cac8125 - Init COMPLETE
+gammagpu11:1301045:1301174 [3] NCCL INFO comm 0x55d200d67a80 rank 3 nranks 4 cudaDev 3 nvmlDev 3 busId c1000 commId 0x1130103a1cac8125 - Init COMPLETE
+gammagpu11:1301042:1301171 [0] NCCL INFO comm 0x5652a7bfa0c0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 1000 commId 0x1130103a1cac8125 - Init COMPLETE
+gammagpu11:1301043:1301173 [1] NCCL INFO comm 0x562804852d80 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 41000 commId 0x1130103a1cac8125 - Init COMPLETE
+wandb: Tracking run with wandb version 0.17.8
+wandb: Run data is saved locally in /fs/nexus-scratch/sjxu/svd-temporal-controlnet/wandb/run-20250113_105157-ocwd896n
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dark-sea-219
+wandb: ⭐️ View project at https://wandb.ai/sjxu_gamma/SVD_Con_Mul
+wandb: 🚀 View run at https://wandb.ai/sjxu_gamma/SVD_Con_Mul/runs/ocwd896n
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+  0%|          | 0/8880 [00:00<?, ?it/s]Steps:   0%|          | 0/8880 [00:00<?, ?it/s]Steps:   0%|          | 0/8880 [00:09<?, ?it/s, lr=0.0001, step_loss=0.397]Steps:   0%|          | 0/8880 [00:10<?, ?it/s, lr=0.0001, step_loss=0.258]Steps:   0%|          | 0/8880 [00:12<?, ?it/s, lr=0.0001, step_loss=0.257]Steps:   0%|          | 0/8880 [00:13<?, ?it/s, lr=0.0001, step_loss=0.229]Steps:   0%|          | 0/8880 [00:14<?, ?it/s, lr=0.0001, step_loss=0.241]Steps:   0%|          | 0/8880 [00:15<?, ?it/s, lr=0.0001, step_loss=0.158]Steps:   0%|          | 0/8880 [00:17<?, ?it/s, lr=0.0001, step_loss=0.294]Steps:   0%|          | 0/8880 [00:18<?, ?it/s, lr=0.0001, step_loss=0.225]Steps:   0%|          | 0/8880 [00:19<?, ?it/s, lr=0.0001, step_loss=0.244]Steps:   0%|          | 0/8880 [00:20<?, ?it/s, lr=0.0001, step_loss=0.528]Steps:   0%|          | 0/8880 [00:22<?, ?it/s, lr=0.0001, step_loss=0.311]Steps:   0%|          | 0/8880 [00:23<?, ?it/s, lr=0.0001, step_loss=0.3]  Steps:   0%|          | 0/8880 [00:24<?, ?it/s, lr=0.0001, step_loss=0.246]Steps:   0%|          | 0/8880 [00:25<?, ?it/s, lr=0.0001, step_loss=0.225]Steps:   0%|          | 0/8880 [00:26<?, ?it/s, lr=0.0001, step_loss=0.308][rank0]:[W113 10:52:27.905694591 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank1]:[W113 10:52:27.955470253 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank3]:[W113 10:52:27.116868245 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+[rank2]:[W113 10:52:27.231299390 reducer.cpp:1400] Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass. This flag results in an extra traversal of the autograd graph every iteration,  which can adversely affect performance. If your model indeed never has any unused parameters in the forward pass, consider turning this flag off. Note that this warning may be a false positive if your model has flow control causing later iterations to have unused parameters. (function operator())
+Steps:   0%|          | 1/8880 [00:28<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.308]INFO:__main__:Running validation... 
+ Generating 1 videos.
+{'insert_light', 'controlnet', 'multi_frame'} was not found in config. Values will be initialized to default values.
+
+Loading pipeline components...:   0%|          | 0/5 [00:00<?, ?it/s][A{'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 275.92it/s]
+Steps:   0%|          | 1/8880 [00:42<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.145]Steps:   0%|          | 1/8880 [00:42<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.131]Steps:   0%|          | 1/8880 [00:43<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.174]Steps:   0%|          | 1/8880 [00:44<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.118]Steps:   0%|          | 1/8880 [00:46<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.13] Steps:   0%|          | 1/8880 [00:47<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.181]Steps:   0%|          | 1/8880 [00:48<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.257]Steps:   0%|          | 1/8880 [00:49<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.172]Steps:   0%|          | 1/8880 [00:50<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.112]Steps:   0%|          | 1/8880 [00:52<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.148]Steps:   0%|          | 1/8880 [00:53<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.32] Steps:   0%|          | 1/8880 [00:54<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.214]Steps:   0%|          | 1/8880 [00:55<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.155]Steps:   0%|          | 1/8880 [00:56<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.14] Steps:   0%|          | 1/8880 [00:58<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.16]Steps:   0%|          | 1/8880 [00:59<69:58:21, 28.37s/it, lr=0.0001, step_loss=0.169]Steps:   0%|          | 2/8880 [01:01<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.169]Steps:   0%|          | 2/8880 [01:01<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.231]Steps:   0%|          | 2/8880 [01:02<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.168]Steps:   0%|          | 2/8880 [01:03<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.485]Steps:   0%|          | 2/8880 [01:04<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.146]Steps:   0%|          | 2/8880 [01:05<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.194]Steps:   0%|          | 2/8880 [01:06<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.117]Steps:   0%|          | 2/8880 [01:08<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.107]Steps:   0%|          | 2/8880 [01:09<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.303]Steps:   0%|          | 2/8880 [01:10<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.163]Steps:   0%|          | 2/8880 [01:12<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.105]Steps:   0%|          | 2/8880 [01:13<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.131]Steps:   0%|          | 2/8880 [01:14<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.133]Steps:   0%|          | 2/8880 [01:15<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.0917]Steps:   0%|          | 2/8880 [01:16<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.141] Steps:   0%|          | 2/8880 [01:18<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.175]Steps:   0%|          | 2/8880 [01:19<76:13:05, 30.91s/it, lr=0.0001, step_loss=0.154]Steps:   0%|          | 3/8880 [01:20<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.154]Steps:   0%|          | 3/8880 [01:20<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.236]Steps:   0%|          | 3/8880 [01:21<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.125]Steps:   0%|          | 3/8880 [01:22<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.11] Steps:   0%|          | 3/8880 [01:24<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.166]Steps:   0%|          | 3/8880 [01:25<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.175]Steps:   0%|          | 3/8880 [01:26<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.143]Steps:   0%|          | 3/8880 [01:27<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.206]Steps:   0%|          | 3/8880 [01:28<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.706]Steps:   0%|          | 3/8880 [01:30<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.119]Steps:   0%|          | 3/8880 [01:31<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.157]Steps:   0%|          | 3/8880 [01:32<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.173]Steps:   0%|          | 3/8880 [01:33<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.275]Steps:   0%|          | 3/8880 [01:35<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.122]Steps:   0%|          | 3/8880 [01:36<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.0938]Steps:   0%|          | 3/8880 [01:37<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.0888]Steps:   0%|          | 3/8880 [01:38<63:25:53, 25.72s/it, lr=0.0001, step_loss=0.107] Steps:   0%|          | 4/8880 [01:40<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.107]Steps:   0%|          | 4/8880 [01:40<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.0624]Steps:   0%|          | 4/8880 [01:41<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.193] Steps:   0%|          | 4/8880 [01:42<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.0871]Steps:   0%|          | 4/8880 [01:43<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.138] Steps:   0%|          | 4/8880 [01:44<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.101]Steps:   0%|          | 4/8880 [01:45<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.137]Steps:   0%|          | 4/8880 [01:47<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.104]Steps:   0%|          | 4/8880 [01:48<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.122]Steps:   0%|          | 4/8880 [01:49<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.0946]Steps:   0%|          | 4/8880 [01:50<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.097] Steps:   0%|          | 4/8880 [01:51<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.135]Steps:   0%|          | 4/8880 [01:53<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.204]Steps:   0%|          | 4/8880 [01:54<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.147]Steps:   0%|          | 4/8880 [01:55<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.166]Steps:   0%|          | 4/8880 [01:56<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.143]Steps:   0%|          | 4/8880 [01:57<57:19:35, 23.25s/it, lr=0.0001, step_loss=0.105]Steps:   0%|          | 5/8880 [01:59<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.105]Steps:   0%|          | 5/8880 [01:59<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.139]Steps:   0%|          | 5/8880 [02:00<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.125]Steps:   0%|          | 5/8880 [02:01<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.0937]Steps:   0%|          | 5/8880 [02:02<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.11]  Steps:   0%|          | 5/8880 [02:03<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.122]Steps:   0%|          | 5/8880 [02:05<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.132]Steps:   0%|          | 5/8880 [02:06<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.315]Steps:   0%|          | 5/8880 [02:07<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.0697]Steps:   0%|          | 5/8880 [02:08<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.0953]Steps:   0%|          | 5/8880 [02:10<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.198] Steps:   0%|          | 5/8880 [02:11<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.131]Steps:   0%|          | 5/8880 [02:12<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.0543]Steps:   0%|          | 5/8880 [02:13<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.109] Steps:   0%|          | 5/8880 [02:14<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.262]Steps:   0%|          | 5/8880 [02:16<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.127]Steps:   0%|          | 5/8880 [02:17<53:48:09, 21.82s/it, lr=0.0001, step_loss=0.137]Steps:   0%|          | 6/8880 [02:18<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.137]Steps:   0%|          | 6/8880 [02:18<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.0747]Steps:   0%|          | 6/8880 [02:19<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.298] Steps:   0%|          | 6/8880 [02:20<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.117]Steps:   0%|          | 6/8880 [02:22<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.202]Steps:   0%|          | 6/8880 [02:23<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.106]Steps:   0%|          | 6/8880 [02:24<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.118]Steps:   0%|          | 6/8880 [02:25<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.132]Steps:   0%|          | 6/8880 [02:26<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.035]Steps:   0%|          | 6/8880 [02:27<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.171]Steps:   0%|          | 6/8880 [02:29<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.0947]Steps:   0%|          | 6/8880 [02:30<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.107] Steps:   0%|          | 6/8880 [02:31<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.0945]Steps:   0%|          | 6/8880 [02:32<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.162] Steps:   0%|          | 6/8880 [02:33<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.15] Steps:   0%|          | 6/8880 [02:35<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.147]Steps:   0%|          | 6/8880 [02:36<51:41:45, 20.97s/it, lr=0.0001, step_loss=0.0817]Steps:   0%|          | 7/8880 [02:37<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0817]Steps:   0%|          | 7/8880 [02:37<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.106] Steps:   0%|          | 7/8880 [02:38<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.129]Steps:   0%|          | 7/8880 [02:40<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0835]Steps:   0%|          | 7/8880 [02:41<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.124] Steps:   0%|          | 7/8880 [02:42<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0855]Steps:   0%|          | 7/8880 [02:43<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0718]Steps:   0%|          | 7/8880 [02:44<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.108] Steps:   0%|          | 7/8880 [02:45<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0897]Steps:   0%|          | 7/8880 [02:47<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.136] Steps:   0%|          | 7/8880 [02:48<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0939]Steps:   0%|          | 7/8880 [02:49<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0979]Steps:   0%|          | 7/8880 [02:50<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.126] Steps:   0%|          | 7/8880 [02:51<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.116]Steps:   0%|          | 7/8880 [02:53<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.197]Steps:   0%|          | 7/8880 [02:54<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.103]Steps:   0%|          | 7/8880 [02:55<50:15:35, 20.39s/it, lr=0.0001, step_loss=0.0923]Steps:   0%|          | 8/8880 [02:57<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0923]Steps:   0%|          | 8/8880 [02:57<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0876]Steps:   0%|          | 8/8880 [02:57<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0778]Steps:   0%|          | 8/8880 [02:59<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.309] Steps:   0%|          | 8/8880 [03:00<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0963]Steps:   0%|          | 8/8880 [03:01<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.21]  Steps:   0%|          | 8/8880 [03:02<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.144]Steps:   0%|          | 8/8880 [03:03<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.181]Steps:   0%|          | 8/8880 [03:05<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0811]Steps:   0%|          | 8/8880 [03:06<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.17]  Steps:   0%|          | 8/8880 [03:07<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.106]Steps:   0%|          | 8/8880 [03:08<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0962]Steps:   0%|          | 8/8880 [03:10<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.105] Steps:   0%|          | 8/8880 [03:11<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.129]Steps:   0%|          | 8/8880 [03:12<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.112]Steps:   0%|          | 8/8880 [03:13<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.0862]Steps:   0%|          | 8/8880 [03:14<49:24:00, 20.05s/it, lr=0.0001, step_loss=0.128] Steps:   0%|          | 9/8880 [03:16<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.128]Steps:   0%|          | 9/8880 [03:16<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.142]Steps:   0%|          | 9/8880 [03:17<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.136]Steps:   0%|          | 9/8880 [03:18<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.114]Steps:   0%|          | 9/8880 [03:20<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.141]Steps:   0%|          | 9/8880 [03:21<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.107]Steps:   0%|          | 9/8880 [03:22<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.0986]Steps:   0%|          | 9/8880 [03:23<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.219] Steps:   0%|          | 9/8880 [03:24<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.0915]Steps:   0%|          | 9/8880 [03:26<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.09]  Steps:   0%|          | 9/8880 [03:27<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.0868]Steps:   0%|          | 9/8880 [03:28<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.162] Steps:   0%|          | 9/8880 [03:29<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.0842]Steps:   0%|          | 9/8880 [03:30<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.164] Steps:   0%|          | 9/8880 [03:32<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.0924]Steps:   0%|          | 9/8880 [03:33<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.182] Steps:   0%|          | 9/8880 [03:34<48:59:25, 19.88s/it, lr=0.0001, step_loss=0.162]Steps:   0%|          | 10/8880 [03:36<48:46:13, 19.79s/it, lr=0.0001, step_loss=0.162]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+    conditional_pixel_values = controlnet_image.to(latents)
+UnboundLocalError: local variable 'latents' referenced before assignment
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+[rank2]:     main()
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+[rank2]:     test_loss = evaluate_on_test_set(
+[rank2]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+[rank2]:     conditional_pixel_values = controlnet_image.to(latents)
+[rank2]: UnboundLocalError: local variable 'latents' referenced before assignment
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+    conditional_pixel_values = controlnet_image.to(latents)
+UnboundLocalError: local variable 'latents' referenced before assignment
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+[rank0]:     test_loss = evaluate_on_test_set(
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+[rank0]:     conditional_pixel_values = controlnet_image.to(latents)
+[rank0]: UnboundLocalError: local variable 'latents' referenced before assignment
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+    conditional_pixel_values = controlnet_image.to(latents)
+UnboundLocalError: local variable 'latents' referenced before assignment
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+[rank1]:     main()
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+[rank1]:     test_loss = evaluate_on_test_set(
+[rank1]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+[rank1]:     conditional_pixel_values = controlnet_image.to(latents)
+[rank1]: UnboundLocalError: local variable 'latents' referenced before assignment
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+    conditional_pixel_values = controlnet_image.to(latents)
+UnboundLocalError: local variable 'latents' referenced before assignment
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2023, in <module>
+[rank3]:     main()
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1777, in main
+[rank3]:     test_loss = evaluate_on_test_set(
+[rank3]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1362, in evaluate_on_test_set
+[rank3]:     conditional_pixel_values = controlnet_image.to(latents)
+[rank3]: UnboundLocalError: local variable 'latents' referenced before assignment
+W0113 10:55:49.618072 139644462187264 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1301042 closing signal SIGTERM
+W0113 10:55:49.618459 139644462187264 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1301043 closing signal SIGTERM
+W0113 10:55:49.618540 139644462187264 torch/distributed/elastic/multiprocessing/api.py:858] Sending process 1301045 closing signal SIGTERM
+E0113 10:55:50.083046 139644462187264 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 2 (pid: 1301044) of binary: /fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/python
+Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1097, in launch_command
+    multi_gpu_launcher(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/accelerate/commands/launch.py", line 734, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/fs/nexus-scratch/sjxu/miniconda3/envs/svd_control/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_svd_controlnet.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-01-13_10:55:49
+  host      : gammagpu11.umiacs.umd.edu
+  rank      : 2 (local_rank: 2)
+  exitcode  : 1 (pid: 1301044)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+srun: error: gammagpu11: task 2: Exited with exit code 1

@@ -33,7 +33,7 @@ echo "MASTER_ADDR="$MASTER_ADDR
 ## run
 srun accelerate launch train_svd_controlnet.py \
  --pretrained_model_name_or_path="stabilityai/stable-video-diffusion-img2vid" \
- --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_2_change_HD" \
+ --output_dir="/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_3" \
  --csv_path="/fs/nexus-scratch/sjxu/WebVid/blender.csv" \
  --video_folder="/fs/nexus-scratch/sjxu/WebVid/blender/img" \
  --condition_folder="/fs/nexus-scratch/sjxu/WebVid/blender/shd" \
@@ -41,21 +41,25 @@ srun accelerate launch train_svd_controlnet.py \
  --validation_image_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/img_blender" \
  --validation_control_folder="/fs/nexus-scratch/sjxu/svd-temporal-controlnet/validation_demo/shd_blender" \
  --width=512 \
- --height=336 \
+ --height=256 \
  --learning_rate=1e-4 \
- --per_gpu_batch_size=2 \
+ --per_gpu_batch_size=1 \
  --num_train_epochs=120 \
  --mixed_precision="fp16" \
- --gradient_accumulation_steps=8 \
+ --gradient_accumulation_steps=16 \
  --checkpointing_steps=500 \
  --validation_steps=200 \
  --gradient_checkpointing \
  --checkpoints_total_limit=5 \
  --report_to="wandb" \
- --dropout_rgb=0.1 \
  --sample_n_frames=6 \
  --num_frames=6 \
  --inject_lighting_direction \
  --concat_depth_maps \
-#  --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-8500/controlnet" \
-#  --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_out/checkpoint-2000" \
+ --multi_frame_inference \
+ --dropout_rgb=0.1 \
+ --enable_xformers_memory_efficient_attention \
+ --allow_tf32 \
+ --use_8bit_adam
+#  --controlnet_model_name_or_path="/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_2_change_HD/checkpoint-2500/controlnet" \
+#  --resume_from_checkpoint="/fs/nexus-scratch/sjxu/Model_out/model_add_ligh_2_change_HD/checkpoint-2500" \

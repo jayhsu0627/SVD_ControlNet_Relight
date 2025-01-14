@@ -430,7 +430,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         # height = height or self.unet.config.sample_size * self.vae_scale_factor
         # width = width or self.unet.config.sample_size * self.vae_scale_factor
 
-        print(height, width)
+        # print(height, width)
         num_frames = num_frames if num_frames is not None else self.unet.config.num_frames
         decode_chunk_size = decode_chunk_size if decode_chunk_size is not None else num_frames
 
@@ -455,14 +455,13 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         if not self.multi_frame:
             # (batchxframes, ch, hxw)
             image_embeddings = self._encode_image(image, device, num_videos_per_prompt, do_classifier_free_guidance)
-            print("multi_frame ", image_embeddings.shape)
+            # print("multi_frame ", image_embeddings.shape)
 
         else:
             image_embeddings = self._encode_image(image[0], device, num_videos_per_prompt, do_classifier_free_guidance)
             encoder_hidden_states = self._encode_image(image, device, num_videos_per_prompt, do_classifier_free_guidance)
-            print("image_embeddings ", image_embeddings.shape)
-
-            print("encoder_hidden_states ", encoder_hidden_states.shape)
+            # print("image_embeddings ", image_embeddings.shape)
+            # print("encoder_hidden_states ", encoder_hidden_states.shape)
 
         # NOTE: Stable Diffusion Video was conditioned on fps - 1, which
         # is why it is reduced here.
@@ -476,9 +475,9 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
         else:
             # image = self.video_processor.preprocess(image[0], height=height, width=width).to(device)
             #  [num_frames, channels, height, width]
-            print("before:", image[0].size)
+            # print("before:", image[0].size)
             image = self.video_processor.preprocess(image, height=height, width=width).to(device)
-        print("loaded:", image.shape)
+        # print("loaded:", image.shape)
 
         noise = randn_tensor(image.shape, generator=generator, device=image.device, dtype=image.dtype)
         image = image + noise_aug_strength * noise
@@ -502,7 +501,8 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
             # DO NOT REPEAST SO WE HAVE PER FRAME INITIALIZATION
             b, ch, h, w = image_latents.shape
             image_latents = image_latents.view(int(b/num_frames), num_frames, ch, h, w)
-
+            # image_latents = image_latents
+        
         # 5. Get Added Time IDs
         added_time_ids = self._get_add_time_ids(
             fps,
@@ -533,7 +533,7 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
             generator,
             latents,
         )
-        #prepare controlnet condition
+        # prepare controlnet condition
         controlnet_condition = self.image_processor.preprocess(controlnet_condition, height=height, width=width)
         controlnet_condition = controlnet_condition.unsqueeze(0)
         controlnet_condition = torch.cat([controlnet_condition] * 2) 
@@ -569,11 +569,10 @@ class StableVideoDiffusionPipelineControlNet(DiffusionPipeline):
             for i, t in enumerate(timesteps):
                 # expand the latents if we are doing classifier free guidance
                 latent_model_input = torch.cat([latents] * 2) if do_classifier_free_guidance else latents
-
                 latent_model_input = self.scheduler.scale_model_input(latent_model_input, t)
             
                 # Concatenate image_latents over channels dimention
-                print(latent_model_input.shape, image_latents.shape)
+                # print(latent_model_input.shape, image_latents.shape)
 
                 latent_model_input = torch.cat([latent_model_input, image_latents], dim=2)
                 down_block_res_samples, mid_block_res_sample = self.controlnet(

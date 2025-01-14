@@ -1,0 +1,104 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 64
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 8880
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 1/8880 [00:29<72:59:52, 29.60s/it, lr=0.0001, step_loss=0.0902]INFO:__main__:Running validation...
+ Generating 1 videos.
+{'controlnet', 'multi_frame', 'insert_light'} was not found in config. Values will be initialized to default values.
+                                                                     {'rescale_betas_zero_snr', 'final_sigmas_type'} was not found in config. Values will be initialized to default values.
+Loaded scheduler as EulerDiscreteScheduler from `scheduler` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loaded feature_extractor as CLIPImageProcessor from `feature_extractor` subfolder of stabilityai/stable-video-diffusion-img2vid.
+Loading pipeline components...: 100%|██████████| 5/5 [00:00<00:00, 302.00it/s]
+image_embeddings  torch.Size([2, 1, 1024])
+encoder_hidden_states  torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+encoder_hidden_states torch.Size([12, 1, 1024])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Steps:   0%|          | 5/8880 [02:01<54:32:12, 22.12s/it, lr=0.0001, step_loss=0.125]Traceback (most recent call last):
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2027, in <module>
+    main()
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1780, in main
+    test_loss = evaluate_on_test_set(
+  File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1340, in evaluate_on_test_set
+    test_dataloader = DataLoader(
+AttributeError: 'DataLoader' object has no attribute 'to'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 2027, in <module>
+[rank0]:     main()
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1780, in main
+[rank0]:     test_loss = evaluate_on_test_set(
+[rank0]:   File "/fs/nexus-scratch/sjxu/svd-temporal-controlnet/train_svd_controlnet.py", line 1340, in evaluate_on_test_set
+[rank0]:     test_dataloader = DataLoader(
+[rank0]: AttributeError: 'DataLoader' object has no attribute 'to'
