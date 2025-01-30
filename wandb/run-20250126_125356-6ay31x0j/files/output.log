@@ -1,0 +1,133 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 319940
+INFO:__main__:  Num Epochs = 3
+INFO:__main__:  Instantaneous batch size per device = 8
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 32
+INFO:__main__:  Gradient Accumulation steps = 2
+INFO:__main__:  Total optimization steps = 20000
+Steps:   0%|                                                                                                                                                                                                                                  | 0/20000 [00:00<?, ?it/s]
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9375, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9453, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-0.9844, device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+Steps:   0%|                                                                                                                                                                                                                                  | 0/20000 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1670, in <module>
+    main()
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1556, in main
+    for step, batch in enumerate(train_dataloader):
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/accelerate/data_loader.py", line 464, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1327, in _next_data
+    idx, data = self._get_data()
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1293, in _get_data
+    success, data = self._try_get_data()
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1131, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/queues.py", line 113, in get
+    if not self._poll(timeout):
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/connection.py", line 262, in poll
+    return self._poll(timeout)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/connection.py", line 429, in _poll
+    r = wait([self], timeout)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/connection.py", line 936, in wait
+    ready = selector.select(timeout)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1670, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1556, in main
+[rank0]:     for step, batch in enumerate(train_dataloader):
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/accelerate/data_loader.py", line 464, in __iter__
+[rank0]:     next_batch = next(dataloader_iter)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1327, in _next_data
+[rank0]:     idx, data = self._get_data()
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1293, in _get_data
+[rank0]:     success, data = self._try_get_data()
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1131, in _try_get_data
+[rank0]:     data = self._data_queue.get(timeout=timeout)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/queues.py", line 113, in get
+[rank0]:     if not self._poll(timeout):
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/connection.py", line 262, in poll
+[rank0]:     return self._poll(timeout)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/connection.py", line 429, in _poll
+[rank0]:     r = wait([self], timeout)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/multiprocessing/connection.py", line 936, in wait
+[rank0]:     ready = selector.select(timeout)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/selectors.py", line 416, in select
+[rank0]:     fd_event_list = self._selector.poll(timeout)
+[rank0]: KeyboardInterrupt
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)
+tensor(-1., device='cuda:0', dtype=torch.bfloat16) tensor(1., device='cuda:0', dtype=torch.bfloat16)

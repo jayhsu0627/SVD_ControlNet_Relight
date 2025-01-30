@@ -244,33 +244,6 @@ def stratified_uniform(shape, group=0, groups=1, dtype=None, device=None):
     return (offsets + u) / n
 
 
-def rand_cosine_interpolated(shape, image_d, noise_d_low, noise_d_high, sigma_data=1., min_value=1e-3, max_value=1e3, device='cpu', dtype=torch.float32):
-    """Draws samples from an interpolated cosine timestep distribution (from simple diffusion)."""
-
-    def logsnr_schedule_cosine(t, logsnr_min, logsnr_max):
-        t_min = math.atan(math.exp(-0.5 * logsnr_max))
-        t_max = math.atan(math.exp(-0.5 * logsnr_min))
-        return -2 * torch.log(torch.tan(t_min + t * (t_max - t_min)))
-
-    def logsnr_schedule_cosine_shifted(t, image_d, noise_d, logsnr_min, logsnr_max):
-        shift = 2 * math.log(noise_d / image_d)
-        return logsnr_schedule_cosine(t, logsnr_min - shift, logsnr_max - shift) + shift
-
-    def logsnr_schedule_cosine_interpolated(t, image_d, noise_d_low, noise_d_high, logsnr_min, logsnr_max):
-        logsnr_low = logsnr_schedule_cosine_shifted(
-            t, image_d, noise_d_low, logsnr_min, logsnr_max)
-        logsnr_high = logsnr_schedule_cosine_shifted(
-            t, image_d, noise_d_high, logsnr_min, logsnr_max)
-        return torch.lerp(logsnr_low, logsnr_high, t)
-
-    logsnr_min = -2 * math.log(min_value / sigma_data)
-    logsnr_max = -2 * math.log(max_value / sigma_data)
-    u = stratified_uniform(
-        shape, group=0, groups=1, dtype=dtype, device=device
-    )
-    logsnr = logsnr_schedule_cosine_interpolated(
-        u, image_d, noise_d_low, noise_d_high, logsnr_min, logsnr_max)
-    return torch.exp(-logsnr / 2) * sigma_data
 
 
 min_value = 0.002
@@ -294,29 +267,45 @@ INPUT_IDS = torch.tensor([
 
 def pil_image_to_numpy(image):
     """Convert a PIL image to a NumPy array."""
-    if image.mode != 'RGB' and image.mode != 'L':
+    if image.mode != 'RGB':
         image = image.convert('RGB')
+    
+    width, height = image.size
+    aspect_ratio = width / height
+    
+    new_width = 512
+    new_height = int(new_width /aspect_ratio)
+
+    # Resize the image
+    new_size = (new_width, new_height)  # Specify the desired width and height
+    image = image.resize(new_size)
+    
     return np.array(image)
 
 def numpy_to_pt(images: np.ndarray) -> torch.FloatTensor:
     """Convert a NumPy image to a PyTorch tensor."""
-    if images.ndim == 3:
-        images = images[..., None]
+    # if images.ndim == 3:
+    #     print("numpy_to_pt before", images.shape)
+    #     images = images[..., None]
     # print("numpy_to_pt", images.shape)
-    images = torch.from_numpy(images.transpose(0, 3, 1, 2))
+    # images = torch.from_numpy(images.transpose(3, 2, 0, 1))
+    images = torch.from_numpy(images.transpose(2, 0, 1))
+
+    # images = torch.from_numpy(images)
     return images.float() / 255
 
 class MyDataset:
     def __init__(self, test=False):
         self.json = [
-            json.loads(line) for line in open("/fs/nexus-scratch/sjxu/svd-temporal-controlnet/relighting/training_pairs.json", "r").read().splitlines() if 'fulkerson_revis' not in line
+            json.loads(line) for line in open("/sdb5/SVD_ControlNet_Relight/relighting/training_pairs.json", "r").read().splitlines() if 'fulkerson_revis' not in line
         ]
 
-        self.video_folder = '/fs/gamma-projects/svd_relight/MIT/train'
+        self.video_folder = '/sdb5/data/train'
         
         sample_width = 512
+
         self.transforms_0 = ImageSequential(
-            K.RandomCrop((sample_width, sample_width)),
+            K.CenterCrop((256, 512)),
             same_on_batch=True  # This enables getting the transformation matrices
         )
 
@@ -332,21 +321,21 @@ class MyDataset:
         base_name = '_'.join(parts[dir_index:])
         return base_name
 
-    def random_crop_pair(self, images, crop_size=(512, 512)):
-        # Get the dimensions of the input image
-        width, height = images[0].size
+    # def random_crop_pair(self, images, crop_size=(512, 512)):
+    #     # Get the dimensions of the input image
+    #     width, height = images[0].size
         
-        # Ensure crop size is within the dimensions of the image
-        crop_width, crop_height = crop_size
-        if crop_width > width or crop_height > height:
-            raise ValueError("Crop size must be within the dimensions of the image")
+    #     # Ensure crop size is within the dimensions of the image
+    #     crop_width, crop_height = crop_size
+    #     if crop_width > width or crop_height > height:
+    #         raise ValueError("Crop size must be within the dimensions of the image")
         
-        # Get random crop parameters
-        top = random.randint(0, height - crop_height)
-        left = random.randint(0, width - crop_width)
+    #     # Get random crop parameters
+    #     top = random.randint(0, height - crop_height)
+    #     left = random.randint(0, width - crop_width)
         
-        cropped_images = [TF.crop(image, top, left, crop_height, crop_width) for image in images]
-        return cropped_images
+    #     cropped_images = [TF.crop(image, top, left, crop_height, crop_width) for image in images]
+    #     return cropped_images
 
 
     def __len__(self):
@@ -368,27 +357,34 @@ class MyDataset:
 
             image_path = os.path.join(self.video_folder, folder_name, name)
             image = Image.open(image_path).convert("RGB")
+            image = numpy_to_pt(pil_image_to_numpy(image))
 
             conditioning_image_path = os.path.join(self.video_folder, folder_name, cond_name)
             conditioning_image = Image.open(conditioning_image_path).convert("RGB")
-            # conditioning_image = numpy_to_pt(pil_image_to_numpy(conditioning_image))
+            conditioning_image = numpy_to_pt(pil_image_to_numpy(conditioning_image))
 
             target_dir = get_light_dir_encoding(k)
 
-            images = [image, conditioning_image]
-            
-            cropped_images = self.random_crop_pair(images)
-            image, conditioning_image = cropped_images[0], cropped_images[1]
+            image = image.unsqueeze(0)  # Adds a dimension at index 0
+            conditioning_image = conditioning_image.unsqueeze(0)  # Adds a dimension at index 0
 
+            # print(image.shape, conditioning_image.shape)
+            cropped_images = self.transforms_0(torch.cat([image, conditioning_image], dim=0))
+            # cropped_images = self.random_crop_pair(images)
+            # image, conditioning_image = cropped_images[:batch_size], cropped_images[batch_size: batch_size*2]
+            
+            # print(cropped_images.shape)
+            image, conditioning_image = cropped_images[0], cropped_images[1]
+            # print(image.shape)
             result = {
                 "text": "",
                 "target_dir": target_dir,
-                "pixel_values": TF.to_tensor(image) * 2 - 1,
-                # "pixel_values": (image) * 2 - 1,
+                # "pixel_values": TF.to_tensor(image) * 2 - 1,
+                "pixel_values": (image) * 2 - 1,
 
                 "conditioning_image": conditioning_image,
-                "condition_pixel_values": TF.to_tensor(conditioning_image) * 2 - 1,
-                # "condition_pixel_values": (conditioning_image) * 2 - 1,
+                # "condition_pixel_values": TF.to_tensor(conditioning_image) * 2 - 1,
+                "condition_pixel_values": (conditioning_image) * 2 - 1,
 
                 "input_ids": INPUT_IDS
             }
@@ -1575,99 +1571,99 @@ def main():
                 cond_pixels = batch["condition_pixel_values"].to(dtype=weight_dtype) 
                 mask = torch.zeros_like(cond_pixels).mean(dim=1, keepdim=True) 
                 pixels = batch["pixel_values"].to(dtype=weight_dtype)
-                # print(pixels.min(), pixels.max())
-                # print(cond_pixels.min(), cond_pixels.max())
+                print(pixels.min(), pixels.max())
+                print(cond_pixels.min(), cond_pixels.max())
 
-                # On higher resolution, it crashes on the backward pass if the input size is not square
-                # So train on random square crops. This also makes it easier to fit in 40g memory.
+    #             # On higher resolution, it crashes on the backward pass if the input size is not square
+    #             # So train on random square crops. This also makes it easier to fit in 40g memory.
 
-                # if cond_pixels.shape[-1] == 1536:
-                #     l = random.randint(0, 512)
-                #     r = l + 768
-                #     t = random.randint(0, 512)
-                #     b = t + 512
-                #     cond_pixels = cond_pixels[:, :, t:b, l:r]
-                #     pixels = pixels[:, :, t:b, l:r]
-                #     mask = mask[:, :, t:b, l:r]
-                #     latents = latents[:, :, t//8:b//8, l//8:r//8]
+    #             # if cond_pixels.shape[-1] == 1536:
+    #             #     l = random.randint(0, 512)
+    #             #     r = l + 768
+    #             #     t = random.randint(0, 512)
+    #             #     b = t + 512
+    #             #     cond_pixels = cond_pixels[:, :, t:b, l:r]
+    #             #     pixels = pixels[:, :, t:b, l:r]
+    #             #     mask = mask[:, :, t:b, l:r]
+    #             #     latents = latents[:, :, t//8:b//8, l//8:r//8]
                 
-                sampleasym = vae.module.decode(latents, cond_pixels, mask).sample
-                loss = lpips_vgg(sampleasym, pixels).mean() + args.mse_weight * F.mse_loss(sampleasym, pixels) # note: all images scaled to [-1, 1]
-                accelerator.backward(loss)
+    #             sampleasym = vae.module.decode(latents, cond_pixels, mask).sample
+    #             loss = lpips_vgg(sampleasym, pixels).mean() + args.mse_weight * F.mse_loss(sampleasym, pixels) # note: all images scaled to [-1, 1]
+    #             accelerator.backward(loss)
 
-                # # Debug gradients
-                # print("Inspecting gradients after backward pass:")
-                # for param in vae.parameters():  # Replace `vae` with the appropriate model variable if different
-                #     if param.grad is not None:
-                #         print(f"Param dtype: {param.dtype}, Grad dtype: {param.grad.dtype}")
+    #             # # Debug gradients
+    #             # print("Inspecting gradients after backward pass:")
+    #             # for param in vae.parameters():  # Replace `vae` with the appropriate model variable if different
+    #             #     if param.grad is not None:
+    #             #         print(f"Param dtype: {param.dtype}, Grad dtype: {param.grad.dtype}")
                 
-                # # Unscale gradients before gradient clipping
-                # if args.mixed_precision == "fp16":
-                #     print('convert')
-                #     accelerator.unscale_gradients(optimizer)
+    #             # # Unscale gradients before gradient clipping
+    #             # if args.mixed_precision == "fp16":
+    #             #     print('convert')
+    #             #     accelerator.unscale_gradients(optimizer)
 
-                # Checks if the accelerator has performed an optimization step behind the scenes
-                if accelerator.sync_gradients:
-                    progress_bar.update(1)
-                    global_step += 1
+    #             # Checks if the accelerator has performed an optimization step behind the scenes
+    #             if accelerator.sync_gradients:
+    #                 progress_bar.update(1)
+    #                 global_step += 1
 
-                    params_to_clip = vae.module.decoder.parameters()
-                    # if args.mixed_precision == "fp16":
-                    #     accelerator.unscale_gradients(optimizer)
+    #                 params_to_clip = vae.module.decoder.parameters()
+    #                 # if args.mixed_precision == "fp16":
+    #                 #     accelerator.unscale_gradients(optimizer)
 
-                    # accelerator.clip_grad_norm_(params_to_clip, args.max_grad_norm)
-                    torch.nn.utils.clip_grad_norm_(params_to_clip, args.max_grad_norm)
+    #                 # accelerator.clip_grad_norm_(params_to_clip, args.max_grad_norm)
+    #                 torch.nn.utils.clip_grad_norm_(params_to_clip, args.max_grad_norm)
 
-                optimizer.step() 
-                lr_scheduler.step()
-                optimizer.zero_grad(set_to_none=args.set_grads_to_none)
+    #             optimizer.step() 
+    #             lr_scheduler.step()
+    #             optimizer.zero_grad(set_to_none=args.set_grads_to_none)
 
-            # Checks if the accelerator has performed an optimization step behind the scenes
-            if accelerator.sync_gradients:
-                # if accelerator.is_main_process:
-                    # if "SKIP_VAL" not in os.environ and global_step % args.validation_steps == 0 and not (global_step == 0 and args.skip_first_val):
-                    #     run_val(f"{args.output_dir}/val_results/{global_step // args.validation_steps:03d}", args.num_validation_images)
+    #         # Checks if the accelerator has performed an optimization step behind the scenes
+    #         if accelerator.sync_gradients:
+    #             # if accelerator.is_main_process:
+    #                 # if "SKIP_VAL" not in os.environ and global_step % args.validation_steps == 0 and not (global_step == 0 and args.skip_first_val):
+    #                 #     run_val(f"{args.output_dir}/val_results/{global_step // args.validation_steps:03d}", args.num_validation_images)
 
-                global_step += 1
+    #             global_step += 1
 
-                if accelerator.is_main_process:
-                    # save checkpoints!
-                    if global_step % args.checkpointing_steps == 0:
-                        # _before_ saving state, check if this save would set us over the `checkpoints_total_limit`
-                        if args.checkpoints_total_limit is not None:
-                            checkpoints = os.listdir(args.output_dir)
-                            checkpoints = [ d for d in checkpoints if d.startswith("checkpoint")]
-                            checkpoints = sorted(checkpoints, key=lambda x: int(x.split("-")[1]))
+    #             if accelerator.is_main_process:
+    #                 # save checkpoints!
+    #                 if global_step % args.checkpointing_steps == 0:
+    #                     # _before_ saving state, check if this save would set us over the `checkpoints_total_limit`
+    #                     if args.checkpoints_total_limit is not None:
+    #                         checkpoints = os.listdir(args.output_dir)
+    #                         checkpoints = [ d for d in checkpoints if d.startswith("checkpoint")]
+    #                         checkpoints = sorted(checkpoints, key=lambda x: int(x.split("-")[1]))
 
-                            # before we save the new checkpoint, we need to have at _most_ `checkpoints_total_limit - 1` checkpoints
-                            if len(checkpoints) >= args.checkpoints_total_limit:
-                                num_to_remove = len(
-                                    checkpoints) - args.checkpoints_total_limit + 1
-                                removing_checkpoints = checkpoints[0:num_to_remove]
+    #                         # before we save the new checkpoint, we need to have at _most_ `checkpoints_total_limit - 1` checkpoints
+    #                         if len(checkpoints) >= args.checkpoints_total_limit:
+    #                             num_to_remove = len(
+    #                                 checkpoints) - args.checkpoints_total_limit + 1
+    #                             removing_checkpoints = checkpoints[0:num_to_remove]
 
-                                logger.info(f"{len(checkpoints)} checkpoints already exist, removing {len(removing_checkpoints)} checkpoints")
-                                logger.info(f"removing checkpoints: {', '.join(removing_checkpoints)}")
+    #                             logger.info(f"{len(checkpoints)} checkpoints already exist, removing {len(removing_checkpoints)} checkpoints")
+    #                             logger.info(f"removing checkpoints: {', '.join(removing_checkpoints)}")
 
-                                for removing_checkpoint in removing_checkpoints:
-                                    removing_checkpoint = os.path.join(args.output_dir, removing_checkpoint)
-                                    shutil.rmtree(removing_checkpoint)
+    #                             for removing_checkpoint in removing_checkpoints:
+    #                                 removing_checkpoint = os.path.join(args.output_dir, removing_checkpoint)
+    #                                 shutil.rmtree(removing_checkpoint)
 
-                        save_path = os.path.join(args.output_dir, f"checkpoint-{global_step}")
-                        accelerator.save_state(save_path)
-                        logger.info(f"Saved state to {save_path}")
+    #                     save_path = os.path.join(args.output_dir, f"checkpoint-{global_step}")
+    #                     accelerator.save_state(save_path)
+    #                     logger.info(f"Saved state to {save_path}")
 
-            logs = {"loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
+    #         logs = {"loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
 
-            progress_bar.set_postfix(**logs)
-            accelerator.log(logs, step=global_step)
+    #         progress_bar.set_postfix(**logs)
+    #         accelerator.log(logs, step=global_step)
 
-            if global_step >= args.max_train_steps:
-                break
+    #         if global_step >= args.max_train_steps:
+    #             break
 
-    # Create the pipeline using the trained modules and save it.
-    accelerator.wait_for_everyone()
+    # # Create the pipeline using the trained modules and save it.
+    # accelerator.wait_for_everyone()
 
-    accelerator.end_training()
+    # accelerator.end_training()
 
 
 if __name__ == "__main__":

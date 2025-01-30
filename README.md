@@ -8,8 +8,12 @@ This tool uses a ControlNet style encoder with the Stable Video Diffusion base. 
 
 ## Setup
 - **Controlnet Model:** you can get the depth model by running the inference script, it will automatically download the depth model to the cache, the model files can be found here: [temporal-controlnet-depth-svd-v1](https://huggingface.co/CiaraRowles/temporal-controlnet-depth-svd-v1)
-- **Installation:** run `conda env create -f environment.yml`
-
+- **Installation:** run 
+```
+conda env create -f environment.yml
+git submodule init
+git submodule update
+```
 ## Demo
 
 ![](./image_grid.png)

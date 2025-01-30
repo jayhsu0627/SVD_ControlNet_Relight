@@ -103,8 +103,8 @@ class MIL(Dataset):
         ]
 
         zero_rank_print(f"loading annotations from {csv_path} ...")
-        with open(csv_path, 'r') as csvfile:
-            self.dataset = list(csv.DictReader(csvfile))
+        # with open(csv_path, 'r') as csvfile:
+        #     self.dataset = list(csv.DictReader(csvfile))
         self.dataset = self.json
         # self.length = len(self.dataset)
         self.length = len(self.json)
@@ -217,7 +217,9 @@ class MIL(Dataset):
             normal_set = 'all_normal.png'
 
             # print(video_id, target_set, cond_set)
-            self.video_folder = '/fs/gamma-projects/svd_relight/MIT/train'
+            # self.video_folder = '/fs/gamma-projects/svd_relight/MIT/train'
+            self.video_folder = '/sdb5/data/train'
+
             image_path = self.video_folder + "/" + video_id
 
             if not os.path.exists(image_path):

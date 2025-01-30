@@ -1,4 +1,4 @@
-name: svd_control
+name: svd_control_org
 channels:
   - bioconda
   - defaults

@@ -1,0 +1,75 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 4728
+INFO:__main__:  Num Epochs = 120
+INFO:__main__:  Instantaneous batch size per device = 1
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 32
+INFO:__main__:  Gradient Accumulation steps = 16
+INFO:__main__:  Total optimization steps = 17760
+Steps:   0%|                                                                                                | 0/17760 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_controlnet.py", line 2024, in <module>
+    main()
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_controlnet.py", line 1563, in main
+    for step, batch in enumerate(train_dataloader):
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/accelerate/data_loader.py", line 454, in __iter__
+    current_batch = next(dataloader_iter)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+    return self._process_data(data)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+    data = self.dataset.__getitems__(possibly_batched_index)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in __getitems__
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in <listcomp>
+    return [self.dataset[self.indices[idx]] for idx in indices]
+  File "/sdb5/SVD_ControlNet_Relight/utils/MIL_dataset.py", line 300, in __getitem__
+    pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
+  File "/sdb5/SVD_ControlNet_Relight/utils/MIL_dataset.py", line 276, in get_batch
+    numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+  File "/sdb5/SVD_ControlNet_Relight/utils/MIL_dataset.py", line 276, in <listcomp>
+    numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/PIL/Image.py", line 3431, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: '/sdb5/data/train/willow_basement12/all_depth.png'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_controlnet.py", line 2024, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_controlnet.py", line 1563, in main
+[rank0]:     for step, batch in enumerate(train_dataloader):
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/accelerate/data_loader.py", line 454, in __iter__
+[rank0]:     current_batch = next(dataloader_iter)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/_utils.py", line 706, in reraise
+[rank0]:     raise exception
+[rank0]: FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 50, in fetch
+[rank0]:     data = self.dataset.__getitems__(possibly_batched_index)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in __getitems__
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/utils/data/dataset.py", line 420, in <listcomp>
+[rank0]:     return [self.dataset[self.indices[idx]] for idx in indices]
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/utils/MIL_dataset.py", line 300, in __getitem__
+[rank0]:     pixel_values, cond_pixel_values, motion_values, depth_pixel_values, normal_pixel_values, target_dir = self.get_batch(idx)
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/utils/MIL_dataset.py", line 276, in get_batch
+[rank0]:     numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/utils/MIL_dataset.py", line 276, in <listcomp>
+[rank0]:     numpy_depth_images = np.array([((np.array(Image.open(os.path.join(image_path, depth_set)))/65535.0)* 255).astype(np.uint8) for cond in cond_files])
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/PIL/Image.py", line 3431, in open
+[rank0]:     fp = builtins.open(filename, "rb")
+[rank0]: FileNotFoundError: [Errno 2] No such file or directory: '/sdb5/data/train/willow_basement12/all_depth.png'

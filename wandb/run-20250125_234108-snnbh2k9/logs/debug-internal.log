@@ -1,0 +1,191 @@
+2025-01-25 23:41:08,013 INFO    StreamThr :608741 [internal.py:wandb_internal():85] W&B internal server running at pid: 608741, started at: 2025-01-25 23:41:08.012401
+2025-01-25 23:41:08,015 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: status
+2025-01-25 23:41:08,059 INFO    WriterThread:608741 [datastore.py:open_for_write():87] open: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/run-snnbh2k9.wandb
+2025-01-25 23:41:08,059 DEBUG   SenderThread:608741 [sender.py:send():391] send: header
+2025-01-25 23:41:08,098 DEBUG   SenderThread:608741 [sender.py:send():391] send: run
+2025-01-25 23:41:08,223 INFO    SenderThread:608741 [dir_watcher.py:__init__():211] watching files in: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files
+2025-01-25 23:41:08,223 INFO    SenderThread:608741 [sender.py:_start_run_threads():1200] run started: snnbh2k9 with start time 1737848468.055338
+2025-01-25 23:41:08,236 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: run_start
+2025-01-25 23:41:08,252 DEBUG   HandlerThread:608741 [system_info.py:__init__():26] System info init
+2025-01-25 23:41:08,252 DEBUG   HandlerThread:608741 [system_info.py:__init__():41] System info init done
+2025-01-25 23:41:08,252 INFO    HandlerThread:608741 [system_monitor.py:start():194] Starting system monitor
+2025-01-25 23:41:08,253 INFO    SystemMonitor:608741 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2025-01-25 23:41:08,253 INFO    HandlerThread:608741 [system_monitor.py:probe():214] Collecting system info
+2025-01-25 23:41:08,254 INFO    SystemMonitor:608741 [interfaces.py:start():188] Started cpu monitoring
+2025-01-25 23:41:08,254 INFO    SystemMonitor:608741 [interfaces.py:start():188] Started disk monitoring
+2025-01-25 23:41:08,256 INFO    SystemMonitor:608741 [interfaces.py:start():188] Started gpu monitoring
+2025-01-25 23:41:08,256 INFO    SystemMonitor:608741 [interfaces.py:start():188] Started memory monitoring
+2025-01-25 23:41:08,258 INFO    SystemMonitor:608741 [interfaces.py:start():188] Started network monitoring
+2025-01-25 23:41:08,269 DEBUG   HandlerThread:608741 [system_info.py:probe():152] Probing system
+2025-01-25 23:41:08,274 DEBUG   HandlerThread:608741 [system_info.py:_probe_git():137] Probing git
+2025-01-25 23:41:08,286 DEBUG   HandlerThread:608741 [system_info.py:_probe_git():145] Probing git done
+2025-01-25 23:41:08,286 DEBUG   HandlerThread:608741 [system_info.py:probe():200] Probing system done
+2025-01-25 23:41:08,286 DEBUG   HandlerThread:608741 [system_monitor.py:probe():223] {'os': 'Linux-5.10.0-33-cloud-amd64-x86_64-with-glibc2.31', 'python': '3.9.12', 'heartbeatAt': '2025-01-25T23:41:08.269887', 'startedAt': '2025-01-25T23:41:08.008106', 'docker': None, 'cuda': None, 'args': ('--output_dir=/sdb5/Model_out/decoder', '--width=512', '--height=256', '--learning_rate=1e-4', '--per_gpu_batch_size=8', '--num_train_epochs=30', '--mixed_precision=bf16', '--gradient_accumulation_steps=2', '--checkpointing_steps=100', '--max_train_steps', '20000', '--gradient_checkpointing', '--checkpoints_total_limit=5', '--report_to=wandb', '--num_workers=4', '--mse_weight=0.4', '--allow_tf32', '--use_8bit_adam'), 'state': 'running', 'program': '/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py', 'codePathLocal': 'train_svd_decoder.py', 'codePath': 'train_svd_decoder.py', 'git': {'remote': 'git@github.com:jayhsu0627/SVD_ControlNet_Relight.git', 'commit': 'f9d957fbeb90f717ee964558a8d9443a268d88e3'}, 'email': 'jayhsu0627@gmail.com', 'root': '/sdb5/SVD_ControlNet_Relight', 'host': 'instance-20240922-005009', 'username': 'sjxu', 'executable': '/opt/conda/envs/svd_control_org/bin/python', 'cpu_count': 12, 'cpu_count_logical': 24, 'cpu_freq': {'current': 2200.2799999999993, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}, {'current': 2200.28, 'min': 0.0, 'max': 0.0}], 'disk': {'/': {'total': 1007.6765480041504, 'used': 801.9400939941406}}, 'gpu': 'NVIDIA A100-SXM4-40GB', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42949672960}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42949672960}], 'memory': {'total': 167.05669784545898}}
+2025-01-25 23:41:08,286 INFO    HandlerThread:608741 [system_monitor.py:probe():224] Finished collecting system info
+2025-01-25 23:41:08,286 INFO    HandlerThread:608741 [system_monitor.py:probe():227] Publishing system info
+2025-01-25 23:41:08,286 DEBUG   HandlerThread:608741 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2025-01-25 23:41:08,289 ERROR   HandlerThread:608741 [system_info.py:_save_conda():223] Error saving conda packages: [Errno 2] No such file or directory: 'conda'
+Traceback (most recent call last):
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/wandb/sdk/internal/system/system_info.py", line 216, in _save_conda
+    subprocess.call(
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/subprocess.py", line 349, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/subprocess.py", line 1821, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'conda'
+2025-01-25 23:41:08,290 DEBUG   HandlerThread:608741 [system_info.py:_save_conda():224] Saving conda packages done
+2025-01-25 23:41:08,291 INFO    HandlerThread:608741 [system_monitor.py:probe():229] Finished publishing system info
+2025-01-25 23:41:08,293 DEBUG   SenderThread:608741 [sender.py:send():391] send: files
+2025-01-25 23:41:08,293 INFO    SenderThread:608741 [sender.py:_save_file():1466] saving file wandb-metadata.json with policy now
+2025-01-25 23:41:08,416 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: python_packages
+2025-01-25 23:41:08,416 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: python_packages
+2025-01-25 23:41:08,417 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: stop_status
+2025-01-25 23:41:08,417 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: stop_status
+2025-01-25 23:41:08,420 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: internal_messages
+2025-01-25 23:41:08,441 INFO    wandb-upload_0:608741 [upload_job.py:push():130] Uploaded file /var/tmp/tmpq3e5zwa_wandb/rpyzhczg-wandb-metadata.json
+2025-01-25 23:41:08,537 DEBUG   SenderThread:608741 [sender.py:send():391] send: telemetry
+2025-01-25 23:41:08,538 DEBUG   SenderThread:608741 [sender.py:send():391] send: config
+2025-01-25 23:41:09,225 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/requirements.txt
+2025-01-25 23:41:09,225 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/conda-environment.yaml
+2025-01-25 23:41:09,225 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/output.log
+2025-01-25 23:41:09,225 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/wandb-metadata.json
+2025-01-25 23:41:09,802 DEBUG   SenderThread:608741 [sender.py:send():391] send: exit
+2025-01-25 23:41:09,802 INFO    SenderThread:608741 [sender.py:send_exit():598] handling exit code: 1
+2025-01-25 23:41:09,803 INFO    SenderThread:608741 [sender.py:send_exit():600] handling runtime: 1
+2025-01-25 23:41:09,803 INFO    SenderThread:608741 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2025-01-25 23:41:09,803 INFO    SenderThread:608741 [sender.py:send_exit():606] send defer
+2025-01-25 23:41:09,803 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,803 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 0
+2025-01-25 23:41:09,804 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,804 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 0
+2025-01-25 23:41:09,804 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 1
+2025-01-25 23:41:09,804 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,804 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 1
+2025-01-25 23:41:09,804 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,804 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 1
+2025-01-25 23:41:09,804 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 2
+2025-01-25 23:41:09,804 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,804 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 2
+2025-01-25 23:41:09,804 INFO    HandlerThread:608741 [system_monitor.py:finish():203] Stopping system monitor
+2025-01-25 23:41:09,805 INFO    HandlerThread:608741 [interfaces.py:finish():200] Joined cpu monitor
+2025-01-25 23:41:09,805 INFO    HandlerThread:608741 [interfaces.py:finish():200] Joined disk monitor
+2025-01-25 23:41:09,805 DEBUG   SystemMonitor:608741 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2025-01-25 23:41:09,806 DEBUG   SystemMonitor:608741 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2025-01-25 23:41:09,806 DEBUG   SystemMonitor:608741 [system_monitor.py:_start():183] Publishing last batch of metrics
+2025-01-25 23:41:09,900 INFO    HandlerThread:608741 [interfaces.py:finish():200] Joined gpu monitor
+2025-01-25 23:41:09,900 INFO    HandlerThread:608741 [interfaces.py:finish():200] Joined memory monitor
+2025-01-25 23:41:09,900 INFO    HandlerThread:608741 [interfaces.py:finish():200] Joined network monitor
+2025-01-25 23:41:09,901 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,901 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 2
+2025-01-25 23:41:09,901 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 3
+2025-01-25 23:41:09,901 DEBUG   SenderThread:608741 [sender.py:send():391] send: stats
+2025-01-25 23:41:09,901 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,901 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 3
+2025-01-25 23:41:09,901 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,902 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 3
+2025-01-25 23:41:09,902 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 4
+2025-01-25 23:41:09,902 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,902 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 4
+2025-01-25 23:41:09,902 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,902 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 4
+2025-01-25 23:41:09,902 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 5
+2025-01-25 23:41:09,902 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,902 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 5
+2025-01-25 23:41:09,902 DEBUG   SenderThread:608741 [sender.py:send():391] send: summary
+2025-01-25 23:41:09,903 INFO    SenderThread:608741 [sender.py:_save_file():1466] saving file wandb-summary.json with policy end
+2025-01-25 23:41:09,903 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,903 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 5
+2025-01-25 23:41:09,903 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 6
+2025-01-25 23:41:09,903 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:09,903 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 6
+2025-01-25 23:41:09,904 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:09,904 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 6
+2025-01-25 23:41:09,908 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: status_report
+2025-01-25 23:41:10,116 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 7
+2025-01-25 23:41:10,117 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:10,117 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 7
+2025-01-25 23:41:10,117 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:10,117 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 7
+2025-01-25 23:41:10,224 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_modified():288] file/dir modified: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/config.yaml
+2025-01-25 23:41:10,224 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_created():271] file/dir created: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/wandb-summary.json
+2025-01-25 23:41:10,576 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 8
+2025-01-25 23:41:10,576 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:10,576 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 8
+2025-01-25 23:41:10,577 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:10,577 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 8
+2025-01-25 23:41:10,577 INFO    SenderThread:608741 [job_builder.py:build():443] Attempting to build job artifact
+2025-01-25 23:41:10,577 INFO    SenderThread:608741 [job_builder.py:_get_source_type():572] is repo sourced job
+2025-01-25 23:41:10,599 INFO    SenderThread:608741 [job_builder.py:build():548] adding wandb-job metadata file
+2025-01-25 23:41:10,604 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 9
+2025-01-25 23:41:10,605 DEBUG   SenderThread:608741 [sender.py:send():391] send: artifact
+2025-01-25 23:41:10,607 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:10,608 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 9
+2025-01-25 23:41:10,744 INFO    SenderThread:608741 [sender.py:send_artifact():1549] sent artifact job-git_github.com_jayhsu0627_SVD_ControlNet_Relight.git_train_svd_decoder.py - {'id': 'QXJ0aWZhY3Q6MTQ2Njk2NzE3Mg==', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjUwMDcyMzM0NQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTQ2Njk2NzE3Mg==', 'versionIndex': 6}}}
+2025-01-25 23:41:10,744 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:10,744 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 9
+2025-01-25 23:41:10,744 INFO    SenderThread:608741 [dir_watcher.py:finish():358] shutting down directory watcher
+2025-01-25 23:41:10,803 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: poll_exit
+2025-01-25 23:41:11,224 INFO    Thread-12 :608741 [dir_watcher.py:_on_file_modified():288] file/dir modified: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/output.log
+2025-01-25 23:41:11,225 INFO    SenderThread:608741 [dir_watcher.py:finish():388] scan: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files
+2025-01-25 23:41:11,225 INFO    SenderThread:608741 [dir_watcher.py:finish():402] scan save: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/config.yaml config.yaml
+2025-01-25 23:41:11,225 INFO    SenderThread:608741 [dir_watcher.py:finish():402] scan save: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/conda-environment.yaml conda-environment.yaml
+2025-01-25 23:41:11,226 INFO    SenderThread:608741 [dir_watcher.py:finish():402] scan save: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/wandb-metadata.json wandb-metadata.json
+2025-01-25 23:41:11,226 INFO    SenderThread:608741 [dir_watcher.py:finish():402] scan save: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/requirements.txt requirements.txt
+2025-01-25 23:41:11,228 INFO    SenderThread:608741 [dir_watcher.py:finish():402] scan save: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/wandb-summary.json wandb-summary.json
+2025-01-25 23:41:11,229 INFO    SenderThread:608741 [dir_watcher.py:finish():402] scan save: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/output.log output.log
+2025-01-25 23:41:11,229 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 10
+2025-01-25 23:41:11,229 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: poll_exit
+2025-01-25 23:41:11,230 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:11,230 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 10
+2025-01-25 23:41:11,232 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:11,232 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 10
+2025-01-25 23:41:11,232 INFO    SenderThread:608741 [file_pusher.py:finish():169] shutting down file pusher
+2025-01-25 23:41:11,358 INFO    wandb-upload_0:608741 [upload_job.py:push():130] Uploaded file /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/config.yaml
+2025-01-25 23:41:11,373 INFO    wandb-upload_2:608741 [upload_job.py:push():130] Uploaded file /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/wandb-summary.json
+2025-01-25 23:41:11,376 INFO    wandb-upload_3:608741 [upload_job.py:push():130] Uploaded file /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/output.log
+2025-01-25 23:41:11,379 INFO    wandb-upload_1:608741 [upload_job.py:push():130] Uploaded file /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/files/requirements.txt
+2025-01-25 23:41:11,580 INFO    Thread-11 :608741 [sender.py:transition_state():626] send defer: 11
+2025-01-25 23:41:11,580 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:11,580 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 11
+2025-01-25 23:41:11,581 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:11,581 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 11
+2025-01-25 23:41:11,581 INFO    SenderThread:608741 [file_pusher.py:join():175] waiting for file pusher
+2025-01-25 23:41:11,581 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 12
+2025-01-25 23:41:11,581 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:11,581 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 12
+2025-01-25 23:41:11,581 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:11,581 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 12
+2025-01-25 23:41:11,581 INFO    SenderThread:608741 [file_stream.py:finish():601] file stream finish called
+2025-01-25 23:41:11,619 INFO    SenderThread:608741 [file_stream.py:finish():605] file stream finish is done
+2025-01-25 23:41:11,619 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 13
+2025-01-25 23:41:11,619 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:11,619 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 13
+2025-01-25 23:41:11,620 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:11,620 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 13
+2025-01-25 23:41:11,620 INFO    SenderThread:608741 [sender.py:transition_state():626] send defer: 14
+2025-01-25 23:41:11,620 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: defer
+2025-01-25 23:41:11,620 INFO    HandlerThread:608741 [handler.py:handle_request_defer():184] handle defer: 14
+2025-01-25 23:41:11,620 DEBUG   SenderThread:608741 [sender.py:send():391] send: final
+2025-01-25 23:41:11,620 DEBUG   SenderThread:608741 [sender.py:send():391] send: footer
+2025-01-25 23:41:11,620 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: defer
+2025-01-25 23:41:11,620 INFO    SenderThread:608741 [sender.py:send_request_defer():622] handle sender defer: 14
+2025-01-25 23:41:11,621 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: poll_exit
+2025-01-25 23:41:11,621 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: poll_exit
+2025-01-25 23:41:11,622 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: server_info
+2025-01-25 23:41:11,622 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: server_info
+2025-01-25 23:41:11,624 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: poll_exit
+2025-01-25 23:41:11,625 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: get_summary
+2025-01-25 23:41:11,625 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: sampled_history
+2025-01-25 23:41:11,626 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: internal_messages
+2025-01-25 23:41:11,634 DEBUG   SenderThread:608741 [sender.py:send_request():418] send_request: poll_exit
+2025-01-25 23:41:11,634 INFO    MainThread:608741 [wandb_run.py:_footer_history_summary_info():4078] rendering history
+2025-01-25 23:41:11,634 INFO    MainThread:608741 [wandb_run.py:_footer_history_summary_info():4110] rendering summary
+2025-01-25 23:41:11,634 INFO    MainThread:608741 [wandb_run.py:_footer_sync_info():4037] logging synced files
+2025-01-25 23:41:11,635 DEBUG   HandlerThread:608741 [handler.py:handle_request():158] handle_request: shutdown
+2025-01-25 23:41:11,635 INFO    HandlerThread:608741 [handler.py:finish():884] shutting down handler
+2025-01-25 23:41:12,625 INFO    WriterThread:608741 [datastore.py:close():296] close: /sdb5/SVD_ControlNet_Relight/wandb/run-20250125_234108-snnbh2k9/run-snnbh2k9.wandb
+2025-01-25 23:41:12,634 INFO    SenderThread:608741 [sender.py:finish():1631] shutting down sender
+2025-01-25 23:41:12,634 INFO    SenderThread:608741 [file_pusher.py:finish():169] shutting down file pusher
+2025-01-25 23:41:12,634 INFO    SenderThread:608741 [file_pusher.py:join():175] waiting for file pusher

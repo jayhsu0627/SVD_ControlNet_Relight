@@ -1,21 +1,21 @@
 import torch
 
-# import some helper functions from chrislib (will be installed by the intrinsic repo)
-from chrislib.general import show, view, uninvert
+# # import some helper functions from chrislib (will be installed by the intrinsic repo)
+# from chrislib.general import show, view, uninvert
 from chrislib.data_util import load_image
-from chrislib.normal_util import get_omni_normals
+# from chrislib.normal_util import get_omni_normals
 
-# import model loading and running the pipeline
-from intrinsic.pipeline import run_pipeline, run_gray_pipeline
-from intrinsic.pipeline import load_models
-from pipeline_mod import get_light_coeffs
+# # import model loading and running the pipeline
+# from intrinsic.pipeline import run_pipeline, run_gray_pipeline
+# from intrinsic.pipeline import load_models
+# from pipeline_mod import get_light_coeffs
 
 from PIL import Image 
 import numpy as np
 import cv2
 
 # import OpenEXR
-import Imath
+# import Imath
 import numpy
 import numexpr as ne
 from tqdm.auto import trange
@@ -28,12 +28,11 @@ from transformers import DepthAnythingConfig, DepthAnythingForDepthEstimation
 from transformers import AutoImageProcessor, AutoModelForDepthEstimation
 
 import diffusers
-
+import PIL
 from PIL import Image
 import requests
 from skimage.transform import resize
 
-from boosted_depth.depth_util import create_depth_models, get_depth
 
 
 def save_to_rgb(img, directory, file_name, format: str):
@@ -54,7 +53,7 @@ def get_clean_image_list(directory):
     for file in all_files:
         base_name = file.rsplit('.', 1)[0]  # This handles all extensions
         # Check if this filename contains any underscore
-        if '_' not in base_name:
+        if 'dir' in base_name:
             clean_files.append(file)
         else:
             # For cases like '20150415_165607.png' (allow one underscore for timestamp)
@@ -64,7 +63,7 @@ def get_clean_image_list(directory):
             if len(parts) == 2 and all(part.isdigit() for part in parts):
                 clean_files.append(file)
     
-    return sorted(clean_files)
+    return sorted(clean_files, key=lambda x: int(x.split('_')[1]))
 
 def numpy_interpolate(hr_shd, size, mode='bilinear', align_corners=True, antialias=True):
     # OpenCV uses (width, height) format for resizing, so we need to reverse the size tuple
@@ -235,11 +234,17 @@ def smooth_normals(normals, kernel_size=5):
 
     return smoothed_normals
 
-base_path = '/fs/nexus-scratch/sjxu/bigtime/phoenix/S6/zl548/AMOS/BigTime_v1/'
+def find_median_index(values):
+    return np.argmin(np.abs(np.array(values) - np.median(values)))
+
+# base_path = '/fs/nexus-scratch/sjxu/bigtime/phoenix/S6/zl548/AMOS/BigTime_v1/'
+base_path = '/sdb5/data/train/'
 
 scenes = [f for f in os.listdir(base_path)]
+scenes = sorted(scenes)
+
 # load the models from the given paths
-models = load_models('v2')
+# models = load_models('v2')
 
 # # load pipe
 # pipe = pipeline(task="depth-estimation",
@@ -268,13 +273,13 @@ pipe_norm = diffusers.MarigoldNormalsPipeline.from_pretrained(
 # # Load model and preprocessing transform
 # model, transform = depth_pro.create_model_and_transforms()
 # model.eval()
-
 for scene in scenes:
     # scene = '0015'
-    if int(scene)<=17:
-        # print(scene, ' continued')
-        continue
-    directory_path = base_path+ scene +'/data'
+    # if int(scene)<=17:
+    #     # print(scene, ' continued')
+    #     continue
+    # directory_path = base_path+ scene +'/data'
+    directory_path = base_path+ scene
 
     file_list = get_clean_image_list(directory_path)
     print('======Start process ' + scene + "======")
@@ -285,109 +290,105 @@ for scene in scenes:
     luminances = []
     peak_lum = -99
     for file_name in file_list:
-        file_path = base_path+ scene +'/data/' + file_name
+        file_path = os.path.join(directory_path, file_name)
         image = load_image(file_path)
         # Marigold
         tem_lum = compute_luminance(image)
-        if peak_lum < tem_lum:
-            
-            image = Image.open(file_path)
-            depth = pipe(image)
-            normals = pipe_norm(image)
-            
-            # https://huggingface.co/docs/diffusers/v0.28.2/en/using-diffusers/marigold_usage
-            depth_16bit = pipe.image_processor.export_depth_to_16bit_png(depth.prediction)
-            depth = depth_16bit[0]
-            depth.save(base_path+ scene +'/data/' + "all_depth.png")
+        luminances.append(tem_lum)
+
+    index = find_median_index(luminances)
+    print(luminances)
+    print(index)
+    file_path = file_path = os.path.join(directory_path, file_list[index])
+    image = Image.open(file_path)
+    depth = pipe(image)
+    normals = pipe_norm(image)
+    
+    # https://huggingface.co/docs/diffusers/v0.28.2/en/using-diffusers/marigold_usage
+    depth_16bit = pipe.image_processor.export_depth_to_16bit_png(depth.prediction)
+    depth = depth_16bit[0]
+    depth.save(base_path+ scene  + "/all_depth.png")
 
 
-            vis = pipe_norm.image_processor.visualize_normals(normals.prediction)
-            vis[0].save(base_path+ scene +'/data/' + "all_normal.png")
+    vis = pipe_norm.image_processor.visualize_normals(normals.prediction)
+    # vis[0].save(base_path+ scene  + "all_normal.png")
+    vis[0].save(base_path+ scene + "/all_normal.png")
 
-
-            # focal_length = 500  # Focal length in pixels
-            # point_cloud = depth_to_point_cloud(depth, focal_length)
-            # normals = compute_normals_from_point_cloud(point_cloud)
-            # normals = smooth_normals(normals, kernel_size=10)
-
-            # # Output normals for visualization or further processing
-            # normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
-            peak_lum = tem_lum
-
-    for file_name in file_list:
-
-        file_path = base_path+ scene +'/data/' + file_name
-        
-        file_pref = file_name.split(sep = ".")[0]
-        file_suf = file_name.split(sep = ".")[1]
-
-        mask_path = base_path+ scene +'/data/'+file_pref+'_skymask.png'
-
-        # load an image (np float array in [0-1])
-        image = load_image(file_path)
-        mask = load_image(mask_path)
-        
-        bg_h, bg_w = image.shape[:2]
-        max_dim = max(bg_h, bg_w)
-        scale = 512 / max_dim
-
-        # resize img
-        small_bg_img = rescale(image, scale)
-        # small_bg_nrm = get_omni_normals(nrm_model, small_bg_img)
-
-        small_bg_shd = cv2.imread(base_path+ scene +'/data/' + file_pref + '_shd.png', cv2.IMREAD_GRAYSCALE)
-        small_bg_shd = small_bg_shd/255                 # (0,1)
-        small_bg_shd = rescale(small_bg_shd, scale)
-        
-        normals = cv2.imread(base_path+ scene +'/data/' + 'all_normal.png')
-        normals = cv2.cvtColor(normals, cv2.COLOR_BGR2RGB)
-        normals = normals/255                           # (0,1)
-
-        small_bg_nrm = rescale(normals, scale)
-        # small_bg_nrm = (small_bg_nrm + 1) / 2
-
-        # we need shd, normal, img, all in resized size
-        mask = rescale(mask, scale)
-        
-        # make it invert, I don't know why but get_light_coeffs take this as mask
-        mask[mask>0.5]= int(1)
-        mask[mask<0.5]= int(0)
-        mask = -mask+1
-
-        # print(mask)
-        coeffs, temp_shd = get_light_coeffs(small_bg_shd, small_bg_nrm, small_bg_img)
-        output_img_path = base_path+ scene +'/data/'
-
-        save_to_rgb(view(temp_shd)*255, output_img_path, file_pref, 'shd_est')
-        # # # Output normals for visualization or further processing
-        # normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
-        # save_to_rgb(normals_image, output_img_path, file_pref, 'normal')
-
-        # print(np.array(coeffs[:3]))
-        # file_num+=1
-        print("processed ", file_pref)
-        
-        # Save the array as a text file at a specific path
-        np.savetxt(output_img_path + file_pref+'_light.txt', np.array(coeffs[:3]), fmt='%f')
-
-    # print(luminances)
-
-    # # depth_avg = depth_avg/file_num
-    # # save_to_rgb(view(depth_avg)*255, output_img_path, 'all', 'depth')
-    # save_to_rgb(depth, output_img_path, 'all', 'depth')
-    # # save_to_rgb(view(depth)*255, output_img_path, 'all', 'depth')
-
-    # save_to_rgb(normals_image, output_img_path, 'all', 'normal')
-
-    # save_to_rgb(alb_avg, output_img_path, 'all', 'alb')
 
     # for file_name in file_list:
+
+    #     file_path = base_path+ scene + file_name
+        
     #     file_pref = file_name.split(sep = ".")[0]
     #     file_suf = file_name.split(sep = ".")[1]
 
-    #     frame2 = cv2.imread(base_path+ scene +'/data/' + file_name)[...,::-1]
-    #     alb = cv2.imread(base_path+ scene +'/data/' + 'all_alb.png')[...,::-1]
+    #     mask_path = base_path+ scene +file_pref+'_skymask.png'
 
-    #     # Compute the shading
-    #     shading = compute_shading(frame2, alb)
-    #     save_to_rgb(shading, output_img_path , file_pref, 'shd')
+    #     # load an image (np float array in [0-1])
+    #     image = load_image(file_path)
+    #     mask = load_image(mask_path)
+        
+    #     bg_h, bg_w = image.shape[:2]
+    #     max_dim = max(bg_h, bg_w)
+    #     scale = 512 / max_dim
+
+    #     # resize img
+    #     small_bg_img = rescale(image, scale)
+    #     # small_bg_nrm = get_omni_normals(nrm_model, small_bg_img)
+
+    #     small_bg_shd = cv2.imread(base_path+ scene  + file_pref + '_shd.png', cv2.IMREAD_GRAYSCALE)
+    #     small_bg_shd = small_bg_shd/255                 # (0,1)
+    #     small_bg_shd = rescale(small_bg_shd, scale)
+        
+    #     normals = cv2.imread(base_path+ scene  + 'all_normal.png')
+    #     normals = cv2.cvtColor(normals, cv2.COLOR_BGR2RGB)
+    #     normals = normals/255                           # (0,1)
+
+    #     small_bg_nrm = rescale(normals, scale)
+    #     # small_bg_nrm = (small_bg_nrm + 1) / 2
+
+    #     # we need shd, normal, img, all in resized size
+    #     mask = rescale(mask, scale)
+        
+    #     # make it invert, I don't know why but get_light_coeffs take this as mask
+    #     mask[mask>0.5]= int(1)
+    #     mask[mask<0.5]= int(0)
+    #     mask = -mask+1
+
+    #     # print(mask)
+    #     coeffs, temp_shd = get_light_coeffs(small_bg_shd, small_bg_nrm, small_bg_img)
+    #     output_img_path = base_path+ scene 
+
+    #     save_to_rgb(view(temp_shd)*255, output_img_path, file_pref, 'shd_est')
+    #     # # # Output normals for visualization or further processing
+    #     # normals_image = ((normals + 1) / 2 * 255).astype(np.uint8)  # Normalize for visualization
+    #     # save_to_rgb(normals_image, output_img_path, file_pref, 'normal')
+
+    #     # print(np.array(coeffs[:3]))
+    #     # file_num+=1
+    #     print("processed ", file_pref)
+        
+    #     # Save the array as a text file at a specific path
+    #     np.savetxt(output_img_path + file_pref+'_light.txt', np.array(coeffs[:3]), fmt='%f')
+
+    # # print(luminances)
+
+    # # # depth_avg = depth_avg/file_num
+    # # # save_to_rgb(view(depth_avg)*255, output_img_path, 'all', 'depth')
+    # # save_to_rgb(depth, output_img_path, 'all', 'depth')
+    # # # save_to_rgb(view(depth)*255, output_img_path, 'all', 'depth')
+
+    # # save_to_rgb(normals_image, output_img_path, 'all', 'normal')
+
+    # # save_to_rgb(alb_avg, output_img_path, 'all', 'alb')
+
+    # # for file_name in file_list:
+    # #     file_pref = file_name.split(sep = ".")[0]
+    # #     file_suf = file_name.split(sep = ".")[1]
+
+    # #     frame2 = cv2.imread(base_path+ scene  + file_name)[...,::-1]
+    # #     alb = cv2.imread(base_path+ scene  + 'all_alb.png')[...,::-1]
+
+    # #     # Compute the shading
+    # #     shading = compute_shading(frame2, alb)
+    # #     save_to_rgb(shading, output_img_path , file_pref, 'shd')

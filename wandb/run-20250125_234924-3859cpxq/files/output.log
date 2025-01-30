@@ -1,0 +1,37 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 319940
+INFO:__main__:  Num Epochs = 3
+INFO:__main__:  Instantaneous batch size per device = 8
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 32
+INFO:__main__:  Gradient Accumulation steps = 2
+INFO:__main__:  Total optimization steps = 20000
+
+
+Steps:   0%|                                                                                                                                       | 3/20000 [00:06<10:53:12,  1.96s/it, loss=0.091, lr=0.0001]Traceback (most recent call last):
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1670, in <module>
+    main()
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1592, in main
+    accelerator.backward(loss)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/accelerate/accelerator.py", line 2159, in backward
+    loss.backward(**kwargs)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/_tensor.py", line 521, in backward
+    torch.autograd.backward(
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/autograd/__init__.py", line 289, in backward
+    _engine_run_backward(
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/autograd/graph.py", line 768, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1670, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1592, in main
+[rank0]:     accelerator.backward(loss)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/accelerate/accelerator.py", line 2159, in backward
+[rank0]:     loss.backward(**kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/_tensor.py", line 521, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/autograd/__init__.py", line 289, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/autograd/graph.py", line 768, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]: KeyboardInterrupt

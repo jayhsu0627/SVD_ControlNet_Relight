@@ -1,0 +1,55 @@
+INFO:__main__:***** Running training *****
+INFO:__main__:  Num examples = 319940
+INFO:__main__:  Num Epochs = 3
+INFO:__main__:  Instantaneous batch size per device = 8
+INFO:__main__:  Total train batch size (w. parallel, distributed & accumulation) = 32
+INFO:__main__:  Gradient Accumulation steps = 2
+INFO:__main__:  Total optimization steps = 20000
+Steps:   0%|                                                                                                                                                                         | 0/20000 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1668, in <module>
+    main()
+  File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1566, in main
+    latents = vae.module.encode(vae_in).latent_dist.mean
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/diffusers/utils/accelerate_utils.py", line 46, in wrapper
+    return method(self, *args, **kwargs)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/diffusers/models/autoencoders/autoencoder_asym_kl.py", line 116, in encode
+    h = self.encoder(x)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/diffusers/models/autoencoders/vae.py", line 143, in forward
+    sample = self.conv_in(sample)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [8, 1, 6, 256, 512]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1668, in <module>
+[rank0]:     main()
+[rank0]:   File "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py", line 1566, in main
+[rank0]:     latents = vae.module.encode(vae_in).latent_dist.mean
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/diffusers/utils/accelerate_utils.py", line 46, in wrapper
+[rank0]:     return method(self, *args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/diffusers/models/autoencoders/autoencoder_asym_kl.py", line 116, in encode
+[rank0]:     h = self.encoder(x)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/diffusers/models/autoencoders/vae.py", line 143, in forward
+[rank0]:     sample = self.conv_in(sample)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 458, in forward
+[rank0]:     return self._conv_forward(input, self.weight, self.bias)
+[rank0]:   File "/opt/conda/envs/svd_control_org/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 454, in _conv_forward
+[rank0]:     return F.conv2d(input, weight, bias, self.stride,
+[rank0]: RuntimeError: Expected 3D (unbatched) or 4D (batched) input to conv2d, but got input of size: [8, 1, 6, 256, 512]

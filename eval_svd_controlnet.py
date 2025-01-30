@@ -31,6 +31,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
+import re
 
 import accelerate
 import numpy as np
@@ -215,7 +216,8 @@ def load_images_from_folder(folder):
     # Function to extract frame number from the filename
     def frame_number(filename):
         parts = filename.split('_')
-        if len(parts) > 1 and parts[0] == 'frame':
+        if len(parts) > 1 and parts[0] == 'dir':
+        # if len(parts) > 1 and parts[0] == 'frame':
             try:
                 return int(parts[1].split('.')[0])  # Extracting the number part
             except ValueError:
@@ -223,12 +225,16 @@ def load_images_from_folder(folder):
         return float('inf')  # Non-frame files are placed at the end
 
     # Sorting files based on frame number
-    sorted_files = sorted(os.listdir(folder), key=frame_number)
+    # sorted_files = sorted(os.listdir(folder), key=frame_number)
+    sorted_files = sorted(os.listdir(folder))
+
     print(len(sorted_files))
     # Load images in sorted order
     for filename in sorted_files:
         ext = os.path.splitext(filename)[1].lower()
+        # if ext in valid_extensions and '_2_' not in filename:
         if ext in valid_extensions:
+
             img = Image.open(os.path.join(folder, filename)).convert('RGB')
             img = resize_and_pad_image(img)
             images.append(img)
@@ -326,6 +332,76 @@ def export_to_gif(frames, output_gif_path, fps):
                        duration=500,
                        loop=0)
 
+def export_to_three_side_by_side_gif(frames1, frames2, frames3, output_gif_path, duration=500):
+    """
+    Export three lists of frames as a side-by-side GIF, resized to frames2's dimensions.
+
+    Args:
+    - frames1, frames2, frames3 (list): Frames (numpy arrays or PIL Images)
+    - output_gif_path (str): Path to save the output GIF
+    - duration (int, optional): Duration of each frame in milliseconds. Defaults to 500.
+    """
+    # Convert numpy arrays to PIL Images if needed
+    pil_frames1 = [Image.fromarray(frame) if isinstance(frame, np.ndarray) else frame for frame in frames1]
+    pil_frames2 = [Image.fromarray(frame) if isinstance(frame, np.ndarray) else frame for frame in frames2]
+    pil_frames3 = [Image.fromarray(frame) if isinstance(frame, np.ndarray) else frame for frame in frames3]
+
+    # Ensure all frame lists are the same length
+    min_length = min(len(pil_frames1), len(pil_frames2), len(pil_frames3))
+    pil_frames1 = pil_frames1[:min_length]
+    pil_frames2 = pil_frames2[:min_length]
+    pil_frames3 = pil_frames3[:min_length]
+
+    # Create side-by-side frames
+    side_by_side_frames = []
+    for f1, f2, f3 in zip(pil_frames1, pil_frames2, pil_frames3):
+        # Resize all frames to match frames2's dimensions
+        f1_resized = f1.resize((f2.width, f2.height))
+        f3_resized = f3.resize((f2.width, f2.height))
+
+        # Calculate total width
+        total_width = f1_resized.width * 3
+        height = f2.height
+
+        # Create a new blank image
+        combined_frame = Image.new('RGB', (total_width, height), color='black')
+        
+        # Paste frames side by side
+        combined_frame.paste(f1_resized, (0, 0))
+        combined_frame.paste(f2, (f1_resized.width, 0))
+        combined_frame.paste(f3_resized, (f1_resized.width * 2, 0))
+        
+        side_by_side_frames.append(combined_frame)
+
+    # Save as GIF
+    side_by_side_frames[0].save(
+        output_gif_path.replace('.mp4', '.gif'),
+        format='GIF',
+        append_images=side_by_side_frames[1:],
+        save_all=True,
+        palettesize=1024,
+        duration=duration,
+        loop=0
+    )
+
+def export_to_images(frames, output_dir, format='png'):
+
+    output_dir
+
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Convert numpy arrays to PIL Images if needed
+    pil_frames = [Image.fromarray(frame) if isinstance(frame, np.ndarray) else frame for frame in frames]
+
+    # Save frames as individual images
+    saved_paths = []
+    for i, frame in enumerate(pil_frames):
+        # Create filename with zero-padded index
+        filename = os.path.join(output_dir, f'frame_{i:04d}.{format}')
+        frame.save(filename)
+        saved_paths.append(filename)
+    return saved_paths
 
 def tensor_to_vae_latent(t, vae):
     video_length = t.shape[1]
@@ -848,10 +924,15 @@ def main():
         low_cpu_mem_usage=True,
         variant="fp16",
     )
-
+    cpt_file = None
     if args.controlnet_model_name_or_path:
         print("Loading existing controlnet weights")
         controlnet = ControlNetSDVModel.from_pretrained(args.controlnet_model_name_or_path, conditioning_channels=4 if args.concat_depth_maps else 3)
+        match = re.search(r'checkpoint-(\d+)', args.controlnet_model_name_or_path)
+        if match:
+            extracted_number = match.group(1)
+            print(extracted_number)  # Output: 2000
+            cpt_file = str(extracted_number)
     else:
         print("Initializing controlnet weights from unet")
         controlnet = ControlNetSDVModel.from_unet(unet, conditioning_channels=4 if args.concat_depth_maps else 3)
@@ -966,6 +1047,8 @@ def main():
     base_dir = os.path.join(args.validation_image_folder)
     folder_list = os.listdir(base_dir)
     folder_list = sorted(folder_list)
+    if '_' not in folder_list[-1]:
+        folder_list.pop()
 
     num_folders = len(folder_list)
     # Prepare condition images (input)
@@ -1018,6 +1101,15 @@ def main():
             target_dir = target_dir.unsqueeze(0)
             target_dir = target_dir.to("cuda")
 
+        # Load ground truth
+        gt_images = load_images_from_folder(img_folder)
+        gt_images_list = []
+        for num in numbers_list:
+            if num <2:
+                gt_images_list.append(gt_images[num])
+            else:
+                gt_images_list.append(gt_images[num-1])
+
         w, h = validation_image[0].size
         print(w, h)
         ratio = w/h
@@ -1034,20 +1126,30 @@ def main():
                 width=int(args.height * ratio),
                 num_frames=args.num_frames,
                 decode_chunk_size=8,
-                motion_bucket_id=5,
+                motion_bucket_id=120,
                 fps=args.num_frames,
                 noise_aug_strength=0.02,
                 train_dir=target_dir,
             ).frames
             
-            out_file_path = os.path.join(
-                val_save_dir,
-                folder_list[i]+ f"_SVD_nn_fin_v2_4000_sm.mp4",
-            )
+            if cpt_file is not None:
+                out_file_path = os.path.join(
+                    val_save_dir,
+                    folder_list[i]+ f"_{cpt_file}_dec_new.mp4",
+                )
+            else:
+                out_file_path = os.path.join(
+                    val_save_dir,
+                    folder_list[i]+ f"_.mp4",
+                )
+
+
             flattened_batch_output = [img for sublist in video_frames for img in sublist]
             # print(flattened_batch_output[0].shape)
 
-            export_to_gif(flattened_batch_output, out_file_path, 30)    
+            # export_to_gif(flattened_batch_output, out_file_path, 30)    
+            export_to_three_side_by_side_gif(validation_image, flattened_batch_output, gt_images_list, out_file_path, duration=1200)
+            export_to_images(flattened_batch_output, out_file_path.replace('.mp4', ''), format='png')
 
 if __name__ == "__main__":
     main()

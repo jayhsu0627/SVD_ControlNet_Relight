@@ -1,21 +1,21 @@
 import torch
 
-# import some helper functions from chrislib (will be installed by the intrinsic repo)
-from chrislib.general import show, view, uninvert
-from chrislib.data_util import load_image
-from chrislib.normal_util import get_omni_normals
+# # import some helper functions from chrislib (will be installed by the intrinsic repo)
+# from chrislib.general import show, view, uninvert
+# from chrislib.data_util import load_image
+# from chrislib.normal_util import get_omni_normals
 
-# import model loading and running the pipeline
-from intrinsic.pipeline import run_pipeline, run_gray_pipeline
-from intrinsic.pipeline import load_models
-from pipeline_mod import get_light_coeffs
+# # import model loading and running the pipeline
+# from intrinsic.pipeline import run_pipeline, run_gray_pipeline
+# from intrinsic.pipeline import load_models
+# from pipeline_mod import get_light_coeffs
 
 from PIL import Image 
 import numpy as np
 import cv2
 
 # import OpenEXR
-import Imath
+# import Imath
 import numpy
 import numexpr as ne
 from tqdm.auto import trange
@@ -33,17 +33,17 @@ from PIL import Image
 import requests
 from skimage.transform import resize
 
-from boosted_depth.depth_util import create_depth_models, get_depth
+# from boosted_depth.depth_util import create_depth_models, get_depth
 
 
-def save_to_rgb(img, directory, file_name, format: str):
-    if format=='nL':
-        temp_result = Image.fromarray(((img+1)/2*255).astype('uint8'))
-    elif format =='compo_shd':
-        temp_result = Image.fromarray((view(compo)*255).astype('uint8')[:,:, 0])
-    else:
-        temp_result = Image.fromarray((view(img)*255).astype('uint8'))
-    temp_result.save(directory + file_name + '_' + format+'.png')
+# def save_to_rgb(img, directory, file_name, format: str):
+#     if format=='nL':
+#         temp_result = Image.fromarray(((img+1)/2*255).astype('uint8'))
+#     elif format =='compo_shd':
+#         temp_result = Image.fromarray((view(compo)*255).astype('uint8')[:,:, 0])
+#     else:
+#         temp_result = Image.fromarray((view(img)*255).astype('uint8'))
+#     temp_result.save(directory + file_name + '_' + format+'.png')
 
 def get_clean_image_list(directory):
     # Get all PNG files
@@ -250,12 +250,12 @@ def find_median_index(numbers):
     
     return median_index
 
-base_path = '/fs/gamma-projects/svd_relight/MIT/train/'
+base_path = '/sdb5/data/train/'
 
 scenes = [f for f in os.listdir(base_path)]
 scenes = sorted(scenes)
-# load the models from the given paths
-models = load_models('v2')
+# # load the models from the given paths
+# models = load_models('v2')
 
 # # load pipe
 # pipe = pipeline(task="depth-estimation",

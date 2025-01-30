@@ -1,0 +1,191 @@
+{
+    "os": "Linux-5.10.0-33-cloud-amd64-x86_64-with-glibc2.31",
+    "python": "3.9.12",
+    "heartbeatAt": "2025-01-25T23:41:51.750421",
+    "startedAt": "2025-01-25T23:41:51.537012",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--output_dir=/sdb5/Model_out/decoder",
+        "--width=512",
+        "--height=256",
+        "--learning_rate=1e-4",
+        "--per_gpu_batch_size=8",
+        "--num_train_epochs=30",
+        "--mixed_precision=bf16",
+        "--gradient_accumulation_steps=2",
+        "--checkpointing_steps=100",
+        "--max_train_steps",
+        "20000",
+        "--gradient_checkpointing",
+        "--checkpoints_total_limit=5",
+        "--report_to=wandb",
+        "--num_workers=4",
+        "--mse_weight=0.4",
+        "--allow_tf32",
+        "--use_8bit_adam"
+    ],
+    "state": "running",
+    "program": "/sdb5/SVD_ControlNet_Relight/train_svd_decoder.py",
+    "codePathLocal": "train_svd_decoder.py",
+    "codePath": "train_svd_decoder.py",
+    "git": {
+        "remote": "git@github.com:jayhsu0627/SVD_ControlNet_Relight.git",
+        "commit": "f9d957fbeb90f717ee964558a8d9443a268d88e3"
+    },
+    "email": "jayhsu0627@gmail.com",
+    "root": "/sdb5/SVD_ControlNet_Relight",
+    "host": "instance-20240922-005009",
+    "username": "sjxu",
+    "executable": "/opt/conda/envs/svd_control_org/bin/python",
+    "cpu_count": 12,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 2200.2799999999993,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.28,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1007.6765480041504,
+            "used": 801.9401931762695
+        }
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gpu_count": 2,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 167.05669784545898
+    }
+}

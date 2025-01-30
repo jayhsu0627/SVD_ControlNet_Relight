@@ -53,7 +53,7 @@ from transformers import CLIPImageProcessor, CLIPVisionModelWithProjection, CLIP
 from relighting.light_directions import get_light_dir_encoding, BACKWARD_DIR_IDS
 
 from einops import rearrange
-from lpips import LPIPS
+# from lpips import LPIPS
 import datetime
 import diffusers
 from diffusers.models.lora import LoRALinearLayer
@@ -991,7 +991,7 @@ def main():
         low_cpu_mem_usage=True,
         variant="fp16",
     )
-    lpips = LPIPS(net="alex")
+    # lpips = LPIPS(net="alex")
 
     feature_extractor = CLIPImageProcessor.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="feature_extractor", revision=args.revision
@@ -1517,7 +1517,7 @@ def main():
         target_resolutions = [256, 512, 1024, 1536]
         
         psnr_scores = {res:0.0 for res in target_resolutions}
-        lpips_scores = {res:0.0 for res in target_resolutions}
+        # lpips_scores = {res:0.0 for res in target_resolutions}
 
         for i, log in enumerate(image_logs):
             log["validation_image"].save(f"{val_dir}/{i:04d}_input.png")
@@ -1533,17 +1533,17 @@ def main():
                         gt = log["gt"].resize((res, res//2*3))
                         psnr_scores[res] += 10 * np.log10(255**2 / np.mean((np.array(pred) - np.array(gt))**2))
                         total_images += 1
-                        with torch.autocast("cuda", dtype=weight_dtype):
-                            lpips_scores[res] += lpips(TF.to_tensor(pred).cuda() * 2 - 1, TF.to_tensor(gt).cuda() * 2 - 1).item()
+                        # with torch.autocast("cuda", dtype=weight_dtype):
+                        #     lpips_scores[res] += lpips(TF.to_tensor(pred).cuda() * 2 - 1, TF.to_tensor(gt).cuda() * 2 - 1).item()
                     psnr_scores[res] /= total_images
-                    lpips_scores[res] /= total_images
+                    # lpips_scores[res] /= total_images
         
         if IS_QUEUED_JOB: 
             for res in target_resolutions:
                 run.track(psnr_scores[res], name=f'psnr_{res}x{res//2*3}', step=global_step)
-                run.track(lpips_scores[res], name=f'lpips_{res}x{res//2*3}', step=global_step)
-                with open(f"{args.output_dir}/scores_{res}.csv", "a") as f:
-                    print(round(psnr_scores[res],3), round(lpips_scores[res], 3), file=f)
+                # run.track(lpips_scores[res], name=f'lpips_{res}x{res//2*3}', step=global_step)
+                # with open(f"{args.output_dir}/scores_{res}.csv", "a") as f:
+                    # print(round(psnr_scores[res],3), round(lpips_scores[res], 3), file=f)
 
     # if not args.eval_only:
     # Initialize a new run
